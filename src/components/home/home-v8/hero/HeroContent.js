@@ -12,8 +12,8 @@ const HeroContent = () => {
   };
 
   const tabs = [
-    { id: "buy", label: "Buy" },
-    { id: "rent", label: "Rent" },
+    { id: "buy", label: "Mua" },
+    { id: "rent", label: "Thuê" },
     // { id: "sold", label: "Sold" },
   ];
 
@@ -57,7 +57,7 @@ const HeroContent = () => {
                     <button
                       className="ud-btn btn-dark"
                       type="button"
-                      onClick={() => router.push("/grid-full-4-col")}
+                      onClick={() => router.push("/grid-full-3-col")}
                     >
                       <span className="flaticon-search" />
                     </button>

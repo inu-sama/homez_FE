@@ -78,22 +78,11 @@ const MainMenu = () => {
         </ul>
       </li>
       <li className="visible_list dropitem">
-        <a className="list-item" href="#">
-          <span className={topMenu == "home" ? "title menuActive" : "title"}>
-            Home
+        <a className="list-item" href="/about">
+          <span className={topMenu == "pages" ? "title menuActive" : "title"}>
+            Về chúng tôi
           </span>
-          <span className="arrow"></span>
         </a>
-        {/* Level Two*/}
-        <ul className="sub-menu">
-          {homeItems.map((item, index) => (
-            <li key={index}>
-              <Link className={`${handleActive(item.href)}`} href={item.href}>
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </li>
       {/* End homeItems */}
 

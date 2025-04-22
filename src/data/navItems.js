@@ -6,7 +6,7 @@ export const homeItems = [
   { href: "/home-v5", label: "Home v5" },
   { href: "/home-v6", label: "Home v6" },
   { href: "/home-v7", label: "Home v7" },
-  { href: "/home-v8", label: "Home v8" },
+  { href: "/home", label: "Home v8" },
   { href: "/home-v9", label: "Home v9" },
   { href: "/home-v10", label: "Home v10" },
 ];

@@ -3,7 +3,7 @@ import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 
-import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/PropertyFiltering";
+import PropertyFiltering from "@/components/listing/grid-view/grid-full-3-col/PropertyFiltering";
 
 import React from "react";
 
@@ -50,7 +50,7 @@ const GridFull3Col = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <ProperteyFiltering/>
+      <PropertyFiltering/>
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

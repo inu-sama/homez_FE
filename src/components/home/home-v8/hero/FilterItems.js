@@ -4,22 +4,22 @@ import Slider, { Range } from "rc-slider";
 import { useState } from "react";
 
 const FilterItems = () => {
-  const [price, setPrice] = useState([20, 70987]);
+  const [price, setPrice] = useState([0, 200000000]);
 
   // price range handler
   const handleOnChange = (value) => {
     setPrice(value);
   };
 
-  const catOptions = [
-    { value: "Apartments", label: "Apartments" },
-    { value: "Bungalow", label: "Bungalow" },
-    { value: "Houses", label: "Houses" },
-    { value: "Loft", label: "Loft" },
-    { value: "Office", label: "Office" },
-    { value: "Townhome", label: "Townhome" },
-    { value: "Villa", label: "Villa" },
-  ];
+  // const catOptions = [
+  //   { value: "Apartments", label: "Apartments" },
+  //   { value: "Bungalow", label: "Bungalow" },
+  //   { value: "Houses", label: "Houses" },
+  //   { value: "Loft", label: "Loft" },
+  //   { value: "Office", label: "Office" },
+  //   { value: "Townhome", label: "Townhome" },
+  //   { value: "Villa", label: "Villa" },
+  // ];
   const locationOptions = [
     { value: "California", label: "California" },
     { value: "Chicago", label: "Chicago" },
@@ -50,11 +50,11 @@ const FilterItems = () => {
   return (
     <>
       <div className="col-md-12">
-        <div className="bootselect-multiselect mb20">
+        <div className="bootselect-multiselect mb15">
           <Select
-            defaultValue={[catOptions[0]]}
+            defaultValue={[locationOptions[0]]}
             name="colors"
-            options={catOptions}
+            options={locationOptions}
             styles={customStyles}
             className="text-start with_border"
             classNamePrefix="select"
@@ -63,7 +63,7 @@ const FilterItems = () => {
           />
         </div>
       </div>
-      {/* End .col-12 */}
+      
       <div className="col-md-12">
         <div className="dropdown-lists at-home8 mb20">
           <div
@@ -87,9 +87,9 @@ const FilterItems = () => {
                     id="slider"
                   />
                   <div className="d-flex align-items-center">
-                    <span id="slider-range-value1">${price[0]}</span>
+                    <span id="slider-range-value1">{price[0]}₫</span>
                     <i className="fa-sharp fa-solid fa-minus mx-2 dark-color icon" />
-                    <span id="slider-range-value2">${price[1]}</span>
+                    <span id="slider-range-value2">{price[1]}₫</span>
                   </div>
                 </div>
               </div>
@@ -97,22 +97,6 @@ const FilterItems = () => {
           </div>
         </div>
       </div>
-      {/* End .col-12 */}
-      <div className="col-md-12">
-        <div className="bootselect-multiselect mb15">
-          <Select
-            defaultValue={[locationOptions[0]]}
-            name="colors"
-            options={locationOptions}
-            styles={customStyles}
-            className="text-start with_border"
-            classNamePrefix="select"
-            required
-            isSearchable={false}
-          />
-        </div>
-      </div>{" "}
-      {/* End .col-12 */}
     </>
   );
 };
