@@ -10,6 +10,18 @@ import Pagination from "../../Pagination";
 import PaginationTwo from "../../PaginationTwo";
 
 export default function PropertyFiltering(props) {
+  const [properties, setProperties] = useState(null);
+
+  useEffect(() => {
+    const headers = {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTg3MDQsImV4cCI6MTc0NTc0NTEwNH0.YiJkEpWqNcOVPUbIngU6_qeOVeKLjwcEsk8n_uOVf8c",
+    };
+    fetch("http://localhost:8888/api/listings", { headers })
+      .then((response) => response.json())
+      .then((data) => setProperties(data));
+  }, []);
+
   const [filteredData, setFilteredData] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState("Newest");
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
@@ -235,14 +247,14 @@ export default function PropertyFiltering(props) {
 
   return (
     <section className="pt0 pb90 bgc-f7">
+      {console.log("properties", properties)}
       <div className="container">
         {/* start mobile filter sidebar */}
         <div
           className="offcanvas offcanvas-start p-0"
           tabIndex="-1"
           id="listingSidebarFilter"
-          aria-labelledby="listingSidebarFilterLabel"
-        >
+          aria-labelledby="listingSidebarFilterLabel">
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
               Listing Filter
@@ -251,8 +263,7 @@ export default function PropertyFiltering(props) {
               type="button"
               className="btn-close text-reset"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
+              aria-label="Close"></button>
           </div>
           <div className="offcanvas-body p-0">
             <ListingSidebar filterFunctions={filterFunctions} />
@@ -267,8 +278,7 @@ export default function PropertyFiltering(props) {
             id="advanceSeachModal"
             tabIndex={-1}
             aria-labelledby="advanceSeachModalLabel"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <AdvanceFilterModal filterFunctions={filterFunctions} />
           </div>
         </div>

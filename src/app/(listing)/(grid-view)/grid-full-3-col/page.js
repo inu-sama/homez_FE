@@ -38,8 +38,7 @@ const GridFull3Col = () => {
                   data-bs-toggle="offcanvas"
                   href="#listingSidebarFilter"
                   role="button"
-                  aria-controls="listingSidebarFilter"
-                >
+                  aria-controls="listingSidebarFilter">
                   <span className="flaticon-settings" /> Filter
                 </a>
               </div>
@@ -50,7 +49,7 @@ const GridFull3Col = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <PropertyFiltering/>
+      <PropertyFiltering />
       {/* Property Filtering */}
 
       {/* Start Our Footer */}
