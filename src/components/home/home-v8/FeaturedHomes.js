@@ -1,9 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
+import { Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const FeaturedHomes = () => {
   const featuredHomesData = [

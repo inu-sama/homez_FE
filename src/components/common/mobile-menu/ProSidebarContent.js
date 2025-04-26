@@ -9,8 +9,6 @@ import { useEffect, useState } from "react";
 const ProSidebarContent = () => {
   const path = usePathname();
 
-
-
   return (
     <Sidebar width="100%" backgroundColor="#fff" className="my-custom-class">
       <Menu>

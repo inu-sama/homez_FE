@@ -2,9 +2,12 @@
 import listings from "@/data/listings";
 import Image from "next/image";
 import Link from "next/link";
-import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
+import { Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const NearbySimilarProperty = () => {
   return (
@@ -62,7 +65,9 @@ const NearbySimilarProperty = () => {
                 </div>
                 <div className="list-content">
                   <h6 className="list-title">
-                    <Link href={`/single-v1/${listing.id}`}>{listing.title}</Link>
+                    <Link href={`/single-v1/${listing.id}`}>
+                      {listing.title}
+                    </Link>
                   </h6>
                   <p className="list-text">{listing.location}</p>
                   <div className="list-meta d-flex align-items-center">
