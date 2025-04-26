@@ -10,33 +10,26 @@ import Pagination from "../../Pagination";
 import { apiProperties } from "@/apis/Properties";
 import PaginationTwo from "../../PaginationTwo";
 
-export default function PropertyFiltering(props) {
-  const [properties, setProperties] = useState(null);
-
-  // useEffect(() => {
-  //   const headers = {
-  //     Authorization:
-  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTg3MDQsImV4cCI6MTc0NTc0NTEwNH0.YiJkEpWqNcOVPUbIngU6_qeOVeKLjwcEsk8n_uOVf8c",
-  //   };
-  //   fetch("http://localhost:8888/api/listings", { headers })  
-  //     .then((response) => response.json())
-  //     .then((data) => setProperties(data));
-  //   console.log("properties: ", properties);
-  // }, []);
+export default function PropertyFiltering() {
+  const [properties, setProperties] = useState([]);
 
   const fetchProperties = async () => {
-      try {
-        const response = await apiProperties.getPropertiesAD();
-        console.log(response);
-        setProperties(response);
-        console.log("properties: ", properties);
-      } catch (error) {
-        console.error("Error fetching properties:", error);
-      }
-    };
-    useEffect(() => {
-      fetchProperties();
-    }, []);
+    try {
+      const response = await apiProperties.getPropertiesAD();
+      console.log("response", response);
+      setProperties(response);
+      console.log("properties before fetch", properties);
+    } catch (error) {
+      console.error("Error fetching properties:", error);
+    }
+  };
+  useEffect(() => {
+    fetchProperties();
+  }, []);
+
+  useEffect(() => {
+    console.log("properties after fetch", properties);
+  }, [properties]);
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState("Newest");
@@ -269,7 +262,8 @@ export default function PropertyFiltering(props) {
           className="offcanvas offcanvas-start p-0"
           tabIndex="-1"
           id="listingSidebarFilter"
-          aria-labelledby="listingSidebarFilterLabel">
+          aria-labelledby="listingSidebarFilterLabel"
+        >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
               Listing Filter
@@ -278,7 +272,8 @@ export default function PropertyFiltering(props) {
               type="button"
               className="btn-close text-reset"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"></button>
+              aria-label="Close"
+            ></button>
           </div>
           <div className="offcanvas-body p-0">
             <ListingSidebar filterFunctions={filterFunctions} />
@@ -293,7 +288,8 @@ export default function PropertyFiltering(props) {
             id="advanceSeachModal"
             tabIndex={-1}
             aria-labelledby="advanceSeachModalLabel"
-            aria-hidden="true">
+            aria-hidden="true"
+          >
             <AdvanceFilterModal filterFunctions={filterFunctions} />
           </div>
         </div>

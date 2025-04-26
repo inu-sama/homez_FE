@@ -38,7 +38,8 @@ const GridFull3Col = () => {
                   data-bs-toggle="offcanvas"
                   href="#listingSidebarFilter"
                   role="button"
-                  aria-controls="listingSidebarFilter">
+                  aria-controls="listingSidebarFilter"
+                >
                   <span className="flaticon-settings" /> Filter
                 </a>
               </div>
