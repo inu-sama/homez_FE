@@ -6,27 +6,25 @@ import Link from "next/link";
 const FeaturedListings = ({ data, colstyle }) => {
   return (
     <>
-      {data.map((listing) => (
+      {/* {data.map((listing) => (
         <div
           className={` ${
             colstyle ? "col-sm-12 col-lg-6" : "col-sm-6 col-lg-4"
           }  `}
-          key={listing.id}
-        >
+          key={listing.id}>
           <div
             className={
               colstyle
                 ? "listing-style1 listCustom listing-type"
                 : "listing-style1"
-            }
-          >
+            }>
             <div className="list-thumb">
               <Image
                 width={382}
                 height={248}
                 className="w-100  cover"
                 style={{ height: "230px" }}
-                src={listing.image}
+                src={listing.Images[0]}
                 alt="listings"
               />
               <div className="sale-sticker-wrap">
@@ -39,14 +37,14 @@ const FeaturedListings = ({ data, colstyle }) => {
               </div>
 
               <div className="list-price">
-                {listing.price} / <span>mo</span>
+                {listing.Price} / <span>mo</span>
               </div>
             </div>
             <div className="list-content">
               <h6 className="list-title">
-                <Link href={`/single-v6/${listing.id}`}>{listing.title}</Link>
+                <Link href={`/single-v6/${listing._id}`}>{listing.Title}</Link>
               </h6>
-              <p className="list-text">{listing.location}</p>
+              <p className="list-text">{listing.Address}</p>
               <div className="list-meta d-flex align-items-center">
                 <a href="#">
                   <span className="flaticon-bed" /> {listing.bed} bed
@@ -76,7 +74,7 @@ const FeaturedListings = ({ data, colstyle }) => {
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
     </>
   );
 };

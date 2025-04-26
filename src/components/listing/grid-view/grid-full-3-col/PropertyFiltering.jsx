@@ -17,9 +17,10 @@ export default function PropertyFiltering(props) {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTg3MDQsImV4cCI6MTc0NTc0NTEwNH0.YiJkEpWqNcOVPUbIngU6_qeOVeKLjwcEsk8n_uOVf8c",
     };
-    fetch("http://localhost:8888/api/listings", { headers })
+    fetch("http://localhost:8888/api/listings", { headers })  
       .then((response) => response.json())
       .then((data) => setProperties(data));
+    console.log("properties: ", properties);
   }, []);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -247,7 +248,6 @@ export default function PropertyFiltering(props) {
 
   return (
     <section className="pt0 pb90 bgc-f7">
-      {console.log("properties", properties)}
       <div className="container">
         {/* start mobile filter sidebar */}
         <div
@@ -296,7 +296,7 @@ export default function PropertyFiltering(props) {
         {/* End TopFilterBar */}
 
         <div className="row">
-          <FeaturedListings colstyle={colstyle} data={pageItems} />
+          <FeaturedListings colstyle={colstyle} data={properties} />
         </div>
         {/* End .row */}
 
