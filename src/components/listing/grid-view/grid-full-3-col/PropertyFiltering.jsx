@@ -7,21 +7,36 @@ import AdvanceFilterModal from "@/components/common/advance-filter-two";
 import TopFilterBar from "./TopFilterBar";
 import FeaturedListings from "./FeatuerdListings";
 import Pagination from "../../Pagination";
+import { apiProperties } from "@/apis/Properties";
 import PaginationTwo from "../../PaginationTwo";
 
 export default function PropertyFiltering(props) {
   const [properties, setProperties] = useState(null);
 
-  useEffect(() => {
-    const headers = {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTg3MDQsImV4cCI6MTc0NTc0NTEwNH0.YiJkEpWqNcOVPUbIngU6_qeOVeKLjwcEsk8n_uOVf8c",
+  // useEffect(() => {
+  //   const headers = {
+  //     Authorization:
+  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTg3MDQsImV4cCI6MTc0NTc0NTEwNH0.YiJkEpWqNcOVPUbIngU6_qeOVeKLjwcEsk8n_uOVf8c",
+  //   };
+  //   fetch("http://localhost:8888/api/listings", { headers })  
+  //     .then((response) => response.json())
+  //     .then((data) => setProperties(data));
+  //   console.log("properties: ", properties);
+  // }, []);
+
+  const fetchProperties = async () => {
+      try {
+        const response = await apiProperties.getPropertiesAD();
+        console.log(response);
+        setProperties(response);
+        console.log("properties: ", properties);
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+      }
     };
-    fetch("http://localhost:8888/api/listings", { headers })  
-      .then((response) => response.json())
-      .then((data) => setProperties(data));
-    console.log("properties: ", properties);
-  }, []);
+    useEffect(() => {
+      fetchProperties();
+    }, []);
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState("Newest");
