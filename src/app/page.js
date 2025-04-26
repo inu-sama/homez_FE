@@ -1,4 +1,4 @@
-import Home from "./(home)/home";
+import Home from "./home/page";
 import Wrapper from "./layout-wrapper/wrapper";
 
 export const metadata = {

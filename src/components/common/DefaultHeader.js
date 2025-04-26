@@ -73,13 +73,13 @@ const DefaultHeader = () => {
                     role="button"
                   >
                     <i className="far fa-user-circle fz16 me-2" />{" "}
-                    <span className="d-none d-xl-block">Login / Register</span>
+                    <span className="d-none d-xl-block">Tài khoản</span>
                   </a>
                   <Link
                     className="ud-btn btn-white add-property bdrs60 mx-2 mx-xl-4"
                     href="/dashboard-add-property"
                   >
-                    Add Property
+                    Thêm căn hộ
                     <i className="fal fa-arrow-right-long" />
                   </Link>
                   {/* <a

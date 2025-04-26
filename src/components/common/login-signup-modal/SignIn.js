@@ -51,9 +51,9 @@ const SignIn = () => {
             Xác nhận <i className="fal fa-comment-sms" />
           </button>
         ) : (
-          <button className="ud-btn btn-thm" type="submit">
+          <Link href="./contact" className="ud-btn btn-thm" type="submit">
             Đăng nhập <i className="fal fa-arrow-right-long" />
-          </button>
+          </Link>
         )}
       </div>
       {/* End submit */}
