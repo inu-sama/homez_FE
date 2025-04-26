@@ -30,8 +30,6 @@ const Home_V8 = () => {
       <MobileMenu />
       {/* End Mobile Nav  */}
 
-      {/* Home sidebar sticky v bar */}
-      <SidebarStickyBar />
       {/* Edn Home sidebar sticky v bar */}
 
       {/* Home Banner Style V1 */}

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { React, useState } from "react";
 
@@ -9,7 +10,7 @@ const SignIn = () => {
         <label className="form-label fw600 dark-color">Số điện thoại</label>
         <input
           type="number"
-          {...otp ? { disabled: true } : null}
+          {...(otp ? { disabled: true } : null)}
           className="form-control"
           placeholder="Nhập số điện thoại"
           required
@@ -42,7 +43,11 @@ const SignIn = () => {
 
       <div className="d-grid mb20">
         {!otp ? (
-          <button onClick={() => setOtp(true)} className="ud-btn btn-thm" type="button">
+          <button
+            onClick={() => setOtp(true)}
+            className="ud-btn btn-thm"
+            type="button"
+          >
             Xác nhận <i className="fal fa-comment-sms" />
           </button>
         ) : (
@@ -52,8 +57,6 @@ const SignIn = () => {
         )}
       </div>
       {/* End submit */}
-
-      
     </form>
   );
 };

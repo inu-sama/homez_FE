@@ -82,7 +82,7 @@ const DefaultHeader = () => {
                     Add Property
                     <i className="fal fa-arrow-right-long" />
                   </Link>
-                  <a
+                  {/* <a
                     className="sidemenu-btn filter-btn-right"
                     href="#"
                     data-bs-toggle="offcanvas"
@@ -103,7 +103,7 @@ const DefaultHeader = () => {
                       src="/images/dark-nav-icon.svg"
                       alt="humberger menu"
                     />
-                  </a>
+                  </a> */}
                 </div>
               </div>
               {/* End .col-auto */}
@@ -131,14 +131,14 @@ const DefaultHeader = () => {
       {/* End Signup Modal */}
 
       {/* DesktopSidebarMenu */}
-      <div
+      {/* <div
         className="offcanvas offcanvas-end"
         tabIndex="-1"
         id="SidebarPanel"
         aria-labelledby="SidebarPanelLabel"
       >
         <SidebarPanel />
-      </div>
+      </div> */}
       {/* Sidebar Panel End */}
     </>
   );
