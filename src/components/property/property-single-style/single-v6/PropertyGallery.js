@@ -1,7 +1,11 @@
 "use client";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import "swiper/css/free-mode";
 import Image from "next/image";
 import "photoswipe/dist/photoswipe.css";
 import listings from "@/data/listings";

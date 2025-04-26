@@ -2,9 +2,9 @@
 import listings from "@/data/listings";
 import Image from "next/image";
 import Link from "next/link";
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
+import "swiper/css";
 
 const FeaturedListings = () => {
   return (
@@ -73,7 +73,9 @@ const FeaturedListings = () => {
                     {listing.price} / <span>mo</span>
                   </div>
                   <h6 className="list-title my-1">
-                    <Link href={`/single-v3/${listing.id}`}>{listing.title}</Link>
+                    <Link href={`/single-v3/${listing.id}`}>
+                      {listing.title}
+                    </Link>
                   </h6>
                   <div className="list-meta2 d-flex align-items-center">
                     <a href="#" className="mr10">

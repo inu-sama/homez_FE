@@ -3,7 +3,7 @@ import agents from "@/data/agents";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
+import "swiper/css";
 
 const Agents = () => {
   return (
@@ -34,7 +34,7 @@ const Agents = () => {
         {agents.slice(0, 7).map((agent, index) => (
           <SwiperSlide key={index}>
             <div className="item" key={index}>
-              <Link  href={`/agent-single/${agent.id}`}>
+              <Link href={`/agent-single/${agent.id}`}>
                 <div className="team-style1 mb30">
                   <div className="team-img">
                     <Image

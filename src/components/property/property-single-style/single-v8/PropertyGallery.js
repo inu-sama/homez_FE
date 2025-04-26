@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 import "photoswipe/dist/photoswipe.css";
 import listings from "@/data/listings";
