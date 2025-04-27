@@ -5724,6 +5724,19 @@ section {
   .form-style-AD {
     width: 100%;
   }
+  .form-catalog-AD {
+    padding: 0;
+  }
+  .swiper-Cata {
+    width: 100%;
+    height: 100vh;
+  }
+}
+@media (min-width: 1200px) {
+  .swiper-Cata {
+    width: 70%;
+    height: 80vh;
+  }
 }
 
 .slide-managemant-Post-swiper .swiper-slide {
@@ -5763,6 +5776,18 @@ section {
 .form-style-AD {
   width: 47%;
   padding: 10px 30px;
+}
+.form-catalog-AD {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-catalog-AD-content {
+  width: 100%;
+  font-family: var(--title-font-family);
+
 }
 
 @media (max-width: 768px) {
@@ -5818,6 +5843,14 @@ section {
   align-items: center;
   z-index: 100;
   background-color: #18181897;
+}
+.from-input-password-2 {
+  width: 75%;
+}
+@media (max-width: 1200px) {
+  .form-input-password {
+    width: 100%;
+  }
 }
 
 .form-style2 {

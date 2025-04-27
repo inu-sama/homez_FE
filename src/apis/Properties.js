@@ -1,12 +1,4 @@
-import axios from "axios";
-
-const instance = axios.create({
-  baseURL: process.env.API_URL_PORT,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTc0OTgsImV4cCI6MTc0NTc0Mzg5OH0.wJBFFbbsFJelULYPqxe2NS-PCChKtvZGPvGaLRAiqZM`,
-  },
-});
+import instance from "./instance";
 
 class Properties {
   async getPropertiesAD() {

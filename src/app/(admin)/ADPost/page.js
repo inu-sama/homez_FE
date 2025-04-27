@@ -68,7 +68,7 @@ export default function ManagementPost() {
         >
           {data.map((item) => (
             <SwiperSlide key={item._id}>
-              <form className="form-style-AD">
+              <form className="form-style-AD" key={item._id}>
                 <div>
                   <p className="h3 text-center">Người đăng bài+SĐT</p>
                 </div>
@@ -82,22 +82,14 @@ export default function ManagementPost() {
                       <div>
                         <p className="address-mobile">{item.Address}</p>
                         <span className="border-end text ">{item.State}</span>
-                        <span className="border-end border-start">
-                          {item.Category}
-                        </span>
                         <span className="address-mobile-2 border-start">
+                          <span className="fa-solid fa-location-dot"></span>{" "}
                           {item.Address}
-                        </span>
-                        <span className="border-start area-mobile">
-                          Diện tích: {item.Area}m²
                         </span>
                       </div>
                       <div>
                         <span>Rộng: {item.Length}m</span>
                         <span>Dài: {item.Width}m</span>
-                        <span className="area-mobile-2">
-                          Diện tích: {item.Area}m²
-                        </span>
                         <span>Số phòng: {item.NumberOfRooms}</span>
                       </div>
                     </div>
@@ -124,14 +116,10 @@ export default function ManagementPost() {
                     >
                       Tiện ích
                     </p>
-                    <div className="row g-3" style={{ marginLeft: "20px" }}>
-                      {item.Amenities.map((item) => (
-                        <div key={item._id} className="col-sm-4 col-6">
-                          <span
-                            style={{ marginRight: "5px" }}
-                            className={`icon ${item.Icon}`}
-                          ></span>
-                          <span>{item.Name}</span>
+                    <div className="row g-3" style={{ marginLeft: "30px" }}>
+                      {item.Amenities.map((amenity, index) => (
+                        <div key={index} className="col-sm-4 col-6">
+                          <span style={{ fontSize: "17px" }}>• {amenity}</span>
                         </div>
                       ))}
                     </div>
