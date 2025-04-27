@@ -1,7 +1,7 @@
 "use client";
 
 import listings from "@/data/listings";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import ListingSidebar from "../../sidebar";
 import AdvanceFilterModal from "@/components/common/advance-filter-two";
 import TopFilterBar from "./TopFilterBar";
@@ -18,25 +18,28 @@ export default function PropertyFiltering(props) {
   //     Authorization:
   //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTg3MDQsImV4cCI6MTc0NTc0NTEwNH0.YiJkEpWqNcOVPUbIngU6_qeOVeKLjwcEsk8n_uOVf8c",
   //   };
-  //   fetch("http://localhost:8888/api/listings", { headers })  
+  //   fetch("http://localhost:8888/api/listings", { headers })
   //     .then((response) => response.json())
   //     .then((data) => setProperties(data));
   //   console.log("properties: ", properties);
   // }, []);
 
   const fetchProperties = async () => {
-      try {
-        const response = await apiProperties.getPropertiesAD();
-        console.log(response);
-        setProperties(response);
-        console.log("properties: ", properties);
-      } catch (error) {
-        console.error("Error fetching properties:", error);
-      }
-    };
-    useEffect(() => {
-      fetchProperties();
-    }, []);
+    try {
+      const response = await apiProperties.getPropertiesAD();
+      // console.log(response);
+      setProperties(response);
+    } catch (error) {
+      console.error("Error fetching properties:", error);
+    }
+  };
+  useEffect(() => {
+    fetchProperties();
+  }, []);
+
+  useEffect(() => {
+    console.log("properties: ", properties);
+  }, [properties]);
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState("Newest");
@@ -263,13 +266,15 @@ export default function PropertyFiltering(props) {
 
   return (
     <section className="pt0 pb90 bgc-f7">
+      {/* {console.log("properties: ", properties)} */}
       <div className="container">
         {/* start mobile filter sidebar */}
         <div
           className="offcanvas offcanvas-start p-0"
           tabIndex="-1"
           id="listingSidebarFilter"
-          aria-labelledby="listingSidebarFilterLabel">
+          aria-labelledby="listingSidebarFilterLabel"
+        >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
               Listing Filter
@@ -278,7 +283,8 @@ export default function PropertyFiltering(props) {
               type="button"
               className="btn-close text-reset"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"></button>
+              aria-label="Close"
+            ></button>
           </div>
           <div className="offcanvas-body p-0">
             <ListingSidebar filterFunctions={filterFunctions} />
@@ -293,7 +299,8 @@ export default function PropertyFiltering(props) {
             id="advanceSeachModal"
             tabIndex={-1}
             aria-labelledby="advanceSeachModalLabel"
-            aria-hidden="true">
+            aria-hidden="true"
+          >
             <AdvanceFilterModal filterFunctions={filterFunctions} />
           </div>
         </div>
