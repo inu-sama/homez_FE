@@ -20,7 +20,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item1"
             aria-selected="true"
           >
-            1. Description
+            1. Mô tả
           </button>
           <button
             className="nav-link fw600"
@@ -32,7 +32,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item2"
             aria-selected="false"
           >
-            2. Media
+            2. Hình ảnh
           </button>
           <button
             className="nav-link fw600"
@@ -44,7 +44,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item3"
             aria-selected="false"
           >
-            3. Location
+            3. Vị trí
           </button>
           <button
             className="nav-link fw600"
@@ -56,7 +56,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item4"
             aria-selected="false"
           >
-            4. Detail
+            4. Chi tiết
           </button>
           <button
             className="nav-link fw600"
@@ -68,7 +68,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item5"
             aria-selected="false"
           >
-            5. Amenities
+            5. Tiện ích
           </button>
         </div>
       </nav>
@@ -82,7 +82,7 @@ const AddPropertyTabContent = () => {
           aria-labelledby="nav-item1-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Property Description</h4>
+            <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
             <PropertyDescription />
           </div>
         </div>
@@ -105,7 +105,7 @@ const AddPropertyTabContent = () => {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Listing Location</h4>
+            <h4 className="title fz17 mb30">Vị trí căn hộ</h4>
             <LocationField />
           </div>
         </div>
@@ -118,7 +118,7 @@ const AddPropertyTabContent = () => {
           aria-labelledby="nav-item4-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Listing Details</h4>
+            <h4 className="title fz17 mb30">Chi tiết căn hộ</h4>
             <DetailsFiled />
           </div>
         </div>
@@ -131,7 +131,7 @@ const AddPropertyTabContent = () => {
           aria-labelledby="nav-item5-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Select Amenities</h4>
+            <h4 className="title fz17 mb30">Chọn tiện ích</h4>
             <div className="row">
               <Amenities />
             </div>

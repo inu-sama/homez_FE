@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { apiProperties } from "@/apis/Properties";
 import formatVND from "@/components/common/formattingVND";
+import OverView from "@/components/property/property-single-style/common/OverView";
 
 export default function ManagementPost() {
   const [data, setData] = useState([]);
@@ -18,7 +19,6 @@ export default function ManagementPost() {
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
-      console.log(response);
       setData(response);
     } catch (error) {
       console.error("Error fetching properties:", error);
@@ -47,7 +47,7 @@ export default function ManagementPost() {
         className="ms-3 ms-md-5 ps-md-5 text-black text-center"
         style={{ marginTop: "20px" }}
       >
-        <p className="fw-bolder h1">Quản lý người dùng</p>
+        <p className="fw-bolder h1">Quản lý bài đăng</p>
       </div>
 
       <div className="slide-managemant-Post">
@@ -73,7 +73,7 @@ export default function ManagementPost() {
                   <p className="h3 text-center">Người đăng bài+SĐT</p>
                 </div>
                 <div className="row mb30">
-                  <PropertyGallery id={1} />
+                  <PropertyGallery images={item.Images} />
                 </div>
                 <div className="infor-property-AD">
                   <p className="h2">{item.Title}</p>
@@ -106,6 +106,17 @@ export default function ManagementPost() {
                     </div>
                   </div>
 
+                  <div>
+                    <p
+                      className="h3"
+                      style={{ marginLeft: "5px", marginTop: "10px" }}
+                    >
+                      Thành phần cơ bản
+                    </p>
+                    <div className="row" style={{ marginLeft: "20px" }}>
+                      <OverView type={item.Type} />
+                    </div>
+                  </div>
                   <div>
                     <p
                       className="h3"

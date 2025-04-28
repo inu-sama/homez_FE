@@ -10,8 +10,8 @@ import Pagination from "../../Pagination";
 import { apiProperties } from "@/apis/Properties";
 import PaginationTwo from "../../PaginationTwo";
 
-export default function PropertyFiltering(props) {
-  const [properties, setProperties] = useState(null);
+// export default function PropertyFiltering(props) {
+  // const [properties, setProperties] = useState(null);
 
   // useEffect(() => {
   //   const headers = {
@@ -23,12 +23,15 @@ export default function PropertyFiltering(props) {
   //     .then((data) => setProperties(data));
   //   console.log("properties: ", properties);
   // }, []);
+export default function PropertyFiltering() {
+  const [properties, setProperties] = useState([]);
 
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
-      // console.log(response);
+      console.log("response", response);
       setProperties(response);
+      console.log("properties before fetch", properties);
     } catch (error) {
       console.error("Error fetching properties:", error);
     }
@@ -38,7 +41,7 @@ export default function PropertyFiltering(props) {
   }, []);
 
   useEffect(() => {
-    console.log("properties: ", properties);
+    console.log("properties after fetch", properties);
   }, [properties]);
 
   const [filteredData, setFilteredData] = useState([]);
