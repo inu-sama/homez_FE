@@ -1,41 +1,156 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { React, useState } from "react";
+import { auth } from "@/lib/firebase";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 const SignUp = () => {
-  const [otp, setOtp] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [otp, setOtp] = useState("");
+  const [confirmation, setConfirmation] = useState(null);
   const [info, setInfo] = useState(false);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const fullPhone = `+84${phone}`;
+
+  useEffect(() => {
+    console.log("Checking for reCAPTCHA setup");
+
+    if (!auth) {
+      console.error("Firebase auth is not properly initialized.");
+      return;
+    }
+
+    if (!window.recaptchaVerifier) {
+      console.log("Setting up reCAPTCHA", auth);
+
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+          size: "invisible",
+          callback: (response) => {
+            console.log("reCAPTCHA verified", response);
+          },
+        }
+      );
+
+      window.recaptchaVerifier
+        .render()
+        .then(function () {
+          console.log("reCAPTCHA đã được render.");
+        })
+        .catch((err) => {
+          console.error("Lỗi khi render reCAPTCHA:", err);
+        });
+    }
+  }, []);
+
+  const validatePhoneNumber = (phone) => {
+    const regex = /^\+84\d{9}$/;
+    return regex.test(phone);
+  };
+
+  const sendOTP = async (e) => {
+    e.preventDefault();
+    if (!validatePhoneNumber(phone)) {
+      setMessage("Số điện thoại không hợp lệ. Định dạng: +84xxxxxxxxx");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+    try {
+      const appVerifier = window.recaptchaVerifier;
+      const confirmationResult = await signInWithPhoneNumber(
+        auth,
+        phone,
+        appVerifier
+      );
+      setConfirmation(confirmationResult);
+      setMessage("Mã OTP đã được gửi.");
+    } catch (err) {
+      console.error(err);
+      setMessage("Lỗi gửi OTP: " + err.message);
+      // setMessage("Lỗi gửi OTP: Cache cho trình duyệt của bạn đã hết hạn. Vui lòng thử lại.");
+    }
+    setLoading(false);
+  };
+
+  const verifyOTP = async (e) => {
+    e.preventDefault();
+    if (!otp) {
+      setMessage("Vui lòng nhập mã OTP.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await confirmation.confirm(otp);
+      setMessage("Xác thực thành công!");
+      setInfo(true);
+    } catch (err) {
+      console.error(err);
+      setMessage("Sai mã OTP hoặc OTP đã hết hạn.");
+    }
+    setLoading(false);
+  };
+
+  const handleSubmitInfo = (e) => {
+    e.preventDefault();
+    alert("Đăng ký thành công!");
+  };
+
   return (
-    <form className="form-style1">
+    <form
+      className="form-style1"
+      onSubmit={info ? handleSubmitInfo : undefined}
+    >
+      <div id="recaptcha-container"></div>
+
+      {message && <div className="alert alert-info text-center">{message}</div>}
+
       {!info ? (
         <div>
           <div className="mb25">
             <label className="form-label fw600 dark-color">Số điện thoại</label>
             <input
-              type="number"
+              type="tel"
               className="form-control"
-              placeholder="Nhập số điện thoại"
+              placeholder="+84"
               required
-              {...(otp ? { disabled: true } : null)}
+              value={phone}
+              onChange={(e) => {
+                const newValue = e.target.value;
+                if (newValue.startsWith("+84")) {
+                  setPhone(newValue);
+                } else if (/^\d+$/.test(newValue.replace("+84", ""))) {
+                  setPhone(`+84${newValue.replace(/^\+?84/, "")}`);
+                }
+              }}
+              disabled={!!confirmation}
             />
           </div>
 
-          {otp ? (
-            <div className="mb15">
-              <label className="form-label fw600 dark-color">OTP</label>
+          {confirmation && (
+            <div className="mb25">
+              <label className="form-label fw600 dark-color">Mã OTP</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Nhập mã xác nhận"
                 required
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
               />
             </div>
-          ) : null}
+          )}
         </div>
       ) : (
         <div>
           <div className="row mb25">
-            <div className="w-50">
+            <div className="w-50 pe-2">
               <label className="form-label fw600 dark-color">Họ</label>
               <input
                 type="text"
@@ -44,7 +159,7 @@ const SignUp = () => {
                 required
               />
             </div>
-            <div className="w-50">
+            <div className="w-50 ps-2">
               <label className="form-label fw600 dark-color">Tên</label>
               <input
                 type="text"
@@ -67,25 +182,30 @@ const SignUp = () => {
       )}
 
       <div className="d-grid mb20">
-        {!otp ? (
+        {!confirmation ? (
           <button
-            onClick={() => setOtp(true)}
+            onClick={sendOTP}
             className="ud-btn btn-thm"
             type="button"
+            disabled={loading}
           >
-            Xác nhận <i className="fal fa-comment-sms" />
+            {loading ? "Đang gửi OTP..." : "Gửi OTP"}{" "}
+            <i className="fal fa-comment-sms" />
           </button>
         ) : !info ? (
           <button
-            onClick={() => setInfo(true)}
+            onClick={verifyOTP}
             className="ud-btn btn-thm"
             type="button"
+            disabled={loading}
           >
-            Điền thông tin <i className="fal fa-paintbrush" />
+            {loading ? "Đang xác thực..." : "Xác nhận OTP"}{" "}
+            <i className="fal fa-paintbrush" />
           </button>
         ) : (
-          <button className="ud-btn btn-thm" type="button">
-            Đăng ký <i className="fal fa-arrow-right-long" />
+          <button className="ud-btn btn-thm" type="submit" disabled={loading}>
+            {loading ? "Đang đăng ký..." : "Đăng ký"}{" "}
+            <i className="fal fa-arrow-right-long" />
           </button>
         )}
       </div>
