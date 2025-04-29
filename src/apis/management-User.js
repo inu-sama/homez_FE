@@ -5,7 +5,7 @@ const instance = axios.create({
   headers: {
     "Content-Type": "application/json",
     "x-api-key": process.env.API_KEY,
-    Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTc0OTgsImV4cCI6MTc0NTc0Mzg5OH0.wJBFFbbsFJelULYPqxe2NS-PCChKtvZGPvGaLRAiqZM`,
+    Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU3NTA5MzEsImV4cCI6MTc0NTgzNzMzMX0.dXzFfRx5ddxSxU901YytfFzBUof7vJW_gpw3KKCWSHM`,
   },
 });
 
@@ -24,7 +24,7 @@ class ApiUser {
   }
 
   async resetOTP(phoneNumber) {
-    const res = await instance.post(`/resetOTP/${phoneNumber}`);
+    const res = await instance.get(`/resetOTP/${phoneNumber}`);
     return res.status;
   }
 
@@ -35,7 +35,7 @@ class ApiUser {
         {
           headers: {
             "x-api-key": process.env.API_KEY,
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTc0OTgsImV4cCI6MTc0NTc0Mzg5OH0.wJBFFbbsFJelULYPqxe2NS-PCChKtvZGPvGaLRAiqZM.G06pB_RSM4NOBXsOPow1TL35ulLJb5DwbmeY46FjDbU`,
+            Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU3NTA5MzEsImV4cCI6MTc0NTgzNzMzMX0.dXzFfRx5ddxSxU901YytfFzBUof7vJW_gpw3KKCWSHM`,
             Accept: "application/json",
           },
         }

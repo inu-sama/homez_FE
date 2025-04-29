@@ -40,7 +40,7 @@ const Management = () => {
     try {
       const response = await apiUser.resetOTP(phoneNumber);
       if (response === 200) {
-        console.log("Reset OTP successfully");
+        alert("Reset OTP successfully");
       }
     } catch (error) {
       console.error("Error resetting OTP:", error);
@@ -70,8 +70,8 @@ const Management = () => {
     >
       <HeaderAD />
       {show ? (
-        <div className="form-input-password">
-          <div className="w-25">
+        <div className="form-input-password" onClick={() => setShow(false)}>
+          <div className="col-9 col-xl-4" onClick={(e) => e.stopPropagation()}>
             <form className="form-style1">
               <div className="mb25">
                 <div

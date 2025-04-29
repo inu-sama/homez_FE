@@ -41,7 +41,7 @@ const OverView = ({ type }) => {
     <>
       {overviewData.map((item, index) => (
         <div
-          key={index}
+          key={item.label}
           className={`col-sm-6 col-lg-4 ${item.xs ? "mb25-xs" : "mb25"}`}
         >
           <div className="overview-element d-flex align-items-center">

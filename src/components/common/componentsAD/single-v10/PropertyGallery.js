@@ -42,7 +42,7 @@ const PropertyGallery = ({ images }) => {
             {images.slice(1, 3).map((image, index) => {
               const { width, height } = useImageSize(image);
               return (
-                <div className="col-sm-12 ps-lg-0" key={index}>
+                <div className="col-sm-12 ps-lg-0" key={image}>
                   <div className="sp-img-content at-sp-v10">
                     <div
                       className={`popup-img preview-img-2 sp-img${
@@ -74,6 +74,33 @@ const PropertyGallery = ({ images }) => {
               );
             })}
           </div>
+        </div>
+        <div className="d-none">
+          {images.slice(3).map((image, index) => {
+            const { width, height } = useImageSize(image);
+            return (
+              <Item
+                key={`hidden-${image}`}
+                original={image}
+                thumbnail={image}
+                width={width}
+                height={height}
+              >
+                {({ ref, open }) => (
+                  <Image
+                    width={270}
+                    height={250}
+                    className="w-100 h-100 cover"
+                    ref={ref}
+                    onClick={open}
+                    role="button"
+                    src={image}
+                    alt={`Image ${index + 1}`}
+                  />
+                )}
+              </Item>
+            );
+          })}
         </div>
       </Gallery>
     </>
