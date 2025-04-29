@@ -39,8 +39,8 @@ const DashboardAddProperty = () => {
               <div className="row align-items-center pb40">
                 <div className="col-lg-12">
                   <div className="dashboard_title_area">
-                    <h2>Add New Property</h2>
-                    <p className="text">We are glad to see you again!</p>
+                    <h2>Thêm bài đăng</h2>
+                    <p className="text">Nhập đầy đủ thông tin căn hộ của bạn!</p>
                   </div>
                 </div>
               </div>

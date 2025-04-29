@@ -23,8 +23,9 @@ import PaginationTwo from "../../PaginationTwo";
   //     .then((data) => setProperties(data));
   //   console.log("properties: ", properties);
   // }, []);
-export default function PropertyFiltering() {
+export default function PropertyFiltering({type}) {
   const [properties, setProperties] = useState([]);
+  const method = (type == "Rent" ? "Cho thuê" : "Bán");
 
   const fetchProperties = async () => {
     try {
@@ -42,6 +43,7 @@ export default function PropertyFiltering() {
 
   useEffect(() => {
     console.log("properties after fetch", properties);
+    console.log("params", type);
   }, [properties]);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -321,7 +323,7 @@ export default function PropertyFiltering() {
         {/* End TopFilterBar */}
 
         <div className="row">
-          <FeaturedListings colstyle={colstyle} data={properties} />
+          <FeaturedListings colstyle={colstyle} data={properties} state={method} />
         </div>
         {/* End .row */}
 

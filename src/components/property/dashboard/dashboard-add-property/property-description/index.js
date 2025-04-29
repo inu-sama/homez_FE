@@ -1,7 +1,7 @@
 "use client";
 import Select from "react-select";
 
-const PropertyDescription = () => {
+const PropertyDescription = ({ data }) => {
   const categoryOptions = [
     { value: "Nhà ở", label: "Nhà ở" },
     { value: "Chung cư", label: "Chung cư" },
@@ -33,11 +33,16 @@ const PropertyDescription = () => {
       <div className="row">
         <div className="col-sm-12">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">Tiêu đề</label>
+            <label className="heading-color ff-heading fw600 mb10">
+              Tiêu đề
+            </label>
             <input
               type="text"
               className="form-control"
               placeholder="Nhập tiêu đề"
+              onChange={(e) => {
+                data.Title = e.target.value;
+              }}
             />
           </div>
         </div>
@@ -57,6 +62,9 @@ const PropertyDescription = () => {
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
+                onChange={(e) => {
+                  data.category = e.value;
+                }}
               />
             </div>
           </div>
@@ -77,6 +85,9 @@ const PropertyDescription = () => {
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
+                onChange={(e) => {
+                  data.State = e.value;
+                }}
               />
             </div>
           </div>
@@ -92,6 +103,9 @@ const PropertyDescription = () => {
               type="number"
               className="form-control"
               placeholder="VND"
+              onChange={(e) => {
+                data.Price = e.target.value;
+              }}
             />
           </div>
         </div>
@@ -99,14 +113,16 @@ const PropertyDescription = () => {
 
         <div className="col-sm-12">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Mô tả
-            </label>
+            <label className="heading-color ff-heading fw600 mb10">Mô tả</label>
             <textarea
               cols={30}
               rows={5}
               placeholder="Nhập mô tả chi tiết căn hộ."
               defaultValue={""}
+              onChange={(e) => {
+                data.Description = e.target.value;
+                console.log(data)
+              }}
             />
           </div>
         </div>

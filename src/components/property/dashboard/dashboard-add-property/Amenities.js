@@ -2,35 +2,29 @@ import React from "react";
 
 const amenitiesData = {
   column1: [
-    { label: "Attic", defaultChecked: false },
-    { label: "Basketball court", defaultChecked: true },
-    { label: "Air Conditioning", defaultChecked: true },
-    { label: "Lawn", defaultChecked: true },
-    { label: "Swimming Pool", defaultChecked: false },
-    { label: "Barbeque", defaultChecked: false },
-    { label: "Microwave", defaultChecked: false },
+    { label: "Gác mái", defaultChecked: false },
+    { label: "Điều hòa", defaultChecked: false },
+    { label: "Vườn", defaultChecked: false },
+    { label: "Hồ bơi", defaultChecked: false },
+    { label: "Lò nướng", defaultChecked: false },
   ],
   column2: [
-    { label: "TV Cable", defaultChecked: false },
-    { label: "Dryer", defaultChecked: true },
-    { label: "Outdoor Shower", defaultChecked: true },
-    { label: "Washer", defaultChecked: true },
-    { label: "Gym", defaultChecked: false },
-    { label: "Ocean view", defaultChecked: false },
-    { label: "Private space", defaultChecked: false },
+    { label: "Truyền hình", defaultChecked: false },
+    { label: "Máy sấy", defaultChecked: false },
+    { label: "Phòng tập", defaultChecked: false },
+    { label: "View biển", defaultChecked: false },
+    { label: "Không gian riêng", defaultChecked: false },
   ],
   column3: [
-    { label: "Lake view", defaultChecked: false },
-    { label: "Wine cellar", defaultChecked: true },
-    { label: "Front yard", defaultChecked: true },
-    { label: "Refrigerator", defaultChecked: true },
-    { label: "WiFi", defaultChecked: false },
-    { label: "Laundry", defaultChecked: false },
-    { label: "Sauna", defaultChecked: false },
+    { label: "Tủ rượu", defaultChecked: false },
+    { label: "Sân trước", defaultChecked: false },
+    { label: "Tủ lạnh", defaultChecked: false },
+    { label: "Wifi", defaultChecked: false },
+    { label: "Máy giặt", defaultChecked: false },
   ],
 };
 
-const Amenities = () => {
+const Amenities = ({data}) => {
   return (
     <div className="row">
       {Object.keys(amenitiesData).map((columnKey, index) => (
@@ -42,6 +36,16 @@ const Amenities = () => {
                 <input
                   type="checkbox"
                   defaultChecked={amenity.defaultChecked}
+                  value={amenity.label}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      data.Amenities.push(e.target.value);
+                    } else {
+                      const index = data.Amenities.indexOf(e.target.value);
+                      const update = [...data.Amenities.slice(0, index), ...data.Amenities.slice(index + 1)];
+                      data.Amenities = update;
+                    }
+                  }}
                 />
                 <span className="checkmark" />
               </label>

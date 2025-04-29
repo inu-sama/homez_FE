@@ -1,8 +1,16 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, use } from "react";
 import SelectMulitField from "./SelectMulitField";
 import Map from "./Map";
 
-const LocationField = () => {
+const LocationField = ({data}) => {
+  const [address, setAddress] = useState("");
+  const [ward, setWard] = useState("");
+  const [city, setCity] = useState("");
+  data.Address = `${address}, ${ward}, ${city}`;
+  useEffect(() => {
+    console.log(data)
+  }, []);
   return (
     <form className="form-style1">
       <div className="row mb30">
@@ -15,6 +23,9 @@ const LocationField = () => {
               type="text"
               className="form-control"
               placeholder="Nhập địa chỉ"
+              onChange={(e) => {
+                setAddress(e.target.value);
+              }}
             />
           </div>
         </div>
@@ -29,11 +40,14 @@ const LocationField = () => {
               type="text"
               className="form-control"
               placeholder="Nhập tên phường"
+              onChange={(e) => {
+                setWard(e.target.value);
+              }}
             />
           </div>
         </div>
 
-        <SelectMulitField />
+        <SelectMulitField city={setCity} data={data} />
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
@@ -44,6 +58,10 @@ const LocationField = () => {
               type="text"
               className="form-control"
               placeholder="Nhập tên chung cư (nếu có)"
+              onChange={(e) => {
+                data.Location = e.target.value;
+                console.log(data);
+              }}
             />
           </div>
         </div>
