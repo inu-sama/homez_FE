@@ -12,26 +12,26 @@ const FeaturedHomes = () => {
   const featuredHomesData = [
     {
       id: 1,
-      imageUrl: "/images/listings/as-6.jpg",
-      title: "Apartments for sale",
+      imageUrl: "/images/listings/as-1.jpg",
+      title: "Chung cư",
       description: "22 Properties",
     },
     {
       id: 2,
       imageUrl: "/images/listings/as-7.jpg",
-      title: "Single family homes for sale",
+      title: "Nhà ở",
       description: "22 Properties",
     },
     {
       id: 3,
       imageUrl: "/images/listings/as-8.jpg",
-      title: "Office for sale",
+      title: "Văn phòng",
       description: "22 Properties",
     },
     {
       id: 4,
       imageUrl: "/images/listings/as-9.jpg",
-      title: "Villas for sale",
+      title: "Vila",
       description: "22 Properties",
     },
     {
@@ -84,9 +84,9 @@ const FeaturedHomes = () => {
                 <div className="apartment-style2 text-center mb30">
                   <div className="apartment-img">
                     <Image
-                      width={279}
-                      height={332}
-                      className="w-100 h-100 cover"
+                      width={270}
+                      height={321}
+                      className="cover"
                       src={home.imageUrl}
                       alt="homes"
                     />

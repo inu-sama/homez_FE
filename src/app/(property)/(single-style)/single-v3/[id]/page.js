@@ -14,7 +14,7 @@ import PropertyHeader from "@/components/property/property-single-style/common/P
 import PropertyNearby from "@/components/property/property-single-style/common/PropertyNearby";
 import PropertyVideo from "@/components/property/property-single-style/common/PropertyVideo";
 import PropertyViews from "@/components/property/property-single-style/common/property-view";
-import ProperytyDescriptions from "@/components/property/property-single-style/common/ProperytyDescriptions";
+import ProperytyDescriptions from "@/components/property/property-single-style/common/PropertyDescriptions";
 import ReviewBoxForm from "@/components/property/property-single-style/common/ReviewBoxForm";
 import VirtualTour360 from "@/components/property/property-single-style/common/VirtualTour360";
 import AllReviews from "@/components/property/property-single-style/common/reviews";

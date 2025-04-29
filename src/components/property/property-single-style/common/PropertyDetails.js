@@ -1,49 +1,45 @@
 import React from "react";
 
-const PropertyDetails = () => {
+const PropertyDetails = ({property}) => {
+  console.log("property", property);
   const columns = [
     [
       {
-        label: "Property ID",
-        value: "RT48",
+        label: "Mã căn hộ",
+        value: property._id.slice(0, 5) + "...",
       },
       {
-        label: "Price",
-        value: "$252,000",
+        label: "Giá",
+        value: new Intl.NumberFormat("vi-VN", {
+          style: "currency",
+          currency: "VND",
+        }).format(property.Price),
       },
       {
-        label: "Property Size",
-        value: "1500 Sq Ft",
+        label: "Diện tích",
+        value: property.Type.sqft + " m²",
       },
       {
-        label: "Bathrooms",
-        value: "3",
-      },
-      {
-        label: "Bedrooms",
-        value: "2",
+        label: "Loại căn hộ",
+        value: property.Type.category,
       },
     ],
     [
       {
+        label: "Năm xây dựng",
+        value: property.Type.yearBuilt,
+      },
+      {
+        label: "Phòng tắm",
+        value: property.Type.bathroom,
+      },
+      {
+        label: "Phòng ngủ",
+        value: property.Type.bedroom,
+      },
+      {
         label: "Garage",
-        value: "2",
-      },
-      {
-        label: "Garage Size",
-        value: "200 SqFt",
-      },
-      {
-        label: "Year Built",
-        value: "2022",
-      },
-      {
-        label: "Property Type",
-        value: "Apartment",
-      },
-      {
-        label: "Property Status",
-        value: "For Sale",
+        value: property.Type.garage,
       },
     ],
   ];

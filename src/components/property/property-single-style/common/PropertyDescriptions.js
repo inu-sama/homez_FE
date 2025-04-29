@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProperytyDescriptions = () => {
+const PropertyDescriptions = () => {
   return (
     <>
       <p className="text mb10">
@@ -52,4 +52,4 @@ const ProperytyDescriptions = () => {
   );
 };
 
-export default ProperytyDescriptions;
+export default PropertyDescriptions;

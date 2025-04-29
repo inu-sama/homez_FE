@@ -6,12 +6,12 @@ import Link from "next/link";
 const FeaturedListings = ({ data, colstyle }) => {
   return (
     <>
-      {/* {data.map((listing) => (
-        <div
+      {data.map((listing) => (
+        <Link href={"/single-v1/" + listing._id}
           className={` ${
             colstyle ? "col-sm-12 col-lg-6" : "col-sm-6 col-lg-4"
           }  `}
-          key={listing.id}>
+          key={listing._id}>
           <div
             className={
               colstyle
@@ -37,7 +37,7 @@ const FeaturedListings = ({ data, colstyle }) => {
               </div>
 
               <div className="list-price">
-                {listing.Price} / <span>mo</span>
+                {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(listing.Price)}<span>/mo</span>
               </div>
             </div>
             <div className="list-content">
@@ -73,8 +73,8 @@ const FeaturedListings = ({ data, colstyle }) => {
               </div>
             </div>
           </div>
-        </div>
-      ))} */}
+        </Link>
+      ))}
     </>
   );
 };

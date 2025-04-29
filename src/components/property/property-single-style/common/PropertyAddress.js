@@ -1,55 +1,30 @@
 import React from "react";
 
-const PropertyAddress = () => {
-  const addresses = [
-    {
-      address: "10425 Tabor St",
-      city: "Los Angeles",
-      state: "California",
-      zipCode: "90034",
-      area: "Brookside",
-      country: "United States",
-    },
-    {
-      address: "10 Downing Street",
-      city: "London",
-      state: "Greater London",
-      zipCode: "SW1A 2AA",
-      area: "Westminster",
-      country: "United Kingdom",
-    },
-  ];
-
+const PropertyAddress = ({ address, location }) => {
   return (
     <>
-      {addresses.map((address, index) => (
-        <div
-          key={index}
-          className={`col-md-6 col-xl-4 ${index === 1 ? "offset-xl-2" : ""}`}
-        >
-          <div className="d-flex justify-content-between">
-            <div className="pd-list">
-              <p className="fw600 mb10 ff-heading dark-color">Address</p>
-              <p className="fw600 mb10 ff-heading dark-color">City</p>
-              <p className="fw600 mb-0 ff-heading dark-color">State/county</p>
-            </div>
-            <div className="pd-list">
-              <p className="text mb10">{address.address}</p>
-              <p className="text mb10">{address.city}</p>
-              <p className="text mb-0">{address.state}</p>
-            </div>
+      <div className={`col-md-8`}>
+        <div className="d-flex justify-content-between">
+          <div className="pd-list">
+            <p className="fw600 mb10 ff-heading dark-color">Địa chỉ</p>
+            <p className="fw600 mb10 ff-heading dark-color">Vị trí</p>
+            <p className="fw600 mb-0 ff-heading dark-color">Quốc gia</p>
+          </div>
+          <div className="pd-list">
+            <p className="text mb10">{address}</p>
+            <p className="text mb10">{location}</p>
+            <p className="text mb-0">Việt Nam</p>
           </div>
         </div>
-      ))}
-      {/* End col */}
+      </div>
 
-      <div className="col-md-12">
+      <div className="col-md-4">
         <iframe
-          className="position-relative bdrs12 mt30 h250"
+          className="position-relative bdrs12"
           loading="lazy"
-          src={`https://maps.google.com/maps?q=${addresses[0].address}&t=m&z=14&output=embed&iwloc=near`}
-          title={addresses[0].address}
-          aria-label={addresses[0].address}
+          src={`https://maps.google.com/maps?q=${address}&output=embed`}
+          title={address}
+          aria-label={address}
         />
       </div>
       {/* End col */}
