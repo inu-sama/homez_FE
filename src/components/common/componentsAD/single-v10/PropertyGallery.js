@@ -3,7 +3,7 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { getImageSize } from "../../../useImageSize";
+import { useImageSize, getImageSize } from "../../../useImageSize";
 
 const PropertyGallery = ({ images }) => {
   const [imageSizes, setImageSizes] = useState([]);
@@ -16,7 +16,6 @@ const PropertyGallery = ({ images }) => {
     fetchSizes();
   }, [images]);
 
-  // Chưa có size thì return loading tạm
   if (imageSizes.length !== images.length)
     return <div>Đang tải hình ảnh...</div>;
 
