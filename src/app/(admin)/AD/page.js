@@ -15,6 +15,20 @@ const Management = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 6;
 
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  };
+
+  // useEffect(() => {
+  //   const role = getCookie("role");
+  //   // console.log(role);
+  //   if (role !== "Admin" || role !== "Staff") {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
   const fetchUserList = async () => {
     try {
       const response = await apiUser.getUserList();
@@ -40,7 +54,7 @@ const Management = () => {
     try {
       const response = await apiUser.resetOTP(phoneNumber);
       if (response === 200) {
-        console.log("Reset OTP successfully");
+        alert("Reset OTP successfully");
       }
     } catch (error) {
       console.error("Error resetting OTP:", error);
@@ -70,8 +84,8 @@ const Management = () => {
     >
       <HeaderAD />
       {show ? (
-        <div className="form-input-password">
-          <div className="w-25">
+        <div className="form-input-password" onClick={() => setShow(false)}>
+          <div className="col-9 col-xl-4" onClick={(e) => e.stopPropagation()}>
             <form className="form-style1">
               <div className="mb25">
                 <div
