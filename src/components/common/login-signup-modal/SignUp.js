@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { auth } from "@/lib/firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { apiAuthen } from "@/apis/authen";
 
 const SignUp = () => {
   const [phone, setPhone] = useState("");
@@ -12,7 +12,12 @@ const SignUp = () => {
   const [info, setInfo] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
+
   const fullPhone = `+84${phone}`;
+  auth.languageCode = "vi";
 
   useEffect(() => {
     console.log("Checking for reCAPTCHA setup");
@@ -72,8 +77,10 @@ const SignUp = () => {
       setMessage("Mã OTP đã được gửi.");
     } catch (err) {
       console.error(err);
-      setMessage("Lỗi gửi OTP: " + err.message);
-      // setMessage("Lỗi gửi OTP: Cache cho trình duyệt của bạn đã hết hạn. Vui lòng thử lại.");
+      // setMessage("Lỗi gửi OTP: " + err.message);
+      setMessage(
+        "Lỗi gửi OTP: Cache cho trình duyệt của bạn đã hết hạn. Vui lòng thử lại."
+      );
     }
     setLoading(false);
   };
@@ -97,9 +104,31 @@ const SignUp = () => {
     setLoading(false);
   };
 
-  const handleSubmitInfo = (e) => {
+  const handleSubmitInfo = async (e) => {
     e.preventDefault();
-    alert("Đăng ký thành công!");
+    if (!email || !FirstName || !LastName) {
+      setMessage("Vui lòng điền đầy đủ thông tin.");
+      return;
+    }
+    try {
+      const response = await apiAuthen.register(
+        phone,
+        email,
+        FirstName,
+        LastName
+      );
+      console.log(response);
+      if (response.status === 201) {
+        setMessage("Đăng ký thành công!");
+        document.cookie = `token=${response.data.token}; path=/; max-age=86400; Secure; SameSite=Strict`;
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setMessage("Đăng ký thất bại. Vui lòng thử lại.");
+    }
   };
 
   return (
@@ -157,6 +186,8 @@ const SignUp = () => {
                 className="form-control"
                 placeholder="Nhập họ"
                 required
+                value={LastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
             <div className="w-50 ps-2">
@@ -166,6 +197,8 @@ const SignUp = () => {
                 className="form-control"
                 placeholder="Nhập tên"
                 required
+                value={FirstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
           </div>
@@ -176,6 +209,8 @@ const SignUp = () => {
               className="form-control"
               placeholder="Nhập email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </div>
@@ -189,7 +224,7 @@ const SignUp = () => {
             type="button"
             disabled={loading}
           >
-            {loading ? "Đang gửi OTP..." : "Gửi OTP"}{" "}
+            {loading ? "Đang gửi OTP..." : "Gửi OTP"}
             <i className="fal fa-comment-sms" />
           </button>
         ) : !info ? (

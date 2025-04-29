@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 
 const DefaultHeader = () => {
   const [navbar, setNavbar] = useState(false);
-
+  const [show, setShow] = useState(false);
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -23,6 +23,20 @@ const DefaultHeader = () => {
     return () => {
       window.removeEventListener("scroll", changeBackground);
     };
+  }, []);
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  };
+  useEffect(() => {
+    const token = getCookie("token");
+    if (token) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
   }, []);
 
   return (
@@ -65,16 +79,18 @@ const DefaultHeader = () => {
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
-                  <a
-                    href="#"
-                    className="login-info d-flex align-items-cente"
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginSignupModal"
-                    role="button"
-                  >
-                    <i className="far fa-user-circle fz16 me-2" />{" "}
-                    <span className="d-none d-xl-block">Tài khoản</span>
-                  </a>
+                  {!show && (
+                    <a
+                      href="#"
+                      className="login-info d-flex align-items-cente"
+                      data-bs-toggle="modal"
+                      data-bs-target="#loginSignupModal"
+                      role="button"
+                    >
+                      <i className="far fa-user-circle fz16 me-2" />{" "}
+                      <span className="d-none d-xl-block">Tài khoản</span>
+                    </a>
+                  )}
                   <Link
                     className="ud-btn btn-white add-property bdrs60 mx-2 mx-xl-4"
                     href="/dashboard-add-property"

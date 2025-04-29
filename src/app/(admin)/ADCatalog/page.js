@@ -21,6 +21,19 @@ export default function Catalog() {
     itemIndex: null,
   });
 
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  };
+
+  // useEffect(() => {
+  //   const role = getCookie("role");
+  //   if (role !== "Admin" || role !== "Staff") {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
   const [show, setShow] = useState({ slideKey: null, visible: false });
   const [editting, setEditting] = useState("");
   const [newItem, setNewItem] = useState("");
