@@ -15,6 +15,20 @@ const Management = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 6;
 
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  };
+
+  // useEffect(() => {
+  //   const role = getCookie("role");
+  //   // console.log(role);
+  //   if (role !== "Admin" || role !== "Staff") {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
   const fetchUserList = async () => {
     try {
       const response = await apiUser.getUserList();

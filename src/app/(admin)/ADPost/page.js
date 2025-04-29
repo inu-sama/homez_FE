@@ -16,6 +16,20 @@ import OverView from "@/components/property/property-single-style/common/OverVie
 export default function ManagementPost() {
   const [data, setData] = useState([]);
 
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  };
+
+  // useEffect(() => {
+  //   const role = getCookie("role");
+  //   console.log(role);
+  //   if (role !== "Admin" || role !== "Staff") {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
