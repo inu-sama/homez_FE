@@ -2,8 +2,9 @@
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 const GalleryBox = () => {
   const imageUrls = ["/images/listings/listing-single-slide4.jpg"];
 
