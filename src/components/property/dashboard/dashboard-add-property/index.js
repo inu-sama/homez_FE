@@ -1,11 +1,33 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import PropertyDescription from "./property-description";
 import UploadMedia from "./upload-media";
 import LocationField from "./LocationField";
 import DetailsFiled from "./details-field";
 import Amenities from "./Amenities";
+import { apiProperties } from "@/apis/Properties";
 
 const AddPropertyTabContent = () => {
+  const data = {
+    Title: "",
+    Price: "",
+    Description: "",
+    Address: "",
+    category: "Nhà ở",
+    State: "Cho thuê",
+    Location: "",
+    Amenities: [],
+    images: [],
+    yearBuilt: null,
+    bedroom: 1,
+    bathroom: 1,
+    garage: 0,
+    sqft: null,
+  };
+  useEffect(() => {
+    console.log("data");
+    console.log(data);
+  }, []);
   return (
     <>
       <nav>
@@ -70,6 +92,19 @@ const AddPropertyTabContent = () => {
           >
             5. Tiện ích
           </button>
+          <button
+            className="btn btn-dark fw600 ms-auto px-5"
+            type="button"
+            role="tab"
+            aria-controls="nav-item5"
+            aria-selected="false"
+            onClick={async () => {
+              const res = await apiProperties.createProperty(data);
+              console.log(res);
+            }}
+          >
+            Đăng bài
+          </button>
         </div>
       </nav>
       {/* End nav tabs */}
@@ -83,7 +118,7 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
-            <PropertyDescription />
+            <PropertyDescription data={data} />
           </div>
         </div>
         {/* End tab for Property Description */}
@@ -94,7 +129,7 @@ const AddPropertyTabContent = () => {
           role="tabpanel"
           aria-labelledby="nav-item2-tab"
         >
-          <UploadMedia />
+          <UploadMedia data={data} />
         </div>
         {/* End tab for Upload photos of your property */}
 
@@ -106,7 +141,7 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Vị trí căn hộ</h4>
-            <LocationField />
+            <LocationField data={data} />
           </div>
         </div>
         {/* End tab for Listing Location */}
@@ -119,7 +154,7 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Chi tiết căn hộ</h4>
-            <DetailsFiled />
+            <DetailsFiled data={data} />
           </div>
         </div>
         {/* End tab for Listing Details */}
@@ -133,7 +168,7 @@ const AddPropertyTabContent = () => {
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Chọn tiện ích</h4>
             <div className="row">
-              <Amenities />
+              <Amenities data={data} />
             </div>
           </div>
         </div>

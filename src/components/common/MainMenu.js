@@ -66,12 +66,12 @@ const MainMenu = () => {
         {/* Level Two*/}
         <ul className="sub-menu">
           <li>
-            <Link className={`${handleActive("/grid-full-3-col")}`} href={"/grid-full-3-col"}>
+            <Link className={`${handleActive("/grid-full-3-col/Rent")}`} href={"/grid-full-3-col/Rent"}>
               Thuê
             </Link>
           </li>
           <li>
-            <Link className={``} href={"/grid-full-3-col"}>
+            <Link className={`${handleActive("/grid-full-3-col/Sale")}`} href={"/grid-full-3-col/Sale"}>
               Mua
             </Link>
           </li>

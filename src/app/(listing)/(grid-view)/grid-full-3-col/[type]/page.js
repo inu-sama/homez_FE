@@ -11,7 +11,7 @@ export const metadata = {
   title: "Gird Full 3 Column || Homez - Real Estate NextJS Template",
 };
 
-const GridFull3Col = () => {
+const GridFull3Col = ({ params }) => {
   return (
     <>
       {/* Main Header Nav */}
@@ -50,7 +50,7 @@ const GridFull3Col = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <PropertyFiltering />
+      <PropertyFiltering type={params.type} />
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

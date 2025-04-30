@@ -55,7 +55,7 @@ const customStyles = {
   },
 };
 
-const SelectMultiField = () => {
+const SelectMultiField = ({ city, data }) => {
   return (
     <>
       <div className="col-sm-6 col-xl-4">
@@ -72,6 +72,9 @@ const SelectMultiField = () => {
               className="select-custom pl-0"
               classNamePrefix="select"
               required
+              onChange={(e) => {
+                city(e.value);
+              }}
             />
           </div>
         </div>
