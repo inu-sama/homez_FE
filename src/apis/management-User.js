@@ -1,13 +1,31 @@
 import axios from "axios";
 
+const getCookie = (name) => {
+  if (typeof document === "undefined") return null;
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+  return null;
+};
+
 const instance = axios.create({
   baseURL: process.env.API_URL_PORT,
   headers: {
-    "Content-Type": "application/json",
     "x-api-key": process.env.API_KEY,
-    Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU3NTA5MzEsImV4cCI6MTc0NTgzNzMzMX0.dXzFfRx5ddxSxU901YytfFzBUof7vJW_gpw3KKCWSHM`,
+    "Content-Type": "application/json",
   },
 });
+
+instance.interceptors.request.use(
+  (config) => {
+    const token = getCookie("token");
+    if (token) {
+      config.headers.Authorization = `bazen ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 class ApiUser {
   async getUserList() {
@@ -30,16 +48,8 @@ class ApiUser {
 
   async BlockUser(phoneNumber) {
     try {
-      const response = await axios.get(
-        `${process.env.API_URL_PORT}/blockAccount/${phoneNumber}`,
-        {
-          headers: {
-            "x-api-key": process.env.API_KEY,
-            Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU3NTA5MzEsImV4cCI6MTc0NTgzNzMzMX0.dXzFfRx5ddxSxU901YytfFzBUof7vJW_gpw3KKCWSHM`,
-            Accept: "application/json",
-          },
-        }
-      );
+      const response = await instance.get(`/blockAccount/${phoneNumber}`);
+
       if (response.status === 201) {
         alert("Block user successfully");
         window.location.reload();

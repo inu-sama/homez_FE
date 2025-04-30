@@ -37,6 +37,7 @@ const SingleV1 = ({ params }) => {
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
+      console.log(response);
       response.forEach((elm) => {
         if (elm._id == params.id) {
           setProperty(elm);
@@ -100,7 +101,10 @@ const SingleV1 = ({ params }) => {
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30 mt30">Địa chỉ</h4>
                   <div className="row">
-                    <PropertyAddress address={property.Address} location={property.Location} />
+                    <PropertyAddress
+                      address={property.Address}
+                      location={property.Location}
+                    />
                   </div>
                 </div>
                 {/* End .ps-widget */}

@@ -118,6 +118,16 @@ const SignIn = () => {
       await confirmation.confirm(otp);
       setMessage("Xác thực thành công!");
       setInfo(true);
+      setMessage("Đăng nhập thành công!");
+      if (role === "Admin" || role === "Staff") {
+        setTimeout(() => {
+          window.location.href = "/AD";
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      }
     } catch (err) {
       console.error(err);
       setMessage("Sai mã OTP hoặc OTP đã hết hạn.");
@@ -125,43 +135,8 @@ const SignIn = () => {
     setLoading(false);
   };
 
-  const handleSubmitInfo = async (e) => {
-    e.preventDefault();
-    if (!email || !FirstName || !LastName) {
-      setMessage("Vui lòng điền đầy đủ thông tin.");
-      return;
-    }
-    try {
-      const response = await apiAuthen.register(
-        phone,
-        email,
-        FirstName,
-        LastName
-      );
-      console.log(response);
-      if (response.status === 201) {
-        setMessage("Đăng ký thành công!");
-        if (role === "Admin" || role === "Staff") {
-          setTimeout(() => {
-            window.location.href = "/AD";
-          }, 2000);
-        } else {
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 2000);
-        }
-      }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      setMessage("Đăng ký thất bại. Vui lòng thử lại.");
-    }
-  };
-
   return (
-    <form
-      className="form-style1"
-      onSubmit={info ? handleSubmitInfo : undefined}
-    >
+    <form className="form-style1" onSubmit={info ? verifyOTP : undefined}>
       <div id="recaptcha-container"></div>
 
       {message && <div className="alert alert-info text-center">{message}</div>}

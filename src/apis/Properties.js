@@ -13,9 +13,47 @@ class Properties {
       throw new Error("Không thể khoá user bằng số điện thoại");
     }
   }
+
+  async getPropertiesDetail(id) {
+    try {
+      const res = await instance.get(`/listings/${id}`);
+      return res.data.data;
+    } catch (error) {
+      console.error(
+        "Error blocking user:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể khoá user bằng số điện thoại");
+    }
+  }
+
   async createProperty(data) {
     try {
-      const res = await instance.post("/postWithImage", data);
+      const formData = new FormData();
+      formData.append("Title", data.Title);
+      formData.append("Price", data.Price);
+      formData.append("Description", data.Description);
+      formData.append("Address", data.Address);
+      formData.append("bedroom", data.bedroom);
+      formData.append("bathroom", data.bathroom);
+      formData.append("yearBuilt", data.yearBuilt);
+      formData.append("garage", data.garage);
+      formData.append("sqft", data.sqft);
+      formData.append("Category", data.Category);
+      formData.append("State", data.State);
+      formData.append("Location", data.Location);
+      formData.append("video", data.video);
+      data.Amenities.forEach((amenity) => {
+        formData.append("Amenities", amenity);
+      });
+      data.images.forEach((image) => {
+        formData.append("files", image);
+      });
+      const res = await instance.post("/postWithImage", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       return res.data;
     } catch (error) {
       console.error(

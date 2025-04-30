@@ -30,7 +30,7 @@ export default function Catalog() {
 
   // useEffect(() => {
   //   const role = getCookie("role");
-  //   if (role !== "Admin" || role !== "Staff") {
+  //   if (role !== "Admin" && role !== "Staff") {
   //     window.location.href = "/";
   //   }
   // }, []);

@@ -32,6 +32,7 @@ const PropertyGallery = ({ images }) => {
             >
               {({ ref, open }) => (
                 <Image
+                  style={{ width: "890px", height: "680px" }}
                   src={images[0]}
                   width={890}
                   height={680}
@@ -67,6 +68,7 @@ const PropertyGallery = ({ images }) => {
                     >
                       {({ ref, open }) => (
                         <Image
+                          style={{ width: "270px", height: "250px" }}
                           width={270}
                           height={250}
                           className="w-100 h-100 cover"

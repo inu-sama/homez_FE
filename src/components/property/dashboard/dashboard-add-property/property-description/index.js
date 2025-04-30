@@ -1,17 +1,24 @@
 "use client";
 import Select from "react-select";
+import React, { useEffect } from "react";
 
-const PropertyDescription = ({ data }) => {
-  const categoryOptions = [
-    { value: "Nhà ở", label: "Nhà ở" },
-    { value: "Chung cư", label: "Chung cư" },
-    { value: "Văn phòng", label: "Văn phòng" },
-    { value: "Vila", label: "Vila" },
-  ];
+const PropertyDescription = ({ setData, dataCate }) => {
+  // const categoryOptions = [
+  //   { value: "Nhà ở", label: "Nhà ở" },
+  //   { value: "Chung cư", label: "Chung cư" },
+  //   { value: "Văn phòng", label: "Văn phòng" },
+  //   { value: "Vila", label: "Vila" },
+  // ];
+
   const listedIn = [
     { value: "Cho thuê", label: "Cho thuê" },
     { value: "Đăng bán", label: "Đăng bán" },
   ];
+
+  const selectOptions = dataCate?.map((item) => ({
+    label: item.Name,
+    value: item._id,
+  }));
 
   const customStyles = {
     option: (styles, { isFocused, isSelected, isHovered }) => {
@@ -41,7 +48,10 @@ const PropertyDescription = ({ data }) => {
               className="form-control"
               placeholder="Nhập tiêu đề"
               onChange={(e) => {
-                data.Title = e.target.value;
+                setData((prev) => ({
+                  ...prev,
+                  Title: e.target.value,
+                }));
               }}
             />
           </div>
@@ -55,15 +65,18 @@ const PropertyDescription = ({ data }) => {
             </label>
             <div className="location-area">
               <Select
-                defaultValue={[categoryOptions[0]]}
+                defaultValue={selectOptions[0]}
                 name="colors"
-                options={categoryOptions}
+                options={selectOptions}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
                 onChange={(e) => {
-                  data.category = e.value;
+                  setData((prev) => ({
+                    ...prev,
+                    Category: e.label,
+                  }));
                 }}
               />
             </div>
@@ -78,7 +91,7 @@ const PropertyDescription = ({ data }) => {
             </label>
             <div className="location-area">
               <Select
-                defaultValue={[listedIn[0]]}
+                defaultValue={listedIn[0]}
                 name="colors"
                 options={listedIn}
                 styles={customStyles}
@@ -86,7 +99,10 @@ const PropertyDescription = ({ data }) => {
                 classNamePrefix="select"
                 required
                 onChange={(e) => {
-                  data.State = e.value;
+                  setData((prev) => ({
+                    ...prev,
+                    State: e.value,
+                  }));
                 }}
               />
             </div>
@@ -104,7 +120,10 @@ const PropertyDescription = ({ data }) => {
               className="form-control"
               placeholder="VND"
               onChange={(e) => {
-                data.Price = e.target.value;
+                setData((prev) => ({
+                  ...prev,
+                  Price: e.target.value,
+                }));
               }}
             />
           </div>
@@ -120,8 +139,10 @@ const PropertyDescription = ({ data }) => {
               placeholder="Nhập mô tả chi tiết căn hộ."
               defaultValue={""}
               onChange={(e) => {
-                data.Description = e.target.value;
-                console.log(data)
+                setData((prev) => ({
+                  ...prev,
+                  Description: e.target.value,
+                }));
               }}
             />
           </div>
