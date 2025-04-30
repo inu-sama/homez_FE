@@ -37,6 +37,7 @@ const SingleV1 = ({ params }) => {
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
+      console.log(response);
       response.forEach((elm) => {
         if (elm._id == params.id) {
           setProperty(elm);

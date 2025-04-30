@@ -3,53 +3,35 @@ import React, { useState, useEffect, use } from "react";
 import SelectMulitField from "./SelectMulitField";
 import Map from "./Map";
 
-const LocationField = ({data}) => {
-  const [address, setAddress] = useState("");
-  const [ward, setWard] = useState("");
-  const [city, setCity] = useState("");
-  data.Address = `${address}, ${ward}, ${city}`;
-  useEffect(() => {
-    console.log(data)
-  }, []);
+const LocationField = ({ setData, dataLocation }) => {
   return (
-    <form className="form-style1">
+    <form className="form-style1" style={{ height: "350px" }}>
       <div className="row mb30">
         <div className="col-sm-12">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Địa chỉ
+              {location == "Other" ? "Địa chỉ" : "Địa chỉ chi tiết căn hộ"}
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Nhập địa chỉ"
+              placeholder={
+                location == "Other" ? "Nhập địa chỉ" : "Khu B lầu 4, phòng 203"
+              }
               onChange={(e) => {
-                setAddress(e.target.value);
+                setData((prev) => ({
+                  ...prev,
+                  Address: e.target.value,
+                }));
               }}
             />
           </div>
         </div>
         {/* End col-12 */}
 
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Phường
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Nhập tên phường"
-              onChange={(e) => {
-                setWard(e.target.value);
-              }}
-            />
-          </div>
-        </div>
+        <SelectMulitField setData={setData} DataLocation={dataLocation} />
 
-        <SelectMulitField city={setCity} data={data} />
-
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Thuộc (không bắt buộc)
@@ -64,9 +46,9 @@ const LocationField = ({data}) => {
               }}
             />
           </div>
-        </div>
+        </div> */}
 
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Zip (không bắt buộc)
@@ -77,7 +59,7 @@ const LocationField = ({data}) => {
               placeholder="Nhập mã zip"
             />
           </div>
-        </div>
+        </div> */}
         {/* End col-4 */}
       </div>
       {/* End .row */}
