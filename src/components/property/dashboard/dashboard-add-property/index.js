@@ -1,33 +1,88 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropertyDescription from "./property-description";
 import UploadMedia from "./upload-media";
 import LocationField from "./LocationField";
 import DetailsFiled from "./details-field";
 import Amenities from "./Amenities";
 import { apiProperties } from "@/apis/Properties";
+import { apiCatalog } from "@/apis/Catalog";
 
 const AddPropertyTabContent = () => {
-  const data = {
+  const [catalog, setCatalog] = useState({
+    Amenities: [],
+    Category: [],
+    Location: [],
+  });
+  const [video, setVideo] = useState(null);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
+
+  const [data, setData] = useState({
     Title: "",
     Price: "",
     Description: "",
     Address: "",
-    category: "Nhà ở",
+    Category: "Nhà ở",
     State: "Cho thuê",
     Location: "",
-    Amenities: [],
+    Amenities: selectedAmenities || [],
     images: [],
     yearBuilt: null,
     bedroom: 1,
     bathroom: 1,
     garage: 0,
     sqft: null,
-  };
+    video: video || "",
+  });
+
   useEffect(() => {
-    console.log("data");
-    console.log(data);
+    setData((prevData) => ({
+      ...prevData,
+      Amenities: selectedAmenities,
+    }));
+  }, [selectedAmenities]);
+
+  const handleAmenityChange = (amenityName, isChecked) => {
+    setSelectedAmenities((prevState) => {
+      if (isChecked) {
+        return [...prevState, amenityName];
+      } else {
+        return prevState.filter((name) => name !== amenityName);
+      }
+    });
+  };
+
+  // Truyền cả `data` và `setData`
+  <PropertyDescription
+    data={data}
+    setData={setData}
+    dataCate={catalog.Category}
+  />;
+
+  const fetchCatalog = async () => {
+    try {
+      const response = await apiCatalog.getAnimaties();
+      const responseCategory = await apiCatalog.getCategory();
+      const responseLocation = await apiCatalog.getLocation();
+      setCatalog({
+        Amenities: response,
+        Category: responseCategory,
+        Location: responseLocation,
+      });
+    } catch (error) {
+      console.error("Error fetching catalog:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCatalog();
   }, []);
+
+  useEffect(() => {
+    console.log("Catogories", catalog.Category);
+    console.log("Data", data);
+  }, [catalog.Category]);
+
   return (
     <>
       <nav>
@@ -94,11 +149,13 @@ const AddPropertyTabContent = () => {
           </button>
           <button
             className="btn btn-dark fw600 ms-auto px-5"
+            style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
             role="tab"
             aria-controls="nav-item5"
             aria-selected="false"
             onClick={async () => {
+              console.log("Data", data);
               const res = await apiProperties.createProperty(data);
               console.log(res);
             }}
@@ -118,7 +175,10 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
-            <PropertyDescription data={data} />
+            <PropertyDescription
+              setData={setData}
+              dataCate={catalog.Category}
+            />
           </div>
         </div>
         {/* End tab for Property Description */}
@@ -129,7 +189,7 @@ const AddPropertyTabContent = () => {
           role="tabpanel"
           aria-labelledby="nav-item2-tab"
         >
-          <UploadMedia data={data} />
+          <UploadMedia video={video} setVideo={setVideo} setData={setData} />
         </div>
         {/* End tab for Upload photos of your property */}
 
@@ -141,7 +201,7 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Vị trí căn hộ</h4>
-            <LocationField data={data} />
+            <LocationField setData={setData} dataLocation={catalog.Location} />
           </div>
         </div>
         {/* End tab for Listing Location */}
@@ -154,7 +214,7 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Chi tiết căn hộ</h4>
-            <DetailsFiled data={data} />
+            <DetailsFiled setData={setData} />
           </div>
         </div>
         {/* End tab for Listing Details */}
@@ -168,7 +228,11 @@ const AddPropertyTabContent = () => {
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Chọn tiện ích</h4>
             <div className="row">
-              <Amenities data={data} />
+              <Amenities
+                amenitiesData={catalog.Amenities}
+                selectedAmenities={selectedAmenities}
+                onAmenityChange={handleAmenityChange}
+              />
             </div>
           </div>
         </div>

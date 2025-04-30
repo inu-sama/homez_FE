@@ -55,44 +55,33 @@ const customStyles = {
   },
 };
 
-const SelectMultiField = ({ city, data }) => {
+const SelectMultiField = ({ setData, DataLocation }) => {
+  const selectLocation = DataLocation?.map((item) => ({
+    label: item.Name,
+    value: item._id,
+  }));
   return (
     <>
       <div className="col-sm-6 col-xl-4">
         <div className="mb20">
           <label className="heading-color ff-heading fw600 mb10">
-            Tỉnh/Thành phố
+            Chung cư
           </label>
           <div className="location-area">
             <Select
               name="colors"
-              options={cities}
+              options={selectLocation}
               styles={customStyles}
               maxMenuHeight={150}
               className="select-custom pl-0"
               classNamePrefix="select"
               required
               onChange={(e) => {
-                city(e.value);
+                setData((prev) => ({
+                  ...prev,
+                  Location: e.label,
+                }));
               }}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="col-sm-6 col-xl-4">
-        <div className="mb20">
-          <label className="heading-color ff-heading fw600 mb10">
-            Quốc gia
-          </label>
-          <div className="location-area">
-            <Select
-              defaultValue={[countries[0]]}
-              name="colors"
-              options={countries}
-              styles={customStyles}
-              className="select-custom pl-0"
-              classNamePrefix="select"
-              required
             />
           </div>
         </div>

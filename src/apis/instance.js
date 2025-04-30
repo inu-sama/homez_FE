@@ -33,7 +33,7 @@ const instance = axios.create({
   baseURL: process.env.API_URL_PORT,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJUaGFuaCIsIkxhc3ROYW1lIjoiTmd1eeG7hW4iLCJQaG9uZU51bWJlciI6Iis4NDkxMjk5Njc2MCIsImlhdCI6MTc0NTkyMzQxMSwiZXhwIjoxNzQ2MDA5ODExfQ.4q98oUyQGIx7hS1kd7Ni-WwSlSKscz1DRNhRd9bKb1I`,
+    Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDYwMDk4NzUsImV4cCI6MTc0NjA5NjI3NX0.NIZ5w4FWOprz5TVILlcu_FLxYwjbGnoGQbmUdMdVu3w`,
   },
 });
 

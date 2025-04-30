@@ -1,5 +1,5 @@
-import React from "react";
-
+"use client";
+import React, { useEffect, useState } from "react";
 const amenitiesData = {
   column1: [
     { label: "Gác mái", defaultChecked: false },
@@ -24,32 +24,24 @@ const amenitiesData = {
   ],
 };
 
-const Amenities = ({data}) => {
+const Amenities = ({ amenitiesData, selectedAmenities, onAmenityChange }) => {
   return (
     <div className="row">
-      {Object.keys(amenitiesData).map((columnKey, index) => (
-        <div key={index} className="col-sm-6 col-lg-3 col-xxl-2">
+      {amenitiesData.map((amenity, index) => (
+        <div key={index} className="col-sm-6 col-lg-3">
           <div className="checkbox-style1">
-            {amenitiesData[columnKey].map((amenity, amenityIndex) => (
-              <label key={amenityIndex} className="custom_checkbox">
-                {amenity.label}
-                <input
-                  type="checkbox"
-                  defaultChecked={amenity.defaultChecked}
-                  value={amenity.label}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      data.Amenities.push(e.target.value);
-                    } else {
-                      const index = data.Amenities.indexOf(e.target.value);
-                      const update = [...data.Amenities.slice(0, index), ...data.Amenities.slice(index + 1)];
-                      data.Amenities = update;
-                    }
-                  }}
-                />
-                <span className="checkmark" />
-              </label>
-            ))}
+            <label className="custom_checkbox">
+              {amenity.Name}
+              <input
+                type="checkbox"
+                checked={selectedAmenities.includes(amenity.Name)}
+                value={amenity.Name}
+                onChange={(e) =>
+                  onAmenityChange(amenity.Name, e.target.checked)
+                }
+              />
+              <span className="checkmark" />
+            </label>
           </div>
         </div>
       ))}
