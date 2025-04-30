@@ -25,7 +25,7 @@ const Management = () => {
   // useEffect(() => {
   //   const role = getCookie("role");
   //   // console.log(role);
-  //   if (role !== "Admin" || role !== "Staff") {
+  //   if (role !== "Admin" && role !== "Staff") {
   //     window.location.href = "/";
   //   }
   // }, []);

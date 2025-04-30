@@ -12,9 +12,12 @@ import "swiper/css/pagination";
 import { apiProperties } from "@/apis/Properties";
 import formatVND from "@/components/common/formattingVND";
 import OverView from "@/components/property/property-single-style/common/OverView";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ManagementPost() {
   const [data, setData] = useState([]);
+  const router = useRouter();
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
@@ -26,7 +29,7 @@ export default function ManagementPost() {
   // useEffect(() => {
   //   const role = getCookie("role");
   //   console.log(role);
-  //   if (role !== "Admin" || role !== "Staff") {
+  //   if (role !== "Admin" && role !== "Staff") {
   //     window.location.href = "/";
   //   }
   // }, []);
@@ -42,10 +45,7 @@ export default function ManagementPost() {
     fetchProperties();
   }, []);
   return (
-    <div
-      style={{ height: "100vh", overflowY: "auto", marginTop: "20px" }}
-      className="container-fluid"
-    >
+    <div style={{ marginTop: "20px" }} className="container-fluid">
       <HeaderAD />
       <SidebarStickyBar />
       <div
@@ -94,17 +94,10 @@ export default function ManagementPost() {
                   <div className="infor-view-AD">
                     <div className="infor-view-AD-1">
                       <div>
-                        <p className="address-mobile">{item.Address}</p>
                         <span className="border-end text ">{item.State}</span>
                         <span className="address-mobile-2 border-start">
-                          <span className="fa-solid fa-location-dot"></span>{" "}
                           {item.Address}
                         </span>
-                      </div>
-                      <div>
-                        <span>Rộng: {item.Length}m</span>
-                        <span>Dài: {item.Width}m</span>
-                        <span>Số phòng: {item.NumberOfRooms}</span>
                       </div>
                     </div>
                     <div>
@@ -149,9 +142,12 @@ export default function ManagementPost() {
                   </div>
 
                   <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-3">
-                    <button className="w-100 w-md-25 ud-btn btn-white">
+                    <Link
+                      className="w-100 w-md-25 ud-btn btn-white"
+                      href={`/ADPostEdit/${item._id}`}
+                    >
                       Chỉnh sửa
-                    </button>
+                    </Link>
                     <button className="w-100 w-md-25 ud-btn btn-thm">
                       Duyệt bài
                     </button>
