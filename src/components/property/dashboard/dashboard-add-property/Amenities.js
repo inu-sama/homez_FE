@@ -36,9 +36,9 @@ const Amenities = ({ amenitiesData, selectedAmenities, onAmenityChange }) => {
                 type="checkbox"
                 checked={selectedAmenities.includes(amenity.Name)}
                 value={amenity.Name}
-                onChange={(e) =>
-                  onAmenityChange(amenity.Name, e.target.checked)
-                }
+                onChange={(e) => {
+                  onAmenityChange(amenity.Name, e.target.checked);
+                }}
               />
               <span className="checkmark" />
             </label>

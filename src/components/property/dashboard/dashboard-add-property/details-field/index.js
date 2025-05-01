@@ -2,7 +2,7 @@ import React from "react";
 import MultiSelectField from "./MultiSelectField";
 import StructureType from "./StructureType";
 
-const DetailsFiled = ({ data }) => {
+const DetailsFiled = ({ setData }) => {
   return (
     <form className="form-style1">
       <div className="row">
@@ -17,7 +17,10 @@ const DetailsFiled = ({ data }) => {
               placeholder="m²"
               required
               onChange={(e) => {
-                data.sqft = e.target.value;
+                setData((prev) => ({
+                  ...prev,
+                  sqft: e.target.value,
+                }));
               }}
             />
           </div>
@@ -36,7 +39,10 @@ const DetailsFiled = ({ data }) => {
               placeholder="Số phòng ngủ"
               required
               onChange={(e) => {
-                data.bedroom = e.target.value;
+                setData((prev) => ({
+                  ...prev,
+                  bedroom: e.target.value,
+                }));
               }}
             />
           </div>
@@ -55,7 +61,10 @@ const DetailsFiled = ({ data }) => {
               placeholder="Số phòng tắm"
               required
               onChange={(e) => {
-                data.bathroom = e.target.value;
+                setData((prev) => ({
+                  ...prev,
+                  bathroom: e.target.value,
+                }));
               }}
             />
           </div>
@@ -74,7 +83,10 @@ const DetailsFiled = ({ data }) => {
               placeholder="Số garage"
               required
               onChange={(e) => {
-                data.garage = e.target.value;
+                setData((prev) => ({
+                  ...prev,
+                  garage: e.target.value,
+                }));
               }}
             />
           </div>
@@ -92,7 +104,10 @@ const DetailsFiled = ({ data }) => {
               className="form-control"
               required
               onChange={(e) => {
-                data.yearBuilt = e.target.value;
+                setData((prev) => ({
+                  ...prev,
+                  yearBuilt: e.target.value,
+                }));
               }}
             />
           </div>

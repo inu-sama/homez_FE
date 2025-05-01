@@ -55,18 +55,22 @@ const customStyles = {
   },
 };
 
-const SelectMultiField = ({ city, ward, data }) => {
+const SelectMultiField = ({ setData, city, ward, addressFull }) => {
   return (
     <>
       <div className="col-sm-6 col-xl-4">
         <div className="mb20">
           <label className="heading-color ff-heading fw600 mb10">Phường</label>
-          <input
+          <input  
             type="text"
             className="form-control"
             placeholder="Nhập tên phường"
             onChange={(e) => {
               ward(e.target.value);
+              setData((prev) => ({
+                ...prev,
+                Address: addressFull,
+              }));
             }}
           />
         </div>
@@ -88,6 +92,10 @@ const SelectMultiField = ({ city, ward, data }) => {
               required
               onChange={(e) => {
                 city(e.value);
+                setData((prev) => ({
+                  ...prev,
+                  Address: addressFull,
+                }));
               }}
             />
           </div>
@@ -107,9 +115,6 @@ const SelectMultiField = ({ city, ward, data }) => {
               className="select-custom pl-0"
               classNamePrefix="select"
               required
-              onChange={(e) => {
-                console.log(data.Address);
-              }}
             />
           </div>
         </div>

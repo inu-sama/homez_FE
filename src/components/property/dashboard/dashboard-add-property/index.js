@@ -16,7 +16,7 @@ const AddPropertyTabContent = () => {
   });
   const [video, setVideo] = useState(null);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const data = {
+  const [data, setData] = useState({
     Title: "",
     Price: "",
     Description: "",
@@ -24,7 +24,7 @@ const AddPropertyTabContent = () => {
     category: "Nhà ở",
     State: "Cho thuê",
     Location: "",
-    Amenities: selectedAmenities || [],
+    Amenities: selectedAmenities,
     images: [],
     yearBuilt: null,
     bedroom: 1,
@@ -32,14 +32,20 @@ const AddPropertyTabContent = () => {
     garage: 0,
     sqft: null,
     video: video || "",
-  };
+  });
 
-  // useEffect(() => {
-  //   setData((prevData) => ({
-  //     ...prevData,
-  //     Amenities: selectedAmenities,
-  //   }));
-  // }, [selectedAmenities]);
+  useEffect(() => {
+    setData((prevData) => ({
+      ...prevData,
+      Amenities: selectedAmenities,
+    }));
+  }, [selectedAmenities]);
+  useEffect(() => {
+    setData((prevData) => ({
+      ...prevData,
+      video: video,
+    }));
+  }, [video]);
 
   const handleAmenityChange = (amenityName, isChecked) => {
     setSelectedAmenities((prevState) => {
@@ -94,8 +100,7 @@ const AddPropertyTabContent = () => {
             type="button"
             role="tab"
             aria-controls="nav-item1"
-            aria-selected="true"
-          >
+            aria-selected="true">
             1. Mô tả
           </button>
           <button
@@ -106,8 +111,7 @@ const AddPropertyTabContent = () => {
             type="button"
             role="tab"
             aria-controls="nav-item2"
-            aria-selected="false"
-          >
+            aria-selected="false">
             2. Hình ảnh
           </button>
           <button
@@ -118,8 +122,7 @@ const AddPropertyTabContent = () => {
             type="button"
             role="tab"
             aria-controls="nav-item3"
-            aria-selected="false"
-          >
+            aria-selected="false">
             3. Vị trí
           </button>
           <button
@@ -130,8 +133,7 @@ const AddPropertyTabContent = () => {
             type="button"
             role="tab"
             aria-controls="nav-item4"
-            aria-selected="false"
-          >
+            aria-selected="false">
             4. Chi tiết
           </button>
           <button
@@ -142,8 +144,7 @@ const AddPropertyTabContent = () => {
             type="button"
             role="tab"
             aria-controls="nav-item5"
-            aria-selected="false"
-          >
+            aria-selected="false">
             5. Tiện ích
           </button>
           <button
@@ -157,8 +158,7 @@ const AddPropertyTabContent = () => {
               console.log("Data", data);
               const res = await apiProperties.createProperty(data);
               console.log(res);
-            }}
-          >
+            }}>
             Đăng bài
           </button>
         </div>
@@ -170,11 +170,13 @@ const AddPropertyTabContent = () => {
           className="tab-pane fade show active"
           id="nav-item1"
           role="tabpanel"
-          aria-labelledby="nav-item1-tab"
-        >
+          aria-labelledby="nav-item1-tab">
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
-            <PropertyDescription data={data} dataCate={catalog.Category} />
+            <PropertyDescription
+              setData={setData}
+              dataCate={catalog.Category}
+            />
           </div>
         </div>
         {/* End tab for Property Description */}
@@ -183,9 +185,8 @@ const AddPropertyTabContent = () => {
           className="tab-pane fade"
           id="nav-item2"
           role="tabpanel"
-          aria-labelledby="nav-item2-tab"
-        >
-          <UploadMedia video={video} setVideo={setVideo} data={data} />
+          aria-labelledby="nav-item2-tab">
+          <UploadMedia video={video} setVideo={setVideo} setData={setData} />
         </div>
         {/* End tab for Upload photos of your property */}
 
@@ -193,11 +194,10 @@ const AddPropertyTabContent = () => {
           className="tab-pane fade"
           id="nav-item3"
           role="tabpanel"
-          aria-labelledby="nav-item3-tab"
-        >
+          aria-labelledby="nav-item3-tab">
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Vị trí căn hộ</h4>
-            <LocationField data={data} dataLocation={catalog.Location} />
+            <LocationField setData={setData} dataLocation={catalog.Location} />
           </div>
         </div>
         {/* End tab for Listing Location */}
@@ -206,11 +206,10 @@ const AddPropertyTabContent = () => {
           className="tab-pane fade"
           id="nav-item4"
           role="tabpanel"
-          aria-labelledby="nav-item4-tab"
-        >
+          aria-labelledby="nav-item4-tab">
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Chi tiết căn hộ</h4>
-            <DetailsFiled data={data} />
+            <DetailsFiled setData={setData} />
           </div>
         </div>
         {/* End tab for Listing Details */}
@@ -219,8 +218,7 @@ const AddPropertyTabContent = () => {
           className="tab-pane fade"
           id="nav-item5"
           role="tabpanel"
-          aria-labelledby="nav-item5-tab"
-        >
+          aria-labelledby="nav-item5-tab">
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Chọn tiện ích</h4>
             <div className="row">

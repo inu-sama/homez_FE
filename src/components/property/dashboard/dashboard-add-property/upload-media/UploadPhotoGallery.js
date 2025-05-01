@@ -3,10 +3,9 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-const UploadPhotoGallery = ({ data }) => {
+const UploadPhotoGallery = ({ setData }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
   const fileInputRef = useRef(null);
-  data.images = uploadedImages;
 
   const handleUpload = (files) => {
     const newImages = [...uploadedImages];
@@ -19,6 +18,11 @@ const UploadPhotoGallery = ({ data }) => {
       };
       reader.readAsDataURL(file);
     }
+
+    setData((prev) => ({
+      ...prev,
+      images: newImages,
+    }));
   };
 
   const handleDrop = (event) => {
@@ -54,8 +58,7 @@ const UploadPhotoGallery = ({ data }) => {
       <div
         className="upload-img position-relative overflow-hidden bdrs12 text-center mb30 px-2 row"
         onDrop={handleDrop}
-        onDragOver={handleDragOver}
-      >
+        onDragOver={handleDragOver}>
         <div className="profile-box position-relative d-md-flex align-items-center">
           {uploadedImages[0] && (
             <div
@@ -82,8 +85,7 @@ const UploadPhotoGallery = ({ data }) => {
                   }));
                 }
               }}
-              onDragOver={(e) => e.preventDefault()}
-            >
+              onDragOver={(e) => e.preventDefault()}>
               <div className="profile-img mb20 position-relative">
                 <Image
                   width={212}
@@ -103,8 +105,7 @@ const UploadPhotoGallery = ({ data }) => {
                 title="Delete Image"
                 onClick={() => handleDelete(0)}
                 type="button"
-                data-tooltip-id={`delete-${0}`}
-              >
+                data-tooltip-id={`delete-${0}`}>
                 <span className="fas fa-trash-can" />
               </button>
             </div>
@@ -113,8 +114,7 @@ const UploadPhotoGallery = ({ data }) => {
           {/* Ảnh phụ (Scroll ngang) */}
           <div
             className="d-flex overflow-auto gap-2 ms-3 col-sm-8 col-12"
-            style={{ maxWidth: "100%" }}
-          >
+            style={{ maxWidth: "100%" }}>
             {uploadedImages.slice(1).map((imageData, i) => {
               const index = i + 1;
               return (
@@ -124,8 +124,7 @@ const UploadPhotoGallery = ({ data }) => {
                   draggable
                   onDragStart={(e) => {
                     e.dataTransfer.setData("dragIndex", index);
-                  }}
-                >
+                  }}>
                   <div className="profile-img mb20 position-relative">
                     <Image
                       width={170}
@@ -140,8 +139,7 @@ const UploadPhotoGallery = ({ data }) => {
                       title="Delete Image"
                       onClick={() => handleDelete(index)}
                       type="button"
-                      data-tooltip-id={`delete-${index}`}
-                    >
+                      data-tooltip-id={`delete-${index}`}>
                       <span className="fas fa-trash-can" />
                     </button>
                     <ReactTooltip

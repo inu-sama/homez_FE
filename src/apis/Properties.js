@@ -1,6 +1,18 @@
 import instance from "./instance";
 
 class Properties {
+  async getProperties() {
+    try {
+      const res = await instance.get("/listings");
+      return res.data.data;
+    } catch (error) {
+      console.error(
+        "Error blocking user:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể khoá user bằng số điện thoại");
+    }
+  }
   async getPropertiesAD() {
     try {
       const res = await instance.get("/getPropertyAD");
