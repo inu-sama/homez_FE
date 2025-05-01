@@ -3,7 +3,7 @@ import instance from "./instance";
 class Properties {
   async getPropertiesAD() {
     try {
-      const res = await instance.get("/listings");
+      const res = await instance.get("/getPropertyAD");
       return res.data.data;
     } catch (error) {
       console.error(
