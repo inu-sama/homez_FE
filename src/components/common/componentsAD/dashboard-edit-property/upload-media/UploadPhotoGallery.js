@@ -3,10 +3,9 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-const UploadPhotoGallery = ({ setData }) => {
-  const [uploadedImages, setUploadedImages] = useState([]);
+const UploadPhotoGallery = ({ setData, image }) => {
+  const [uploadedImages, setUploadedImages] = useState(image.Images || []);
   const fileInputRef = useRef(null);
-  data.images = uploadedImages;
 
   const handleUpload = (files, insertAtStart = false) => {
     const fileArray = Array.from(files);
@@ -14,15 +13,21 @@ const UploadPhotoGallery = ({ setData }) => {
     fileArray.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
-        newImages.push(e.target.result);
-        setUploadedImages(newImages);
+        setUploadedImages((prevImages) => {
+          const newImages = insertAtStart
+            ? [e.target.result, ...prevImages]
+            : [...prevImages, e.target.result];
+
+          setData((prev) => ({
+            ...prev,
+            images: newImages,
+          }));
+
+          return newImages;
+        });
       };
       reader.readAsDataURL(file);
-    }
-    setData((prev) => ({
-      ...prev,
-      images: newImages,
-    }));
+    });
   };
 
   const handleDrop = (event) => {
@@ -158,23 +163,6 @@ const UploadPhotoGallery = ({ setData }) => {
               );
             })}
           </div>
-        </div>
-
-        <div className="col-sm-12">
-          <h4 className="title fz17 mb10">Tải ảnh lên</h4>
-          <p className="text mb25">Định dạng ảnh phải là JPEG hoặc PNG</p>
-          <label className="ud-btn btn-white">
-            Browse Files
-            <input
-              ref={fileInputRef}
-              id="fileInput"
-              type="file"
-              multiple
-              className="ud-btn btn-white"
-              onChange={(e) => handleUpload(e.target.files)}
-              style={{ display: "none", outline: "none" }}
-            />
-          </label>
         </div>
       </div>
 
