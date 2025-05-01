@@ -27,6 +27,18 @@ class Properties {
     }
   }
 
+  base64ToFile(base64String, filename) {
+    const arr = base64String.split(",");
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  }
+
   async createProperty(data) {
     try {
       const formData = new FormData();
@@ -39,21 +51,30 @@ class Properties {
       formData.append("yearBuilt", data.yearBuilt);
       formData.append("garage", data.garage);
       formData.append("sqft", data.sqft);
-      formData.append("Category", data.Category);
+      formData.append("category", data.category);
       formData.append("State", data.State);
       formData.append("Location", data.Location);
-      formData.append("video", data.video);
+      formData.append("NumberOfRooms", data.bedroom + data.bathroom);
+
+      if (data.video && data.video !== "null") {
+        formData.append("video", data.video);
+      }
+
       data.Amenities.forEach((amenity) => {
         formData.append("Amenities", amenity);
       });
-      data.images.forEach((image) => {
-        formData.append("files", image);
+
+      data.images.forEach((base64, i) => {
+        const file = this.base64ToFile(base64, `image${i}.webp`);
+        formData.append("images", file);
       });
+
       const res = await instance.post("/postWithImage", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+
       return res.data;
     } catch (error) {
       console.error(

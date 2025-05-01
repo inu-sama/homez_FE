@@ -2,7 +2,7 @@
 import Select from "react-select";
 import React, { useEffect } from "react";
 
-const PropertyDescription = ({ setData, dataCate }) => {
+const PropertyDescription = ({ data, dataCate }) => {
   // const categoryOptions = [
   //   { value: "Nhà ở", label: "Nhà ở" },
   //   { value: "Chung cư", label: "Chung cư" },
@@ -15,10 +15,13 @@ const PropertyDescription = ({ setData, dataCate }) => {
     { value: "Đăng bán", label: "Đăng bán" },
   ];
 
-  const selectOptions = dataCate?.map((item) => ({
-    label: item.Name,
-    value: item._id,
-  }));
+  const selectOptions = []
+  dataCate?.map((item) => {
+    selectOptions.push({
+      value: item._id,
+      label: item.Name,
+    });
+  });
 
   const customStyles = {
     option: (styles, { isFocused, isSelected, isHovered }) => {
@@ -48,10 +51,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
               className="form-control"
               placeholder="Nhập tiêu đề"
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  Title: e.target.value,
-                }));
+                data.Title = e.target.value;
               }}
             />
           </div>
@@ -73,10 +73,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
                 classNamePrefix="select"
                 required
                 onChange={(e) => {
-                  setData((prev) => ({
-                    ...prev,
-                    Category: e.label,
-                  }));
+                  data.category = e.label;
                 }}
               />
             </div>
@@ -99,10 +96,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
                 classNamePrefix="select"
                 required
                 onChange={(e) => {
-                  setData((prev) => ({
-                    ...prev,
-                    State: e.value,
-                  }));
+                  data.State = e.label;
                 }}
               />
             </div>
@@ -120,10 +114,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
               className="form-control"
               placeholder="VND"
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  Price: e.target.value,
-                }));
+                data.Price = e.target.value
               }}
             />
           </div>
@@ -139,10 +130,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
               placeholder="Nhập mô tả chi tiết căn hộ."
               defaultValue={""}
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  Description: e.target.value,
-                }));
+                data.Description = e.target.value
               }}
             />
           </div>
