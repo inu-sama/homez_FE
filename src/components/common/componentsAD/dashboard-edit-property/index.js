@@ -8,39 +8,44 @@ import Amenities from "./Amenities";
 import { apiProperties } from "@/apis/Properties";
 import { apiCatalog } from "@/apis/Catalog";
 
-const AddPropertyTabContent = () => {
+const EditPropertyTabContent = ({ edit_data, _id }) => {
   const [catalog, setCatalog] = useState({
     Amenities: [],
     Category: [],
     Location: [],
   });
   const [video, setVideo] = useState(null);
-  const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [selectedAmenities, setSelectedAmenities] = useState(
+    edit_data?.Amenities || []
+  );
 
   const [data, setData] = useState({
-    Title: "",
-    Price: "",
-    Description: "",
-    Address: "",
-    Category: "Nhà ở",
-    State: "Cho thuê",
-    Location: "",
+    Title: edit_data?.Title || "",
+    Price: edit_data?.Price || "",
+    Description: edit_data?.Description || "",
+    Address: edit_data?.Address || "",
+    Category: edit_data?.Type.Category || "",
+    State: edit_data?.State || "",
+    Location: edit_data?.Location || "",
     Amenities: selectedAmenities || [],
-    images: [],
-    yearBuilt: null,
-    bedroom: 1,
-    bathroom: 1,
-    garage: 0,
-    sqft: null,
-    video: video || "null",
+    images: edit_data?.Images || [],
+    yearBuilt: edit_data?.Type.yearBuilt || null,
+    bedroom: edit_data?.Type.bedroom || 1,
+    bathroom: edit_data?.Type.bathroom || 1,
+    garage: edit_data?.Type.garage || 0,
+    sqft: edit_data?.Type.sqft || null,
   });
 
   useEffect(() => {
-    setData((prevData) => ({
-      ...prevData,
-      Amenities: selectedAmenities,
-    }));
-  }, [selectedAmenities]);
+    console.log("Data property", edit_data);
+  }, []);
+
+  // useEffect(() => {
+  //   setData((prevData) => ({
+  //     ...prevData,
+  //     Amenities: selectedAmenities,
+  //   }));
+  // }, [selectedAmenities]);
 
   const handleAmenityChange = (amenityName, isChecked) => {
     setSelectedAmenities((prevState) => {
@@ -137,7 +142,7 @@ const AddPropertyTabContent = () => {
           </button>
           <button
             className="nav-link fw600"
-            id="nav-item5-tab"
+            id="nav-item4-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item5"
             type="button"
@@ -147,8 +152,9 @@ const AddPropertyTabContent = () => {
           >
             5. Tiện ích
           </button>
+
           <button
-            className="btn btn-dark fw600 ms-auto px-5"
+            className="ud-btn btn-dark fw600 ms-auto px-5"
             style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
             role="tab"
@@ -156,11 +162,26 @@ const AddPropertyTabContent = () => {
             aria-selected="false"
             onClick={async () => {
               console.log("Data", data);
-              const res = await apiProperties.createProperty(data);
+              const res = await apiProperties.updateProperty(data, _id);
               console.log(res);
             }}
           >
-            Đăng bài
+            Sửa bài
+          </button>
+          <button
+            className="ud-btn btn-white  px-5"
+            style={{ marginBottom: "10px", marginRight: "10px" }}
+            type="button"
+            role="tab"
+            aria-controls="nav-item5"
+            aria-selected="false"
+            onClick={
+              () => {
+                window.location.href = "/ADPost";
+              } // Chuyển hướng về trang dashboard
+            }
+          >
+            Cancel
           </button>
         </div>
       </nav>
@@ -177,6 +198,7 @@ const AddPropertyTabContent = () => {
             <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
             <PropertyDescription
               setData={setData}
+              data={edit_data}
               dataCate={catalog.Category}
             />
           </div>
@@ -189,7 +211,7 @@ const AddPropertyTabContent = () => {
           role="tabpanel"
           aria-labelledby="nav-item2-tab"
         >
-          <UploadMedia video={video} setVideo={setVideo} setData={setData} />
+          <UploadMedia dataImage={edit_data} setData={setData} />
         </div>
         {/* End tab for Upload photos of your property */}
 
@@ -201,7 +223,11 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Vị trí căn hộ</h4>
-            <LocationField setData={setData} dataLocation={catalog.Location} />
+            <LocationField
+              setData={setData}
+              dataLocation={catalog.Location}
+              dataLocat={edit_data}
+            />
           </div>
         </div>
         {/* End tab for Listing Location */}
@@ -242,4 +268,4 @@ const AddPropertyTabContent = () => {
   );
 };
 
-export default AddPropertyTabContent;
+export default EditPropertyTabContent;

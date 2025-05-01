@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 const UploadPhotoGallery = ({ setData, image }) => {
-  const [uploadedImages, setUploadedImages] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState(image.Images || []);
   const fileInputRef = useRef(null);
 
   const handleUpload = (files, insertAtStart = false) => {
@@ -163,23 +163,6 @@ const UploadPhotoGallery = ({ setData, image }) => {
               );
             })}
           </div>
-        </div>
-
-        <div className="col-sm-12">
-          <h4 className="title fz17 mb10">Tải ảnh lên</h4>
-          <p className="text mb25">Định dạng ảnh phải là JPEG hoặc PNG</p>
-          <label className="ud-btn btn-white">
-            Browse Files
-            <input
-              ref={fileInputRef}
-              id="fileInput"
-              type="file"
-              multiple
-              className="ud-btn btn-white"
-              onChange={(e) => handleUpload(e.target.files)}
-              style={{ display: "none", outline: "none" }}
-            />
-          </label>
         </div>
       </div>
 
