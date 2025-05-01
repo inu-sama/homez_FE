@@ -26,13 +26,12 @@ export default function ManagementPost() {
     return null;
   };
 
-  // useEffect(() => {
-  //   const role = getCookie("role");
-  //   console.log(role);
-  //   if (role !== "Admin" && role !== "Staff") {
-  //     window.location.href = "/";
-  //   }
-  // }, []);
+  useEffect(() => {
+    const role = getCookie("role");
+    if (role !== "Admin" && role !== "Staff") {
+      window.location.href = "/";
+    }
+  }, []);
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();

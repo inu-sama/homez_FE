@@ -152,37 +152,6 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
           >
             5. Tiện ích
           </button>
-
-          <button
-            className="ud-btn btn-dark fw600 ms-auto px-5"
-            style={{ marginBottom: "10px", marginRight: "10px" }}
-            type="button"
-            role="tab"
-            aria-controls="nav-item5"
-            aria-selected="false"
-            onClick={async () => {
-              console.log("Data", data);
-              const res = await apiProperties.updateProperty(data, _id);
-              console.log(res);
-            }}
-          >
-            Sửa bài
-          </button>
-          <button
-            className="ud-btn btn-white  px-5"
-            style={{ marginBottom: "10px", marginRight: "10px" }}
-            type="button"
-            role="tab"
-            aria-controls="nav-item5"
-            aria-selected="false"
-            onClick={
-              () => {
-                window.location.href = "/ADPost";
-              } // Chuyển hướng về trang dashboard
-            }
-          >
-            Cancel
-          </button>
         </div>
       </nav>
       {/* End nav tabs */}
@@ -246,7 +215,7 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
         {/* End tab for Listing Details */}
 
         <div
-          className="tab-pane fade"
+          className="w-100 tab-pane fade"
           id="nav-item5"
           role="tabpanel"
           aria-labelledby="nav-item5-tab"
@@ -259,6 +228,43 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
                 selectedAmenities={selectedAmenities}
                 onAmenityChange={handleAmenityChange}
               />
+            </div>
+          </div>
+          <div
+            className="w-100 d-flex justify-content-end align-items-center"
+            style={{ marginTop: "10px" }}
+          >
+            <div>
+              <button
+                className="ud-btn btn-dark ms-auto px-5"
+                style={{ marginBottom: "10px", marginRight: "10px" }}
+                type="button"
+                role="tab"
+                aria-controls="nav-item5"
+                aria-selected="false"
+                onClick={async () => {
+                  console.log("Data", data);
+                  const res = await apiProperties.updateProperty(data, _id);
+                  console.log(res);
+                }}
+              >
+                Sửa bài
+              </button>
+              <button
+                className="ud-btn btn-white px-5"
+                style={{ marginBottom: "10px", marginRight: "10px" }}
+                type="button"
+                role="tab"
+                aria-controls="nav-item5"
+                aria-selected="false"
+                onClick={
+                  () => {
+                    window.location.href = "/ADPost";
+                  } // Chuyển hướng về trang dashboard
+                }
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>

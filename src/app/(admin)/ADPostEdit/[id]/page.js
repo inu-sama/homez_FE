@@ -21,6 +21,13 @@ export default function ADPostEdit() {
   const id = params?.id;
 
   useEffect(() => {
+    const role = getCookie("role");
+    if (role !== "Admin" && role !== "Staff") {
+      window.location.href = "/";
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchProperties = async () => {
       try {
         const response = await apiProperties.getPropertiesAD();
@@ -38,10 +45,6 @@ export default function ADPostEdit() {
       fetchProperties();
     }
   }, [id]);
-
-  useEffect(() => {
-    console.log("Data fetched:", data);
-  }, [data]);
 
   if (loading)
     return <div className="text-center mt-5">Đang tải dữ liệu...</div>;

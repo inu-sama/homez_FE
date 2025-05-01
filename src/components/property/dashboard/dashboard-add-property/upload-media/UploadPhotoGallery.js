@@ -1,6 +1,6 @@
 "use client";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 
 const UploadPhotoGallery = ({ data }) => {
@@ -42,13 +42,6 @@ const UploadPhotoGallery = ({ data }) => {
     setUploadedImages(newImages);
   };
 
-  // useEffect(() => {
-  //   setData((prev) => ({
-  //     ...prev,
-  //     images: uploadedImages,
-  //   }));
-  // }, [uploadedImages]);
-
   return (
     <>
       <div
@@ -56,25 +49,17 @@ const UploadPhotoGallery = ({ data }) => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        <div className="profile-box position-relative d-md-flex align-items-center">
+        <div className="profile-box position-relative d-md-flex align-items-end">
           {uploadedImages[0] && (
             <div
               className="col-sm-4 col-12 flex-shrink-0"
               onDrop={(e) => {
                 e.preventDefault();
-
-                if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                  handleUpload(e.dataTransfer.files, true);
-                  return;
-                }
-
-                const draggedIndex = parseInt(
-                  e.dataTransfer.getData("dragIndex")
-                );
-                if (!isNaN(draggedIndex) && draggedIndex !== 0) {
+                const draggedIndex = e.dataTransfer.getData("dragIndex");
+                if (draggedIndex !== null && draggedIndex !== "0") {
                   const newImages = [...uploadedImages];
-                  const [draggedImage] = newImages.splice(draggedIndex, 1);
-                  newImages.unshift(draggedImage);
+                  const draggedImg = newImages.splice(draggedIndex, 1)[0];
+                  newImages.unshift(draggedImg);
                   setUploadedImages(newImages);
                   setData((prev) => ({
                     ...prev,

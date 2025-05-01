@@ -15,7 +15,7 @@ const PropertyDescription = ({ data, dataCate }) => {
     { value: "Đăng bán", label: "Đăng bán" },
   ];
 
-  const selectOptions = []
+  const selectOptions = [];
   dataCate?.map((item) => {
     selectOptions.push({
       value: item._id,
@@ -114,7 +114,7 @@ const PropertyDescription = ({ data, dataCate }) => {
               className="form-control"
               placeholder="VND"
               onChange={(e) => {
-                data.Price = e.target.value
+                data.Price = e.target.value;
               }}
             />
           </div>
@@ -130,7 +130,7 @@ const PropertyDescription = ({ data, dataCate }) => {
               placeholder="Nhập mô tả chi tiết căn hộ."
               defaultValue={""}
               onChange={(e) => {
-                data.Description = e.target.value
+                data.Description = e.target.value;
               }}
             />
           </div>

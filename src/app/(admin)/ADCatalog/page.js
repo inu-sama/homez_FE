@@ -28,12 +28,12 @@ export default function Catalog() {
     return null;
   };
 
-  // useEffect(() => {
-  //   const role = getCookie("role");
-  //   if (role !== "Admin" && role !== "Staff") {
-  //     window.location.href = "/";
-  //   }
-  // }, []);
+  useEffect(() => {
+    const role = getCookie("role");
+    if (role !== "Admin" && role !== "Staff") {
+      window.location.href = "/";
+    }
+  }, []);
   const [show, setShow] = useState({ slideKey: null, visible: false });
   const [editting, setEditting] = useState("");
   const [newItem, setNewItem] = useState("");
