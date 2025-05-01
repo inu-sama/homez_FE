@@ -96,7 +96,7 @@ const PropertyDescription = ({ data, dataCate }) => {
                 classNamePrefix="select"
                 required
                 onChange={(e) => {
-                  data.State = e.label;
+                  data.State = e.value;
                 }}
               />
             </div>
