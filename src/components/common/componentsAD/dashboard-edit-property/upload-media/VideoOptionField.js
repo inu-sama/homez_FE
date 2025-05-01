@@ -72,7 +72,8 @@ const VideoOptionField = ({ video, setVideo }) => {
                 className="tag-del"
                 onClick={handleDelete}
                 type="button"
-                style={videoDeleteBtnStyle}>
+                style={videoDeleteBtnStyle}
+              >
                 <span className="fas fa-trash-can" />
               </button>
             </div>
@@ -87,7 +88,8 @@ const VideoOptionField = ({ video, setVideo }) => {
             type="button"
             className="ud-btn btn-white"
             onClick={() => fileInputRef.current.click()}
-            style={browseVideoBtnStyle}>
+            style={browseVideoBtnStyle}
+          >
             Browse Video
           </button>
           <input

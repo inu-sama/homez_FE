@@ -3,26 +3,31 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-const UploadPhotoGallery = ({ setData }) => {
-  const [uploadedImages, setUploadedImages] = useState([]);
+const UploadPhotoGallery = ({ setData, image }) => {
+  const [uploadedImages, setUploadedImages] = useState(image.Images || []);
   const fileInputRef = useRef(null);
 
-  const handleUpload = (files) => {
-    const newImages = [...uploadedImages];
+  const handleUpload = (files, insertAtStart = false) => {
+    const fileArray = Array.from(files);
 
-    for (const file of files) {
+    fileArray.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
-        newImages.push(e.target.result);
-        setUploadedImages(newImages);
+        setUploadedImages((prevImages) => {
+          const newImages = insertAtStart
+            ? [e.target.result, ...prevImages]
+            : [...prevImages, e.target.result];
+
+          setData((prev) => ({
+            ...prev,
+            images: newImages,
+          }));
+
+          return newImages;
+        });
       };
       reader.readAsDataURL(file);
-    }
-
-    setData((prev) => ({
-      ...prev,
-      images: newImages,
-    }));
+    });
   };
 
   const handleDrop = (event) => {
@@ -46,19 +51,20 @@ const UploadPhotoGallery = ({ setData }) => {
     setUploadedImages(newImages);
   };
 
-  // useEffect(() => {
-  //   setData((prev) => ({
-  //     ...prev,
-  //     images: uploadedImages,
-  //   }));
-  // }, [uploadedImages]);
+  useEffect(() => {
+    setData((prev) => ({
+      ...prev,
+      images: uploadedImages,
+    }));
+  }, [uploadedImages]);
 
   return (
     <>
       <div
         className="upload-img position-relative overflow-hidden bdrs12 text-center mb30 px-2 row"
         onDrop={handleDrop}
-        onDragOver={handleDragOver}>
+        onDragOver={handleDragOver}
+      >
         <div className="profile-box position-relative d-md-flex align-items-center">
           {uploadedImages[0] && (
             <div
@@ -85,7 +91,8 @@ const UploadPhotoGallery = ({ setData }) => {
                   }));
                 }
               }}
-              onDragOver={(e) => e.preventDefault()}>
+              onDragOver={(e) => e.preventDefault()}
+            >
               <div className="profile-img mb20 position-relative">
                 <Image
                   width={212}
@@ -105,7 +112,8 @@ const UploadPhotoGallery = ({ setData }) => {
                 title="Delete Image"
                 onClick={() => handleDelete(0)}
                 type="button"
-                data-tooltip-id={`delete-${0}`}>
+                data-tooltip-id={`delete-${0}`}
+              >
                 <span className="fas fa-trash-can" />
               </button>
             </div>
@@ -114,7 +122,8 @@ const UploadPhotoGallery = ({ setData }) => {
           {/* Ảnh phụ (Scroll ngang) */}
           <div
             className="d-flex overflow-auto gap-2 ms-3 col-sm-8 col-12"
-            style={{ maxWidth: "100%" }}>
+            style={{ maxWidth: "100%" }}
+          >
             {uploadedImages.slice(1).map((imageData, i) => {
               const index = i + 1;
               return (
@@ -124,7 +133,8 @@ const UploadPhotoGallery = ({ setData }) => {
                   draggable
                   onDragStart={(e) => {
                     e.dataTransfer.setData("dragIndex", index);
-                  }}>
+                  }}
+                >
                   <div className="profile-img mb20 position-relative">
                     <Image
                       width={170}
@@ -139,7 +149,8 @@ const UploadPhotoGallery = ({ setData }) => {
                       title="Delete Image"
                       onClick={() => handleDelete(index)}
                       type="button"
-                      data-tooltip-id={`delete-${index}`}>
+                      data-tooltip-id={`delete-${index}`}
+                    >
                       <span className="fas fa-trash-can" />
                     </button>
                     <ReactTooltip
@@ -152,23 +163,6 @@ const UploadPhotoGallery = ({ setData }) => {
               );
             })}
           </div>
-        </div>
-
-        <div className="col-sm-12">
-          <h4 className="title fz17 mb10">Tải ảnh lên</h4>
-          <p className="text mb25">Định dạng ảnh phải là JPEG hoặc PNG</p>
-          <label className="ud-btn btn-white">
-            Browse Files
-            <input
-              ref={fileInputRef}
-              id="fileInput"
-              type="file"
-              multiple
-              className="ud-btn btn-white"
-              onChange={(e) => handleUpload(e.target.files)}
-              style={{ display: "none", outline: "none" }}
-            />
-          </label>
         </div>
       </div>
 

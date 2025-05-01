@@ -1,14 +1,18 @@
 "use client";
 import Select from "react-select";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import formatVND from "@/components/common/formattingVND";
 
-const PropertyDescription = ({ setData, dataCate }) => {
+const PropertyDescription = ({ setData, data, dataCate }) => {
   // const categoryOptions = [
   //   { value: "Nhà ở", label: "Nhà ở" },
   //   { value: "Chung cư", label: "Chung cư" },
   //   { value: "Văn phòng", label: "Văn phòng" },
   //   { value: "Vila", label: "Vila" },
   // ];
+
+  const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
 
   const listedIn = [
     { value: "Cho thuê", label: "Cho thuê" },
@@ -46,7 +50,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Nhập tiêu đề"
+              placeholder={data.Title}
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
@@ -64,21 +68,35 @@ const PropertyDescription = ({ setData, dataCate }) => {
               Loại căn hộ
             </label>
             <div className="location-area">
-              <Select
-                defaultValue={selectOptions[0]}
-                name="colors"
-                options={selectOptions}
-                styles={customStyles}
-                className="select-custom pl-0"
-                classNamePrefix="select"
-                required
-                onChange={(e) => {
-                  setData((prev) => ({
-                    ...prev,
-                    category: e.label,
-                  }));
-                }}
-              />
+              {!show ? (
+                <p
+                  style={{
+                    border: "1px solid #DDDDDD",
+                    borderRadius: "5px",
+                    padding: "12px",
+                    marginTop: "1px",
+                  }}
+                  onClick={() => setShow(true)}
+                >
+                  {data.Type.category}
+                </p>
+              ) : (
+                <Select
+                  defaultValue={data.Category}
+                  name="colors"
+                  options={selectOptions}
+                  styles={customStyles}
+                  className="select-custom pl-0"
+                  classNamePrefix="select"
+                  required
+                  onChange={(e) => {
+                    setData((prev) => ({
+                      ...prev,
+                      Category: e.label,
+                    }));
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -91,7 +109,9 @@ const PropertyDescription = ({ setData, dataCate }) => {
             </label>
             <div className="location-area">
               <Select
-                defaultValue={listedIn[0]}
+                defaultValue={listedIn.find(
+                  (item) => item.value === data.State
+                )}
                 name="colors"
                 options={listedIn}
                 styles={customStyles}
@@ -118,7 +138,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
             <input
               type="number"
               className="form-control"
-              placeholder="VND"
+              placeholder={formatVND(data.Price)}
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
@@ -136,7 +156,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
             <textarea
               cols={30}
               rows={5}
-              placeholder="Nhập mô tả chi tiết căn hộ."
+              placeholder={data.Description}
               defaultValue={""}
               onChange={(e) => {
                 setData((prev) => ({

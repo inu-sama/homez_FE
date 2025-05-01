@@ -1,9 +1,21 @@
 import instance from "./instance";
 
 class Properties {
-  async getPropertiesAD() {
+  async getProperties() {
     try {
       const res = await instance.get("/listings");
+      return res.data.data;
+    } catch (error) {
+      console.error(
+        "Error blocking user:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể khoá user bằng số điện thoại");
+    }
+  }
+  async getPropertiesAD() {
+    try {
+      const res = await instance.get("/getPropertyAD");
       return res.data.data;
     } catch (error) {
       console.error(
@@ -82,6 +94,44 @@ class Properties {
         error.response?.data || error.message
       );
       throw new Error("Không thể tạo bài đăng");
+    }
+  }
+  async updateProperty(data, id) {
+    try {
+      const formData = new FormData();
+      formData.append("Title", data.Title);
+      formData.append("Price", data.Price);
+      formData.append("Description", data.Description);
+      formData.append("Address", data.Address);
+      formData.append("bedroom", data.bedroom);
+      formData.append("bathroom", data.bathroom);
+      formData.append("yearBuilt", data.yearBuilt);
+      formData.append("garage", data.garage);
+      formData.append("sqft", data.sqft);
+      formData.append("category", data.Category);
+      formData.append("State", data.State);
+      formData.append("Location", data.Location);
+      formData.append("NumberOfRooms", data.bedroom + data.bathroom);
+      formData.append("Amenities", JSON.stringify(data.Amenities));
+
+      data.images.forEach((base64, i) => {
+        const file = this.base64ToFile(base64, `image${i}.webp`);
+        formData.append("images", file);
+      });
+
+      const res = await instance.put(`/listings-update/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      return res.data;
+    } catch (error) {
+      console.error(
+        "Error creating property:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể cập nhập bài đăng");
     }
   }
 }

@@ -40,7 +40,9 @@ const DashboardAddProperty = () => {
                 <div className="col-lg-12">
                   <div className="dashboard_title_area">
                     <h2>Thêm bài đăng</h2>
-                    <p className="text">Nhập đầy đủ thông tin căn hộ của bạn!</p>
+                    <p className="text">
+                      Nhập đầy đủ thông tin căn hộ của bạn!
+                    </p>
                   </div>
                 </div>
               </div>

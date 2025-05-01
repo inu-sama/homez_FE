@@ -7,6 +7,7 @@ import SidebarPanel from "@/components/common/sidebar-panel";
 import HeaderAD from "@/components/common/componentsAD/HeaderAD";
 import PropertyGallery from "@/components/common/componentsAD/single-v10/PropertyGallery";
 import OverView from "@/components/property/property-single-style/common/OverView";
+import EditPropertyTabContent from "@/components/common/componentsAD/dashboard-edit-property";
 
 import { apiProperties } from "@/apis/Properties";
 import formatVND from "@/components/common/formattingVND";
@@ -62,83 +63,27 @@ export default function ADPostEdit() {
         <SidebarPanel />
       </div>
 
-      <div className="ms-3 ms-md-5 ps-md-5 text-black text-center mt-4">
-        <p className="fw-bolder h1">Sửa bài đăng</p>
-      </div>
-
-      <div className="slide-managemant-Post">
-        <form className="form-style-AD" key={data._id}>
-          <div>
-            <p className="h3 text-center">Người đăng bài + SĐT</p>
+      <div className="dashboard__main_AD">
+        <div className="dashboard__content property-page bgc-f7">
+          <div className="row align-items-center pb40">
+            <div className="col-lg-12">
+              <div className="dashboard_title_area">
+                <h2>Sửa bài đăng</h2>
+                <p className="text">Nhập đầy đủ thông tin căn hộ của bạn!</p>
+              </div>
+            </div>
           </div>
 
-          <div className="row mb30">
-            <PropertyGallery images={data?.Images || []} />
-          </div>
-
-          <div className="infor-property-AD">
-            <p className="h2">{data.Title}</p>
-
-            <div className="infor-view-AD">
-              <div className="infor-view-AD-1">
-                <div>
-                  <span className="border-end text">{data.State}</span>
-                  <span className="address-mobile-2 border-start">
-                    {data.Address}
-                  </span>
+          <div className="row">
+            <div className="col-xl-12">
+              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 pt30 mb30 overflow-hidden position-relative">
+                <div className="navtab-style1">
+                  <EditPropertyTabContent edit_data={data} _id={id} />
                 </div>
               </div>
-              <div>
-                <span className="h1">{formatVND(data.Price)}</span>
-              </div>
-            </div>
-
-            <div>
-              <p className="h3 mt-3 mb-2">Thành phần cơ bản</p>
-              <div className="row ms-3">
-                <OverView type={data.Type} />
-              </div>
-            </div>
-
-            <div>
-              <p className="h3 mt-4 mb-2">Tiện ích</p>
-              <div className="row g-3 ms-4">
-                {Array.isArray(data.Amenities) && data.Amenities.length > 0 ? (
-                  data.Amenities.map((amenity, index) => (
-                    <div key={index} className="col-sm-4 col-6">
-                      <span style={{ fontSize: "17px" }}>• {amenity}</span>
-                    </div>
-                  ))
-                ) : (
-                  <p className="ms-2">Không có tiện ích được liệt kê.</p>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <p className="h3 mt-4 mb-2">Mô tả</p>
-              <p className="ms-3">{data.Description || "Không có mô tả."}</p>
-            </div>
-
-            <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-4">
-              <button
-                type="button"
-                className="w-100 w-md-25 ud-btn btn-white"
-                onClick={() => {
-                  window.location.href = `/ADPostEdit/${data._id}`;
-                }}
-              >
-                Chỉnh sửa
-              </button>
-              <button type="button" className="w-100 w-md-25 ud-btn btn-thm">
-                Duyệt bài
-              </button>
-              <button type="button" className="w-100 w-md-25 ud-btn btn-white">
-                Xoá Bài
-              </button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   ) : (
