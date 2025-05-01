@@ -727,6 +727,12 @@ li {
   width: 100%;
 }
 
+@media (max-width: 991.98px) {
+  .dashboard__main_AD {
+    padding-left: 0px;
+  }
+}
+
 .dashboard__main {
   margin-top: 87px;
   padding-left: 300px;

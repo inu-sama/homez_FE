@@ -1,9 +1,23 @@
+import axios from "axios";
 import instance from "./instance";
 
 class Properties {
   async getPropertiesAD() {
     try {
       const res = await instance.get("/getPropertyAD");
+      return res.data.data;
+    } catch (error) {
+      console.error(
+        "Error blocking user:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể khoá user bằng số điện thoại");
+    }
+  }
+
+  async getProperties() {
+    try {
+      const res = await axios.get("/listings");
       return res.data.data;
     } catch (error) {
       console.error(

@@ -20,12 +20,12 @@ export default function ADPostEdit() {
   const params = useParams();
   const id = params?.id;
 
-  useEffect(() => {
-    const role = getCookie("role");
-    if (role !== "Admin" && role !== "Staff") {
-      window.location.href = "/";
-    }
-  }, []);
+  // useEffect(() => {
+  //   const role = getCookie("role");
+  //   if (role !== "Admin" && role !== "Staff") {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -90,6 +90,6 @@ export default function ADPostEdit() {
       </div>
     </div>
   ) : (
-    <div>aaa</div>
+    <div></div>
   );
 }
