@@ -3,9 +3,10 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-const UploadPhotoGallery = ({ setData, image }) => {
+const UploadPhotoGallery = ({ setData }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
   const fileInputRef = useRef(null);
+  data.images = uploadedImages;
 
   const handleUpload = (files, insertAtStart = false) => {
     const fileArray = Array.from(files);
@@ -13,21 +14,15 @@ const UploadPhotoGallery = ({ setData, image }) => {
     fileArray.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setUploadedImages((prevImages) => {
-          const newImages = insertAtStart
-            ? [e.target.result, ...prevImages]
-            : [...prevImages, e.target.result];
-
-          setData((prev) => ({
-            ...prev,
-            images: newImages,
-          }));
-
-          return newImages;
-        });
+        newImages.push(e.target.result);
+        setUploadedImages(newImages);
       };
       reader.readAsDataURL(file);
-    });
+    }
+    setData((prev) => ({
+      ...prev,
+      images: newImages,
+    }));
   };
 
   const handleDrop = (event) => {

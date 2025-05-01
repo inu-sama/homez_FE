@@ -28,10 +28,10 @@ const GridFull3Col = ({ params }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title">New York Homes for Sale</h2>
+                {params.type == "Rent" ? <h2 className="title">Danh sách căn hộ cho thuê</h2> : <h2 className="title">Danh sách căn hộ đăng bán</h2>}
                 <div className="breadcumb-list">
                   <a href="#">Home</a>
-                  <a href="#">For Rent</a>
+                  {params.type == "Rent" ? <a href="#">Cho thuê</a> : <a href="#">Đăng bán</a>}
                 </div>
                 <a
                   className="filter-btn-left mobile-filter-btn d-block d-lg-none"

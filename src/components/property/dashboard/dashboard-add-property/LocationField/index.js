@@ -1,35 +1,77 @@
 "use client";
 import React, { useState, useEffect, use } from "react";
 import SelectMulitField from "./SelectMulitField";
-import Map from "./Map";
+import Select from "react-select";
 
-const LocationField = ({ setData, dataLocation }) => {
+const customStyles = {
+  option: (styles, { isFocused, isSelected, isHovered }) => {
+    return {
+      ...styles,
+      backgroundColor: isSelected
+        ? "#eb6753"
+        : isHovered
+        ? "#eb675312"
+        : isFocused
+        ? "#eb675312"
+        : undefined,
+    };
+  },
+};
+
+const LocationField = ({ data, dataLocation }) => {
+  const [address, setAddress] = useState("");
+  const [ward, setWard] = useState("");
+  const [city, setCity] = useState("Hồ Chí Minh");
+  data.Address = `${address}, ${ward}, ${city}`;
+  const selectLocation = dataLocation?.map((item) => ({
+    label: item.Name,
+    value: item._id,
+  }));
   return (
-    <form className="form-style1" style={{ height: "350px" }}>
-      <div className="row mb30">
+    <form className="form-style1">
+      <div className="row mb100">
         <div className="col-sm-12">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              {location == "Other" ? "Địa chỉ" : "Địa chỉ chi tiết căn hộ"}
+              Địa chỉ
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder={
-                location == "Other" ? "Nhập địa chỉ" : "Khu B lầu 4, phòng 203"
-              }
+              placeholder="Nhập địa chỉ"
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  Address: e.target.value,
-                }));
+                setAddress(e.target.value);
               }}
             />
           </div>
         </div>
         {/* End col-12 */}
 
-        <SelectMulitField setData={setData} DataLocation={dataLocation} />
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Chung cư (nếu có)
+            </label>
+            <div className="location-area">
+              <Select
+                name="colors"
+                options={selectLocation}
+                styles={customStyles}
+                maxMenuHeight={150}
+                className="select-custom pl-0"
+                classNamePrefix="select"
+                required
+                onChange={(e) => {
+                  data.Location = e.label;
+                  console.log(data);
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="col-8"></div>
+
+        <SelectMulitField data={data} ward={setWard} city={setCity} />
 
         {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">

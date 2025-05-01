@@ -2,7 +2,7 @@ import React from "react";
 import MultiSelectField from "./MultiSelectField";
 import StructureType from "./StructureType";
 
-const DetailsFiled = ({ setData }) => {
+const DetailsFiled = ({ data }) => {
   return (
     <form className="form-style1">
       <div className="row">
@@ -17,10 +17,7 @@ const DetailsFiled = ({ setData }) => {
               placeholder="m²"
               required
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  sqft: e.target.value,
-                }));
+                data.sqft = e.target.value;
               }}
             />
           </div>
@@ -39,10 +36,7 @@ const DetailsFiled = ({ setData }) => {
               placeholder="Số phòng ngủ"
               required
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  bedroom: e.target.value,
-                }));
+                data.bedroom = e.target.value;
               }}
             />
           </div>
@@ -61,10 +55,7 @@ const DetailsFiled = ({ setData }) => {
               placeholder="Số phòng tắm"
               required
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  bathroom: e.target.value,
-                }));
+                data.bathroom = e.target.value;
               }}
             />
           </div>
@@ -83,10 +74,7 @@ const DetailsFiled = ({ setData }) => {
               placeholder="Số garage"
               required
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  garage: e.target.value,
-                }));
+                data.garage = e.target.value;
               }}
             />
           </div>
@@ -104,10 +92,7 @@ const DetailsFiled = ({ setData }) => {
               className="form-control"
               required
               onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  yearBuilt: e.target.value,
-                }));
+                data.yearBuilt = e.target.value;
               }}
             />
           </div>

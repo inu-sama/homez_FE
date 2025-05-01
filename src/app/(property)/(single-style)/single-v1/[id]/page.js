@@ -109,12 +109,16 @@ const SingleV1 = ({ params }) => {
                 </div>
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                  <h4 className="title fz17 mb30">Features &amp; Amenities</h4>
-                  <div className="row">
-                    <PropertyFeaturesAminites />
+                {property.State == "Cho thuê" ? (
+                  <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                    <h4 className="title fz17 mb30">
+                      Features &amp; Amenities
+                    </h4>
+                    <div className="row">
+                      <PropertyFeaturesAminites />
+                    </div>
                   </div>
-                </div>
+                ) : null}
                 {/* End .ps-widget */}
 
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 ">
@@ -133,10 +137,10 @@ const SingleV1 = ({ params }) => {
                 </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Get More Information</h4>
                   <InfoWithForm />
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -165,12 +169,12 @@ const SingleV1 = ({ params }) => {
                     <ScheduleTour />
                   </div>
 
-                  <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
+                  {/* <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
                     <div className="widget-wrapper mb-0">
                       <h6 className="title fz17 mb30">Get More Information</h6>
                       <ContactWithAgent />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -226,7 +230,7 @@ const SingleV1 = ({ params }) => {
           {/* End .container */}
         </section>
       ) : (
-        <h1>Loading...</h1>
+        <h2>Vui lòng chờ trong giây lát...</h2>
       )}
       {/* End Property All Single V1  */}
 
