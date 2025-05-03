@@ -16,16 +16,13 @@ const instance = axios.create({
   },
 });
 
-instance.interceptors.request.use(
-  (config) => {
-    const token = getCookie("token");
-    if (token) {
-      config.headers.Authorization = `bazen ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+instance.interceptors.request.use((config) => {
+  const token = getCookie("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
 class ApiUser {
   async getUserList() {
@@ -37,7 +34,36 @@ class ApiUser {
         "Error blocking user:",
         error.response?.data || error.message
       );
-      throw new Error("Không thể khoá user bằng số điện thoại");
+      throw new Error("Không thể lấy danh sách user");
+    }
+  }
+
+  async printFile() {
+    try {
+      const res = await instance.get("/exportUser", {
+        responseType: "blob",
+      });
+
+      const blob = new Blob([res.data], { type: res.headers["content-type"] });
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+
+      const fileName = "users.xlsx";
+      link.setAttribute("download", fileName);
+
+      document.body.appendChild(link);
+      link.click();
+
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error(
+        "Error exporting file:",
+        error.response?.data || error.message
+      );
+      alert("Không thể xuất file người dùng.");
     }
   }
 

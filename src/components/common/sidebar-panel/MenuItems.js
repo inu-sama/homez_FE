@@ -3,7 +3,6 @@ const MenuItems = () => {
     { id: 1, title: "Quản lý người dùng", url: "/AD" },
     { id: 2, title: "Bài tin", url: "/ADPost" },
     { id: 3, title: "Quản lý danh mục", url: "/ADCatalog" },
-    { id: 4, title: "Đăng xuất" },
   ];
 
   return (

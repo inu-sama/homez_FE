@@ -19,6 +19,10 @@ export default function ManagementPost() {
   const [data, setData] = useState([]);
   const router = useRouter();
 
+  useEffect(() => {
+    console.log("Data property", data);
+  }, [data]);
+
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -26,19 +30,30 @@ export default function ManagementPost() {
     return null;
   };
 
-  // useEffect(() => {
-  //   const role = getCookie("role");
-  //   console.log(role);
-  //   if (role !== "Admin" && role !== "Staff") {
-  //     window.location.href = "/";
-  //   }
-  // }, []);
+  useEffect(() => {
+    const role = getCookie("role");
+    if (role !== "Admin" && role !== "Staff") {
+      window.location.href = "/";
+    }
+  }, []);
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
       setData(response);
     } catch (error) {
       console.error("Error fetching properties:", error);
+    }
+  };
+  const handleApprove = async (id) => {
+    const response = await apiProperties.ApproveProperty(id);
+    if (response.status === 201) {
+      window.location.reload();
+    }
+  };
+  const handleDelete = async (id) => {
+    const response = await apiProperties.DeleteProperty(id);
+    if (response.status === 201) {
+      window.location.reload();
     }
   };
   useEffect(() => {
@@ -84,7 +99,10 @@ export default function ManagementPost() {
             <SwiperSlide key={item._id}>
               <form className="form-style-AD" key={item._id}>
                 <div>
-                  <p className="h3 text-center">Người đăng bài+SĐT</p>
+                  <p className="h3 text-center">
+                    {item.Account[0]?.FirstName}
+                    {item.Account[0]?.PhoneNumber}
+                  </p>
                 </div>
                 <div className="row mb30">
                   <PropertyGallery images={item.Images} />
@@ -148,10 +166,17 @@ export default function ManagementPost() {
                     >
                       Chỉnh sửa
                     </Link>
-                    <button className="w-100 w-md-25 ud-btn btn-thm">
+                    <button
+                      type="button"
+                      className="w-100 w-md-25 ud-btn btn-thm"
+                      onClick={() => handleApprove(item._id)}
+                    >
                       Duyệt bài
                     </button>
-                    <button className="w-100 w-md-25 ud-btn btn-white">
+                    <button
+                      className="w-100 w-md-25 ud-btn btn-white"
+                      onClick={() => handleDelete(item._id)}
+                    >
                       Xoá Bài
                     </button>
                   </div>
