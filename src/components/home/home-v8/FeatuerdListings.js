@@ -94,9 +94,7 @@ const FeaturedListings = () => {
                         /<span>tháng</span>
                       </div>
                       <h6 className="list-title my-1">
-                        <div>
-                          {listing.Title}
-                        </div>
+                        <div>{listing.Title}</div>
                       </h6>
                       <div className="list-meta2 d-flex align-items-center">
                         <a href="#" className="mr10">

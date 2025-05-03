@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import { apiCatalog } from "@/apis/Catalog";
 
 export default function Catalog() {
+  const [role, setRole] = useState("");
   const [data, setData] = useState({
     Amenities: [],
     Category: [],
@@ -29,11 +30,16 @@ export default function Catalog() {
   };
 
   useEffect(() => {
-    const role = getCookie("role");
-    if (role !== "Admin" && role !== "Staff") {
+    setRole(getCookie("role"));
+  }, []);
+
+  useEffect(() => {
+    if (!role) return;
+    if (role !== "Admin") {
       window.location.href = "/";
     }
-  }, []);
+  }, [role]);
+
   const [show, setShow] = useState({ slideKey: null, visible: false });
   const [editting, setEditting] = useState("");
   const [newItem, setNewItem] = useState("");
@@ -301,7 +307,7 @@ export default function Catalog() {
                     {data[key] &&
                       data[key].map((item, itemIndex) => (
                         <div
-                          className="col-12 col-md-3 border-end border-start text-center"
+                          className="col-12 col-md-4 border-end border-start text-center"
                           key={itemIndex}
                         >
                           <span
