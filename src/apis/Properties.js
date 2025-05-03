@@ -1,4 +1,3 @@
-import axios from "axios";
 import instance from "./instance";
 
 class Properties {
@@ -134,6 +133,35 @@ class Properties {
         error.response?.data || error.message
       );
       throw new Error("Không thể cập nhập bài đăng");
+    }
+  }
+
+  async ApproveProperty(id) {
+    try {
+      const res = await instance.get(`/listings-state/${id}`, {
+        headers: {
+          "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
+        },
+      });
+      return res;
+    } catch (error) {
+      console.error(
+        "Error creating property:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể duyệt bài đăng");
+    }
+  }
+  async DeleteProperty(id) {
+    try {
+      const res = await instance.delete(`/listings-delete/${id}`);
+      return res;
+    } catch (error) {
+      console.error(
+        "Error creating property:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể xoá bài đăng");
     }
   }
 }

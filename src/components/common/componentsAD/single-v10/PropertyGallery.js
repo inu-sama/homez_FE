@@ -27,8 +27,8 @@ const PropertyGallery = ({ images }) => {
             <Item
               original={images[0]}
               thumbnail={images[0]}
-              width={imageSizes[0].width}
-              height={imageSizes[0].height}
+              // width={imageSizes[0].width}
+              // height={imageSizes[0].height}
             >
               {({ ref, open }) => (
                 <Image

@@ -33,7 +33,7 @@ export default instance;
 //   baseURL: process.env.API_URL_PORT,
 //   headers: {
 //     "Content-Type": "application/json",
-//     Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDYwODM1NTR9.ifp8K3EWU5H8HvR8yWxkG8ckF8nBL4SRsfU9ai4qDrY`,
+//     Authorization: `bazen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJQaG9uZU51bWJlciI6Iis4NDkxMTQxMTkxMiIsImlhdCI6MTc0NjExMDU5Mn0.1x_bTR4TvlAzV0d-hAn15h_m3eVyG-fCi9jkj8beig0`,
 //   },
 // });
 
