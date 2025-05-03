@@ -13,35 +13,39 @@ import AllReviews from "@/components/property/reviews";
 import Image from "next/image";
 
 import { apiUser } from "@/apis/management-User";
+import { apiAuthen } from "@/apis/authen";
 import React, { useEffect, useState } from "react";
 import { verify } from "jsonwebtoken";
 
-// const translateToken= (token) => {
-//   if (!token) {
-//     throw new Error("Token is required");
-//   }
-//   try {
-//     const decoded = verify(token, process.env.APP_SECRET_KEY);
-//     return decoded;
-//   } catch (err) {
-//     throw new Error("Invalid token");
-//   }
-// };
-
-const AgentSingle = ({params}) => {
+const AgentSingle = ({ params }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
-  // const getCookie = (name) => {
-  //   const value = `; ${document.cookie}`;
-  //   const parts = value.split(`; ${name}=`);
-  //   if (parts.length === 2) return parts.pop().split(";").shift();
-  // };
-  // useEffect(() => {
-  //   setToken(getCookie("token"));
-  //   const data = translateToken(token);
-  //   console.log("data token", data);
-  // }, []);
+  const getCookie = (name) => {
+    if (typeof document === "undefined") return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  };
+
+  const decodedToken = async () => {
+    const token = getCookie("token");
+    console.log("token", token);
+    const userToken = await apiAuthen.getToken(token);
+    setUser(userToken);
+    console.log("userToken", userToken);
+    console.log("user", user);
+  };
+
+  useEffect(() => {
+    decodedToken();
+    console.log("user", user);
+  }, []);
+
+  useEffect(() => {
+    console.log("user", user);
+  }, [user]);
 
   const fetchProperties = async () => {
     try {
@@ -76,7 +80,7 @@ const AgentSingle = ({params}) => {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-xl-7">
-                <SingleAgentCta id={params.id}/>
+                <SingleAgentCta id={params.id} />
                 <div className="img-box-11 position-relative d-none d-xl-block">
                   <Image
                     width={120}
@@ -127,16 +131,14 @@ const AgentSingle = ({params}) => {
                     <div className="agent-single-accordion">
                       <div
                         className="accordion accordion-flush"
-                        id="accordionFlushExample"
-                      >
+                        id="accordionFlushExample">
                         <div className="accordion-item">
                           <div
                             id="flush-collapseOne"
                             className="accordion-collapse collapse"
                             aria-labelledby="flush-headingOne"
                             data-bs-parent="#accordionFlushExample"
-                            style={{}}
-                          >
+                            style={{}}>
                             <div className="accordion-body p-0">
                               <p className="text">
                                 Placeholder content for this accordion, which is
@@ -151,16 +153,14 @@ const AgentSingle = ({params}) => {
                           </div>
                           <h2
                             className="accordion-header"
-                            id="flush-headingOne"
-                          >
+                            id="flush-headingOne">
                             <button
                               className="accordion-button p-0 collapsed"
                               type="button"
                               data-bs-toggle="collapse"
                               data-bs-target="#flush-collapseOne"
                               aria-expanded="false"
-                              aria-controls="flush-collapseOne"
-                            >
+                              aria-controls="flush-collapseOne">
                               Show more
                             </button>
                           </h2>
@@ -172,7 +172,7 @@ const AgentSingle = ({params}) => {
               </div>
               {/* End .row */}
 
-              <ListingItemsContainer/>
+              <ListingItemsContainer />
               <div className="row">
                 <div className="col-lg-12">
                   <AllReviews />
