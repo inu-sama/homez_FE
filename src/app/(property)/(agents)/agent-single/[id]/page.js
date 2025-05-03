@@ -16,32 +16,32 @@ import { apiUser } from "@/apis/management-User";
 import React, { useEffect, useState } from "react";
 import { verify } from "jsonwebtoken";
 
-const translateToken= (token) => {
-  if (!token) {
-    throw new Error("Token is required");
-  }
-  try {
-    const decoded = verify(token, process.env.APP_SECRET_KEY);
-    return decoded;
-  } catch (err) {
-    throw new Error("Invalid token");
-  }
-};
+// const translateToken= (token) => {
+//   if (!token) {
+//     throw new Error("Token is required");
+//   }
+//   try {
+//     const decoded = verify(token, process.env.APP_SECRET_KEY);
+//     return decoded;
+//   } catch (err) {
+//     throw new Error("Invalid token");
+//   }
+// };
 
 const AgentSingle = ({params}) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  };
-  useEffect(() => {
-    setToken(getCookie("token"));
-    const data = translateToken(token);
-    console.log("data token", data);
-  }, []);
+  // const getCookie = (name) => {
+  //   const value = `; ${document.cookie}`;
+  //   const parts = value.split(`; ${name}=`);
+  //   if (parts.length === 2) return parts.pop().split(";").shift();
+  // };
+  // useEffect(() => {
+  //   setToken(getCookie("token"));
+  //   const data = translateToken(token);
+  //   console.log("data token", data);
+  // }, []);
 
   const fetchProperties = async () => {
     try {
