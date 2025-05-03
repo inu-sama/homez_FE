@@ -2,7 +2,7 @@
 import SidebarStickyBar from "@/components/home/home-v8/SidebarStickyBar";
 import SidebarPanel from "@/components/common/sidebar-panel";
 import HeaderAD from "@/components/common/componentsAD/HeaderAD";
-import PropertyGallery from "@/components/common/componentsAD/single-v10/PropertyGallery";
+import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
@@ -104,7 +104,7 @@ export default function ManagementPost() {
                     {item.Account[0]?.PhoneNumber}
                   </p>
                 </div>
-                <div className="row mb30">
+                <div className="row mb30 mt30">
                   <PropertyGallery images={item.Images} />
                 </div>
                 <div className="infor-property-AD">
