@@ -18,11 +18,11 @@ const customStyles = {
   },
 };
 
-const LocationField = ({ data, dataLocation }) => {
+const LocationField = ({ setData, data, dataLocation, setFilled }) => {
   const [address, setAddress] = useState("");
   const [ward, setWard] = useState("");
   const [city, setCity] = useState("Hồ Chí Minh");
-  data.Address = `${address}, ${ward}, ${city}`;
+  const addressFull = `${address}, ${ward}, ${city}`;
   const selectLocation = dataLocation?.map((item) => ({
     label: item.Name,
     value: item._id,
@@ -41,6 +41,13 @@ const LocationField = ({ data, dataLocation }) => {
               placeholder="Nhập địa chỉ"
               onChange={(e) => {
                 setAddress(e.target.value);
+                setData((prev) => ({
+                  ...prev,
+                  Address: addressFull,
+                }));
+                if (data.Address && data.Price && data.Description) {
+                  setFilled([true, true, true, false, false]);
+                }
               }}
             />
           </div>
@@ -62,8 +69,10 @@ const LocationField = ({ data, dataLocation }) => {
                 classNamePrefix="select"
                 required
                 onChange={(e) => {
-                  data.Location = e.label;
-                  console.log(data);
+                  setData((prev) => ({
+                    ...prev,
+                    Location: e.label,
+                  }));
                 }}
               />
             </div>
@@ -71,7 +80,12 @@ const LocationField = ({ data, dataLocation }) => {
         </div>
         <div className="col-8"></div>
 
-        <SelectMulitField data={data} ward={setWard} city={setCity} />
+        <SelectMulitField
+          setData={setData}
+          addressFull={addressFull}
+          ward={setWard}
+          city={setCity}
+        />
 
         {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">

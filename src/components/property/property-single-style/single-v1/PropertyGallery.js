@@ -5,25 +5,6 @@ import Image from "next/image";
 import { apiProperties } from "@/apis/Properties";
 import { useEffect, useState } from "react";
 
-// const images = [
-//   {
-//     src: "/images/listings/listing-single-2.jpg",
-//     alt: "2.jpg",
-//   },
-//   {
-//     src: "/images/listings/listing-single-3.jpg",
-//     alt: "3.jpg",
-//   },
-//   {
-//     src: "/images/listings/listing-single-4.jpg",
-//     alt: "4.jpg",
-//   },
-//   {
-//     src: "/images/listings/listing-single-5.jpg",
-//     alt: "5.jpg",
-//   },
-// ];
-
 const PropertyGallery = ({ images }) => {
   const [pickedImage, setPickedImage] = useState(images[0]);
 
@@ -36,14 +17,14 @@ const PropertyGallery = ({ images }) => {
             <Item
               original={pickedImage}
               thumbnail={pickedImage}
-              width={610}
-              height={510}
+              width={0}
+              height={0}
             >
               {({ ref, open }) => (
                 <Image
                   src={pickedImage}
-                  width={591}
-                  height={558}
+                  width={0}
+                  height={0}
                   ref={ref}
                   onClick={open}
                   alt="image"
@@ -58,26 +39,26 @@ const PropertyGallery = ({ images }) => {
       {/* End .col-6 */}
 
       <div className="col-sm-6">
-        <div className="row">
+        <div className="row h-100">
           {images.map((image, index) =>
             index < 4 ? (
-              <div className="col-6 ps-sm-0" key={index}>
-                <div className="sp-img-content">
+              <div className="col-6 p0 h-50" key={index}>
+                <div className="sp-img-content h-100 p-1">
                   <div
                     className={`popup-img preview-img-${
                       index + 2
-                    } sp-img mb10`}
+                    } sp-img mb10 h-100`}
                   >
                     <Item
                       original={image}
                       thumbnail={image}
-                      width={270}
-                      height={250}
+                      width={0}
+                      height={0}
                     >
-                      {({ ref, open }) => (
+                      {({ ref }) => (
                         <Image
-                          width={270}
-                          height={250}
+                          width={0}
+                          height={0}
                           className="w-100 h-100 cover"
                           ref={ref}
                           onClick={() => setPickedImage(image)}

@@ -1,10 +1,19 @@
 "use client";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-const UploadPhotoGallery = ({ setData, data, setFilled }) => {
+const UploadPhotoGallery = ({ setData, data, property }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
+  useEffect(() => {
+    if (property && property.Images) {
+      setUploadedImages(property.Images);
+      setData((prev) => ({
+        ...prev,
+        images: property.Images,
+      }));
+    }
+  }, [property]);
   const fileInputRef = useRef(null);
 
   const handleUpload = (files) => {
@@ -23,9 +32,6 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
       ...prev,
       images: newImages,
     }));
-    if (data.images.length >= 4) {
-      setFilled([true, true, false, false, false]);
-    }
   };
 
   const handleDrop = (event) => {
@@ -49,6 +55,13 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
     setUploadedImages(newImages);
   };
 
+  // useEffect(() => {
+  //   setData((prev) => ({
+  //     ...prev,
+  //     images: uploadedImages,
+  //   }));
+  // }, [uploadedImages]);
+
   return (
     <>
       <div
@@ -61,11 +74,19 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
               className="col-sm-4 col-12 flex-shrink-0"
               onDrop={(e) => {
                 e.preventDefault();
-                const draggedIndex = e.dataTransfer.getData("dragIndex");
-                if (draggedIndex !== null && draggedIndex !== "0") {
+
+                if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                  handleUpload(e.dataTransfer.files, true);
+                  return;
+                }
+
+                const draggedIndex = parseInt(
+                  e.dataTransfer.getData("dragIndex")
+                );
+                if (!isNaN(draggedIndex) && draggedIndex !== 0) {
                   const newImages = [...uploadedImages];
-                  const draggedImg = newImages.splice(draggedIndex, 1)[0];
-                  newImages.unshift(draggedImg);
+                  const [draggedImage] = newImages.splice(draggedIndex, 1);
+                  newImages.unshift(draggedImage);
                   setUploadedImages(newImages);
                   setData((prev) => ({
                     ...prev,

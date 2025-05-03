@@ -7,23 +7,26 @@ const Explore = () => {
     {
       id: 1,
       icon: "/images/icon/property-buy.svg",
-      title: "Buy a property",
+      title: "Đăng tin bất động sản",
       text: "Nullam sollicitudin blandit eros eu pretium. Nullam maximus ultricies auctor.",
-      linkText: "Find a home",
+      linkText: "Đăng tin",
+      link: "/dashboard-add-property",
     },
     {
       id: 2,
       icon: "/images/icon/property-sell.svg",
-      title: "Sell a property",
+      title: "Thuê căn hộ",
       text: "Nullam sollicitudin blandit eros eu pretium. Nullam maximus ultricies auctor.",
-      linkText: "Place an ad",
+      linkText: "Khám phá",
+      link: "/property-list/for-rent",
     },
     {
       id: 3,
       icon: "/images/icon/property-rent.svg",
-      title: "Rent a property",
+      title: "Mua nhà",
       text: "Nullam sollicitudin blandit eros eu pretium. Nullam maximus ultricies auctor.",
-      linkText: "Find a rental",
+      linkText: "Tìm nhà",
+      link: "/property-list/for-sale",
     },
   ];
 
@@ -43,7 +46,7 @@ const Explore = () => {
             <div className="iconbox-content">
               <h4 className="title">{item.title}</h4>
               <p className="text">{item.text}</p>
-              <Link href="/grid-default" className="ud-btn btn-white2">
+              <Link href={item.link} className="ud-btn btn-white2">
                 {item.linkText}
                 <i className="fal fa-arrow-right-long" />
               </Link>

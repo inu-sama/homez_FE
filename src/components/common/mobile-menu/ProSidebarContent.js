@@ -8,55 +8,67 @@ import { useEffect, useState } from "react";
 
 const ProSidebarContent = () => {
   const path = usePathname();
+  const data = [
+    {
+      label: "Khám phá",
+      subMenu: [
+        { path: "/property-list/for-rent", label: "Thuê nhà" },
+        { path: "/property-list/for-sale", label: "Mua nhà" },
+      ],
+    },
+    {
+      path: "/about",
+      label: "Về chúng tôi",
+    },
+    {
+      path: "/contact",
+      label: "Liên lạc",
+    },
+    {
+      path: "/faq",
+      label: "FAQ",
+    },
+  ];
 
   return (
     <Sidebar width="100%" backgroundColor="#fff" className="my-custom-class">
       <Menu>
-        {mobileMenuItems.map((item, index) => (
-          <SubMenu
-            key={index}
-            className={isParentActive(item.subMenu, path) ? "active" : ""}
-            label={item.label}
-          >
-            {item.subMenu.map((subItem, subIndex) =>
-              subItem.subMenu ? (
-                <SubMenu
-                  key={subIndex}
-                  label={subItem.label}
-                  className={
-                    isParentActive(subItem.subMenu, path) ? "active" : ""
-                  }
-                >
-                  {subItem.subMenu.map((nestedItem, nestedIndex) => (
-                    <MenuItem
-                      key={nestedIndex}
-                      component={
-                        <Link
-                          className={nestedItem.path == path ? "active" : ""}
-                          href={nestedItem.path}
-                        />
-                      }
-                    >
-                      {nestedItem.label}
-                    </MenuItem>
-                  ))}
-                </SubMenu>
-              ) : (
-                <MenuItem
-                  key={subIndex}
-                  component={
-                    <Link
-                      className={subItem.path == path ? "active" : ""}
-                      href={subItem.path}
-                    />
-                  }
-                >
-                  {subItem.label}
-                </MenuItem>
-              )
-            )}
-          </SubMenu>
-        ))}
+        {data.map((item, index) =>
+          item.subMenu ? (
+            <SubMenu
+              key={index}
+              className={isParentActive(item.subMenu, path) ? "active" : ""}
+              label={item.label}
+            >
+              {item.subMenu &&
+                item.subMenu.map((subItem, subIndex) => (
+                  <MenuItem
+                    key={subIndex}
+                    component={
+                      <Link
+                        className={subItem.path == path ? "active" : ""}
+                        href={subItem.path}
+                      />
+                    }
+                  >
+                    {subItem.label}
+                  </MenuItem>
+                ))}
+            </SubMenu>
+          ) : (
+            <MenuItem
+              key={index}
+              component={
+                <Link
+                  className={item.path == path ? "active" : ""}
+                  href={item.path}
+                />
+              }
+            >
+              {item.label}
+            </MenuItem>
+          )
+        )}
       </Menu>
     </Sidebar>
   );

@@ -55,7 +55,7 @@ const customStyles = {
   },
 };
 
-const SelectMultiField = ({ setData, city, ward, addressFull }) => {
+const SelectMultiField = ({ setData, city, ward, addressFull, property }) => {
   return (
     <>
       <div className="col-sm-6 col-xl-4">
@@ -65,6 +65,7 @@ const SelectMultiField = ({ setData, city, ward, addressFull }) => {
             type="text"
             className="form-control"
             placeholder="Nhập tên phường"
+                defaultValue={property.Address.split(", ")[1]}
             onChange={(e) => {
               ward(e.target.value);
               setData((prev) => ({
@@ -82,7 +83,7 @@ const SelectMultiField = ({ setData, city, ward, addressFull }) => {
           </label>
           <div className="location-area">
             <Select
-              defaultValue={[cities[14]]}
+              defaultValue={{label: property.Address.split(", ")[2]} || [cities[14]]}
               name="colors"
               options={cities}
               styles={customStyles}

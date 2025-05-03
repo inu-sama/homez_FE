@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import ModalVideo from "react-modal-video";
 
-const PropertyVideo = () => {
+const PropertyVideo = ({video}) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
     <>
-      <ModalVideo
+      {/* <ModalVideo
         channel="youtube"
         isOpen={isOpen}
         videoId="oqNZOOWF8qM"
@@ -24,7 +24,11 @@ const PropertyVideo = () => {
             <span className="flaticon-play" />
           </button>
         </div>
-      </div>
+      </div> */}
+      <video width="320" height="240" controls>
+        <source src={video.data} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </>
   );
 };

@@ -29,7 +29,7 @@ const Faq = () => {
                 <h2 className="title">Frequently Asked Questions</h2>
                 <div className="breadcumb-list">
                   <a href="#">Home</a>
-                  <a href="#">For Rent</a>
+                  <a href="#">FAQ</a>
                 </div>
               </div>
             </div>

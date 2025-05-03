@@ -10,7 +10,7 @@ const FeaturedListings = ({ data, colstyle, state }) => {
         if (listing.State == state) {
           return (
             <Link
-              href={"/single-v1/" + listing._id}
+              href={"/property-detail/" + listing._id}
               className={` ${
                 colstyle ? "col-sm-12 col-lg-6" : "col-sm-6 col-lg-4"
               }  `}

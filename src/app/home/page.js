@@ -1,4 +1,5 @@
 import MobileMenu from "@/components/common/mobile-menu";
+import DefaultHeader from "@/components/common/DefaultHeader";
 import Hero from "@/components/home/home-v8/hero";
 import Blog from "@/components/common/Blog";
 import Footer from "@/components/home/home-v8/footer";
@@ -23,7 +24,7 @@ const Home = () => {
   return (
     <>
       {/* Main Header Nav */}
-      <Header />
+      <DefaultHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -58,8 +59,7 @@ const Home = () => {
               <div
                 className="dots_none nav_none"
                 data-aos="fade-up"
-                data-aos-delay="100"
-              >
+                data-aos-delay="100">
                 <PartnerDark />
               </div>
             </div>
@@ -74,16 +74,16 @@ const Home = () => {
           <div className="row align-items-center" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2">
-                <h2 className="title">Discover Our Featured Listings</h2>
+                <h2 className="title">Khám phá danh sách nổi bật</h2>
                 <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
+                  Danh sách bất động sản cho thuê
                 </p>
               </div>
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
-                <Link className="ud-btn2" href="/grid-full-3-col">
-                  See All Properties
+                <Link className="ud-btn2" href="/property-list/for-rent">
+                  Xem toàn bộ
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
@@ -110,11 +110,10 @@ const Home = () => {
               <div
                 className="main-title"
                 data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                <h2 className="title">Featured Homes</h2>
+                data-aos-delay="100">
+                <h2 className="title">Bất động sản theo loại</h2>
                 <p className="paragraph">
-                  Get some Inspirations from 800+ Properties
+                  Tìm mua bất động sản chất lượng nhất
                 </p>
               </div>
             </div>
@@ -159,7 +158,7 @@ const Home = () => {
       {/* End Featured Homes */}
 
       {/* CTA Banner */}
-      <section className="pt30 pb-0">
+      {/* <section className="pt30 pb-0">
         <div className="cta-banner5 bgc-f7 ms-auto maxw1850 pt100 pt60-lg pb90 pb30-lg position-relative overflow-hidden mx20-lg">
           <div className="container">
             <div className="row">
@@ -175,25 +174,23 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            {/* End .row */}
 
             <div className="row" data-aos="fade-up" data-aos-delay="200">
               <Service />
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* End CTA Banner */}
 
       {/* Explore Cities */}
-      <section className="pb80 pb30-md">
+      {/* <section className="pb80 pb30-md">
         <div className="container">
           <div className="row">
             <div
               className="col-md-9 col-lg-5 col-xl-4"
               data-aos="fade-up"
-              data-aos-delay="100"
-            >
+              data-aos-delay="100">
               <div className="main-title mb30">
                 <h2 className="title mb20">Explore Cities</h2>
                 <p className="text">
@@ -208,19 +205,16 @@ const Home = () => {
                 <i className="fal fa-arrow-right-long" />
               </Link>
             </div>
-            {/* End .col */}
 
             <div
               className="col-lg-7 col-xl-7 offset-xl-1"
               data-aos="fade-up"
-              data-aos-delay="300"
-            >
+              data-aos-delay="300">
               <ExploreCities />
             </div>
           </div>
-          {/* End row */}
         </div>
-      </section>
+      </section> */}
 
       {/* Explore Apartment */}
       <section className="pt0 pb60 pb10-md">
@@ -228,13 +222,9 @@ const Home = () => {
           <div className="row">
             <div
               className="col-lg-6 m-auto wow fadeInUp"
-              data-wow-delay="300ms"
-            >
+              data-wow-delay="300ms">
               <div className="main-title text-center">
-                <h2 className="title">See How Realton Can Help</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
+                <h2 className="title">Chúng tôi có thể giúp gì cho bạn?</h2>
               </div>
             </div>
           </div>
@@ -255,14 +245,12 @@ const Home = () => {
               <div
                 className="col-xl-6"
                 daa-aos="fade-left"
-                data-aos-delay="100"
-              ></div>
+                data-aos-delay="100"></div>
               {/* End .col */}
               <div
                 className="col-xl-5 offset-xl-1"
                 daa-aos="fade-right"
-                data-aos-delay="300"
-              >
+                data-aos-delay="300">
                 <div className="home8-property-slider">
                   <FeatureProperties />
                 </div>
@@ -276,14 +264,13 @@ const Home = () => {
       {/* End Featured Properties */}
 
       {/* Our Exclusive Agetns */}
-      <section className="pb80 pb30-md">
+      {/* <section className="pb80 pb30-md">
         <div className="container">
           <div className="row">
             <div
               className="col-md-9 col-lg-5 col-xl-4"
               data-aos="fade-up"
-              data-aos-delay="100"
-            >
+              data-aos-delay="100">
               <div className="main-title mb30">
                 <h2 className="title mb20">Our Exclusive Agetns</h2>
                 <p className="text">
@@ -298,16 +285,13 @@ const Home = () => {
                 <i className="fal fa-arrow-right-long" />
               </Link>
             </div>
-            {/* End .col */}
 
             <div className="col-lg-7 col-xl-7 offset-xl-1">
               <Agents />
             </div>
-            {/* End .col */}
           </div>
-          {/* End row */}
         </div>
-      </section>
+      </section> */}
       {/* End  Our Exclusive Agetns */}
 
       {/* Start Our Footer */}
