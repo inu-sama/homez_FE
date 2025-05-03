@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import SidebarStickyBar from "@/components/home/home-v8/SidebarStickyBar";
 import SidebarPanel from "@/components/common/sidebar-panel";
 import HeaderAD from "@/components/common/componentsAD/HeaderAD";
-import PropertyGallery from "@/components/common/componentsAD/single-v10/PropertyGallery";
+import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
 import OverView from "@/components/property/property-single-style/common/OverView";
 import EditPropertyTabContent from "@/components/common/componentsAD/dashboard-edit-property";
 
@@ -19,6 +19,13 @@ export default function ADPostEdit() {
 
   const params = useParams();
   const id = params?.id;
+
+  // useEffect(() => {
+  //   const role = getCookie("role");
+  //   if (role !== "Admin" && role !== "Staff") {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -38,10 +45,6 @@ export default function ADPostEdit() {
       fetchProperties();
     }
   }, [id]);
-
-  useEffect(() => {
-    console.log("Data fetched:", data);
-  }, [data]);
 
   if (loading)
     return <div className="text-center mt-5">Đang tải dữ liệu...</div>;
@@ -87,6 +90,6 @@ export default function ADPostEdit() {
       </div>
     </div>
   ) : (
-    <div>aaa</div>
+    <div></div>
   );
 }

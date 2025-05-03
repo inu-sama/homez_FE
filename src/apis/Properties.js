@@ -1,4 +1,5 @@
 import instance from "./instance";
+import axios from "axios";
 
 class Properties {
   async getProperties() {
@@ -16,6 +17,19 @@ class Properties {
   async getPropertiesAD() {
     try {
       const res = await instance.get("/getPropertyAD");
+      return res.data.data;
+    } catch (error) {
+      console.error(
+        "Error blocking user:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể khoá user bằng số điện thoại");
+    }
+  }
+
+  async getProperties() {
+    try {
+      const res = await axios.get(process.env.API_URL_PORT + "/listings");
       return res.data.data;
     } catch (error) {
       console.error(
@@ -132,6 +146,35 @@ class Properties {
         error.response?.data || error.message
       );
       throw new Error("Không thể cập nhập bài đăng");
+    }
+  }
+
+  async ApproveProperty(id) {
+    try {
+      const res = await instance.get(`/listings-state/${id}`, {
+        headers: {
+          "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
+        },
+      });
+      return res;
+    } catch (error) {
+      console.error(
+        "Error creating property:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể duyệt bài đăng");
+    }
+  }
+  async DeleteProperty(id) {
+    try {
+      const res = await instance.delete(`/listings-delete/${id}`);
+      return res;
+    } catch (error) {
+      console.error(
+        "Error creating property:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể xoá bài đăng");
     }
   }
 }

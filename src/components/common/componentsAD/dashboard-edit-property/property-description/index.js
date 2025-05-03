@@ -78,7 +78,7 @@ const PropertyDescription = ({ setData, data, dataCate }) => {
                   }}
                   onClick={() => setShow(true)}
                 >
-                  {data.Type.category}
+                  {data.Type.category || "Chọn loại căn hộ"}
                 </p>
               ) : (
                 <Select

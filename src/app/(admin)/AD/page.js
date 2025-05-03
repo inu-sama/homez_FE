@@ -22,13 +22,12 @@ const Management = () => {
     return null;
   };
 
-  // useEffect(() => {
-  //   const role = getCookie("role");
-  //   // console.log(role);
-  //   if (role !== "Admin" && role !== "Staff") {
-  //     window.location.href = "/";
-  //   }
-  // }, []);
+  useEffect(() => {
+    const role = getCookie("role");
+    if (role !== "Admin" && role !== "Staff") {
+      window.location.href = "/";
+    }
+  }, []);
   const fetchUserList = async () => {
     try {
       const response = await apiUser.getUserList();
@@ -141,8 +140,19 @@ const Management = () => {
       >
         <p className="fw-bolder h1">Quản lý người dùng</p>
 
-        <div className="z-50">
+        <div className="z-50 ">
           <Search data={data} result={setResult} />
+        </div>
+        <div className="d-flex justify-content-end">
+          <button
+            className="w-30  ud-btn btn-white"
+            style={{ margin: "10px 5px" }}
+            onClick={() => {
+              apiUser.printFile();
+            }}
+          >
+            Xuất file
+          </button>
         </div>
 
         <div className="row g-3">
