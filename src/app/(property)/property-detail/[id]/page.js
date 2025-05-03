@@ -144,20 +144,18 @@ const SingleV1 = ({ params }) => {
                 </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <div className="row">
-                    {/* <AllComments /> */}
                     <AllReviews />
                   </div>
                 </div>
-                {/* End .ps-widget */}
 
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Leave A Review</h4>
                   <div className="row">
                     <ReviewBoxForm />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
               </div>
               {/* End .col-8 */}
@@ -165,8 +163,8 @@ const SingleV1 = ({ params }) => {
               <div className="col-lg-4">
                 <div className="column">
                   <div className="default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white position-relative">
-                    <h4 className="form-title mb5">Schedule a tour</h4>
-                    <p className="text">Choose your preferred day</p>
+                    <h4 className="form-title mb5">Đặt lịch tham quan</h4>
+                    <p className="text">Chọn thời gian mong muốn của bạn</p>
                     <ScheduleTour />
                   </div>
 
