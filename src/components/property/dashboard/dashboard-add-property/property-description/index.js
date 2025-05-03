@@ -2,7 +2,7 @@
 import Select from "react-select";
 import React, { useEffect } from "react";
 
-const PropertyDescription = ({ setData, dataCate }) => {
+const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
   // const categoryOptions = [
   //   { value: "Nhà ở", label: "Nhà ở" },
   //   { value: "Chung cư", label: "Chung cư" },
@@ -19,7 +19,6 @@ const PropertyDescription = ({ setData, dataCate }) => {
     label: item.Name,
     value: item._id,
   }));
-
   const customStyles = {
     option: (styles, { isFocused, isSelected, isHovered }) => {
       return {
@@ -52,6 +51,9 @@ const PropertyDescription = ({ setData, dataCate }) => {
                   ...prev,
                   Title: e.target.value,
                 }));
+                if (data.Title && data.Price && data.Description) {
+                  setFilled([true, false, false, false, false]);
+                }
               }}
             />
           </div>
@@ -65,7 +67,7 @@ const PropertyDescription = ({ setData, dataCate }) => {
             </label>
             <div className="location-area">
               <Select
-                defaultValue={selectOptions[0]}
+                defaultValue={{ value: "680e0ec211994cc12cb9e5e6", label: "Chung cư" }}
                 name="colors"
                 options={selectOptions}
                 styles={customStyles}
@@ -124,6 +126,9 @@ const PropertyDescription = ({ setData, dataCate }) => {
                   ...prev,
                   Price: e.target.value,
                 }));
+                if (data.Title && data.Price && data.Description) {
+                  setFilled([true, false, false, false, false]);
+                }
               }}
             />
           </div>
@@ -143,6 +148,9 @@ const PropertyDescription = ({ setData, dataCate }) => {
                   ...prev,
                   Description: e.target.value,
                 }));
+                if (data.Title && data.Price && data.Description) {
+                  setFilled([true, false, false, false, false]);
+                }
               }}
             />
           </div>

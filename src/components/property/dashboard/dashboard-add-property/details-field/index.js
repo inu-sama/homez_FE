@@ -2,7 +2,7 @@ import React from "react";
 import MultiSelectField from "./MultiSelectField";
 import StructureType from "./StructureType";
 
-const DetailsFiled = ({ setData }) => {
+const DetailsFiled = ({ setData, data, setFilled }) => {
   return (
     <form className="form-style1">
       <div className="row">
@@ -21,6 +21,9 @@ const DetailsFiled = ({ setData }) => {
                   ...prev,
                   sqft: e.target.value,
                 }));
+                if (data.sqft && data.yearBuilt) {
+                  setFilled([true, true, true, true, false]);
+                }
               }}
             />
           </div>
@@ -41,7 +44,7 @@ const DetailsFiled = ({ setData }) => {
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
-                  bedroom: e.target.value,
+                  bedroom: Number(e.target.value),
                 }));
               }}
             />
@@ -63,7 +66,7 @@ const DetailsFiled = ({ setData }) => {
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
-                  bathroom: e.target.value,
+                  bathroom: Number(e.target.value),
                 }));
               }}
             />
@@ -85,7 +88,7 @@ const DetailsFiled = ({ setData }) => {
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
-                  garage: e.target.value,
+                  garage: Number(e.target.value),
                 }));
               }}
             />
@@ -108,6 +111,9 @@ const DetailsFiled = ({ setData }) => {
                   ...prev,
                   yearBuilt: e.target.value,
                 }));
+                if (data.sqft && data.yearBuilt) {
+                  setFilled([true, true, true, true, false]);
+                }
               }}
             />
           </div>

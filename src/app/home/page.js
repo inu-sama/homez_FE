@@ -74,16 +74,16 @@ const Home = () => {
           <div className="row align-items-center" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2">
-                <h2 className="title">Discover Our Featured Listings</h2>
+                <h2 className="title">Khám phá danh sách nổi bật</h2>
                 <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
+                  Danh sách bất động sản cho thuê
                 </p>
               </div>
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
-                <Link className="ud-btn2" href="/grid-full-3-col">
-                  See All Properties
+                <Link className="ud-btn2" href="/property-list/for-rent">
+                  Xem toàn bộ
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
@@ -111,9 +111,9 @@ const Home = () => {
                 className="main-title"
                 data-aos="fade-up"
                 data-aos-delay="100">
-                <h2 className="title">Featured Homes</h2>
+                <h2 className="title">Bất động sản theo loại</h2>
                 <p className="paragraph">
-                  Get some Inspirations from 800+ Properties
+                  Tìm mua bất động sản chất lượng nhất
                 </p>
               </div>
             </div>
@@ -158,7 +158,7 @@ const Home = () => {
       {/* End Featured Homes */}
 
       {/* CTA Banner */}
-      <section className="pt30 pb-0">
+      {/* <section className="pt30 pb-0">
         <div className="cta-banner5 bgc-f7 ms-auto maxw1850 pt100 pt60-lg pb90 pb30-lg position-relative overflow-hidden mx20-lg">
           <div className="container">
             <div className="row">
@@ -174,18 +174,17 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            {/* End .row */}
 
             <div className="row" data-aos="fade-up" data-aos-delay="200">
               <Service />
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* End CTA Banner */}
 
       {/* Explore Cities */}
-      <section className="pb80 pb30-md">
+      {/* <section className="pb80 pb30-md">
         <div className="container">
           <div className="row">
             <div
@@ -206,7 +205,6 @@ const Home = () => {
                 <i className="fal fa-arrow-right-long" />
               </Link>
             </div>
-            {/* End .col */}
 
             <div
               className="col-lg-7 col-xl-7 offset-xl-1"
@@ -215,9 +213,8 @@ const Home = () => {
               <ExploreCities />
             </div>
           </div>
-          {/* End row */}
         </div>
-      </section>
+      </section> */}
 
       {/* Explore Apartment */}
       <section className="pt0 pb60 pb10-md">
@@ -227,10 +224,7 @@ const Home = () => {
               className="col-lg-6 m-auto wow fadeInUp"
               data-wow-delay="300ms">
               <div className="main-title text-center">
-                <h2 className="title">See How Realton Can Help</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
+                <h2 className="title">Chúng tôi có thể giúp gì cho bạn?</h2>
               </div>
             </div>
           </div>
@@ -270,7 +264,7 @@ const Home = () => {
       {/* End Featured Properties */}
 
       {/* Our Exclusive Agetns */}
-      <section className="pb80 pb30-md">
+      {/* <section className="pb80 pb30-md">
         <div className="container">
           <div className="row">
             <div
@@ -291,16 +285,13 @@ const Home = () => {
                 <i className="fal fa-arrow-right-long" />
               </Link>
             </div>
-            {/* End .col */}
 
             <div className="col-lg-7 col-xl-7 offset-xl-1">
               <Agents />
             </div>
-            {/* End .col */}
           </div>
-          {/* End row */}
         </div>
-      </section>
+      </section> */}
       {/* End  Our Exclusive Agetns */}
 
       {/* Start Our Footer */}

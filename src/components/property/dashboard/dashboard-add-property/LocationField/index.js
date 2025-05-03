@@ -18,7 +18,7 @@ const customStyles = {
   },
 };
 
-const LocationField = ({ setData, dataLocation }) => {
+const LocationField = ({ setData, data, dataLocation, setFilled }) => {
   const [address, setAddress] = useState("");
   const [ward, setWard] = useState("");
   const [city, setCity] = useState("Hồ Chí Minh");
@@ -45,6 +45,9 @@ const LocationField = ({ setData, dataLocation }) => {
                   ...prev,
                   Address: addressFull,
                 }));
+                if (data.Address && data.Price && data.Description) {
+                  setFilled([true, true, true, false, false]);
+                }
               }}
             />
           </div>

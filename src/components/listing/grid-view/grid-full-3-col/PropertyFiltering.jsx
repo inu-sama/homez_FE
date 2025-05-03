@@ -1,7 +1,7 @@
 "use client";
 
 import listings from "@/data/listings";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import ListingSidebar from "../../sidebar";
 import AdvanceFilterModal from "@/components/common/advance-filter-two";
 import TopFilterBar from "./TopFilterBar";
@@ -10,29 +10,14 @@ import Pagination from "../../Pagination";
 import { apiProperties } from "@/apis/Properties";
 import PaginationTwo from "../../PaginationTwo";
 
-// export default function PropertyFiltering(props) {
-  // const [properties, setProperties] = useState(null);
-
-  // useEffect(() => {
-  //   const headers = {
-  //     Authorization:
-  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJhZG1pbiIsIkxhc3ROYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW4iLCJQaG9uZU51bWJlciI6IjA5MDA5MDA5MDAiLCJpYXQiOjE3NDU2NTg3MDQsImV4cCI6MTc0NTc0NTEwNH0.YiJkEpWqNcOVPUbIngU6_qeOVeKLjwcEsk8n_uOVf8c",
-  //   };
-  //   fetch("http://localhost:8888/api/listings", { headers })
-  //     .then((response) => response.json())
-  //     .then((data) => setProperties(data));
-  //   console.log("properties: ", properties);
-  // }, []);
 export default function PropertyFiltering({type}) {
   const [properties, setProperties] = useState([]);
-  const method = (type == "Rent" ? "Cho thuê" : "Bán");
+  const method = (type == "for-rent" ? "Cho thuê" : "Bán");
 
   const fetchProperties = async () => {
     try {
-      const response = await apiProperties.getPropertiesAD();
-      console.log("response", response);
+      const response = await apiProperties.getProperties();
       setProperties(response);
-      console.log("properties before fetch", properties);
     } catch (error) {
       console.error("Error fetching properties:", error);
     }
@@ -40,11 +25,6 @@ export default function PropertyFiltering({type}) {
   useEffect(() => {
     fetchProperties();
   }, []);
-
-  useEffect(() => {
-    console.log("properties after fetch", properties);
-    console.log("params", type);
-  }, [properties]);
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState("Newest");
