@@ -32,6 +32,7 @@ const DefaultHeader = () => {
   };
   useEffect(() => {
     const token = getCookie("token");
+    const role = getCookie("role");
     if (token) {
       setShow(true);
     } else {
@@ -79,7 +80,7 @@ const DefaultHeader = () => {
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
-                  {!show && (
+                  {!show ? (
                     <a
                       href="#"
                       className="login-info d-flex align-items-cente"
@@ -88,9 +89,16 @@ const DefaultHeader = () => {
                       role="button"
                     >
                       <i className="far fa-user-circle fz16 me-2" />{" "}
-                      <span className="d-none d-xl-block">Tài khoản</span>
+                      <span className="d-none d-xl-block">Đăng ký/Đăng nhập</span>
                     </a>
-                  )}
+                  ) : (<Link
+                    href="/agent-single"
+                    className="login-info d-flex align-items-cente"
+                    role="button"
+                  >
+                    <i className="far fa-user-circle fz16 me-2" />{" "}
+                    <span className="d-none d-xl-block">Tài khoản</span>
+                  </Link>)}
                   <Link
                     className="ud-btn btn-white add-property bdrs60 mx-2 mx-xl-4"
                     href="/dashboard-add-property"
