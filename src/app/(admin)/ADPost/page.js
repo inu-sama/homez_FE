@@ -18,6 +18,7 @@ import Link from "next/link";
 export default function ManagementPost() {
   const [data, setData] = useState([]);
   const router = useRouter();
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     console.log("Data property", data);
@@ -31,11 +32,16 @@ export default function ManagementPost() {
   };
 
   useEffect(() => {
-    const role = getCookie("role");
+    setRole(getCookie("role"));
+  }, []);
+
+  useEffect(() => {
+    if (!role) return;
     if (role !== "Admin" && role !== "Staff") {
       window.location.href = "/";
     }
-  }, []);
+  }, [role]);
+
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
@@ -160,12 +166,14 @@ export default function ManagementPost() {
                   </div>
 
                   <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-3">
-                    <Link
-                      className="w-100 w-md-25 ud-btn btn-white"
-                      href={`/ADPostEdit/${item._id}`}
-                    >
-                      Chỉnh sửa
-                    </Link>
+                    {role === "Admin" && (
+                      <Link
+                        className="w-100 w-md-25 ud-btn btn-white"
+                        href={`/ADPostEdit/${item._id}`}
+                      >
+                        Chỉnh sửa
+                      </Link>
+                    )}
                     <button
                       type="button"
                       className="w-100 w-md-25 ud-btn btn-thm"
@@ -173,12 +181,14 @@ export default function ManagementPost() {
                     >
                       Duyệt bài
                     </button>
-                    <button
-                      className="w-100 w-md-25 ud-btn btn-white"
-                      onClick={() => handleDelete(item._id)}
-                    >
-                      Xoá Bài
-                    </button>
+                    {role === "Admin" && (
+                      <button
+                        className="w-100 w-md-25 ud-btn btn-white"
+                        onClick={() => handleDelete(item._id)}
+                      >
+                        Xoá Bài
+                      </button>
+                    )}
                   </div>
                 </div>
               </form>

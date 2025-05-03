@@ -13,6 +13,7 @@ const Management = () => {
   const [password, setPassword] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [role, setRole] = useState("");
   const usersPerPage = 6;
 
   const getCookie = (name) => {
@@ -23,11 +24,16 @@ const Management = () => {
   };
 
   useEffect(() => {
-    const role = getCookie("role");
+    setRole(getCookie("role"));
+  }, []);
+
+  useEffect(() => {
+    if (!role) return;
     if (role !== "Admin" && role !== "Staff") {
       window.location.href = "/";
     }
-  }, []);
+  }, [role]);
+
   const fetchUserList = async () => {
     try {
       const response = await apiUser.getUserList();
@@ -209,30 +215,33 @@ const Management = () => {
                     </div>
                   </div>
                   <div className="col-12">
-                    <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-3">
-                      <button
-                        className="w-100 w-md-25 ud-btn btn-white"
-                        onClick={() => handlResetOTP(item.PhoneNumber)}
-                      >
-                        Đặt lại OTP
-                      </button>
-                      <button
-                        className="w-100 w-md-25 ud-btn btn-thm"
-                        onClick={() => (
-                          setShow(!show), setPhoneNumber(item.PhoneNumber)
-                        )}
-                      >
-                        Cấp quyền
-                      </button>
-                      <button
-                        className="w-100 w-md-25 ud-btn btn-white"
-                        onClick={() => handleBlockUser(item.PhoneNumber)}
-                      >
-                        {item.Status === "Active"
-                          ? "Khóa tài khoản"
-                          : "Mở tài khoản"}
-                      </button>
-                    </div>
+                    {role === "Admin" && (
+                      <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-3">
+                        <button
+                          className="w-100 w-md-25 ud-btn btn-white"
+                          onClick={() => handlResetOTP(item.PhoneNumber)}
+                        >
+                          Đặt lại OTP
+                        </button>
+
+                        <button
+                          className="w-100 w-md-25 ud-btn btn-thm"
+                          onClick={() => (
+                            setShow(!show), setPhoneNumber(item.PhoneNumber)
+                          )}
+                        >
+                          Cấp quyền
+                        </button>
+                        <button
+                          className="w-100 w-md-25 ud-btn btn-white"
+                          onClick={() => handleBlockUser(item.PhoneNumber)}
+                        >
+                          {item.Status === "Active"
+                            ? "Khóa tài khoản"
+                            : "Mở tài khoản"}
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
