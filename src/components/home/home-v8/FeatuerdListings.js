@@ -55,13 +55,20 @@ const FeaturedListings = () => {
                 <Link href={`/property-edit/${listing._id}`} className="item">
                   <div className="listing-style9">
                     <div className="list-thumb">
-                      <Image
-                        width={382}
-                        height={465}
-                        className="w-100 h-100 cover"
-                        src={listing.Images[0]}
-                        alt="listings"
-                      />
+                      <div
+                        style={{
+                          width: "382px",
+                          height: "465px",
+                          position: "relative",
+                        }}
+                      >
+                        <Image
+                          fill
+                          style={{ objectFit: "cover" }}
+                          src={listing.Images[0]}
+                          alt="listings"
+                        />
+                      </div>
                       <div className="sale-sticker-wrap">
                         {listing.State == "Cho thuê" && (
                           <div className="list-tag rounded-0 fz12">
@@ -94,9 +101,7 @@ const FeaturedListings = () => {
                         /<span>tháng</span>
                       </div>
                       <h6 className="list-title my-1">
-                        <div>
-                          {listing.Title}
-                        </div>
+                        <div>{listing.Title}</div>
                       </h6>
                       <div className="list-meta2 d-flex align-items-center">
                         <a href="#" className="mr10">
