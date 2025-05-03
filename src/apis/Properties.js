@@ -1,4 +1,5 @@
 import instance from "./instance";
+import axios from "axios";
 
 class Properties {
   async getProperties() {
@@ -28,7 +29,7 @@ class Properties {
 
   async getProperties() {
     try {
-      const res = await axios.get("/listings");
+      const res = await axios.get(process.env.API_URL_PORT + "/listings");
       return res.data.data;
     } catch (error) {
       console.error(

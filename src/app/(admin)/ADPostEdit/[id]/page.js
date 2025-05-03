@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import SidebarStickyBar from "@/components/home/home-v8/SidebarStickyBar";
 import SidebarPanel from "@/components/common/sidebar-panel";
 import HeaderAD from "@/components/common/componentsAD/HeaderAD";
-import PropertyGallery from "@/components/common/componentsAD/single-v10/PropertyGallery";
+import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
 import OverView from "@/components/property/property-single-style/common/OverView";
 import EditPropertyTabContent from "@/components/common/componentsAD/dashboard-edit-property";
 
