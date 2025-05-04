@@ -21,7 +21,6 @@ const translateToken = (token) => {
 };
 
 const DefaultHeader = () => {
-
   const [navbar, setNavbar] = useState(false);
   const [show, setShow] = useState(false);
   const changeBackground = () => {
@@ -47,7 +46,7 @@ const DefaultHeader = () => {
   useEffect(() => {
     const token = getCookie("token");
     const role = getCookie("role");
-    if (token && role) {
+    if (token) {
       setShow(true);
     } else {
       setShow(false);
@@ -107,7 +106,7 @@ const DefaultHeader = () => {
                     </a>
                   ) : (
                     <Link
-                      href={`/agent-single/`}
+                      href={`/dashboard-my-properties`}
                       className="login-info d-flex align-items-cente"
                       role="button">
                       <i className="far fa-user-circle fz16 me-2" />{" "}

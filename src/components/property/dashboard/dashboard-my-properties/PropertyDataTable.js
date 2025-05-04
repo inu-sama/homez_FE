@@ -76,15 +76,11 @@ const PropertyDataTable = () => {
     try {
       const response = await apiProperties.getProperties();
       console.log("user", user);
-      response.forEach((elm) => {
-        console.log("prop", elm);
-        if (elm.Account) {
-          console.log("prop", elm.Account[0].PhoneNumber);
-          if (user && elm.Account[0].PhoneNumber == user.PhoneNumber) {
-            setProperty(elm);
-          }
-        }
-      });
+      console.log("res", response);
+      const filterUser = response.filter(
+        (item) => item.Account[0].PhoneNumber == user.PhoneNumber
+      );
+      console.log("filterUser", filterUser);
     } catch (error) {
       console.error("Error fetching properties:", error);
     }
@@ -163,15 +159,13 @@ const PropertyDataTable = () => {
                     <button
                       className="icon"
                       style={{ border: "none" }}
-                      data-tooltip-id={`edit-${property._id}`}
-                    >
+                      data-tooltip-id={`edit-${property._id}`}>
                       <span className="fas fa-pen fa" />
                     </button>
                     <button
                       className="icon"
                       style={{ border: "none" }}
-                      data-tooltip-id={`delete-${property._id}`}
-                    >
+                      data-tooltip-id={`delete-${property._id}`}>
                       <span className="flaticon-bin" />
                     </button>
 

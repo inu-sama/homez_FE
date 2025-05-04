@@ -8,67 +8,37 @@ const SidebarDashboard = () => {
 
   const sidebarItems = [
     {
-      title: "MAIN",
+      title: "Quản lý bất động sản",
       items: [
-        {
-          href: "/dashboard-home",
-          icon: "flaticon-discovery",
-          text: "Dashboard",
-        },
-        {
-          href: "/dashboard-message",
-          icon: "flaticon-chat-1",
-          text: "Message",
-        },
-      ],
-    },
-    {
-      title: "MANAGE LISTINGS",
-      items: [
-        {
-          href: "/dashboard-add-property",
-          icon: "flaticon-new-tab",
-          text: "Add New Property",
-        },
         {
           href: "/dashboard-my-properties",
           icon: "flaticon-home",
-          text: "My Properties",
+          text: "Bất động sản của tôi",
+        },
+        {
+          href: "/dashboard-add-property",
+          icon: "flaticon-new-tab",
+          text: "Thêm mới",
         },
         {
           href: "/dashboard-my-favourites",
           icon: "flaticon-like",
-          text: "My Favorites",
-        },
-        {
-          href: "/dashboard-saved-search",
-          icon: "flaticon-search-2",
-          text: "Saved Search",
-        },
-        {
-          href: "/dashboard-reviews",
-          icon: "flaticon-review",
-          text: "Reviews",
+          text: "Yêu thích",
         },
       ],
     },
     {
-      title: "MANAGE ACCOUNT",
+      title: "Quản lý tài khoản",
       items: [
-        {
-          href: "/dashboard-my-package",
-          icon: "flaticon-protection",
-          text: "My Package",
-        },
         {
           href: "/dashboard-my-profile",
           icon: "flaticon-user",
-          text: "My Profile",
+          text: "Sửa thông tin",
         },
         {
           href: "/login",
           icon: "flaticon-logout",
-          text: "Logout",
+          text: "Đăng xuất",
         },
       ],
     },
@@ -82,8 +52,7 @@ const SidebarDashboard = () => {
             <p
               className={`fz15 fw400 ff-heading ${
                 sectionIndex === 0 ? "mt-0" : "mt30"
-              }`}
-            >
+              }`}>
               {section.title}
             </p>
             {section.items.map((item, itemIndex) => (
@@ -92,8 +61,7 @@ const SidebarDashboard = () => {
                   href={item.href}
                   className={`items-center   ${
                     pathname == item.href ? "-is-active" : ""
-                  } `}
-                >
+                  } `}>
                   <i className={`${item.icon} mr15`} />
                   {item.text}
                 </Link>
