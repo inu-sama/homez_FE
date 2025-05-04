@@ -42,11 +42,18 @@ class ApiAuthen {
   }
 
   async me() {
+    const res = await axios.get(`${process.env.API_URL_PORT}/me`, {
+      withCredentials: true,
+    });
+    return res;
+  }
+
+  async logout() {
     try {
-      const res = await axios.get(`${process.env.API_URL_PORT}/me`, {
+      const res = await axios.get(`${process.env.API_URL_PORT}/logout`, {
         withCredentials: true,
       });
-      return res.data.Role;
+      return res;
     } catch (error) {
       console.error("Error logging in:", error.response?.data || error.message);
       throw new Error("Login failed");

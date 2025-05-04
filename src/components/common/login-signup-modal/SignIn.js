@@ -20,6 +20,7 @@ const SignIn = () => {
     try {
       setLoading(true);
       const res = await apiAuthen.login(phone, password);
+      document.cookie = `token=${res.data.token}; path=/; max-age=86400; Secure; SameSite=Strict`;
 
       if (res.status === 404) {
         setMessage("Tài khoản không tồn tại.");
@@ -27,7 +28,8 @@ const SignIn = () => {
       }
 
       if (res.status === 201) {
-        const role = await apiAuthen.me();
+        const res = await apiAuthen.me();
+        const role = res.data.Role;
         setMessage("Đăng nhập thành công!");
 
         setTimeout(() => {

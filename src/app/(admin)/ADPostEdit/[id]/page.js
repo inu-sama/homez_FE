@@ -8,7 +8,7 @@ import HeaderAD from "@/components/common/componentsAD/HeaderAD";
 import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
 import OverView from "@/components/property/property-single-style/common/OverView";
 import EditPropertyTabContent from "@/components/common/componentsAD/dashboard-edit-property";
-
+import { apiAuthen } from "@/apis/authen";
 import { apiProperties } from "@/apis/Properties";
 import formatVND from "@/components/common/formattingVND";
 
@@ -16,16 +16,29 @@ export default function ADPostEdit() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [role, setRole] = useState("");
 
   const params = useParams();
   const id = params?.id;
 
-  // useEffect(() => {
-  //   const role = getCookie("role");
-  //   if (role !== "Admin" && role !== "Staff") {
-  //     window.location.href = "/";
-  //   }
-  // }, []);
+  const checkRole = async () => {
+    try {
+      const role = await apiAuthen.me();
+      if (role.status === 201) {
+        setRole(role.data.Role);
+      }
+      if (role.status === 202) {
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.error("Không lấy được role:", err);
+      setRole("");
+    }
+  };
+
+  useEffect(() => {
+    checkRole();
+  }, []);
 
   useEffect(() => {
     const fetchProperties = async () => {

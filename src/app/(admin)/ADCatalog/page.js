@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { apiCatalog } from "@/apis/Catalog";
+import { apiAuthen } from "@/apis/authen";
 
 export default function Catalog() {
   const [role, setRole] = useState("");
@@ -22,23 +23,24 @@ export default function Catalog() {
     itemIndex: null,
   });
 
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-    return null;
+  const checkRole = async () => {
+    try {
+      const role = await apiAuthen.me();
+      if (role.status === 201) {
+        setRole(role.data.Role);
+      }
+      if (role.status === 202) {
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.error("Không lấy được role:", err);
+      setRole("");
+    }
   };
 
   useEffect(() => {
-    setRole(getCookie("role"));
+    checkRole();
   }, []);
-
-  useEffect(() => {
-    if (!role) return;
-    if (role !== "Admin") {
-      window.location.href = "/";
-    }
-  }, [role]);
 
   const [show, setShow] = useState({ slideKey: null, visible: false });
   const [editting, setEditting] = useState("");
