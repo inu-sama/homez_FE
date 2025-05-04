@@ -47,7 +47,7 @@ const DefaultHeader = () => {
   useEffect(() => {
     const token = getCookie("token");
     const role = getCookie("role");
-    if (token) {
+    if (token && role) {
       setShow(true);
     } else {
       setShow(false);
