@@ -67,7 +67,7 @@ const PropertyDescription = ({ setData, dataCate, property, data }) => {
               <div className="location-area">
                 <Select
                   defaultValue={
-                    {label: property.Type.category} || {
+                    { label: property.Type.category } || {
                       value: "680e0ec211994cc12cb9e5e6",
                       label: "Chung cư",
                     }
@@ -97,7 +97,7 @@ const PropertyDescription = ({ setData, dataCate, property, data }) => {
               </label>
               <div className="location-area">
                 <Select
-                  defaultValue={{label: property.State} || listedIn[0]}
+                  defaultValue={{ label: property.State } || listedIn[0]}
                   name="colors"
                   options={listedIn}
                   styles={customStyles}

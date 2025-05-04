@@ -22,50 +22,69 @@ const SignUp = () => {
   useEffect(() => {
     console.log("Checking for reCAPTCHA setup");
 
+    const recaptchaContainer = document.getElementById("recaptcha-container");
+    if (!recaptchaContainer) {
+      console.error("Thiếu phần tử #recaptcha-container trong DOM.");
+      return;
+    }
+
     if (!auth) {
-      console.error("Firebase auth is not properly initialized.");
+      console.error("Firebase auth chưa được khởi tạo.");
       return;
     }
 
     if (!window.recaptchaVerifier) {
-      console.log("Setting up reCAPTCHA", auth);
+      try {
+        console.log("Setting up reCAPTCHA...");
 
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        auth,
-        "recaptcha-container",
-        {
-          size: "invisible",
-          callback: (response) => {
-            console.log("reCAPTCHA verified", response);
-          },
-        }
-      );
+        window.recaptchaVerifier = new RecaptchaVerifier(
+          auth,
+          "recaptcha-container",
+          {
+            size: "invisible",
+            callback: (response) => {
+              console.log("reCAPTCHA verified", response);
+            },
+          }
+        );
 
-      window.recaptchaVerifier
-        .render()
-        .then(function () {
-          console.log("reCAPTCHA đã được render.");
-        })
-        .catch((err) => {
-          console.error("Lỗi khi render reCAPTCHA:", err);
-        });
+        window.recaptchaVerifier
+          .render()
+          .then(() => {
+            console.log("reCAPTCHA đã được render.");
+          })
+          .catch((err) => {
+            console.error("Lỗi khi render reCAPTCHA:", err);
+          });
+      } catch (err) {
+        console.error("Lỗi khi thiết lập reCAPTCHA:", err);
+      }
     }
-  }, []);
+  }, [auth]);
 
+  // Hàm kiểm tra số điện thoại
   const validatePhoneNumber = (phone) => {
     const regex = /^\+84\d{9}$/;
     return regex.test(phone);
   };
 
+  // Gửi OTP
   const sendOTP = async (e) => {
     e.preventDefault();
+
     if (!validatePhoneNumber(phone)) {
       setMessage("Số điện thoại không hợp lệ. Định dạng: +84xxxxxxxxx");
       return;
     }
 
+    if (!window.recaptchaVerifier) {
+      setMessage("Lỗi: reCAPTCHA chưa được khởi tạo. Vui lòng tải lại trang.");
+      return;
+    }
+
     setLoading(true);
     setMessage("");
+
     try {
       const appVerifier = window.recaptchaVerifier;
       const confirmationResult = await signInWithPhoneNumber(
@@ -76,12 +95,12 @@ const SignUp = () => {
       setConfirmation(confirmationResult);
       setMessage("Mã OTP đã được gửi.");
     } catch (err) {
-      console.error(err);
-      // setMessage("Lỗi gửi OTP: " + err.message);
+      console.error("Lỗi khi gửi OTP:", err);
       setMessage(
-        "Lỗi gửi OTP: Cache cho trình duyệt của bạn đã hết hạn. Vui lòng thử lại."
+        "Lỗi gửi OTP: Cache trình duyệt có thể đã hết hạn. Vui lòng thử lại."
       );
     }
+
     setLoading(false);
   };
 
@@ -134,8 +153,7 @@ const SignUp = () => {
   return (
     <form
       className="form-style1"
-      onSubmit={info ? handleSubmitInfo : undefined}
-    >
+      onSubmit={info ? handleSubmitInfo : undefined}>
       <div id="recaptcha-container"></div>
 
       {message && <div className="alert alert-info text-center">{message}</div>}
@@ -222,8 +240,7 @@ const SignUp = () => {
             onClick={sendOTP}
             className="ud-btn btn-thm"
             type="button"
-            disabled={loading}
-          >
+            disabled={loading}>
             {loading ? "Đang gửi OTP..." : "Gửi OTP"}
             <i className="fal fa-comment-sms" />
           </button>
@@ -232,8 +249,7 @@ const SignUp = () => {
             onClick={verifyOTP}
             className="ud-btn btn-thm"
             type="button"
-            disabled={loading}
-          >
+            disabled={loading}>
             {loading ? "Đang xác thực..." : "Xác nhận OTP"}{" "}
             <i className="fal fa-paintbrush" />
           </button>
