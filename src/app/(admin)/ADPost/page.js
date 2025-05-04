@@ -14,33 +14,31 @@ import formatVND from "@/components/common/formattingVND";
 import OverView from "@/components/property/property-single-style/common/OverView";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { apiAuthen } from "@/apis/authen";
 
 export default function ManagementPost() {
   const [data, setData] = useState([]);
   const router = useRouter();
   const [role, setRole] = useState("");
 
-  useEffect(() => {
-    console.log("Data property", data);
-  }, [data]);
-
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-    return null;
+  const checkRole = async () => {
+    try {
+      const role = await apiAuthen.me();
+      if (role.status === 201) {
+        setRole(role.data.Role);
+      }
+      if (role.status === 202) {
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.error("Không lấy được role:", err);
+      setRole("");
+    }
   };
 
   useEffect(() => {
-    setRole(getCookie("role"));
+    checkRole();
   }, []);
-
-  useEffect(() => {
-    if (!role) return;
-    if (role !== "Admin" && role !== "Staff") {
-      window.location.href = "/";
-    }
-  }, [role]);
 
   const fetchProperties = async () => {
     try {

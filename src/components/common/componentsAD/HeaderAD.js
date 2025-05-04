@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ProSidebarContent from "./ProSidebarContent";
-
+import handleLogout from "../logout";
 export default function HeaderAD() {
   return (
     <div className="mobilie_header_nav stylehome1">
@@ -32,9 +32,17 @@ export default function HeaderAD() {
                   alt="logo"
                 />
               </Link>
-              <Link href="">
+              <button
+                className="nav-link h5"
+                style={{
+                  outline: "none",
+                  border: "none",
+                  background: "white",
+                }}
+                onClick={handleLogout}
+              >
                 <span className="icon fz18 fa-solid fa-right-from-bracket" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>

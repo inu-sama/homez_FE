@@ -8,24 +8,34 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
   const fileInputRef = useRef(null);
 
   const handleUpload = (files) => {
-    const newImages = [...uploadedImages];
+    const readers = [];
+    const newImages = [];
 
     for (const file of files) {
       const reader = new FileReader();
-      reader.onload = (e) => {
-        newImages.push(e.target.result);
-        setUploadedImages(newImages);
-      };
+      readers.push(
+        new Promise((resolve) => {
+          reader.onload = (e) => {
+            newImages.push(e.target.result);
+            resolve();
+          };
+        })
+      );
       reader.readAsDataURL(file);
     }
 
-    setData((prev) => ({
-      ...prev,
-      images: newImages,
-    }));
-    if (data.images.length >= 4) {
-      setFilled([true, true, false, false, false]);
-    }
+    Promise.all(readers).then(() => {
+      const updatedImages = [...uploadedImages, ...newImages];
+      setUploadedImages(updatedImages);
+      setData((prev) => ({
+        ...prev,
+        images: updatedImages,
+      }));
+
+      if (updatedImages.length >= 4) {
+        setFilled([true, true, false, false, false]);
+      }
+    });
   };
 
   const handleDrop = (event) => {
@@ -39,7 +49,6 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
   };
 
   const handleButtonClick = () => {
-    // Programmatically trigger the hidden file input
     fileInputRef.current.click();
   };
 
@@ -47,6 +56,29 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
     const newImages = [...uploadedImages];
     newImages.splice(index, 1);
     setUploadedImages(newImages);
+    setData((prev) => ({
+      ...prev,
+      images: newImages,
+    }));
+  };
+
+  const handleDragStart = (e, index) => {
+    e.dataTransfer.setData("dragIndex", index);
+  };
+
+  const handleDropToCover = (e) => {
+    e.preventDefault();
+    const draggedIndex = parseInt(e.dataTransfer.getData("dragIndex"), 10);
+    if (!isNaN(draggedIndex) && draggedIndex !== 0) {
+      const newImages = [...uploadedImages];
+      const [draggedImg] = newImages.splice(draggedIndex, 1);
+      newImages.unshift(draggedImg);
+      setUploadedImages(newImages);
+      setData((prev) => ({
+        ...prev,
+        images: newImages,
+      }));
+    }
   };
 
   return (
@@ -54,26 +86,15 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
       <div
         className="upload-img position-relative overflow-hidden bdrs12 text-center mb30 px-2 row"
         onDrop={handleDrop}
-        onDragOver={handleDragOver}>
+        onDragOver={handleDragOver}
+      >
         <div className="profile-box position-relative d-md-flex align-items-center">
           {uploadedImages[0] && (
             <div
               className="col-sm-4 col-12 flex-shrink-0"
-              onDrop={(e) => {
-                e.preventDefault();
-                const draggedIndex = e.dataTransfer.getData("dragIndex");
-                if (draggedIndex !== null && draggedIndex !== "0") {
-                  const newImages = [...uploadedImages];
-                  const draggedImg = newImages.splice(draggedIndex, 1)[0];
-                  newImages.unshift(draggedImg);
-                  setUploadedImages(newImages);
-                  setData((prev) => ({
-                    ...prev,
-                    images: newImages,
-                  }));
-                }
-              }}
-              onDragOver={(e) => e.preventDefault()}>
+              onDrop={handleDropToCover}
+              onDragOver={handleDragOver}
+            >
               <div className="profile-img mb20 position-relative">
                 <Image
                   width={212}
@@ -93,16 +114,23 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
                 title="Delete Image"
                 onClick={() => handleDelete(0)}
                 type="button"
-                data-tooltip-id={`delete-${0}`}>
+                data-tooltip-id={`delete-0`}
+              >
                 <span className="fas fa-trash-can" />
               </button>
+              <ReactTooltip
+                id={`delete-0`}
+                place="right"
+                content="Delete Image"
+              />
             </div>
           )}
 
-          {/* Ảnh phụ (Scroll ngang) */}
+          {/* Ảnh phụ */}
           <div
             className="d-flex overflow-auto gap-2 ms-3 col-sm-8 col-12"
-            style={{ maxWidth: "100%" }}>
+            style={{ maxWidth: "100%" }}
+          >
             {uploadedImages.slice(1).map((imageData, i) => {
               const index = i + 1;
               return (
@@ -110,9 +138,8 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
                   className="flex-shrink-0"
                   key={index}
                   draggable
-                  onDragStart={(e) => {
-                    e.dataTransfer.setData("dragIndex", index);
-                  }}>
+                  onDragStart={(e) => handleDragStart(e, index)}
+                >
                   <div className="profile-img mb20 position-relative">
                     <Image
                       width={170}
@@ -127,7 +154,8 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
                       title="Delete Image"
                       onClick={() => handleDelete(index)}
                       type="button"
-                      data-tooltip-id={`delete-${index}`}>
+                      data-tooltip-id={`delete-${index}`}
+                    >
                       <span className="fas fa-trash-can" />
                     </button>
                     <ReactTooltip
@@ -152,6 +180,7 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
               id="fileInput"
               type="file"
               multiple
+              accept="image/png, image/jpeg"
               className="ud-btn btn-white"
               onChange={(e) => handleUpload(e.target.files)}
               style={{ display: "none", outline: "none" }}
@@ -159,8 +188,6 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
           </label>
         </div>
       </div>
-
-      {/* Display uploaded images */}
     </>
   );
 };

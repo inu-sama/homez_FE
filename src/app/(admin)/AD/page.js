@@ -4,6 +4,7 @@ import SidebarStickyBar from "@/components/home/home-v8/SidebarStickyBar";
 import SidebarPanel from "@/components/common/sidebar-panel";
 import Search from "@/components/common/componentsAD/Search";
 import { apiUser } from "@/apis/management-User";
+import { apiAuthen } from "@/apis/authen";
 import HeaderAD from "@/components/common/componentsAD/HeaderAD";
 
 const Management = () => {
@@ -14,25 +15,27 @@ const Management = () => {
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [role, setRole] = useState("");
+
   const usersPerPage = 6;
 
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-    return null;
+  const checkRole = async () => {
+    try {
+      const role = await apiAuthen.me();
+      if (role.status === 201) {
+        setRole(role.data.Role);
+      }
+      if (role.status === 202) {
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.error("Không lấy được role:", err);
+      setRole("");
+    }
   };
 
   useEffect(() => {
-    setRole(getCookie("role"));
+    checkRole();
   }, []);
-
-  useEffect(() => {
-    if (!role) return;
-    if (role !== "Admin" && role !== "Staff") {
-      window.location.href = "/";
-    }
-  }, [role]);
 
   const fetchUserList = async () => {
     try {
