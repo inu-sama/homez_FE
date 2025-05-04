@@ -122,7 +122,7 @@ class Properties {
       formData.append("yearBuilt", data.yearBuilt);
       formData.append("garage", data.garage);
       formData.append("sqft", data.sqft);
-      formData.append("category", data.Category);
+      formData.append("category", data.category);
       formData.append("State", data.State);
       formData.append("Location", data.Location);
       formData.append("Amenities", JSON.stringify(data.Amenities));

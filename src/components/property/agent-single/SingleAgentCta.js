@@ -2,16 +2,11 @@ import agents from "@/data/agents";
 import Image from "next/image";
 import React from "react";
 
-
-
-const SingleAgentCta = ({id}) => {
-
+const SingleAgentCta = ({ id, user }) => {
   const data = agents.filter((elm) => elm.id == id)[0] || agents[0];
 
-
-
   const agentData = {
-    name: data.name,
+    name: user.FirstName + " " + user.LastName,
     company: "Modern House Real Estate",
     reviews: "5.0 • 49 Reviews",
     phone1: "+848 032 03 01",
@@ -30,7 +25,7 @@ const SingleAgentCta = ({id}) => {
           <Image
             width={172}
             height={172}
-            style={{borderRadius:'50%',objectFit:'cover'}}
+            style={{ borderRadius: "50%", objectFit: "cover" }}
             src={data.image}
             alt="agents"
           />

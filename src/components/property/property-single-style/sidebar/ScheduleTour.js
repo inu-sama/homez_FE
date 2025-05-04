@@ -4,11 +4,7 @@ const ScheduleTour = () => {
   const tabs = [
     {
       id: "inperson",
-      label: "In Person",
-    },
-    {
-      id: "videochat",
-      label: "Video Chat",
+      label: "Tham quan trực tiếp",
     },
   ];
 

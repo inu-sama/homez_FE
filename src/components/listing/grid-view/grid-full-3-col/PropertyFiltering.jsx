@@ -12,7 +12,7 @@ import PaginationTwo from "../../PaginationTwo";
 
 export default function PropertyFiltering({type}) {
   const [properties, setProperties] = useState([]);
-  const method = (type == "for-rent" ? "Cho thuê" : "Bán");
+  const method = (type == "for-rent" ? "Cho thuê" : "Đăng bán");
 
   const fetchProperties = async () => {
     try {
