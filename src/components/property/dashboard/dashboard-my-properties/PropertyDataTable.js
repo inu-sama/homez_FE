@@ -75,12 +75,10 @@ const PropertyDataTable = () => {
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getProperties();
-      console.log("user", user);
-      console.log("res", response);
       const filterUser = response.filter(
-        (item) => item.Account[0].PhoneNumber == user.PhoneNumber
+        (item) => item.Account[0]?.PhoneNumber == user.PhoneNumber
       );
-      console.log("filterUser", filterUser);
+      setProperty(filterUser);
     } catch (error) {
       console.error("Error fetching properties:", error);
     }
