@@ -3,7 +3,7 @@ import axios from "axios";
 class ApiAuthen {
   async getToken(token) {
     try {
-      console.log("tokenAPI", token);
+      // console.log("tokenAPI", token);
       const res = await axios.post(
         `${process.env.API_URL_PORT}/checktokenAPI`,
         { token },
@@ -13,7 +13,7 @@ class ApiAuthen {
           },
         }
       );
-      console.log("res", res.data.decoded);
+      // console.log("res", res.data.decoded);
       return res.data.decoded;
     } catch (error) {
       console.error(
