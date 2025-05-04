@@ -125,7 +125,6 @@ class Properties {
       formData.append("category", data.Category);
       formData.append("State", data.State);
       formData.append("Location", data.Location);
-      formData.append("NumberOfRooms", data.bedroom + data.bathroom);
       formData.append("Amenities", JSON.stringify(data.Amenities));
 
       data.images.forEach((base64, i) => {

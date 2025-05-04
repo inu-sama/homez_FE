@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class ApiAuthen {
-  async register(PhoneNumber, Email, FirstName, LastName) {
+  async register(PhoneNumber, Email, FirstName, LastName, Password) {
     try {
       const res = await axios.post(
         `${process.env.API_URL_PORT}/register`,
@@ -10,6 +10,7 @@ class ApiAuthen {
           Email,
           FirstName,
           LastName,
+          Password,
         },
         {
           headers: {
@@ -23,12 +24,29 @@ class ApiAuthen {
       throw new Error("Login failed");
     }
   }
-  async login(PhoneNumber) {
+  async login(PhoneNumber, Password) {
     try {
-      const res = await axios.post(`${process.env.API_URL_PORT}/login`, {
-        PhoneNumber,
-      });
+      const res = await axios.post(
+        `${process.env.API_URL_PORT}/login`,
+        {
+          PhoneNumber,
+          Password,
+        },
+        { withCredentials: true }
+      );
       return res;
+    } catch (error) {
+      console.error("Error logging in:", error.response?.data || error.message);
+      throw new Error("Login failed");
+    }
+  }
+
+  async me() {
+    try {
+      const res = await axios.get(`${process.env.API_URL_PORT}/me`, {
+        withCredentials: true,
+      });
+      return res.data.Role;
     } catch (error) {
       console.error("Error logging in:", error.response?.data || error.message);
       throw new Error("Login failed");
