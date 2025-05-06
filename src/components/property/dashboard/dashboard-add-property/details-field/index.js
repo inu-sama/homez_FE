@@ -99,11 +99,105 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
+              Tình trạng nội thất
+            </label>
+            <input
+              type="number"
+              max={new Date().getFullYear()}
+              className="form-control"
+              required
+              onChange={(e) => {
+                setData((prev) => ({
+                  ...prev,
+                  yearBuilt: e.target.value,
+                }));
+                if (data.sqft && data.yearBuilt) {
+                  setFilled([true, true, true, true, false]);
+                }
+              }}
+            />
+          </div>
+        </div>
+        {/* End .col-4 */}
+
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
               Năm xây dựng
             </label>
             <input
               type="number"
               max={new Date().getFullYear()}
+              className="form-control"
+              required
+              onChange={(e) => {
+                setData((prev) => ({
+                  ...prev,
+                  yearBuilt: e.target.value,
+                }));
+                if (data.sqft && data.yearBuilt) {
+                  setFilled([true, true, true, true, false]);
+                }
+              }}
+            />
+          </div>
+        </div>
+        {/* End .col-4 */}
+
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Giấy tờ pháp lý
+            </label>
+            <input
+              type="number"
+              max={new Date().getFullYear()}
+              className="form-control"
+              required
+              onChange={(e) => {
+                setData((prev) => ({
+                  ...prev,
+                  yearBuilt: e.target.value,
+                }));
+                if (data.sqft && data.yearBuilt) {
+                  setFilled([true, true, true, true, false]);
+                }
+              }}
+            />
+          </div>
+        </div>
+        {/* End .col-4 */}
+
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Số tầng
+            </label>
+            <input
+              type="number"
+              max={new Date().getFullYear()}
+              className="form-control"
+              required
+              onChange={(e) => {
+                setData((prev) => ({
+                  ...prev,
+                  yearBuilt: e.target.value,
+                }));
+                if (data.sqft && data.yearBuilt) {
+                  setFilled([true, true, true, true, false]);
+                }
+              }}
+            />
+          </div>
+        </div>
+        {/* End .col-4 */}
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Hướng ban công
+            </label>
+            <input
+              type="text"
               className="form-control"
               required
               onChange={(e) => {

@@ -22,7 +22,11 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
   const [address, setAddress] = useState("");
   const [ward, setWard] = useState("");
   const [city, setCity] = useState("Hồ Chí Minh");
+  const [room, setRoom] = useState("");
+  const [floor, setFloor] = useState("");
+  const [block, setBlock] = useState(null);
   const addressFull = `${address}, ${ward}, ${city}`;
+  const location = `${room}, tầng ${floor}${block && (", tòa " + block)}`;
   const selectLocation = dataLocation?.map((item) => ({
     label: item.Name,
     value: item._id,
@@ -52,28 +56,76 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
             />
           </div>
         </div>
-        <div className="col-sm-12">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Vị trí căn hộ
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Nhập địa chỉ"
-              onChange={(e) => {
-                setAddress(e.target.value);
-                setData((prev) => ({
-                  ...prev,
-                  Location: addressFull,
-                }));
-                if (data.Address && data.Price && data.Description) {
-                  setFilled([true, true, true, false, false]);
-                }
-              }}
-            />
-          </div>
-        </div>
+        {data?.category == "Chung cư" && (
+          <>
+            <div className="col-sm-6 col-xl-4">
+              <div className="mb30">
+                <label className="heading-color ff-heading fw600 mb10">
+                  Mã phòng
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Nhập mã phòng"
+                  onChange={(e) => {
+                    setRoom(e.target.value);
+                    setData((prev) => ({
+                      ...prev,
+                      Location: location,
+                    }));
+                    if (data.Address && data.Price && data.Description) {
+                      setFilled([true, true, true, false, false]);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="col-sm-6 col-xl-4">
+              <div className="mb30">
+                <label className="heading-color ff-heading fw600 mb10">
+                  Tầng
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Nhập số tầng"
+                  onChange={(e) => {
+                    setFloor(e.target.value);
+                    setData((prev) => ({
+                      ...prev,
+                      Location: location,
+                    }));
+                    if (data.Address && data.Price && data.Description) {
+                      setFilled([true, true, true, false, false]);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="col-sm-6 col-xl-4">
+              <div className="mb30">
+                <label className="heading-color ff-heading fw600 mb10">
+                  Tòa/Block
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Nhập mã tòa nhà (nếu có)"
+                  onChange={(e) => {
+                    setBlock(e.target.value);
+                    setData((prev) => ({
+                      ...prev,
+                      Location: location,
+                    }));
+                    if (data.Address && data.Price && data.Description) {
+                      setFilled([true, true, true, false, false]);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+          </>
+        )}
         {/* End col-12 */}
 
         {/* <div className="col-sm-6 col-xl-4">

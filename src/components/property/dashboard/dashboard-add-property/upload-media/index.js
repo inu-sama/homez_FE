@@ -15,10 +15,10 @@ const UploadMedia = ({ video, setVideo, setData, data, setFilled }) => {
         </div>
         {/* End col-12 */}
 
-        <div className="">
+        {/* <div className="">
           <h4 className="title fz17 mb30">Video</h4>
           <VideoOptionField video={video} setVideo={setVideo} />
-        </div>
+        </div> */}
         {/* End .row */}
       </form>
     </div>

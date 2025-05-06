@@ -111,16 +111,42 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
           </div>
         </div>
         {/* End .col-6 */}
+        <div className="col-sm-6 col-xl-4"></div>
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
-              Giá tiền
+              {data.State === "Cho thuê"
+                ? "Giá thuê (VND/tháng)"
+                : "Giá bán (VND)"}
             </label>
             <input
               type="number"
               className="form-control"
-              placeholder="VND"
+              placeholder="Nhập số tiền"
+              onChange={(e) => {
+                setData((prev) => ({
+                  ...prev,
+                  Price: e.target.value,
+                }));
+                if (data.Title && data.Price && data.Description) {
+                  setFilled([true, false, false, false, false]);
+                }
+              }}
+            />
+          </div>
+        </div>
+        {/* End .col-6 */}
+
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb30">
+            <label className="heading-color ff-heading fw600 mb10">
+              Đặt cọc
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Nhập số tiền"
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
