@@ -52,9 +52,31 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
             />
           </div>
         </div>
+        <div className="col-sm-12">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Vị trí căn hộ
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Nhập địa chỉ"
+              onChange={(e) => {
+                setAddress(e.target.value);
+                setData((prev) => ({
+                  ...prev,
+                  Location: addressFull,
+                }));
+                if (data.Address && data.Price && data.Description) {
+                  setFilled([true, true, true, false, false]);
+                }
+              }}
+            />
+          </div>
+        </div>
         {/* End col-12 */}
 
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Chung cư (nếu có)
@@ -78,7 +100,7 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
             </div>
           </div>
         </div>
-        <div className="col-8"></div>
+        <div className="col-8"></div> */}
 
         <SelectMulitField
           setData={setData}

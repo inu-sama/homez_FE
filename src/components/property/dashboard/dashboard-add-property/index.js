@@ -10,7 +10,7 @@ import { apiCatalog } from "@/apis/Catalog";
 import Link from "next/link";
 
 const AddPropertyTabContent = () => {
-  const [filled, setFilled] = useState([false, false, false, false, false]);
+  const [filled, setFilled] = useState([true, true, true, true, true]);
   const getCookie = (name) => {
     if (typeof document === "undefined") return null;
     const value = `; ${document.cookie}`;
