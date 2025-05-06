@@ -15,6 +15,13 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
     { value: "Đăng bán", label: "Đăng bán" },
   ];
 
+  const docs = [
+    { value: "Hợp đồng đặt cọc", label: "Hợp đồng đặt cọc" },
+    { value: "Hợp đồng mua bán", label: "Hợp đồng mua bán" },
+    { value: "Sổ hồng riêng", label: "Sổ hồng riêng" },
+    { value: "Đang chờ sổ", label: "Đang chờ sổ" },
+  ];
+
   const selectOptions = dataCate?.map((item) => ({
     label: item.Name,
     value: item._id,
@@ -67,7 +74,10 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
             </label>
             <div className="location-area">
               <Select
-                defaultValue={{ value: "680e0ec211994cc12cb9e5e6", label: "Chung cư" }}
+                defaultValue={{
+                  value: "680e0ec211994cc12cb9e5e6",
+                  label: "Chung cư",
+                }}
                 name="colors"
                 options={selectOptions}
                 styles={customStyles}
@@ -111,7 +121,33 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
           </div>
         </div>
         {/* End .col-6 */}
-        <div className="col-sm-6 col-xl-4"></div>
+        <div className="col-sm-6 col-xl-4">
+          {data.State === "Đăng bán" && (
+            <div className="mb20">
+              <label className="heading-color ff-heading fw600 mb10">
+                Giấy tờ pháp lý
+              </label>
+              <div className="location-area">
+                <Select
+                  placeholder="Chọn loại giấy tờ..."
+                  name="colors"
+                  options={docs}
+                  styles={customStyles}
+                  className="select-custom pl-0"
+                  classNamePrefix="select"
+                  required
+                  onChange={(e) => {
+                    setData((prev) => ({
+                      ...prev,
+                      type_documents: e.value,
+                    }));
+                  }}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+        {/* End .col-6 */}
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
@@ -141,7 +177,7 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
-              Đặt cọc
+              Đặt cọc (VND)
             </label>
             <input
               type="number"
@@ -150,7 +186,7 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
-                  Price: e.target.value,
+                  deposit_amount: e.target.value,
                 }));
                 if (data.Title && data.Price && data.Description) {
                   setFilled([true, false, false, false, false]);

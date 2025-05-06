@@ -10,7 +10,7 @@ import { apiCatalog } from "@/apis/Catalog";
 import Link from "next/link";
 
 const AddPropertyTabContent = () => {
-  const [filled, setFilled] = useState([true, true, true, true, true]);
+  const [filled, setFilled] = useState([false, false, false, false, false]);
   const getCookie = (name) => {
     if (typeof document === "undefined") return null;
     const value = `; ${document.cookie}`;
@@ -46,7 +46,12 @@ const AddPropertyTabContent = () => {
     bathroom: 1,
     garage: 0,
     sqft: null,
-    video: video,
+    interior_condition: "Nội thất đầy đủ",
+    deposit_amount: null,
+    type_documents: null,
+    Balcony_direction: null,
+    Type_apartment: null,
+    maindoor_direction: null,
   });
 
   useEffect(() => {
@@ -55,12 +60,6 @@ const AddPropertyTabContent = () => {
       Amenities: selectedAmenities,
     }));
   }, [selectedAmenities]);
-  useEffect(() => {
-    setData((prevData) => ({
-      ...prevData,
-      video: video,
-    }));
-  }, [video]);
 
   const handleAmenityChange = (amenityName, isChecked) => {
     setSelectedAmenities((prevState) => {
@@ -213,8 +212,6 @@ const AddPropertyTabContent = () => {
           aria-labelledby="nav-item2-tab"
         >
           <UploadMedia
-            video={video}
-            setVideo={setVideo}
             setData={setData}
             setFilled={setFilled}
             data={data}

@@ -81,10 +81,12 @@ class Properties {
       formData.append("State", data.State);
       formData.append("Location", data.Location);
       formData.append("NumberOfRooms", data.bedroom + data.bathroom);
-
-      if (data.video && data.video !== "null") {
-        formData.append("video", data.video);
-      }
+      formData.append("interior_condition", data.interior_condition);
+      formData.append("deposit_amount", data.deposit_amount);
+      formData.append("type_documents", data.type_documents);
+      formData.append("Balcony_direction", data.Balcony_direction);
+      formData.append("Type_apartment", data.Type_apartment);
+      formData.append("maindoor_direction", data.maindoor_direction);
 
       data.Amenities.forEach((amenity) => {
         formData.append("Amenities", amenity);

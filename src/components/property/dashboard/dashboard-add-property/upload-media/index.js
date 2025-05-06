@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import UploadPhotoGallery from "./UploadPhotoGallery";
 import VideoOptionField from "./VideoOptionField";
 
-const UploadMedia = ({ video, setVideo, setData, data, setFilled }) => {
+const UploadMedia = ({ setData, data, setFilled }) => {
   return (
     <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
       <h4 className="title fz17 mb30">Tải lên hình ảnh và video</h4>

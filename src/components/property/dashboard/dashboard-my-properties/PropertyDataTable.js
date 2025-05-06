@@ -7,53 +7,6 @@ import { apiProperties } from "@/apis/Properties";
 import { apiUser } from "@/apis/management-User";
 import { apiAuthen } from "@/apis/authen";
 
-const propertyData = [
-  {
-    id: 1,
-    title: "Equestrian Family Home",
-    imageSrc: "/images/listings/list-1.jpg",
-    location: "California City, CA, USA",
-    price: "$14,000/mo",
-    datePublished: "December 31, 2022",
-    status: "Pending",
-  },
-  {
-    id: 2,
-    title: "Luxury villa in Rego Park",
-    imageSrc: "/images/listings/list-2.jpg",
-    location: "California City, CA, USA",
-    price: "$14,000/mo",
-    datePublished: "December 31, 2022",
-    status: "Published",
-  },
-  {
-    id: 3,
-    title: "Villa on Hollywood Boulevard",
-    imageSrc: "/images/listings/list-3.jpg",
-    location: "California City, CA, USA",
-    price: "$14,000/mo",
-    datePublished: "December 31, 2022",
-    status: "Processing",
-  },
-  {
-    id: 4,
-    title: "Equestrian Family Home",
-    imageSrc: "/images/listings/list-4.jpg",
-    location: "California City, CA, USA",
-    price: "$14,000/mo",
-    datePublished: "December 31, 2022",
-    status: "Pending",
-  },
-  {
-    id: 5,
-    title: "Luxury villa in Rego Park",
-    imageSrc: "/images/listings/list-5.jpg",
-    location: "California City, CA, USA",
-    price: "$14,000/mo",
-    datePublished: "December 31, 2022",
-    status: "Published",
-  },
-];
 
 const getStatusStyle = (status) => {
   switch (status) {

@@ -26,7 +26,7 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
   const [floor, setFloor] = useState("");
   const [block, setBlock] = useState(null);
   const addressFull = `${address}, ${ward}, ${city}`;
-  const location = `${room}, tầng ${floor}${block && (", tòa " + block)}`;
+  const location = `${room}, tầng ${floor}${block && ", tòa " + block}`;
   const selectLocation = dataLocation?.map((item) => ({
     label: item.Name,
     value: item._id,
@@ -56,6 +56,14 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
             />
           </div>
         </div>
+
+        <SelectMulitField
+          setData={setData}
+          addressFull={addressFull}
+          ward={setWard}
+          city={setCity}
+        />
+
         {data?.category == "Chung cư" && (
           <>
             <div className="col-sm-6 col-xl-4">
@@ -153,13 +161,6 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
           </div>
         </div>
         <div className="col-8"></div> */}
-
-        <SelectMulitField
-          setData={setData}
-          addressFull={addressFull}
-          ward={setWard}
-          city={setCity}
-        />
 
         {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
