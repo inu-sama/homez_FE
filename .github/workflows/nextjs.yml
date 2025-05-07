@@ -66,9 +66,9 @@ jobs:
         with:
           path: |
             ${{ env.PROJECT_DIR }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('${{ env.PROJECT_DIR }}/**/package-lock.json', '${{ env.PROJECT_DIR }}/**/yarn.lock', '${{ env.PROJECT_DIR }}/**/bun.lockb') }}-${{ hashFiles('${{ env.PROJECT_DIR }}/**.[jt]s', '${{ env.PROJECT_DIR }}/**.[jt]sx') }}
+          key: v2-${{ runner.os }}-nextjs-${{ hashFiles('${{ env.PROJECT_DIR }}/**/package-lock.json', '${{ env.PROJECT_DIR }}/**/yarn.lock', '${{ env.PROJECT_DIR }}/**/bun.lockb') }}-${{ hashFiles('${{ env.PROJECT_DIR }}/**.[jt]s', '${{ env.PROJECT_DIR }}/**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('${{ env.PROJECT_DIR }}/**/package-lock.json', '${{ env.PROJECT_DIR }}/**/yarn.lock', '${{ env.PROJECT_DIR }}/**/bun.lockb') }}-
+            v2-${{ runner.os }}-nextjs-${{ hashFiles('${{ env.PROJECT_DIR }}/**/package-lock.json', '${{ env.PROJECT_DIR }}/**/yarn.lock', '${{ env.PROJECT_DIR }}/**/bun.lockb') }}-
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.run-command }} ${{ steps.detect-package-manager.outputs.install-command }}
