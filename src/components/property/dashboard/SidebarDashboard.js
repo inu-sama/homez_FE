@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
+import handleLogout from "@/components/common/logout";
 
 const SidebarDashboard = () => {
   const pathname = usePathname();
@@ -11,12 +12,12 @@ const SidebarDashboard = () => {
       title: "Quản lý bất động sản",
       items: [
         {
-          href: "/dashboard-my-properties",
+          href: "/my-properties",
           icon: "flaticon-home",
           text: "Bất động sản của tôi",
         },
         {
-          href: "/dashboard-add-property",
+          href: "/add-property",
           icon: "flaticon-new-tab",
           text: "Thêm mới",
         },
@@ -36,9 +37,10 @@ const SidebarDashboard = () => {
           text: "Sửa thông tin",
         },
         {
-          href: "/login",
+          href: "/",
           icon: "flaticon-logout",
           text: "Đăng xuất",
+          click: handleLogout
         },
       ],
     },
@@ -58,6 +60,7 @@ const SidebarDashboard = () => {
             {section.items.map((item, itemIndex) => (
               <div key={itemIndex} className="sidebar_list_item">
                 <Link
+                  onClick={item.click}
                   href={item.href}
                   className={`items-center   ${
                     pathname == item.href ? "-is-active" : ""

@@ -114,8 +114,7 @@ const TopFilterBar = ({
             </li>
             {/* End bed and bathroom check */}
 
-            <li className="list-inline-item">
-              {/* Advance Features modal trigger */}
+            {/* <li className="list-inline-item">
               <button
                 type="button"
                 className="open-btn mb15"
@@ -124,7 +123,7 @@ const TopFilterBar = ({
               >
                 <i className="flaticon-settings me-2" /> More Filter
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

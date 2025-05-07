@@ -23,8 +23,8 @@ const PropertyGallery = ({ images }) => {
               {({ ref, open }) => (
                 <Image
                   src={pickedImage}
-                  width={0}
-                  height={0}
+                  width={1920}
+                  height={1080}
                   ref={ref}
                   onClick={open}
                   alt="image"
@@ -57,8 +57,8 @@ const PropertyGallery = ({ images }) => {
                     >
                       {({ ref }) => (
                         <Image
-                          width={0}
-                          height={0}
+                          width={1920}
+                          height={1080}
                           className="w-100 h-100 cover"
                           ref={ref}
                           onClick={() => setPickedImage(image)}

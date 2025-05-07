@@ -52,7 +52,7 @@ const FeaturedListings = () => {
           >
             {properties.slice(0, 8).map((listing) => (
               <SwiperSlide key={listing._id}>
-                <Link href={`/property-edit/${listing._id}`} className="item">
+                <Link href={`/property-detail/${listing._id}`} className="item">
                   <div className="listing-style9">
                     <div className="list-thumb">
                       <div

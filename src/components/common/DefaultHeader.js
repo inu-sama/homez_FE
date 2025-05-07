@@ -106,7 +106,7 @@ const DefaultHeader = () => {
                     </a>
                   ) : (
                     <Link
-                      href={`/dashboard-my-properties`}
+                      href={`/my-properties`}
                       className="login-info d-flex align-items-cente"
                       role="button">
                       <i className="far fa-user-circle fz16 me-2" />{" "}
@@ -115,7 +115,7 @@ const DefaultHeader = () => {
                   )}
                   <Link
                     className="ud-btn btn-white add-property bdrs60 mx-2 mx-xl-4"
-                    href="/dashboard-add-property">
+                    href="/add-property">
                     Thêm căn hộ
                     <i className="fal fa-arrow-right-long" />
                   </Link>

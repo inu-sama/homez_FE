@@ -46,15 +46,11 @@ const FeaturedListings = ({ data, colstyle, state }) => {
                       style: "currency",
                       currency: "VND",
                     }).format(listing.Price)}
-                    <span>/mo</span>
+                    {listing.State == "Cho thuê" && (<span>/mo</span>)}
                   </div>
                 </div>
                 <div className="list-content">
-                  <h6 className="list-title">
-                    <Link href={`/single-v6/${listing._id}`}>
-                      {listing.Title}
-                    </Link>
-                  </h6>
+                  <h6 className="list-title">{listing.Title}</h6>
                   <p className="list-text">{listing.Address}</p>
                   <div className="list-meta d-flex align-items-center">
                     <a href="#">

@@ -140,6 +140,7 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                 defaultValue={interiorCondition[1]}
                 name="colors"
                 options={interiorCondition}
+                maxMenuHeight={120}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"

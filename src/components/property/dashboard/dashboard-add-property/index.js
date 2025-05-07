@@ -166,7 +166,7 @@ const AddPropertyTabContent = () => {
           >
             5. Tiện ích
           </button>
-          <Link href={"/"}
+          <Link href={"/my-properties"}
             className="btn btn-dark fw600 ms-auto px-5"
             style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
