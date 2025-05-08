@@ -6,19 +6,19 @@ import LoginSignupModal from "@/components/common/login-signup-modal";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { verify } from "jsonwebtoken";
+// import { verify } from "jsonwebtoken";
 
-const translateToken = (token) => {
-  if (!token) {
-    throw new Error("Token is required");
-  }
-  try {
-    const decoded = verify(token, process.env.SECRET_KEY);
-    return decoded;
-  } catch (err) {
-    throw new Error("Invalid token");
-  }
-};
+// const translateToken = (token) => {
+//   if (!token) {
+//     throw new Error("Token is required");
+//   }
+//   try {
+//     const decoded = verify(token, process.env.SECRET_KEY);
+//     return decoded;
+//   } catch (err) {
+//     throw new Error("Invalid token");
+//   }
+// };
 
 const DefaultHeader = () => {
   const [navbar, setNavbar] = useState(false);
@@ -58,7 +58,8 @@ const DefaultHeader = () => {
       <header
         className={`header-nav nav-homepage-style light-header menu-home4 main-menu ${
           navbar ? "sticky slideInDown animated" : ""
-        }`}>
+        }`}
+      >
         <nav className="posr">
           <div className="container posr menu_bdrt1">
             <div className="row align-items-center justify-content-between">
@@ -98,7 +99,8 @@ const DefaultHeader = () => {
                       className="login-info d-flex align-items-cente"
                       data-bs-toggle="modal"
                       data-bs-target="#loginSignupModal"
-                      role="button">
+                      role="button"
+                    >
                       <i className="far fa-user-circle fz16 me-2" />{" "}
                       <span className="d-none d-xl-block">
                         Đăng ký/Đăng nhập
@@ -108,14 +110,16 @@ const DefaultHeader = () => {
                     <Link
                       href={`/my-properties`}
                       className="login-info d-flex align-items-cente"
-                      role="button">
+                      role="button"
+                    >
                       <i className="far fa-user-circle fz16 me-2" />{" "}
                       <span className="d-none d-xl-block">Tài khoản</span>
                     </Link>
                   )}
                   <Link
                     className="ud-btn btn-white add-property bdrs60 mx-2 mx-xl-4"
-                    href="/add-property">
+                    href="/add-property"
+                  >
                     Thêm căn hộ
                     <i className="fal fa-arrow-right-long" />
                   </Link>
@@ -158,7 +162,8 @@ const DefaultHeader = () => {
           id="loginSignupModal"
           tabIndex={-1}
           aria-labelledby="loginSignupModalLabel"
-          aria-hidden="true">
+          aria-hidden="true"
+        >
           <div className="modal-dialog  modal-dialog-scrollable modal-dialog-centered">
             <LoginSignupModal />
           </div>
