@@ -26,7 +26,7 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
   const [floor, setFloor] = useState("");
   const [block, setBlock] = useState(null);
   const addressFull = `${address}, ${ward}, ${city}`;
-  const location = `${room}, tầng ${floor}${block && ", tòa " + block}`;
+  const location = `Căn ${room}, tầng ${floor}${block && ", tòa " + block}`;
   const selectLocation = dataLocation?.map((item) => ({
     label: item.Name,
     value: item._id,

@@ -24,9 +24,9 @@ const Management = () => {
       if (role.status === 201) {
         setRole(role.data.Role);
       }
-      if (role.status === 202) {
-        window.location.href = "/";
-      }
+      // if (role.status === 202) {
+      //   window.location.href = "/";
+      // }
     } catch (err) {
       console.error("Không lấy được role:", err);
       setRole("");

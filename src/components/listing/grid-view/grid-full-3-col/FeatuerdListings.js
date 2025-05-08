@@ -69,18 +69,18 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
                     <p className="list-text">{listing.Address}</p>
                     <div className="list-meta d-flex align-items-center">
                       <a href="#">
-                        <span className="flaticon-bed" /> {listing.bed} bed
+                        <span className="flaticon-bed" /> {listing.Type.bedroom} bed
                       </a>
                       <a href="#">
-                        <span className="flaticon-shower" /> {listing.bath} bath
+                        <span className="flaticon-shower" /> {listing.Type.bathroom} bath
                       </a>
                       <a href="#">
-                        <span className="flaticon-expand" /> {listing.sqft} sqft
+                        <span className="flaticon-expand" /> {listing.Type.sqft} sqft
                       </a>
                     </div>
                     <hr className="mt-2 mb-2" />
                     <div className="list-meta2 d-flex justify-content-between align-items-center">
-                      <span className="for-what">For Rent</span>
+                      <span className="for-what">{listing.State}</span>
                       <div className="icons d-flex align-items-center">
                         <a href="#">
                           <span className="flaticon-fullscreen" />
