@@ -11,7 +11,7 @@ const PriceRange = ({ filterFunctions }) => {
   const handleOnChange = (value) => {
     setPrice(value);
 
-    filterFunctions?.handlepriceRange([value[0] || 0, value[1]]);
+    filterFunctions?.setPriceRange([value[0] || 0, value[1]]);
   };
 
   return (
@@ -20,7 +20,7 @@ const PriceRange = ({ filterFunctions }) => {
         <Slider
           range
           formatLabel={() => ``}
-          max={100000}
+          max={100000000}
           min={0}
           defaultValue={[
             filterFunctions?.priceRange[0],
@@ -30,9 +30,9 @@ const PriceRange = ({ filterFunctions }) => {
           id="slider"
         />
         <div className="d-flex align-items-center">
-          <span id="slider-range-value1">${price[0]}</span>
+          <span id="slider-range-value1">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price[0])}</span>
           <i className="fa-sharp fa-solid fa-minus mx-2 dark-color icon" />
-          <span id="slider-range-value2">${price[1]}</span>
+          <span id="slider-range-value2">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price[1])}</span>
         </div>
       </div>
     </>

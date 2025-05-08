@@ -21,12 +21,12 @@ const ListingSidebar = ({filterFunctions}) => {
       </div>
       {/* End .widget-wrapper */}
 
-      <div className="widget-wrapper">
+      {/* <div className="widget-wrapper">
         <h6 className="list-title">Listing Status</h6>
         <div className="radio-element">
           <ListingStatus filterFunctions={filterFunctions} />
         </div>
-      </div>
+      </div> */}
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper">

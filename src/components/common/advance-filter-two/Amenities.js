@@ -23,28 +23,29 @@ const Amenities = ({filterFunctions}) => {
   ];
 
   return (
-    <>
-      {amenities.map((column, columnIndex) => (
-        <div className="col-sm-4" key={columnIndex}>
-          <div className="widget-wrapper mb20">
-            <div className="checkbox-style1">
-              {column.map((amenity, amenityIndex) => (
-                <label className="custom_checkbox" key={amenityIndex}>
-                  {amenity.label}
-                  <input
-                  checked={filterFunctions?.categories.includes(amenity.label)}
-                  onChange={()=>filterFunctions?.handlecategories(amenity.label)}
-                    type="checkbox"
+    // <>
+    //   {amenities.map((column, columnIndex) => (
+    //     <div className="col-sm-4" key={columnIndex}>
+    //       <div className="widget-wrapper mb20">
+    //         <div className="checkbox-style1">
+    //           {column.map((amenity, amenityIndex) => (
+    //             <label className="custom_checkbox" key={amenityIndex}>
+    //               {amenity.label}
+    //               <input
+    //               checked={filterFunctions?.categories.includes(amenity.label)}
+    //               onChange={()=>filterFunctions?.handlecategories(amenity.label)}
+    //                 type="checkbox"
 
-                  />
-                  <span className="checkmark" />
-                </label>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
-    </>
+    //               />
+    //               <span className="checkmark" />
+    //             </label>
+    //           ))}
+    //         </div>
+    //       </div>
+    //     </div>
+    //   ))}
+    // </>
+    null
   );
 };
 

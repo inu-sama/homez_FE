@@ -46,10 +46,10 @@ export default function PropertyFiltering({type}) {
   }, [pageNumber, sortedFilteredData]);
 
   const [listingStatus, setListingStatus] = useState("All");
-  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [propertyTypes, setPropertyTypes] = useState("");
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [bedrooms, setBedrooms] = useState(0);
-  const [bathroms, setBathroms] = useState(0);
+  const [bathrooms, setBathrooms] = useState(0);
   const [location, setLocation] = useState("All Cities");
   const [squirefeet, setSquirefeet] = useState([]);
   const [yearBuild, setyearBuild] = useState([]);
@@ -58,12 +58,12 @@ export default function PropertyFiltering({type}) {
   const resetFilter = () => {
     setListingStatus("All");
     setPropertyTypes([]);
-    setPriceRange([0, 100000]);
+    setPriceRange([0, 100000000]);
     setBedrooms(0);
     setBathroms(0);
     setLocation("All Cities");
     setSquirefeet([]);
-    setyearBuild([0, 2050]);
+    setyearBuild([0, new Date().getFullYear()]);
     setCategories([]);
     setCurrentSortingOption("Newest");
     document.querySelectorAll(".filterInput").forEach(function (element) {
@@ -117,117 +117,105 @@ export default function PropertyFiltering({type}) {
     }
   };
   const filterFunctions = {
-    handlelistingStatus,
-    handlepropertyTypes,
-    handlepriceRange,
-    handlebedrooms,
-    handlebathroms,
-    handlelocation,
-    handlesquirefeet,
-    handleyearBuild,
-    handlecategories,
-    priceRange,
-    listingStatus,
-    propertyTypes,
-    resetFilter,
-    bedrooms,
-    bathroms,
-    location,
-    squirefeet,
-    yearBuild,
-    categories,
+    setPriceRange,
     setPropertyTypes,
+    setBedrooms,
+    setBathrooms,
+    priceRange,
+    propertyTypes,
+    bedrooms,
+    bathrooms,
   };
 
-  useEffect(() => {
-    const refItems = listings.filter((elm) => {
-      if (listingStatus == "All") {
-        return true;
-      } else if (listingStatus == "Buy") {
-        return !elm.forRent;
-      } else if (listingStatus == "Rent") {
-        return elm.forRent;
-      }
-    });
+  // useEffect(() => {
+  //   const refItems = listings.filter((elm) => {
+  //     if (listingStatus == "All") {
+  //       return true;
+  //     } else if (listingStatus == "Buy") {
+  //       return !elm.forRent;
+  //     } else if (listingStatus == "Rent") {
+  //       return elm.forRent;
+  //     }
+  //   });
 
-    let filteredArrays = [];
+  //   let filteredArrays = [];
 
-    if (propertyTypes.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        propertyTypes.includes(elm.propertyType)
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    filteredArrays = [
-      ...filteredArrays,
-      refItems.filter((el) => el.bed >= bedrooms),
-    ];
-    filteredArrays = [
-      ...filteredArrays,
-      refItems.filter((el) => el.bath >= bathroms),
-    ];
+  //   if (propertyTypes.length > 0) {
+  //     const filtered = refItems.filter((elm) =>
+  //       propertyTypes.includes(elm.propertyType)
+  //     );
+  //     filteredArrays = [...filteredArrays, filtered];
+  //   }
+  //   filteredArrays = [
+  //     ...filteredArrays,
+  //     refItems.filter((el) => el.bed >= bedrooms),
+  //   ];
+  //   filteredArrays = [
+  //     ...filteredArrays,
+  //     refItems.filter((el) => el.bath >= bathroms),
+  //   ];
 
-    filteredArrays = [
-      ...filteredArrays,
-      !categories.length
-        ? [...refItems]
-        : refItems.filter((elm) =>
-            categories.every((elem) => elm.features.includes(elem))
-          ),
-    ];
+  //   filteredArrays = [
+  //     ...filteredArrays,
+  //     !categories.length
+  //       ? [...refItems]
+  //       : refItems.filter((elm) =>
+  //           categories.every((elem) => elm.features.includes(elem))
+  //         ),
+  //   ];
 
-    if (location != "All Cities") {
-      filteredArrays = [
-        ...filteredArrays,
-        refItems.filter((el) => el.city == location),
-      ];
-    }
+  //   if (location != "All Cities") {
+  //     filteredArrays = [
+  //       ...filteredArrays,
+  //       refItems.filter((el) => el.city == location),
+  //     ];
+  //   }
 
-    if (priceRange.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          Number(elm.price.split("$")[1].split(",").join("")) >=
-            priceRange[0] &&
-          Number(elm.price.split("$")[1].split(",").join("")) <= priceRange[1]
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (squirefeet.length > 0 && squirefeet[1]) {
-      const filtered = refItems.filter(
-        (elm) => elm.sqft >= squirefeet[0] && elm.sqft <= squirefeet[1]
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (yearBuild.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          elm.yearBuilding >= yearBuild[0] && elm.yearBuilding <= yearBuild[1]
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
+  //   if (priceRange.length > 0) {
+  //     const filtered = refItems.filter(
+  //       (elm) =>
+  //         Number(elm.price.split("$")[1].split(",").join("")) >=
+  //           priceRange[0] &&
+  //         Number(elm.price.split("$")[1].split(",").join("")) <= priceRange[1]
+  //     );
+  //     filteredArrays = [...filteredArrays, filtered];
+  //   }
+  //   if (squirefeet.length > 0 && squirefeet[1]) {
+  //     const filtered = refItems.filter(
+  //       (elm) => elm.sqft >= squirefeet[0] && elm.sqft <= squirefeet[1]
+  //     );
+  //     filteredArrays = [...filteredArrays, filtered];
+  //   }
+  //   if (yearBuild.length > 0) {
+  //     const filtered = refItems.filter(
+  //       (elm) =>
+  //         elm.yearBuilding >= yearBuild[0] && elm.yearBuilding <= yearBuild[1]
+  //     );
+  //     filteredArrays = [...filteredArrays, filtered];
+  //   }
 
-    const commonItems = refItems.filter((item) =>
-      filteredArrays.every((array) => array.includes(item))
-    );
+  //   const commonItems = refItems.filter((item) =>
+  //     filteredArrays.every((array) => array.includes(item))
+  //   );
 
-    setFilteredData(commonItems);
-  }, [
-    listingStatus,
-    propertyTypes,
-    priceRange,
-    bedrooms,
-    bathroms,
-    location,
-    squirefeet,
-    yearBuild,
-    categories,
-  ]);
+  //   setFilteredData(commonItems);
+  // }, [
+  //   listingStatus,
+  //   propertyTypes,
+  //   priceRange,
+  //   bedrooms,
+  //   bathroms,
+  //   location,
+  //   squirefeet,
+  //   yearBuild,
+  //   categories,
+  // ]);
 
   useEffect(() => {
     setPageNumber(1);
     if (currentSortingOption == "Newest") {
       const sorted = [...filteredData].sort(
-        (a, b) => a.yearBuilding - b.yearBuilding
+        (a, b) => a.yearBuilt - b.yearBuilt
       );
       setSortedFilteredData(sorted);
     } else if (currentSortingOption.trim() == "Price Low") {
@@ -303,7 +291,7 @@ export default function PropertyFiltering({type}) {
         {/* End TopFilterBar */}
 
         <div className="row">
-          <FeaturedListings colstyle={colstyle} data={properties} state={method} />
+          <FeaturedListings filterFunctions={filterFunctions} colstyle={colstyle} data={properties} state={method} />
         </div>
         {/* End .row */}
 

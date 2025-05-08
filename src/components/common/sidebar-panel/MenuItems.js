@@ -3,7 +3,7 @@ import handleLogout from "@/components/common/logout";
 const MenuItems = () => {
   const menuItems = [
     { id: 1, title: "Quản lý người dùng", url: "/AD" },
-    { id: 2, title: "Bài tin", url: "/ADPost" },
+    { id: 2, title: "Bài đăng", url: "/ADPost" },
     { id: 3, title: "Quản lý danh mục", url: "/ADCatalog" },
   ];
 

@@ -16,8 +16,8 @@ const PropertyType = ({ filterFunctions }) => {
         All
         <input
           type="checkbox"
-          checked={!filterFunctions?.propertyTypes.length}
-          onChange={(e) => {
+          checked={filterFunctions?.propertyTypes == ""}
+          onChange={() => {
             filterFunctions?.setPropertyTypes([]);
           }}
         />
@@ -28,9 +28,9 @@ const PropertyType = ({ filterFunctions }) => {
           {option.label}
           <input
             type="checkbox"
-            checked={filterFunctions?.propertyTypes.includes(option.label)}
-            onChange={(e) => {
-              filterFunctions.handlepropertyTypes(option.label);
+            checked={filterFunctions?.propertyTypes == option.label}
+            onChange={() => {
+              filterFunctions.setPropertyTypes(option.label);
             }}
           />
           <span className="checkmark" />
