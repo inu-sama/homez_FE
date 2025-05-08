@@ -19,29 +19,39 @@ const SignIn = () => {
 
     try {
       setLoading(true);
-      const res = await apiAuthen.login(phone, password);
-      document.cookie = `token=${res.data.token}; path=/; max-age=86400; Secure; SameSite=Strict`;
 
+      const res = await apiAuthen.login(phone, password);
+
+      // Handle known response codes
       if (res.status === 404) {
         setMessage("Tài khoản không tồn tại.");
         return;
       }
 
-      if (res.status === 201) {
-        const res = await apiAuthen.me();
-        const role = res.data.Role;
+      if (res.status === 201 && res.data.token) {
+        document.cookie = `token=${res.data.token}; path=/; max-age=86400; Secure; SameSite=Strict`;
+
+        const resb = await apiAuthen.getToken2(res.data.token);
         setMessage("Đăng nhập thành công!");
 
-        setTimeout(() => {
-          window.location.href =
-            role === "Admin" || role === "Staff" ? "/AD" : "/";
-        }, 2000);
+        if (resb.status === 200) {
+          window.location.href = "/AD";
+        } else {
+          window.location.href = "/";
+        }
       } else {
         setMessage("Sai thông tin đăng nhập.");
       }
     } catch (err) {
       console.error(err);
-      setMessage("Đã xảy ra lỗi. Vui lòng thử lại.");
+
+      if (err.response?.status === 401) {
+        setMessage("Token không hợp lệ hoặc đã hết hạn.");
+      } else if (err.response?.status === 500) {
+        setMessage("Lỗi máy chủ. Vui lòng thử lại sau.");
+      } else {
+        setMessage("Đã xảy ra lỗi. Vui lòng thử lại.");
+      }
     } finally {
       setLoading(false);
     }
