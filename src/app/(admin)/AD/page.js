@@ -18,15 +18,29 @@ const Management = () => {
 
   const usersPerPage = 6;
 
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  };
+
   const checkRole = async () => {
     try {
-      const role = await apiAuthen.me();
-      if (role.status === 201) {
-        setRole(role.data.Role);
+      const token = getCookie("token");
+
+      if (!token) {
+        console.warn("Không tìm thấy token trong cookie.");
+        setRole("");
+        return;
       }
-      // if (role.status === 202) {
-      //   window.location.href = "/";
-      // }
+
+      const res = await apiAuthen.getToken2(token);
+
+      if (res.status === 200) {
+        setRole(res.data.role);
+      } else  {
+        window.location.href = "/";
+      }
     } catch (err) {
       console.error("Không lấy được role:", err);
       setRole("");
