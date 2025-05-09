@@ -12,8 +12,8 @@ const HeroContent = () => {
   };
 
   const tabs = [
-    { id: "buy", label: "Mua" },
-    { id: "rent", label: "Thuê" },
+    { id: "rent", label: "Thuê nhà", link: "/property-list/for-rent" },
+    { id: "buy", label: "Mua nhà", link: "/property-list/for-sale" },
     // { id: "sold", label: "Sold" },
   ];
 
@@ -43,7 +43,7 @@ const HeroContent = () => {
                 <FilterItems />
 
                 <div className="col-md-12">
-                  <div className="d-bloc mt-3 mt-md-0 mb15">
+                  {/* <div className="d-bloc mt-3 mt-md-0 mb15">
                     <button
                       className="advance-search-btn"
                       type="button"
@@ -52,12 +52,12 @@ const HeroContent = () => {
                     >
                       <span className="flaticon-settings" /> Advanced
                     </button>{" "}
-                  </div>
+                  </div> */}
                   <div className="d-grid">
                     <button
                       className="ud-btn btn-dark"
                       type="button"
-                      onClick={() => router.push("/property-list/for-rent")}
+                      onClick={() => router.push(tab.link)}
                     >
                       <span className="flaticon-search" />
                     </button>

@@ -10,10 +10,10 @@ const PropertyDetails = ({property}) => {
       },
       {
         label: "Giá",
-        value: new Intl.NumberFormat("vi-VN", {
+        value: `${new Intl.NumberFormat("vi-VN", {
           style: "currency",
           currency: "VND",
-        }).format(property.Price),
+        }).format(property.Price)}${property.State == "Cho thuê" ? "/tháng" : ""}`,
       },
       {
         label: "Diện tích",

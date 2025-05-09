@@ -5,17 +5,17 @@ const OverView = ({ type }) => {
   const overviewData = [
     {
       icon: "flaticon-bed",
-      label: "Bedroom",
+      label: "Phòng ngủ",
       value: type.bedroom,
     },
     {
       icon: "flaticon-shower",
-      label: "Bath",
+      label: "Phòng tắm",
       value: type.bathroom,
     },
     {
       icon: "flaticon-event",
-      label: "Year Built",
+      label: "Năm xây dựng",
       value: type.yearBuilt,
     },
     {
@@ -26,13 +26,13 @@ const OverView = ({ type }) => {
     },
     {
       icon: "flaticon-expand",
-      label: "Sqft",
+      label: "Diện tích",
       value: type.sqft,
       xs: true,
     },
     {
       icon: "flaticon-home-1",
-      label: "Property Type",
+      label: "Loại hình",
       value: type.category,
     },
   ];
