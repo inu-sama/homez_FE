@@ -14,13 +14,24 @@ import formatVND from "@/components/common/formattingVND";
 import OverView from "@/components/property/property-single-style/common/OverView";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Search from "@/components/common/componentsAD/SearchPost";
 import { apiAuthen } from "@/apis/authen";
 
 export default function ManagementPost() {
   const [data, setData] = useState([]);
+  const [result, setResult] = useState([]);
   const router = useRouter();
   const [role, setRole] = useState("");
   const [open, setOpen] = useState(false);
+  const [animateIn, setAnimateIn] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimateIn(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
@@ -59,6 +70,7 @@ export default function ManagementPost() {
     try {
       const response = await apiProperties.getPropertiesAD();
       setData(response);
+      setResult(response);
     } catch (error) {
       window.location.href = "/";
       console.error("Error fetching properties:", error);
@@ -69,6 +81,7 @@ export default function ManagementPost() {
     try {
       const response = await apiProperties.getProperties();
       setData(response);
+      setResult(response);
     } catch (error) {
       window.location.href = "/";
       console.error("Error fetching properties:", error);
@@ -164,6 +177,7 @@ export default function ManagementPost() {
             </span>
           </div>
         </div>
+        <Search data={data} result={setResult} />
       </div>
 
       <div className="slide-managemant-Post">
@@ -182,8 +196,11 @@ export default function ManagementPost() {
           }}
           modules={[EffectCoverflow, Pagination]}
         >
-          {data.map((item) => (
-            <SwiperSlide key={item._id}>
+          {(result.length > 0 ? result : data).map((item) => (
+            <SwiperSlide
+              key={item._id}
+              className={animateIn ? "fade-in-slide" : ""}
+            >
               <form className="form-style-AD" key={item._id}>
                 <div>
                   <p className="h3 text-center">
