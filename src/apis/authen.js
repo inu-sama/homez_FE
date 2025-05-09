@@ -24,7 +24,7 @@ class ApiAuthen {
   async getToken2(token) {
     try {
       const res = await axios.post(
-        `${process.env.API_URL_PORT}/checktokenAPI`,
+        `${process.env.API_URL_PORT}/checkTokenAPI2`,
         { token },
         {
           headers: {
