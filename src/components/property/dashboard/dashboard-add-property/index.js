@@ -29,7 +29,6 @@ const AddPropertyTabContent = () => {
     Category: [],
     Location: [],
   });
-  const [video, setVideo] = useState("");
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [data, setData] = useState({
     Title: null,
@@ -155,7 +154,9 @@ const AddPropertyTabContent = () => {
             4. Chi tiết
           </button>
           <button
-            className={`nav-link fw600 ${(filled[3] && data.State=="Cho thuê") ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 ${
+              filled[3] && data.State == "Cho thuê" ? "" : "visually-hidden"
+            }`}
             id="nav-item5-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item5"
@@ -166,7 +167,8 @@ const AddPropertyTabContent = () => {
           >
             5. Tiện ích
           </button>
-          <Link href={"/my-properties"}
+          <Link
+            href={"/my-properties"}
             className="btn btn-dark fw600 ms-auto px-5"
             style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
@@ -211,11 +213,7 @@ const AddPropertyTabContent = () => {
           role="tabpanel"
           aria-labelledby="nav-item2-tab"
         >
-          <UploadMedia
-            setData={setData}
-            setFilled={setFilled}
-            data={data}
-          />
+          <UploadMedia setData={setData} setFilled={setFilled} data={data} />
         </div>
         {/* End tab for Upload photos of your property */}
 

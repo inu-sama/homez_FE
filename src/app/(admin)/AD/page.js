@@ -24,10 +24,8 @@ const Management = () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   };
 
-  const checkRole = async () => {
+  const checkRole = async (token) => {
     try {
-      const token = getCookie("token");
-
       if (!token) {
         console.warn("Không tìm thấy token trong cookie.");
         setRole("");
@@ -38,7 +36,7 @@ const Management = () => {
 
       if (res.status === 200) {
         setRole(res.data.role);
-      } else  {
+      } else {
         window.location.href = "/";
       }
     } catch (err) {
@@ -48,7 +46,8 @@ const Management = () => {
   };
 
   useEffect(() => {
-    checkRole();
+    const token = getCookie("token");
+    checkRole(token);
   }, []);
 
   const fetchUserList = async () => {
@@ -57,6 +56,7 @@ const Management = () => {
       setData(response);
       setResult(response);
     } catch (error) {
+      window.location.href = "/";
       console.error("Error fetching user list:", error);
     }
   };

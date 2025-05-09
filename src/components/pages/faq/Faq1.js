@@ -2,27 +2,22 @@ const Faq1 = () => {
   const faqItems = [
     {
       id: "headingOne",
-      question: "Can a home depreciate in value?",
+      question: "Làm thế nào để tôi đăng tin bán nhà/đất trên website?",
       answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house",
+        "Bạn chỉ cần tạo tài khoản, chọn mục ' Đăng tin ', điền đầy đủ thông tin theo hướng dẫn và hình ảnh bất động sản. Tin của bạn sẽ được duyệt và hiển thị nhanh chóng.",
     },
     {
       id: "headingTwo",
-      question: "Is an older home as good a value as a new home?",
+      question: "Chi phí đăng tin bán bất động sản trên website là bao nhiêu?",
       answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house",
+        "Việc đăng tin bán bất động sản trên website của chúng tôi là hoàn toàn miễn phí. Chúng tôi chỉ thu một khoản phí hoa hồng khi giao dịch của bạn thành công. Hãy liên hệ trực tiếp để được tư vấn.",
     },
     {
       id: "headingThree",
-      question: "What is a broker?",
+      question:
+        "Website có những công cụ nào giúp tôi tiếp cận người mua tiềm năng hiệu quả?",
       answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house is a mess waiting to happen. Fortunately, getting kids on board with the idea of ditching their stuff is a lot easier than it sounds. <br /><br /> The trick is to make it an opportunity for them to define themselves and their interests. Encourage kids to make a pile of ”baby toys” to donate, and have them set aside any toys that no longer interest them, such as action figures from a forgotten TV show. Separating these toys will help them appreciate how much they’ve grown and rediscover the toys they love.",
-    },
-    {
-      id: "headingFour",
-      question: "Can I pay my own taxes and insurance?",
-      answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house",
+        "Tin đăng của bạn sẽ được hiển thị cho hàng trăm người dùng truy cập website mỗi ngày. Ngoài ra, chúng tôi có các tùy chọn quảng cáo nổi bật, đẩy tin và chia sẻ trên các kênh đối tác để tăng cường khả năng tiếp cận.",
     },
   ];
 

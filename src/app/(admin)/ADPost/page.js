@@ -20,6 +20,7 @@ export default function ManagementPost() {
   const [data, setData] = useState([]);
   const router = useRouter();
   const [role, setRole] = useState("");
+  const [open, setOpen] = useState(false);
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
@@ -41,7 +42,7 @@ export default function ManagementPost() {
 
       if (res.status === 200) {
         setRole(res.data.role);
-      } else  {
+      } else {
         window.location.href = "/";
       }
     } catch (err) {
@@ -54,18 +55,34 @@ export default function ManagementPost() {
     checkRole();
   }, []);
 
-  useEffect(() => {
-    checkRole();
-  }, []);
-
   const fetchProperties = async () => {
     try {
       const response = await apiProperties.getPropertiesAD();
       setData(response);
     } catch (error) {
+      window.location.href = "/";
       console.error("Error fetching properties:", error);
     }
   };
+
+  const fetchListing = async () => {
+    try {
+      const response = await apiProperties.getProperties();
+      setData(response);
+    } catch (error) {
+      window.location.href = "/";
+      console.error("Error fetching properties:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (open == false) {
+      fetchProperties();
+    } else {
+      fetchListing();
+    }
+  }, []);
+
   const handleApprove = async (id) => {
     const response = await apiProperties.ApproveProperty(id);
     if (response.status === 201) {
@@ -78,9 +95,6 @@ export default function ManagementPost() {
       window.location.reload();
     }
   };
-  useEffect(() => {
-    fetchProperties();
-  }, []);
   return (
     <div style={{ marginTop: "20px" }} className="container-fluid">
       <HeaderAD />
@@ -99,6 +113,57 @@ export default function ManagementPost() {
         style={{ marginTop: "20px" }}
       >
         <p className="fw-bolder h1">Quản lý bài đăng</p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            className="row"
+            style={{
+              width: "300px",
+              border: "1px solid gray",
+              padding: "1px",
+              borderRadius: "10px",
+            }}
+          >
+            <span
+              className="col"
+              style={{
+                textAlign: "center",
+                padding: "5px 30px",
+                marginRight: "1px",
+                borderTopLeftRadius: "9px",
+                borderBottomLeftRadius: "9px",
+                borderRight: "1px solid gray",
+                backgroundColor: open ? "" : "#EB6753",
+                cursor: "pointer",
+                transition: "background-color 0.5s ease",
+              }}
+              onClick={() => {
+                fetchProperties();
+                setOpen(false);
+              }}
+            >
+              Duyệt bài
+            </span>
+            <span
+              className="col"
+              style={{
+                textAlign: "center",
+                padding: "5px 30px",
+                borderTopRightRadius: "9px",
+                borderLeft: "1px solid black",
+                borderBottomRightRadius: "9px",
+                backgroundColor: open ? "#EB6753" : "",
+                cursor: "pointer",
+                transition: "background-color 0.5s ease",
+              }}
+              onClick={() => {
+                fetchListing();
+                setOpen(true);
+              }}
+            >
+              Tất cả
+            </span>
+          </div>
+        </div>
       </div>
 
       <div className="slide-managemant-Post">
@@ -190,13 +255,15 @@ export default function ManagementPost() {
                         Chỉnh sửa
                       </Link>
                     )}
-                    <button
-                      type="button"
-                      className="w-100 w-md-25 ud-btn btn-thm"
-                      onClick={() => handleApprove(item._id)}
-                    >
-                      Duyệt bài
-                    </button>
+                    {!open && (
+                      <button
+                        type="button"
+                        className="w-100 w-md-25 ud-btn btn-thm"
+                        onClick={() => handleApprove(item._id)}
+                      >
+                        Duyệt bài
+                      </button>
+                    )}
                     {role === "Admin" && (
                       <button
                         className="w-100 w-md-25 ud-btn btn-white"
