@@ -27,10 +27,8 @@ export default function ADPostEdit() {
     if (parts.length === 2) return parts.pop().split(";").shift();
   };
 
-  const checkRole = async () => {
+  const checkRole = async (token) => {
     try {
-      const token = getCookie("token");
-
       if (!token) {
         console.warn("Không tìm thấy token trong cookie.");
         setRole("");
@@ -41,7 +39,7 @@ export default function ADPostEdit() {
 
       if (res.status === 200) {
         setRole(res.data.role);
-      } else  {
+      } else {
         window.location.href = "/";
       }
     } catch (err) {
@@ -51,11 +49,8 @@ export default function ADPostEdit() {
   };
 
   useEffect(() => {
-    checkRole();
-  }, []);
-
-  useEffect(() => {
-    checkRole();
+    const token = getCookie("token");
+    checkRole(token);
   }, []);
 
   useEffect(() => {
@@ -65,6 +60,7 @@ export default function ADPostEdit() {
         const filteredData = response.filter((item) => item._id === id);
         setData(filteredData[0]);
       } catch (err) {
+        window.location.href = "/";
         console.error("Error fetching properties:", err);
         setError("Không thể tải dữ liệu bài đăng.");
       } finally {

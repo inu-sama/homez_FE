@@ -43,7 +43,7 @@ export default function Catalog() {
 
       if (res.status === 200) {
         setRole(res.data.role);
-      } else  {
+      } else {
         window.location.href = "/";
       }
     } catch (err) {
@@ -51,10 +51,6 @@ export default function Catalog() {
       setRole("");
     }
   };
-
-  useEffect(() => {
-    checkRole();
-  }, []);
 
   useEffect(() => {
     checkRole();
@@ -384,58 +380,63 @@ export default function Catalog() {
                                 </div>
                               </div>
                             )}
-                          <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-3">
-                            {editingIndex.slideKey === key &&
-                            editingIndex.itemIndex === itemIndex ? (
-                              <button
-                                type="button"
-                                className="w-100 w-md-25 ud-btn btn-thm"
-                                onClick={() =>
-                                  setEditingIndex({
-                                    slideKey: null,
-                                    itemIndex: null,
-                                  })
-                                }
-                              >
-                                Huỷ
-                              </button>
-                            ) : (
-                              <button
-                                type="button"
-                                className="w-100 w-md-25 ud-btn btn-thm"
-                                onClick={() =>
-                                  setEditingIndex({ slideKey: key, itemIndex })
-                                }
-                              >
-                                Sửa
-                              </button>
-                            )}
-                            {key === "Amenities" ? (
-                              <button
-                                type="button"
-                                className="w-100 w-md-25 ud-btn btn-White"
-                                onClick={() => handleDeleteAmenity(item._id)}
-                              >
-                                Xoá
-                              </button>
-                            ) : key === "Category" ? (
-                              <button
-                                type="button"
-                                className="w-100 w-md-25 ud-btn btn-White"
-                                onClick={() => handleDeleteCategory(item._id)}
-                              >
-                                Xoá
-                              </button>
-                            ) : (
-                              <button
-                                type="button"
-                                className="w-100 w-md-25 ud-btn btn-White"
-                                onClick={() => handleDeleteLocation(item._id)}
-                              >
-                                Xoá
-                              </button>
-                            )}
-                          </div>
+                          {role === "Admin" && (
+                            <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-3">
+                              {editingIndex.slideKey === key &&
+                              editingIndex.itemIndex === itemIndex ? (
+                                <button
+                                  type="button"
+                                  className="w-100 w-md-25 ud-btn btn-thm"
+                                  onClick={() =>
+                                    setEditingIndex({
+                                      slideKey: null,
+                                      itemIndex: null,
+                                    })
+                                  }
+                                >
+                                  Huỷ
+                                </button>
+                              ) : (
+                                <button
+                                  type="button"
+                                  className="w-100 w-md-25 ud-btn btn-thm"
+                                  onClick={() =>
+                                    setEditingIndex({
+                                      slideKey: key,
+                                      itemIndex,
+                                    })
+                                  }
+                                >
+                                  Sửa
+                                </button>
+                              )}
+                              {key === "Amenities" ? (
+                                <button
+                                  type="button"
+                                  className="w-100 w-md-25 ud-btn btn-White"
+                                  onClick={() => handleDeleteAmenity(item._id)}
+                                >
+                                  Xoá
+                                </button>
+                              ) : key === "Category" ? (
+                                <button
+                                  type="button"
+                                  className="w-100 w-md-25 ud-btn btn-White"
+                                  onClick={() => handleDeleteCategory(item._id)}
+                                >
+                                  Xoá
+                                </button>
+                              ) : (
+                                <button
+                                  type="button"
+                                  className="w-100 w-md-25 ud-btn btn-White"
+                                  onClick={() => handleDeleteLocation(item._id)}
+                                >
+                                  Xoá
+                                </button>
+                              )}
+                            </div>
+                          )}
                         </div>
                       ))}
                   </div>

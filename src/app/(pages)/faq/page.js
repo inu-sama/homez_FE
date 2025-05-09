@@ -4,6 +4,7 @@ import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Faq1 from "@/components/pages/faq/Faq1";
 import Faq2 from "@/components/pages/faq/Faq2";
+import Faq3 from "@/components/pages/faq/Faq3";
 
 export const metadata = {
   title: "Faq  || Homez - Real Estate NextJS Template",
@@ -26,11 +27,7 @@ const Faq = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title">Frequently Asked Questions</h2>
-                <div className="breadcumb-list">
-                  <a href="#">Home</a>
-                  <a href="#">FAQ</a>
-                </div>
+                <h2 className="title">Câu hỏi thường gặp</h2>
               </div>
             </div>
           </div>
@@ -44,7 +41,7 @@ const Faq = () => {
           <div className="row wow fadeInUp" data-wow-delay="300ms">
             <div className="col-lg-12">
               <div className="ui-content">
-                <h4 className="title">Question About Selling</h4>
+                <h4 className="title"> Bán Bất Động Sản</h4>
                 <div className="accordion-style1 faq-page mb-4 mb-lg-5">
                   <Faq1 />
                 </div>
@@ -52,9 +49,17 @@ const Faq = () => {
               {/* End ui-content */}
 
               <div className="ui-content">
-                <h4 className="title">Question About Renting</h4>
+                <h4 className="title">Cho Thuê Bất Động Sản</h4>
                 <div className="accordion-style1 faq-page mb-4 mb-lg-5">
                   <Faq2 />
+                </div>
+              </div>
+              <div className="ui-content">
+                <h4 className="title">
+                  Quản Lý Bất Động Sản (Ủy Thác Cho Thuê Lại)
+                </h4>
+                <div className="accordion-style1 faq-page mb-4 mb-lg-5">
+                  <Faq3 />
                 </div>
               </div>
               {/* End ui-content */}
