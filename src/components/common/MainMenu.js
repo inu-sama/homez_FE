@@ -34,13 +34,13 @@ const MainMenu = () => {
           </li>
         </ul>
       </li>
-      <li className="visible_list dropitem">
+      {/* <li className="visible_list dropitem">
         <a className="list-item" href="/about">
           <span className={`${handleActive("/about")} title`}>
             Về chúng tôi
           </span>
         </a>
-      </li>
+      </li> */}
       {/* End homeItems */}
 
       <li className="megamenu_style dropitem">

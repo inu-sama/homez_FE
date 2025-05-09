@@ -55,7 +55,7 @@ const customStyles = {
   },
 };
 
-const SelectMultiField = ({ setData, city, ward, addressFull }) => {
+const SelectMultiField = ({ setData, city, ward, addressFull, data }) => {
   return (
     <>
       <div className="col-sm-6 col-xl-4">
@@ -71,6 +71,9 @@ const SelectMultiField = ({ setData, city, ward, addressFull }) => {
                 ...prev,
                 Address: addressFull,
               }));
+              if (data.Address && data.Price && data.Description) {
+                setFilled([true, true, true, false, false]);
+              }
             }}
           />
         </div>

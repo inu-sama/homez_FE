@@ -7,12 +7,12 @@ const Form = () => {
         <div className="col-lg-12">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              First Name
+              Họ & Tên
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Nhập họ tên của bạn"
               required
             />
           </div>
@@ -22,12 +22,12 @@ const Form = () => {
         <div className="col-lg-12">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Last Name
+              Số điện thoại
             </label>
             <input
-              type="text"
+              type="number"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Nhập sđt của bạn"
               required
             />
           </div>
@@ -40,7 +40,7 @@ const Form = () => {
             <input
               type="email"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Nhập email của bạn"
               required
             />
           </div>
@@ -50,7 +50,7 @@ const Form = () => {
         <div className="col-md-12">
           <div className="mb10">
             <label className="heading-color ff-heading fw600 mb10">
-              Textarea
+              Nội dung
             </label>
             <textarea
               cols={30}

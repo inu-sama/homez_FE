@@ -4,6 +4,7 @@ import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Form from "@/components/pages/contact/Form";
 import Office from "@/components/pages/contact/Office";
+import Image from "next/image";
 
 export const metadata = {
   title: "Contact  || Homez - Real Estate NextJS Template",
@@ -22,13 +23,14 @@ const Contact = () => {
 
       {/* Our Contact With Map */}
       <section className="p-0">
-        <iframe
+        {/* <iframe
           className="home8-map contact-page"
           loading="lazy"
           src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=14&output=embed&iwloc=near"
           title="London Eye, London, United Kingdom"
           aria-label="London Eye, London, United Kingdom"
-        />
+        /> */}
+        <Image width={2200} height={1167} src="/images/city.webp" alt="city" className="home8-map contact-page" />
       </section>
       {/* End Our Contact With Map */}
 

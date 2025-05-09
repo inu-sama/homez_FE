@@ -39,7 +39,7 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
   return (
     <form className="form-style1">
       <div className="row mb100">
-        <div className="col-sm-6 col-xl-4">
+        <div className="col-sm-6 col-xl-3">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Diện tích (m²)
@@ -63,7 +63,7 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
         </div>
         {/* End .col-4 */}
 
-        <div className="col-sm-6 col-xl-4">
+        <div className="col-sm-6 col-xl-3">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Số phòng ngủ
@@ -85,7 +85,7 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
         </div>
         {/* End .col-4 */}
 
-        <div className="col-sm-6 col-xl-4">
+        <div className="col-sm-6 col-xl-3">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Số phòng tắm
@@ -107,7 +107,31 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
         </div>
         {/* End .col-4 */}
 
-        <div className="col-sm-6 col-xl-4">
+        <div className="col-sm-6 col-xl-3">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Năm xây dựng
+            </label>
+            <input
+              type="number"
+              max={new Date().getFullYear()}
+              className="form-control"
+              required
+              onChange={(e) => {
+                setData((prev) => ({
+                  ...prev,
+                  yearBuilt: e.target.value,
+                }));
+                if (data.sqft && data.yearBuilt) {
+                  setFilled([true, true, true, true, false]);
+                }
+              }}
+            />
+          </div>
+        </div>
+        {/* End .col-4 */}
+
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Số garage
@@ -126,8 +150,7 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
               }}
             />
           </div>
-        </div>
-        {/* End .col-4 */}
+        </div> */}
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
@@ -160,33 +183,40 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
         </div>
         {/* End .col-4 */}
 
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Năm xây dựng
-            </label>
-            <input
-              type="number"
-              max={new Date().getFullYear()}
-              className="form-control"
-              required
-              onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  yearBuilt: e.target.value,
-                }));
-                if (data.sqft && data.yearBuilt) {
-                  setFilled([true, true, true, true, false]);
-                }
-              }}
-            />
-          </div>
-        </div>
-        {/* End .col-4 */}
-
-        {data.category === "Chung cư" && (
-          <>
             <div className="col-sm-6 col-xl-4">
+              <div className="mb20">
+                <label className="heading-color ff-heading fw600 mb10">
+                  
+                  {data.category == "Chung cư" ? "Hướng cửa chính" : "Hướng nhà"}
+                </label>
+                <div className="location-area">
+                  <Select
+                    placeholder={data.category == "Chung cư" ? "Chọn hướng cửa chính" : "Chọn hướng nhà"}
+                    name="colors"
+                    options={direction}
+                    styles={customStyles}
+                    maxMenuHeight={120}
+                    className="select-custom pl-0"
+                    classNamePrefix="select"
+                    required
+                    onChange={(e) => {
+                      setData((prev) => ({
+                        ...prev,
+                        maindoor_direction: e.label,
+                      }));
+                      if (data.sqft && data.yearBuilt) {
+                        setFilled([true, true, true, true, false]);
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            {/* End .col-4 */}
+
+        {data.category == "Chung cư" && (
+          <>
+            {/* <div className="col-sm-6 col-xl-4">
               <div className="mb20">
                 <label className="heading-color ff-heading fw600 mb10">
                   Loại hình căn hộ
@@ -212,37 +242,7 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                   />
                 </div>
               </div>
-            </div>
-            {/* End .col-4 */}
-
-            <div className="col-sm-6 col-xl-4">
-              <div className="mb20">
-                <label className="heading-color ff-heading fw600 mb10">
-                  Hướng cửa chính
-                </label>
-                <div className="location-area">
-                  <Select
-                    placeholder="Chọn hướng cửa chính..."
-                    name="colors"
-                    options={direction}
-                    styles={customStyles}
-                    maxMenuHeight={120}
-                    className="select-custom pl-0"
-                    classNamePrefix="select"
-                    required
-                    onChange={(e) => {
-                      setData((prev) => ({
-                        ...prev,
-                        maindoor_direction: e.label,
-                      }));
-                      if (data.sqft && data.yearBuilt) {
-                        setFilled([true, true, true, true, false]);
-                      }
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
+            </div> */}
             {/* End .col-4 */}
 
             <div className="col-sm-6 col-xl-4">

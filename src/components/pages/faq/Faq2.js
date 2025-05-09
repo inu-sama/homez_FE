@@ -35,7 +35,7 @@ const Faq2 = () => {
               className={`accordion-button ${index === 2 ? "" : "collapsed"}`}
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target={`#collapse${index + 1}`}
+              data-bs-target={`#to_collapse${index + 1}`}
               aria-expanded={index === 2 ? "true" : "false"}
               aria-controls={`collapse${index + 1}`}
             >
@@ -43,7 +43,7 @@ const Faq2 = () => {
             </button>
           </h2>
           <div
-            id={`collapse${index + 1}`}
+            id={`to_collapse${index + 1}`}
             className={`accordion-collapse collapse ${
               index === 2 ? "show" : ""
             }`}

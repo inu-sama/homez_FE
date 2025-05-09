@@ -1,4 +1,5 @@
 import DashboardHeader from "@/components/common/DashboardHeader";
+import DefaultHeader from "@/components/common/DefaultHeader";
 import MobileMenu from "@/components/common/mobile-menu";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
 import Footer from "@/components/property/dashboard/Footer";
@@ -13,7 +14,7 @@ const DashboardAddProperty = () => {
   return (
     <>
       {/* Main Header Nav */}
-      <DashboardHeader />
+      <DefaultHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}

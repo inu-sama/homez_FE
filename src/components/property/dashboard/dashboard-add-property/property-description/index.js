@@ -21,6 +21,14 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
     { value: "Sổ hồng riêng", label: "Sổ hồng riêng" },
     { value: "Đang chờ sổ", label: "Đang chờ sổ" },
   ];
+  const months = [
+    { value: "1 tháng", label: "1 tháng" },
+    { value: "2 tháng", label: "2 tháng" },
+    { value: "3 tháng", label: "3 tháng" },
+    { value: "4 tháng", label: "4 tháng" },
+    { value: "5 tháng", label: "5 tháng" },
+    { value: "6 tháng", label: "6 tháng" },
+  ];
 
   const selectOptions = dataCate?.map((item) => ({
     label: item.Name,
@@ -121,33 +129,7 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
           </div>
         </div>
         {/* End .col-6 */}
-        <div className="col-sm-6 col-xl-4">
-          {data.State === "Đăng bán" && (
-            <div className="mb20">
-              <label className="heading-color ff-heading fw600 mb10">
-                Giấy tờ pháp lý
-              </label>
-              <div className="location-area">
-                <Select
-                  placeholder="Chọn loại giấy tờ..."
-                  name="colors"
-                  options={docs}
-                  styles={customStyles}
-                  className="select-custom pl-0"
-                  classNamePrefix="select"
-                  required
-                  onChange={(e) => {
-                    setData((prev) => ({
-                      ...prev,
-                      type_documents: e.value,
-                    }));
-                  }}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-        {/* End .col-6 */}
+        <div className="col-sm-6 col-xl-4"></div>
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
@@ -174,27 +156,60 @@ const PropertyDescription = ({ setData, dataCate, setFilled, data }) => {
         </div>
         {/* End .col-6 */}
 
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb30">
-            <label className="heading-color ff-heading fw600 mb10">
-              Đặt cọc (VND)
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Nhập số tiền"
-              onChange={(e) => {
-                setData((prev) => ({
-                  ...prev,
-                  deposit_amount: e.target.value,
-                }));
-                if (data.Title && data.Price && data.Description) {
-                  setFilled([true, false, false, false, false]);
-                }
-              }}
-            />
+        {data.State === "Cho thuê" ? (
+          <div className="col-sm-6 col-xl-4">
+            <div className="mb30">
+              <label className="heading-color ff-heading fw600 mb10">
+                Đặt cọc
+              </label>
+              <Select
+                placeholder="Chọn số tháng..."
+                defaultValue={months[1]}
+                name="colors"
+                options={months}
+                styles={customStyles}
+                className="select-custom pl-0"
+                classNamePrefix="select"
+                maxMenuHeight={180}
+                required
+                onChange={(e) => {
+                  setData((prev) => ({
+                    ...prev,
+                    deposit_amount: e.value,
+                  }));
+                  if (data.Title && data.Price && data.Description) {
+                    setFilled([true, false, false, false, false]);
+                  }
+                }}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="col-sm-6 col-xl-4">
+            <div className="mb20">
+              <label className="heading-color ff-heading fw600 mb10">
+                Giấy tờ pháp lý
+              </label>
+              <div className="location-area">
+                <Select
+                  placeholder="Chọn loại giấy tờ..."
+                  name="colors"
+                  options={docs}
+                  styles={customStyles}
+                  className="select-custom pl-0"
+                  classNamePrefix="select"
+                  required
+                  onChange={(e) => {
+                    setData((prev) => ({
+                      ...prev,
+                      type_documents: e.value,
+                    }));
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
         {/* End .col-6 */}
 
         <div className="col-sm-12">

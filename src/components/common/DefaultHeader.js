@@ -107,22 +107,24 @@ const DefaultHeader = () => {
                       </span>
                     </a>
                   ) : (
-                    <Link
-                      href={`/my-properties`}
-                      className="login-info d-flex align-items-cente"
-                      role="button"
-                    >
-                      <i className="far fa-user-circle fz16 me-2" />{" "}
-                      <span className="d-none d-xl-block">Tài khoản</span>
-                    </Link>
+                    <>
+                      <Link
+                        href={`/my-properties`}
+                        className="login-info d-flex align-items-cente"
+                        role="button"
+                      >
+                        <i className="far fa-user-circle fz16 me-2" />{" "}
+                        <span className="d-none d-xl-block">Tài khoản</span>
+                      </Link>
+                      <Link
+                        className="ud-btn btn-white add-property bdrs60 mx-2 mx-xl-4"
+                        href="/add-property"
+                      >
+                        Thêm căn hộ
+                        <i className="fal fa-arrow-right-long" />
+                      </Link>
+                    </>
                   )}
-                  <Link
-                    className="ud-btn btn-white add-property bdrs60 mx-2 mx-xl-4"
-                    href="/add-property"
-                  >
-                    Thêm căn hộ
-                    <i className="fal fa-arrow-right-long" />
-                  </Link>
                   {/* <a
                     className="sidemenu-btn filter-btn-right"
                     href="#"
