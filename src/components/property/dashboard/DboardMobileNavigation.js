@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import handleLogout from "@/components/common/logout";
 
 const DboardMobileNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -9,67 +10,38 @@ const DboardMobileNavigation = () => {
 
   const sidebarItems = [
     {
-      title: "MAIN",
+      title: "Quản lý bất động sản",
       items: [
         {
-          href: "/dashboard-home",
-          icon: "flaticon-discovery",
-          text: "Dashboard",
-        },
-        {
-          href: "/dashboard-message",
-          icon: "flaticon-chat-1",
-          text: "Message",
-        },
-      ],
-    },
-    {
-      title: "MANAGE LISTINGS",
-      items: [
-        {
-          href: "/dashboard-add-property",
-          icon: "flaticon-new-tab",
-          text: "Add New Property",
-        },
-        {
-          href: "/dashboard-my-properties",
+          href: "/my-properties",
           icon: "flaticon-home",
-          text: "My Properties",
+          text: "Bất động sản của tôi",
+        },
+        {
+          href: "/add-property",
+          icon: "flaticon-new-tab",
+          text: "Thêm mới",
         },
         {
           href: "/dashboard-my-favourites",
           icon: "flaticon-like",
-          text: "My Favorites",
-        },
-        {
-          href: "/dashboard-saved-search",
-          icon: "flaticon-search-2",
-          text: "Saved Search",
-        },
-        {
-          href: "/dashboard-reviews",
-          icon: "flaticon-review",
-          text: "Reviews",
+          text: "Yêu thích",
         },
       ],
     },
     {
-      title: "MANAGE ACCOUNT",
+      title: "Quản lý tài khoản",
       items: [
-        {
-          href: "/dashboard-my-package",
-          icon: "flaticon-protection",
-          text: "My Package",
-        },
         {
           href: "/dashboard-my-profile",
           icon: "flaticon-user",
-          text: "My Profile",
+          text: "Sửa thông tin",
         },
         {
-          href: "/login",
+          href: "/",
           icon: "flaticon-logout",
-          text: "Logout",
+          text: "Đăng xuất",
+          click: handleLogout,
         },
       ],
     },
@@ -80,8 +52,7 @@ const DboardMobileNavigation = () => {
       <div className="dropdown">
         <button
           className="dropbtn"
-          onClick={() => setIsDropdownOpen((prevOpen) => !prevOpen)}
-        >
+          onClick={() => setIsDropdownOpen((prevOpen) => !prevOpen)}>
           <i className="fa fa-bars pr10" /> Dashboard Navigation
         </button>
         <ul className={`dropdown-content ${isDropdownOpen ? "show" : ""}`}>
@@ -90,8 +61,7 @@ const DboardMobileNavigation = () => {
               <p
                 className={`fz15 fw400 ff-heading mt30 pl30 ${
                   sectionIndex === 0 ? "mt-0" : "mt30"
-                }`}
-              >
+                }`}>
                 {section.title}
               </p>
               {section.items.map((item, itemIndex) => (
@@ -100,8 +70,7 @@ const DboardMobileNavigation = () => {
                     href={item.href}
                     className={`items-center   ${
                       pathname == item.href ? "-is-active" : ""
-                    } `}
-                  >
+                    } `}>
                     <i className={`${item.icon} mr15`} />
                     {item.text}
                   </Link>

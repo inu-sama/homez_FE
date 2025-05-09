@@ -14,7 +14,9 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
         )
         // .filter((p) => Number(p.Price) >= filterFunctions.priceRange[0] && Number(p.Price) <= filterFunctions.priceRange[1])
         .filter((p) =>
-          filterFunctions.bedrooms != 0 ? p.Type.bedroom >= filterFunctions.bedrooms : p
+          filterFunctions.bedrooms != 0
+            ? p.Type.bedroom >= filterFunctions.bedrooms
+            : p
         )
         .filter((p) =>
           filterFunctions.bathrooms != 0
@@ -29,15 +31,13 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
                 className={` ${
                   colstyle ? "col-sm-12 col-lg-6" : "col-sm-6 col-lg-4"
                 }  `}
-                key={listing._id}
-              >
+                key={listing._id}>
                 <div
                   className={
                     colstyle
                       ? "listing-style1 listCustom listing-type"
                       : "listing-style1"
-                  }
-                >
+                  }>
                   <div className="list-thumb">
                     <Image
                       width={382}
@@ -69,13 +69,16 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
                     <p className="list-text">{listing.Address}</p>
                     <div className="list-meta d-flex align-items-center">
                       <a href="#">
-                        <span className="flaticon-bed" /> {listing.Type.bedroom} bed
+                        <span className="flaticon-bed" /> {listing.Type.bedroom}{" "}
+                        bed
                       </a>
                       <a href="#">
-                        <span className="flaticon-shower" /> {listing.Type.bathroom} bath
+                        <span className="flaticon-shower" />{" "}
+                        {listing.Type.bathroom} bath
                       </a>
                       <a href="#">
-                        <span className="flaticon-expand" /> {listing.Type.sqft} sqft
+                        <span className="flaticon-expand" /> {listing.Type.sqft}{" "}
+                        sqft
                       </a>
                     </div>
                     <hr className="mt-2 mb-2" />
@@ -98,7 +101,8 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
               </Link>
             );
           }
-        })}
+        })
+        .sort(filterFunctions.sortFunction)}
     </>
   );
 };

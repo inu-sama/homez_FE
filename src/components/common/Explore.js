@@ -10,7 +10,7 @@ const Explore = () => {
       title: "Đăng tin bất động sản",
       text: "Nullam sollicitudin blandit eros eu pretium. Nullam maximus ultricies auctor.",
       linkText: "Đăng tin",
-      link: "/dashboard-add-property",
+      link: "/add-property",
     },
     {
       id: 2,

@@ -48,7 +48,7 @@ const Home = () => {
 
       {/* Our Partners */}
       <section className="our-partners bgc-dark pt60 pb60">
-        <div className="container">
+        {/* <div className="container">
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up">
               <div className="main-title text-center">
@@ -64,7 +64,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
       {/* End Our Partners */}
 
@@ -75,9 +75,7 @@ const Home = () => {
             <div className="col-lg-9">
               <div className="main-title2">
                 <h2 className="title">Khám phá danh sách nổi bật</h2>
-                <p className="paragraph">
-                  Danh sách bất động sản cho thuê
-                </p>
+                <p className="paragraph">Danh sách bất động sản cho thuê</p>
               </div>
             </div>
             <div className="col-lg-3">

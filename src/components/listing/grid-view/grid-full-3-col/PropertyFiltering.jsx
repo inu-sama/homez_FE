@@ -9,10 +9,11 @@ import FeaturedListings from "./FeatuerdListings";
 import Pagination from "../../Pagination";
 import { apiProperties } from "@/apis/Properties";
 import PaginationTwo from "../../PaginationTwo";
+import { sort } from "@/data/mobileMenuItems";
 
-export default function PropertyFiltering({type}) {
+export default function PropertyFiltering({ type }) {
   const [properties, setProperties] = useState([]);
-  const method = (type == "for-rent" ? "Cho thuê" : "Đăng bán");
+  const method = type == "for-rent" ? "Cho thuê" : "Đăng bán";
 
   const fetchProperties = async () => {
     try {
@@ -33,6 +34,9 @@ export default function PropertyFiltering({type}) {
   const [colstyle, setColstyle] = useState(false);
   const [pageItems, setPageItems] = useState([]);
   const [pageContentTrac, setPageContentTrac] = useState([]);
+  const [sortFunction, setSortFunction] = useState(
+    () => (a, b) => a?.Type.yearBuilt - b?.Type.yearBuilt
+  );
 
   useEffect(() => {
     setPageItems(
@@ -54,6 +58,7 @@ export default function PropertyFiltering({type}) {
   const [squirefeet, setSquirefeet] = useState([]);
   const [yearBuild, setyearBuild] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [amenities, setAmenities] = useState([]);
 
   const resetFilter = () => {
     setListingStatus("All");
@@ -121,10 +126,14 @@ export default function PropertyFiltering({type}) {
     setPropertyTypes,
     setBedrooms,
     setBathrooms,
+    setAmenities,
+    setSortFunction,
     priceRange,
     propertyTypes,
     bedrooms,
     bathrooms,
+    amenities,
+    sortFunction,
   };
 
   // useEffect(() => {
@@ -246,8 +255,7 @@ export default function PropertyFiltering({type}) {
           className="offcanvas offcanvas-start p-0"
           tabIndex="-1"
           id="listingSidebarFilter"
-          aria-labelledby="listingSidebarFilterLabel"
-        >
+          aria-labelledby="listingSidebarFilterLabel">
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
               Listing Filter
@@ -256,8 +264,7 @@ export default function PropertyFiltering({type}) {
               type="button"
               className="btn-close text-reset"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
+              aria-label="Close"></button>
           </div>
           <div className="offcanvas-body p-0">
             <ListingSidebar filterFunctions={filterFunctions} />
@@ -272,8 +279,7 @@ export default function PropertyFiltering({type}) {
             id="advanceSeachModal"
             tabIndex={-1}
             aria-labelledby="advanceSeachModalLabel"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <AdvanceFilterModal filterFunctions={filterFunctions} />
           </div>
         </div>
@@ -291,7 +297,12 @@ export default function PropertyFiltering({type}) {
         {/* End TopFilterBar */}
 
         <div className="row">
-          <FeaturedListings filterFunctions={filterFunctions} colstyle={colstyle} data={properties} state={method} />
+          <FeaturedListings
+            filterFunctions={filterFunctions}
+            colstyle={colstyle}
+            data={properties}
+            state={method}
+          />
         </div>
         {/* End .row */}
 

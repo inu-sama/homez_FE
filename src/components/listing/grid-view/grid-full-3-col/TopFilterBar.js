@@ -13,7 +13,6 @@ const TopFilterBar = ({
   colstyle,
   setColstyle,
 }) => {
-  
   return (
     <>
       <div className="col-xl-9 d-none d-lg-block">
@@ -26,8 +25,7 @@ const TopFilterBar = ({
                 type="button"
                 className="open-btn mb15 dropdown-toggle"
                 data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
+                data-bs-auto-close="outside">
                 Property Type <i className="fa fa-angle-down ms-2" />
               </button>
               <div className="dropdown-menu">
@@ -40,8 +38,7 @@ const TopFilterBar = ({
                 <div className="text-end mt10 pr10">
                   <button
                     type="button"
-                    className="done-btn ud-btn btn-thm dropdown-toggle"
-                  >
+                    className="done-btn ud-btn btn-thm dropdown-toggle">
                     Done
                   </button>
                 </div>
@@ -54,8 +51,7 @@ const TopFilterBar = ({
                 type="button"
                 className="open-btn mb15 dropdown-toggle"
                 data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
+                data-bs-auto-close="outside">
                 Price <i className="fa fa-angle-down ms-2" />
               </button>
 
@@ -70,8 +66,7 @@ const TopFilterBar = ({
                 <div className="text-end mt10 pr10">
                   <button
                     type="button"
-                    className="done-btn ud-btn btn-thm drop_btn3"
-                  >
+                    className="done-btn ud-btn btn-thm drop_btn3">
                     Done
                   </button>
                 </div>
@@ -84,8 +79,7 @@ const TopFilterBar = ({
                 type="button"
                 className="open-btn mb15 dropdown-toggle"
                 data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
+                data-bs-auto-close="outside">
                 Beds / Baths <i className="fa fa-angle-down ms-2" />
               </button>
               <div className="dropdown-menu dd4 pb20">
@@ -105,8 +99,7 @@ const TopFilterBar = ({
                 <div className="text-end mt10 pr10">
                   <button
                     type="button"
-                    className="done-btn ud-btn btn-thm drop_btn4"
-                  >
+                    className="done-btn ud-btn btn-thm drop_btn4">
                     Done
                   </button>
                 </div>
@@ -132,19 +125,21 @@ const TopFilterBar = ({
       <div className="col-xl-3">
         <div className="page_control_shorting d-flex align-items-center justify-content-center justify-content-sm-end">
           <div className="pcs_dropdown pr10 d-flex align-items-center">
-            <span style={{ minWidth: "60px" }}>Sort by</span>
+            <span style={{ minWidth: "60px" }}>Sắp xếp:</span>
             <select
               className="form-select"
-              onChange={(e) =>
-                setCurrentSortingOption &&
-                setCurrentSortingOption(e.target.value)
-              }
-            >
-              <option>Newest</option>
-              <option>Best Seller</option>
-              <option>Best Match</option>
-              <option>Price Low</option>
-              <option>Price High</option>
+              onChange={(e) => {
+                setSortFunction(e.target.value);
+                console.log(filterFunctions);
+              }}>
+              <option value={(a, b) => a.Type.yearBuilt - b.Type.yearBuilt}>
+                Mới nhất
+              </option>
+              <option value={(a, b) => b.Type.yearBuilt - a.Type.yearBuilt}>
+                Cũ nhất
+              </option>
+              <option>Đắt dần</option>
+              <option>Rẻ dần</option>
             </select>
           </div>
         </div>
