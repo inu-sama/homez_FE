@@ -6,6 +6,7 @@ import PropertyType from "../../sidebar/PropertyType";
 import PriceRange from "../../sidebar/PriceRange";
 import Bedroom from "../../sidebar/Bedroom";
 import Bathroom from "../../sidebar/Bathroom";
+import Location from "../../sidebar/Location";
 
 const TopFilterBar = ({
   filterFunctions,
@@ -25,12 +26,13 @@ const TopFilterBar = ({
                 type="button"
                 className="open-btn mb15 dropdown-toggle"
                 data-bs-toggle="dropdown"
-                data-bs-auto-close="outside">
-                Property Type <i className="fa fa-angle-down ms-2" />
+                data-bs-auto-close="outside"
+              >
+                Loại hình <i className="fa fa-angle-down ms-2" />
               </button>
               <div className="dropdown-menu">
                 <div className="widget-wrapper bdrb1 pb25 mb0 pl20">
-                  <h6 className="list-title">Property Type</h6>
+                  <h6 className="list-title">Loại hình</h6>
                   <div className="checkbox-style1">
                     <PropertyType filterFunctions={filterFunctions} />
                   </div>
@@ -38,8 +40,9 @@ const TopFilterBar = ({
                 <div className="text-end mt10 pr10">
                   <button
                     type="button"
-                    className="done-btn ud-btn btn-thm dropdown-toggle">
-                    Done
+                    className="done-btn ud-btn btn-thm dropdown-toggle"
+                  >
+                    Xong
                   </button>
                 </div>
               </div>
@@ -51,13 +54,14 @@ const TopFilterBar = ({
                 type="button"
                 className="open-btn mb15 dropdown-toggle"
                 data-bs-toggle="dropdown"
-                data-bs-auto-close="outside">
-                Price <i className="fa fa-angle-down ms-2" />
+                data-bs-auto-close="outside"
+              >
+                Tầm giá <i className="fa fa-angle-down ms-2" />
               </button>
 
               <div className="dropdown-menu dd3">
                 <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr20">
-                  <h6 className="list-title">Price Range</h6>
+                  <h6 className="list-title">Tầm giá</h6>
                   {/* Range Slider Desktop Version */}
                   <div className="range-slider-style1">
                     <PriceRange filterFunctions={filterFunctions} />
@@ -66,8 +70,9 @@ const TopFilterBar = ({
                 <div className="text-end mt10 pr10">
                   <button
                     type="button"
-                    className="done-btn ud-btn btn-thm drop_btn3">
-                    Done
+                    className="done-btn ud-btn btn-thm drop_btn3"
+                  >
+                    Xong
                   </button>
                 </div>
               </div>
@@ -79,19 +84,47 @@ const TopFilterBar = ({
                 type="button"
                 className="open-btn mb15 dropdown-toggle"
                 data-bs-toggle="dropdown"
-                data-bs-auto-close="outside">
-                Beds / Baths <i className="fa fa-angle-down ms-2" />
+                data-bs-auto-close="outside"
+              >
+                Địa điểm <i className="fa fa-angle-down ms-2" />
+              </button>
+              <div className="dropdown-menu">
+                <div className="widget-wrapper bdrb1 pb25 mb0 px20">
+                  <h6 className="list-title">Địa điểm</h6>
+                  <div className="checkbox-style1">
+                    <Location filterFunctions={filterFunctions} />
+                  </div>
+                </div>
+                <div className="text-end mt10 pr10">
+                  <button
+                    type="button"
+                    className="done-btn ud-btn btn-thm dropdown-toggle"
+                  >
+                    Xong
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <li className="list-inline-item position-relative">
+              <button
+                type="button"
+                className="open-btn mb15 dropdown-toggle"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+              >
+                Số phòng <i className="fa fa-angle-down ms-2" />
               </button>
               <div className="dropdown-menu dd4 pb20">
                 <div className="widget-wrapper pl20 pr20">
-                  <h6 className="list-title">Bedrooms</h6>
+                  <h6 className="list-title">Phòng ngủ</h6>
                   <div className="d-flex">
                     <Bedroom filterFunctions={filterFunctions} />
                   </div>
                 </div>
 
                 <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr20">
-                  <h6 className="list-title">Bathrooms</h6>
+                  <h6 className="list-title">Phòng tắm</h6>
                   <div className="d-flex">
                     <Bathroom filterFunctions={filterFunctions} />
                   </div>
@@ -99,8 +132,9 @@ const TopFilterBar = ({
                 <div className="text-end mt10 pr10">
                   <button
                     type="button"
-                    className="done-btn ud-btn btn-thm drop_btn4">
-                    Done
+                    className="done-btn ud-btn btn-thm drop_btn4"
+                  >
+                    Xong
                   </button>
                 </div>
               </div>
@@ -131,25 +165,30 @@ const TopFilterBar = ({
               onChange={(e) => {
                 switch (e.target.value) {
                   case "new":
-                    filterFunctions.setSortFunction(() => (a, b) => {return b.Type.yearBuilt - a.Type.yearBuilt})
+                    filterFunctions.setSortFunction(() => (a, b) => {
+                      return b.Type.yearBuilt - a.Type.yearBuilt;
+                    });
                     break;
                   case "old":
-                    filterFunctions.setSortFunction(() => (a, b) => {return a.Type.yearBuilt - b.Type.yearBuilt})
+                    filterFunctions.setSortFunction(() => (a, b) => {
+                      return a.Type.yearBuilt - b.Type.yearBuilt;
+                    });
                     break;
                   case "price-up":
-                    filterFunctions.setSortFunction(() => (a, b) => {return a.Price - b.Price})
+                    filterFunctions.setSortFunction(() => (a, b) => {
+                      return a.Price - b.Price;
+                    });
                     break;
                   case "price-down":
-                    filterFunctions.setSortFunction(() => (a, b) => {return b.Price - a.Price})
+                    filterFunctions.setSortFunction(() => (a, b) => {
+                      return b.Price - a.Price;
+                    });
                     break;
                 }
-              }}>
-              <option value="new">
-                Mới nhất
-              </option>
-              <option value="old">
-                Cũ nhất
-              </option>
+              }}
+            >
+              <option value="new">Mới nhất</option>
+              <option value="old">Cũ nhất</option>
               <option value="price-up">Đắt dần</option>
               <option value="price-down">Rẻ dần</option>
             </select>

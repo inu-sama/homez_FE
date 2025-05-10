@@ -76,7 +76,7 @@ const FeaturedListings = () => {
                             FEATURED
                           </div>
                         )}
-                        <div className="list-tag2 rounded-0 fz12">FOR SALE</div>
+                        <div className="list-tag2 rounded-0 fz12">{listing.State}</div>
                       </div>
 
                       <div className="list-meta">

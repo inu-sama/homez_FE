@@ -2,7 +2,7 @@ import MobileMenu from "@/components/common/mobile-menu";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Hero from "@/components/home/home-v8/hero";
 import Blog from "@/components/common/Blog";
-import Footer from "@/components/home/home-v8/footer";
+import Footer from "@/components/common/default-footer";
 import Header from "@/components/home/home-v8/Header";
 import Contact from "@/components/home/home-v8/Contact";
 import Agents from "@/components/home/home-v8/Agents";
