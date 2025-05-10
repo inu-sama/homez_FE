@@ -22,11 +22,6 @@ const DboardMobileNavigation = () => {
           icon: "flaticon-new-tab",
           text: "Thêm mới",
         },
-        {
-          href: "/dashboard-my-favourites",
-          icon: "flaticon-like",
-          text: "Yêu thích",
-        },
       ],
     },
     {
