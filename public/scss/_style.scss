@@ -5768,8 +5768,21 @@ section {
   align-items: center;
 }
 
+.fade-in-slide {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 4s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .form-style-AD {
-  width: 45%;
+  width: 50%;
   height: fit-content;
   padding: 10px 27px;
   margin: 10px 0;

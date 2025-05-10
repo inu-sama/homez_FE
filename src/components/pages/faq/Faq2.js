@@ -1,28 +1,25 @@
 const Faq2 = () => {
   const faqItems = [
     {
-      id: "headingOne",
-      question: "Can a home depreciate in value?",
+      id: "One",
+      question:
+        "Tôi muốn cho thuê nhà/căn hộ, quy trình đăng tin trên website như thế nào?",
       answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house",
+        "Tương tự như đăng tin bán, bạn cần đăng nhập, chọn mục ''Đăng tin cho thuê'' , cung cấp thông tin chi tiết về bất động sản, giá thuê và các điều kiện kèm theo.",
     },
     {
-      id: "headingTwo",
-      question: "Is an older home as good a value as a new home?",
+      id: "Two",
+      question:
+        "Làm sao để tôi tìm được người thuê phù hợp và đáng tin cậy qua website?",
       answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house",
+        "Website thu hút lượng lớn người dùng có nhu cầu thuê thật. Chúng tôi sẽ đại diện cho bạn để xác minh nguời thuê và giải quyết các thủ tục liên quan.",
     },
     {
-      id: "headingThree",
-      question: "What is a broker?",
+      id: "Three",
+      question:
+        "Việc đăng tin cho thuê có mất phí không và có những gói hỗ trợ nào?",
       answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house is a mess waiting to happen. Fortunately, getting kids on board with the idea of ditching their stuff is a lot easier than it sounds. <br /><br /> The trick is to make it an opportunity for them to define themselves and their interests. Encourage kids to make a pile of ”baby toys” to donate, and have them set aside any toys that no longer interest them, such as action figures from a forgotten TV show. Separating these toys will help them appreciate how much they’ve grown and rediscover the toys they love.",
-    },
-    {
-      id: "headingFour",
-      question: "Can I pay my own taxes and insurance?",
-      answer:
-        "It doesn’t matter how organized you are — a surplus of toys will always ensure your house",
+        "Việc đăng tin cho thuê bất động sản trên website của chúng tôi là hoàn toàn miễn phí. Chúng tôi chỉ thu một khoản phí hoa hồng khi giao dịch của bạn thành công. Hãy liên hệ trực tiếp để được tư vấn.",
     },
   ];
 
@@ -35,7 +32,11 @@ const Faq2 = () => {
               className={`accordion-button ${index === 2 ? "" : "collapsed"}`}
               type="button"
               data-bs-toggle="collapse"
+<<<<<<< HEAD
               data-bs-target={`#to_collapse${index + 1}`}
+=======
+              data-bs-target={`#ndcollapse${index + 1}`}
+>>>>>>> 5b1be4e88801567e554d7073f30e0c84381eb511
               aria-expanded={index === 2 ? "true" : "false"}
               aria-controls={`collapse${index + 1}`}
             >
@@ -43,7 +44,11 @@ const Faq2 = () => {
             </button>
           </h2>
           <div
+<<<<<<< HEAD
             id={`to_collapse${index + 1}`}
+=======
+            id={`ndcollapse${index + 1}`}
+>>>>>>> 5b1be4e88801567e554d7073f30e0c84381eb511
             className={`accordion-collapse collapse ${
               index === 2 ? "show" : ""
             }`}
