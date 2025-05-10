@@ -37,8 +37,7 @@ const FeatureProperties = () => {
           el: ".featurePro_pagination__active",
           clickable: true,
         }}
-        slidesPerView={1}
-      >
+        slidesPerView={1}>
         {properties.map((property) => (
           <SwiperSlide key={property._id}>
             <div className="listing-style14 pt0-xs pr0-xs">
@@ -105,6 +104,7 @@ const FeatureProperties = () => {
                           style: "currency",
                           currency: "VND",
                         }).format(property.Price)}
+                        {property.State === "Cho thuê" && <span>/tháng</span>}
                       </h4>
                     </div>
                   </div>
