@@ -66,7 +66,7 @@ const Contact = () => {
       {/* End Our Contact Form */}
 
       {/* Visit our Office */}
-      <section className="pt0 pb90 pb10-md">
+      {/* <section className="pt0 pb90 pb10-md">
         <div className="container">
           <div className="row">
             <div
@@ -83,18 +83,16 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
 
           <div className="row" data-aos="fade-up" data-aos-delay="100">
             <Office />
           </div>
-          {/* End .row */}
         </div>
-      </section>
+      </section> */}
       {/* End Visit our Office */}
 
       {/* Our CTA */}
-      <CallToActions />
+      {/* <CallToActions /> */}
       {/* Our CTA */}
 
       {/* Start Our Footer */}

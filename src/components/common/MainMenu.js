@@ -46,7 +46,7 @@ const MainMenu = () => {
       <li className="megamenu_style dropitem">
         <a className="list-item" href="/contact">
           <span className={`${handleActive("/contact")} title`}>
-            Liên lạc
+            Liên hệ
           </span>
         </a>
       </li>

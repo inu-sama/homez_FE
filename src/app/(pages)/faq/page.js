@@ -71,7 +71,7 @@ const Faq = () => {
       {/* End FAQ Section Area */}
 
       {/* Our CTA */}
-      <CallToActions />
+      {/* <CallToActions /> */}
       {/* Our CTA */}
 
       {/* Start Our Footer */}

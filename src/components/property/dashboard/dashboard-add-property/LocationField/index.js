@@ -70,28 +70,6 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
             <div className="col-sm-6 col-xl-4">
               <div className="mb30">
                 <label className="heading-color ff-heading fw600 mb10">
-                  Mã phòng
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Nhập mã phòng"
-                  onChange={(e) => {
-                    setRoom(e.target.value);
-                    setData((prev) => ({
-                      ...prev,
-                      Location: location,
-                    }));
-                    if (data.Address && data.Price && data.Description) {
-                      setFilled([true, true, true, false, false]);
-                    }
-                  }}
-                />
-              </div>
-            </div>
-            <div className="col-sm-6 col-xl-4">
-              <div className="mb30">
-                <label className="heading-color ff-heading fw600 mb10">
                   Tầng
                 </label>
                 <input
@@ -137,7 +115,7 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
         )}
         {/* End col-12 */}
 
-        {/* <div className="col-sm-6 col-xl-4">
+        <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Chung cư (nếu có)
@@ -161,7 +139,6 @@ const LocationField = ({ setData, data, dataLocation, setFilled }) => {
             </div>
           </div>
         </div>
-        <div className="col-8"></div> */}
 
         {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">

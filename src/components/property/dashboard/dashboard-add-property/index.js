@@ -10,7 +10,7 @@ import { apiCatalog } from "@/apis/Catalog";
 import Link from "next/link";
 
 const AddPropertyTabContent = () => {
-  const [filled, setFilled] = useState([false, false, false, false, false]);
+  const [filled, setFilled] = useState([true, true, true]);
   const getCookie = (name) => {
     if (typeof document === "undefined") return null;
     const value = `; ${document.cookie}`;
@@ -129,7 +129,7 @@ const AddPropertyTabContent = () => {
           >
             2. Hình ảnh
           </button>
-          <button
+          {/* <button
             className={`nav-link fw600 ${filled[1] ? "" : "visually-hidden"}`}
             id="nav-item3-tab"
             data-bs-toggle="tab"
@@ -140,9 +140,9 @@ const AddPropertyTabContent = () => {
             aria-selected="false"
           >
             3. Vị trí
-          </button>
+          </button> */}
           <button
-            className={`nav-link fw600 ${filled[2] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 ${filled[1] ? "" : "visually-hidden"}`}
             id="nav-item4-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item4"
@@ -151,11 +151,11 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item4"
             aria-selected="false"
           >
-            4. Chi tiết
+            3. Chi tiết
           </button>
           <button
             className={`nav-link fw600 ${
-              filled[3] && data.State == "Cho thuê" ? "" : "visually-hidden"
+              filled[2] && data.State == "Cho thuê" ? "" : "visually-hidden"
             }`}
             id="nav-item5-tab"
             data-bs-toggle="tab"
@@ -165,16 +165,16 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item5"
             aria-selected="false"
           >
-            5. Tiện ích
+            4. Tiện ích
           </button>
-          {filled[3] && (
+          {filled[2] && (
             <Link
-              // href={"/my-properties"}
+              href={""}
               className="btn btn-dark fw600 ms-auto px-5"
               style={{ marginBottom: "10px", marginRight: "10px" }}
               type="button"
               role="tab"
-              disabled={filled[3] ? false : true}
+              disabled={filled[2] ? false : true}
               aria-controls="nav-item5"
               aria-selected="false"
               onClick={async () => {
@@ -201,7 +201,7 @@ const AddPropertyTabContent = () => {
             <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
             <PropertyDescription
               setData={setData}
-              dataCate={catalog.Category}
+              catalog={catalog}
               setFilled={setFilled}
               data={data}
             />
@@ -270,6 +270,22 @@ const AddPropertyTabContent = () => {
           </div>
         </div>
         {/* End tab for Select Amenities */}
+      </div>
+      <div className="row align-items-center justify-content-between arrowY-center-position">
+        <div className="col-auto">
+          <button className="swiper_button" onClick={() => {
+            const navItem = document.getElementById("nav-tab2").children;
+            
+          }}>
+            <i className="far fa-arrow-left-long" />
+          </button>
+        </div>
+
+        <div className="col-auto">
+          <button className="swiper_button">
+            <i className="far fa-arrow-right-long" />
+          </button>
+        </div>
       </div>
     </>
   );

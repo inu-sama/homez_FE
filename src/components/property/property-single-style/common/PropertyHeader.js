@@ -19,7 +19,7 @@ const PropertyHeader = ({ property }) => {
               <i className="fas fa-circle fz10 pe-2" />
               {property.State}
             </a>
-            <a
+            {/* <a
               className="ff-heading bdrr1 fz15 pr10 ml10 ml0-sm bdrrn-sm"
               href="#"
             >
@@ -27,7 +27,7 @@ const PropertyHeader = ({ property }) => {
               {Number(new Date().getFullYear()) -
                 Number(property.Type.yearBuilt)}{" "}
               năm trước
-            </a>
+            </a> */}
             <a className="ff-heading ml10 ml0-sm fz15" href="#">
               <i className="flaticon-fullscreen pe-2 align-text-top" />
               8721
