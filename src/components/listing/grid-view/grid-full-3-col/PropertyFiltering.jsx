@@ -279,7 +279,7 @@ export default function PropertyFiltering({ type }) {
         {/* End mobile filter sidebar */}
 
         {/* <!-- Advance Feature Modal Start --> */}
-        <div className="advance-feature-modal">
+        {/* <div className="advance-feature-modal">
           <div
             className="modal fade"
             id="advanceSeachModal"
@@ -289,7 +289,7 @@ export default function PropertyFiltering({ type }) {
           >
             <AdvanceFilterModal filterFunctions={filterFunctions} />
           </div>
-        </div>
+        </div> */}
         {/* <!-- Advance Feature Modal End --> */}
 
         <div className="row">
