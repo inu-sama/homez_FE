@@ -167,7 +167,6 @@ const AddPropertyTabContent = () => {
           >
             5. Tiện ích
           </button>
-<<<<<<< HEAD
           {filled[3] && (
             <Link
               // href={"/my-properties"}
@@ -187,25 +186,6 @@ const AddPropertyTabContent = () => {
               Đăng bài
             </Link>
           )}
-=======
-          <Link
-            href={"/my-properties"}
-            className="btn btn-dark fw600 ms-auto px-5"
-            style={{ marginBottom: "10px", marginRight: "10px" }}
-            type="button"
-            role="tab"
-            disabled={filled[3] ? false : true}
-            aria-controls="nav-item5"
-            aria-selected="false"
-            onClick={async () => {
-              console.log("Data", data);
-              const res = await apiProperties.createProperty(data);
-              console.log(res);
-            }}
-          >
-            Đăng bài
-          </Link>
->>>>>>> 5b1be4e88801567e554d7073f30e0c84381eb511
         </div>
       </nav>
       {/* End nav tabs */}

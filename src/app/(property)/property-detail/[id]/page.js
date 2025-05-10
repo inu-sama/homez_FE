@@ -182,9 +182,9 @@ const SingleV1 = ({ params }) => {
             <div className="row mt30 align-items-center justify-content-between">
               <div className="col-auto">
                 <div className="main-title">
-                  <h2 className="title">Discover Our Featured Listings</h2>
+                  <h2 className="title">Khám phá bất động sản liên quan</h2>
                   <p className="paragraph">
-                    Aliquam lacinia diam quis lacus euismod
+                    Danh sách bất động sản {property.State == "Cho thuê" ? "cho thuê" : "đăng bán"} tương tự
                   </p>
                 </div>
               </div>
@@ -220,7 +220,7 @@ const SingleV1 = ({ params }) => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="property-city-slider">
-                  <NearbySimilarProperty />
+                  <NearbySimilarProperty prop={property} />
                 </div>
               </div>
             </div>
