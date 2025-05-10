@@ -10,7 +10,7 @@ import { apiCatalog } from "@/apis/Catalog";
 import Link from "next/link";
 
 const AddPropertyTabContent = () => {
-  const [filled, setFilled] = useState([true, true, true]);
+  const [filled, setFilled] = useState([false, false, false]);
   const getCookie = (name) => {
     if (typeof document === "undefined") return null;
     const value = `; ${document.cookie}`;
@@ -219,7 +219,7 @@ const AddPropertyTabContent = () => {
         </div>
         {/* End tab for Upload photos of your property */}
 
-        <div
+        {/* <div
           className="tab-pane fade"
           id="nav-item3"
           role="tabpanel"
@@ -234,7 +234,7 @@ const AddPropertyTabContent = () => {
               data={data}
             />
           </div>
-        </div>
+        </div> */}
         {/* End tab for Listing Location */}
 
         <div
@@ -271,7 +271,7 @@ const AddPropertyTabContent = () => {
         </div>
         {/* End tab for Select Amenities */}
       </div>
-      <div className="row align-items-center justify-content-between arrowY-center-position">
+      {/* <div className="row align-items-center justify-content-between arrowY-center-position">
         <div className="col-auto">
           <button className="swiper_button" onClick={() => {
             const navItem = document.getElementById("nav-tab2").children;
@@ -286,7 +286,7 @@ const AddPropertyTabContent = () => {
             <i className="far fa-arrow-right-long" />
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

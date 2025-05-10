@@ -33,7 +33,7 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
       }));
 
       if (updatedImages.length >= 4) {
-        setFilled([true, true, false, false, false]);
+        setFilled([true, true, false]);
       }
     });
   };

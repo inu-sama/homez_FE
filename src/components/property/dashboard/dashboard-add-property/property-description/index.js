@@ -174,7 +174,7 @@ const PropertyDescription = ({ setData, catalog, setFilled, data }) => {
                   Tầng
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   placeholder="Nhập số tầng"
                   onChange={(e) => {

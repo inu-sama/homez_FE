@@ -53,8 +53,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                   ...prev,
                   sqft: e.target.value,
                 }));
-                if (data.sqft && data.yearBuilt) {
-                  setFilled([true, true, true, true, false]);
+                if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                  setFilled([true, true, true]);
                 }
               }}
             />
@@ -121,8 +121,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                   ...prev,
                   yearBuilt: e.target.value,
                 }));
-                if (data.sqft && data.yearBuilt) {
-                  setFilled([true, true, true, true, false]);
+                if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                  setFilled([true, true, true]);
                 }
               }}
             />
@@ -172,8 +172,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                     ...prev,
                     interior_condition: e.label,
                   }));
-                  if (data.sqft && data.yearBuilt) {
-                    setFilled([true, true, true, true, false]);
+                  if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                    setFilled([true, true, true]);
                   }
                 }}
               />
@@ -203,8 +203,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                         ...prev,
                         maindoor_direction: e.label,
                       }));
-                      if (data.sqft && data.yearBuilt) {
-                        setFilled([true, true, true, true, false]);
+                      if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                        setFilled([true, true, true]);
                       }
                     }}
                   />
@@ -264,10 +264,9 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                         ...prev,
                         Balcony_direction: e.label,
                       }));
-                      if (data.sqft && data.yearBuilt) {
-                        setFilled([true, true, true, true, false]);
+                      if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                        setFilled([true, true, true]);
                       }
-                      console.log(data);
                     }}
                   />
                 </div>
