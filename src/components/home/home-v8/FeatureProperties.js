@@ -57,28 +57,22 @@ const FeatureProperties = () => {
                 </h4>
                 <p className="list-text fz15">{property.Location}</p>
                 <div className="list-meta d-block d-sm-flex align-items-center mt30 mb40">
-                  <a
-                    className="d-flex mb-2 mb-sm-0 align-items-center"
-                    href="#"
-                  >
+                  <a className="d-flex mb-2 mb-sm-0 align-items-center">
                     <span className="flaticon-bed" />
-                    {property.bedroom}
+                    {property.Type.bedroom}
                   </a>
-                  <a
-                    className="d-flex mb-2 mb-sm-0 align-items-center"
-                    href="#"
-                  >
+                  <a className="d-flex mb-2 mb-sm-0 align-items-center">
                     <span className="flaticon-shower" />
-                    {property.bathroom}
+                    {property.Type.bathroom}
                   </a>
-                  <a className="d-flex align-items-center" href="#">
+                  <a className="d-flex align-items-center">
                     <span className="flaticon-expand" />
-                    {property.sqft}
+                    {property.Type.sqft} m²
                   </a>
                 </div>
                 {/* End list-meta */}
 
-                <div className="row mb20">
+                {/* <div className="row mb20">
                   <div className="col-auto">
                     <div className="contact-info">
                       <p className="info-title ff-heading mb-2">
@@ -89,7 +83,6 @@ const FeatureProperties = () => {
                       </h6>
                     </div>
                   </div>
-                  {/* End .col-auto */}
 
                   <div className="col-auto">
                     <div className="contact-info">
@@ -101,8 +94,7 @@ const FeatureProperties = () => {
                       </h6>
                     </div>
                   </div>
-                  {/* End .col-auto */}
-                </div>
+                </div> */}
                 {/* End .row */}
 
                 <div className="row align-items-center justify-content-between">
