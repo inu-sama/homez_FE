@@ -139,9 +139,20 @@ const UploadPhotoGallery = ({ setData, image }) => {
                     <Image
                       width={170}
                       height={194}
-                      className=" bdrs12 cover"
+                      className="bdrs12 cover"
                       src={imageData}
                       alt={`Uploaded Image ${index}`}
+                      onClick={() => {
+                        const newImages = [...uploadedImages];
+                        const [clickedImage] = newImages.splice(index, 1);
+                        newImages.unshift(clickedImage);
+                        setUploadedImages(newImages);
+                        setData((prev) => ({
+                          ...prev,
+                          images: newImages,
+                        }));
+                      }}
+                      style={{ cursor: "pointer" }}
                     />
                     <button
                       style={{ border: "none" }}

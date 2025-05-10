@@ -10,12 +10,18 @@ const MainMenu = () => {
       return "menuActive";
     }
   };
-  
+
   return (
     <ul className="ace-responsive-menu">
       <li className="visible_list dropitem">
         <a className="list-item" href="#">
-          <span className={"/property-list".split("/")[1] == pathname.split("/")[1] ? "menuActive title" : "title"}>
+          <span
+            className={
+              "/property-list".split("/")[1] == pathname.split("/")[1]
+                ? "menuActive title"
+                : "title"
+            }
+          >
             Khám phá
           </span>
           <span className="arrow"></span>
@@ -23,12 +29,18 @@ const MainMenu = () => {
         {/* Level Two*/}
         <ul className="sub-menu">
           <li>
-            <Link className={`${handleActive("/property-list/for-rent")}`} href={"/property-list/for-rent"}>
+            <Link
+              className={`${handleActive("/property-list/for-rent")}`}
+              href={"/property-list/for-rent"}
+            >
               Thuê nhà
             </Link>
           </li>
           <li>
-            <Link className={`${handleActive("/property-list/for-sale")}`} href={"/property-list/for-sale"}>
+            <Link
+              className={`${handleActive("/property-list/for-sale")}`}
+              href={"/property-list/for-sale"}
+            >
               Mua nhà
             </Link>
           </li>
@@ -43,20 +55,18 @@ const MainMenu = () => {
       </li> */}
       {/* End homeItems */}
 
-      <li className="megamenu_style dropitem">
+      {/* <li className="megamenu_style dropitem">
         <a className="list-item" href="/contact">
           <span className={`${handleActive("/contact")} title`}>
             Liên lạc
           </span>
         </a>
-      </li>
+      </li> */}
       {/* End listings */}
 
       <li className="megamenu_style dropitem">
         <a className="list-item" href="/faq">
-          <span className={`${handleActive("/faq")} title`}>
-            FAQ
-          </span>
+          <span className={`${handleActive("/faq")} title`}>FAQ</span>
         </a>
       </li>
       {/* End listings */}

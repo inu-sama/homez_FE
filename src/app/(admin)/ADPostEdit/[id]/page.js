@@ -56,9 +56,9 @@ export default function ADPostEdit() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await apiProperties.getPropertiesAD();
-        const filteredData = response.filter((item) => item._id === id);
-        setData(filteredData[0]);
+        const response = await apiProperties.getPropertiesDetail(id);
+        setData(response[0]);
+        console.log("Data:", response);
       } catch (err) {
         window.location.href = "/";
         console.error("Error fetching properties:", err);

@@ -127,7 +127,13 @@ class Properties {
       formData.append("category", data.category);
       formData.append("State", data.State);
       formData.append("Location", data.Location);
-      formData.append("Amenities", JSON.stringify(data.Amenities));
+      formData.append("NumberOfRooms", data.bedroom + data.bathroom);
+      formData.append("interior_condition", data.interior_condition);
+      formData.append("deposit_amount", data.deposit_amount);
+      formData.append("type_documents", data.type_documents);
+      formData.append("Balcony_direction", data.Balcony_direction);
+      formData.append("Type_apartment", data.Type_apartment);
+      formData.append("maindoor_direction", data.maindoor_direction);
 
       data.images.forEach((base64, i) => {
         const file = this.base64ToFile(base64, `image${i}.webp`);

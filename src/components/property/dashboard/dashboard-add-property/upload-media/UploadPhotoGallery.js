@@ -144,9 +144,20 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
                     <Image
                       width={170}
                       height={194}
-                      className=" bdrs12 cover"
+                      className="bdrs12 cover"
                       src={imageData}
                       alt={`Uploaded Image ${index}`}
+                      onClick={() => {
+                        const newImages = [...uploadedImages];
+                        const [clickedImage] = newImages.splice(index, 1);
+                        newImages.unshift(clickedImage);
+                        setUploadedImages(newImages);
+                        setData((prev) => ({
+                          ...prev,
+                          images: newImages,
+                        }));
+                      }}
+                      style={{ cursor: "pointer" }}
                     />
                     <button
                       style={{ border: "none" }}
@@ -171,6 +182,7 @@ const UploadPhotoGallery = ({ setData, data, setFilled }) => {
         </div>
 
         <div className="col-sm-12">
+          <p className="h4 text-danger">Chọn vào ảnh mong muốn làm ảnh bìa</p>
           <h4 className="title fz17 mb10">Tải ảnh lên</h4>
           <p className="text mb25">Định dạng ảnh phải là JPEG hoặc PNG</p>
           <label className="ud-btn btn-white">
