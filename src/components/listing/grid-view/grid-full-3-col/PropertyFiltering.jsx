@@ -35,7 +35,7 @@ export default function PropertyFiltering({ type }) {
   const [pageItems, setPageItems] = useState([]);
   const [pageContentTrac, setPageContentTrac] = useState([]);
   const [sortFunction, setSortFunction] = useState(
-    () => (a, b) => a?.Type.yearBuilt - b?.Type.yearBuilt
+    () => (a, b) => {return b.Type.yearBuilt - a.Type.yearBuilt}
   );
 
   useEffect(() => {

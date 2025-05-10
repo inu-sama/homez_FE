@@ -1,12 +1,15 @@
 "use client";
 
+import { sort } from "@/data/mobileMenuItems";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
   return (
     <>
       {data
+        .sort(filterFunctions.sortFunction)
         .filter((p) =>
           filterFunctions.propertyTypes != ""
             ? p.Type.category == filterFunctions.propertyTypes
@@ -25,19 +28,22 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
         )
         .map((listing) => {
           if (listing.State == state) {
+            console.log("Year" + listing.Type.yearBuilt);
             return (
               <Link
                 href={"/property-detail/" + listing._id}
                 className={` ${
                   colstyle ? "col-sm-12 col-lg-6" : "col-sm-6 col-lg-4"
                 }  `}
-                key={listing._id}>
+                key={listing._id}
+              >
                 <div
                   className={
                     colstyle
                       ? "listing-style1 listCustom listing-type"
                       : "listing-style1"
-                  }>
+                  }
+                >
                   <div className="list-thumb">
                     <Image
                       width={382}
@@ -101,8 +107,7 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
               </Link>
             );
           }
-        })
-        .sort(filterFunctions.sortFunction)}
+        })}
     </>
   );
 };

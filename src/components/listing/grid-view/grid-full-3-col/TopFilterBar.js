@@ -129,17 +129,29 @@ const TopFilterBar = ({
             <select
               className="form-select"
               onChange={(e) => {
-                setSortFunction(e.target.value);
-                console.log(filterFunctions);
+                switch (e.target.value) {
+                  case "new":
+                    filterFunctions.setSortFunction(() => (a, b) => {return b.Type.yearBuilt - a.Type.yearBuilt})
+                    break;
+                  case "old":
+                    filterFunctions.setSortFunction(() => (a, b) => {return a.Type.yearBuilt - b.Type.yearBuilt})
+                    break;
+                  case "price-up":
+                    filterFunctions.setSortFunction(() => (a, b) => {return a.Price - b.Price})
+                    break;
+                  case "price-down":
+                    filterFunctions.setSortFunction(() => (a, b) => {return b.Price - a.Price})
+                    break;
+                }
               }}>
-              <option value={(a, b) => a.Type.yearBuilt - b.Type.yearBuilt}>
+              <option value="new">
                 Mới nhất
               </option>
-              <option value={(a, b) => b.Type.yearBuilt - a.Type.yearBuilt}>
+              <option value="old">
                 Cũ nhất
               </option>
-              <option>Đắt dần</option>
-              <option>Rẻ dần</option>
+              <option value="price-up">Đắt dần</option>
+              <option value="price-down">Rẻ dần</option>
             </select>
           </div>
         </div>
