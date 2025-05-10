@@ -98,8 +98,10 @@ export default function ADPostEdit() {
           <div className="row align-items-center pb40">
             <div className="col-lg-12">
               <div className="dashboard_title_area">
-                <h2>Sửa bài đăng</h2>
-                <p className="text">Nhập đầy đủ thông tin căn hộ của bạn!</p>
+                <h2 style={{ fontFamily: "inherit" }}>Sửa bài đăng</h2>
+                <p className="text" style={{ fontFamily: "inherit" }}>
+                  Nhập đầy đủ thông tin căn hộ của bạn!
+                </p>
               </div>
             </div>
           </div>

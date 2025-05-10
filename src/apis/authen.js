@@ -1,17 +1,17 @@
 import axios from "axios";
 
+const instance = axios.create({
+  baseURL: process.env.API_URL_PORT,
+  headers: {
+    "x-api-key": process.env.API_KEY,
+    "Content-Type": "application/json",
+  },
+});
+
 class ApiAuthen {
   async getToken(token) {
     try {
-      const res = await axios.post(
-        `${process.env.API_URL_PORT}/checktokenAPI`,
-        { token },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await instance.post("/checkTokenAPI", { token });
       return res.data.decoded;
     } catch (error) {
       console.error(
@@ -23,15 +23,7 @@ class ApiAuthen {
   }
   async getToken2(token) {
     try {
-      const res = await axios.post(
-        `${process.env.API_URL_PORT}/checkTokenAPI2`,
-        { token },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await instance.post("/checkTokenAPI2", { token });
       return res;
     } catch (error) {
       console.error(

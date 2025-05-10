@@ -2,9 +2,10 @@ import { apiAuthen } from "@/apis/authen";
 import handleLogout from "@/components/common/logout";
 const MenuItems = () => {
   const menuItems = [
-    { id: 1, title: "Quản lý người dùng", url: "/AD" },
-    { id: 2, title: "Bài đăng", url: "/ADPost" },
-    { id: 3, title: "Quản lý danh mục", url: "/ADCatalog" },
+    { id: 1, title: "Danh sách liên hệ", url: "/AD" },
+    { id: 2, title: "Quản lý người dùng", url: "/ADUser" },
+    { id: 3, title: "Bài đăng", url: "/ADPost" },
+    { id: 4, title: "Quản lý danh mục", url: "/ADCatalog" },
   ];
 
   return (

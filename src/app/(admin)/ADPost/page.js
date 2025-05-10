@@ -15,7 +15,9 @@ import OverView from "@/components/property/property-single-style/common/OverVie
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Search from "@/components/common/componentsAD/SearchPost";
+import PropertyDetails from "@/components/property/property-single-style/common/PropertyDetails";
 import { apiAuthen } from "@/apis/authen";
+import PropertyHeader from "@/components/property/property-single-style/common/PropertyHeader";
 
 export default function ManagementPost() {
   const [data, setData] = useState([]);
@@ -125,13 +127,15 @@ export default function ManagementPost() {
         className="ms-3 ms-md-5 ps-md-5 text-black text-center"
         style={{ marginTop: "20px" }}
       >
-        <p className="fw-bolder h1">Quản lý bài đăng</p>
+        <p className="fw-bolder h1" style={{ fontFamily: "inherit" }}>
+          Quản lý bài đăng
+        </p>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div
             className="row"
             style={{
               width: "300px",
-              border: "1px solid gray",
+              border: "1px solid #EB6753",
               padding: "1px",
               borderRadius: "10px",
             }}
@@ -144,7 +148,7 @@ export default function ManagementPost() {
                 marginRight: "1px",
                 borderTopLeftRadius: "9px",
                 borderBottomLeftRadius: "9px",
-                borderRight: "1px solid gray",
+                borderRight: "1px solid #EB6753",
                 backgroundColor: open ? "" : "#EB6753",
                 cursor: "pointer",
                 transition: "background-color 0.5s ease",
@@ -162,7 +166,7 @@ export default function ManagementPost() {
                 textAlign: "center",
                 padding: "5px 30px",
                 borderTopRightRadius: "9px",
-                borderLeft: "1px solid black",
+                borderLeft: "1px solid #EB6753",
                 borderBottomRightRadius: "9px",
                 backgroundColor: open ? "#EB6753" : "",
                 cursor: "pointer",
@@ -212,21 +216,7 @@ export default function ManagementPost() {
                   <PropertyGallery images={item.Images} />
                 </div>
                 <div className="infor-property-AD">
-                  <p className="h2">{item.Title}</p>
-                  <div className="infor-view-AD">
-                    <div className="infor-view-AD-1">
-                      <div>
-                        <span className="border-end text ">{item.State}</span>
-                        <span className="address-mobile-2 border-start">
-                          {item.Address}
-                        </span>
-                      </div>
-                    </div>
-                    <div>
-                      <span className="h1">{formatVND(item.Price)}</span>
-                    </div>
-                  </div>
-
+                  <PropertyHeader property={item} />
                   <div>
                     <p
                       className="h3"
@@ -238,21 +228,27 @@ export default function ManagementPost() {
                       <OverView type={item.Type} />
                     </div>
                   </div>
-                  <div>
-                    <p
-                      className="h3"
-                      style={{ marginLeft: "5px", marginTop: "10px" }}
-                    >
-                      Tiện ích
-                    </p>
-                    <div className="row g-3" style={{ marginLeft: "30px" }}>
-                      {item.Amenities.map((amenity, index) => (
-                        <div key={index} className="col-sm-4 col-6">
-                          <span style={{ fontSize: "17px" }}>• {amenity}</span>
+                  {Array.isArray(item.Amenities) &&
+                    item.Amenities.length > 0 && (
+                      <div>
+                        <p
+                          className="h3"
+                          style={{ marginLeft: "5px", marginTop: "10px" }}
+                        >
+                          Tiện ích
+                        </p>
+                        <div className="row g-3" style={{ marginLeft: "30px" }}>
+                          {item.Amenities.map((amenity, index) => (
+                            <div key={index} className="col-sm-4 col-6">
+                              <span style={{ fontSize: "17px" }}>
+                                • {amenity}
+                              </span>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                      </div>
+                    )}
+
                   <div>
                     <p
                       className="h3"
@@ -260,7 +256,16 @@ export default function ManagementPost() {
                     >
                       Mô tả
                     </p>
-                    <p style={{ marginLeft: "20px" }}>{item.Description}</p>
+                    <p style={{ marginLeft: "40px" }}>- {item.Description}</p>
+                    <p
+                      className="h3"
+                      style={{ marginLeft: "5px", marginTop: "10px" }}
+                    >
+                      Chi tiết căn hộ
+                    </p>
+                    <div style={{ marginLeft: "40px" }}>
+                      <PropertyDetails property={item} />
+                    </div>
                   </div>
 
                   <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-3">
