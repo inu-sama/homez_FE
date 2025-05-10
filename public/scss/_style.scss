@@ -141,7 +141,7 @@ h4,
 h5,
 .h6,
 h6 {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   color: var(--headings-color);
   font-weight: 600;
   line-height: 1.5;
@@ -163,7 +163,7 @@ h6 a,
 p a,
 span a {
   font-size: inherit;
-  font-family: inherit;
+  font-family: "Roboto", sans-serif;
   font-weight: inherit;
   line-height: inherit;
 }
@@ -212,7 +212,7 @@ li {
 .login-info {
   font-size: 14px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 
@@ -237,7 +237,7 @@ li {
 }
 .footer-widget .info-title {
   color: #bebdbd;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   margin-bottom: 5px;
 }
 .footer-widget .info-phone a,
@@ -248,7 +248,7 @@ li {
 .footer-widget.light-style .info-phone a,
 .footer-widget.light-style .info-mail a {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 
@@ -325,7 +325,7 @@ li {
   background-color: transparent;
   border: none;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   font-weight: 600;
   position: absolute;
@@ -343,7 +343,7 @@ li {
 .mailchimp-style1.white-version button {
   font-size: 15px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .mailchimp-style1.at-home4 {
@@ -424,7 +424,7 @@ li {
 .link-style1 a {
   color: #bebdbd;
   display: block;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   line-height: 40px;
   position: relative;
   -webkit-transition: all 0.3s ease;
@@ -437,7 +437,7 @@ li {
 }
 .link-style1.light-style a {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .link-style1.at-home9 a:hover {
@@ -493,7 +493,7 @@ li {
 .breadcumb-style1 .breadcumb-list a {
   display: inline-block;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   position: relative;
 }
@@ -572,7 +572,7 @@ li {
 .user_setting .dropdown-menu .dropdown-item {
   border-radius: 12px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   overflow: hidden;
   font-size: 14px;
@@ -609,7 +609,7 @@ li {
   display: flex;
   border-radius: 12px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   padding: 14.5px 20px;
   margin-bottom: 5px;
@@ -791,7 +791,7 @@ li {
 }
 .statistics_funfact .title {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 36px;
   line-height: 54px;
@@ -822,7 +822,7 @@ li {
 }
 
 .pending-style {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
   padding: 10px 20px;
@@ -890,14 +890,14 @@ li {
 .message_container .user_heading .preview {
   color: #717171;
   font-size: 13px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   margin-bottom: 0;
 }
 .message_container .user_heading .name {
   font-size: 14px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .message_container .message_input {
@@ -979,12 +979,12 @@ li {
 }
 .inbox_chatting_box .title {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .inbox_chatting_box small {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
@@ -1001,7 +1001,7 @@ li {
 }
 .inbox_user_list .preview {
   font-size: 13px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 18px;
   margin-bottom: 0;
@@ -1091,7 +1091,7 @@ li {
 .iul_notific small {
   display: block;
   font-size: 13px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   position: absolute;
   right: 10px;
@@ -1135,7 +1135,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -1172,7 +1172,7 @@ li {
   border-radius: 6px;
   bottom: 20px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   left: 20px;
@@ -1183,7 +1183,7 @@ li {
   font-weight: normal;
 }
 .listing-style1 .list-meta a {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   margin-right: 24px;
 }
@@ -1236,7 +1236,7 @@ li {
 .listing-style1 .for-what {
   font-size: 13px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .listing-style1 hr {
@@ -1297,7 +1297,7 @@ li {
 }
 .listing-style1.listing-type .list-text2 {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   font-weight: normal;
 }
@@ -1350,7 +1350,7 @@ li {
 .listing-style1.mini-style .btn {
   padding: 0;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .listing-style1.mini-style .btn i {
@@ -1387,7 +1387,7 @@ li {
 .listing-style1.mini-style .btn {
   padding: 0;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .listing-style1.mini-style .btn i {
@@ -1454,7 +1454,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -1471,7 +1471,7 @@ li {
 }
 .listing-style5 .list-price {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
 }
@@ -1479,7 +1479,7 @@ li {
   font-weight: normal;
 }
 .listing-style5 .list-meta a {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   margin-right: 12px;
 }
@@ -1584,7 +1584,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -1603,7 +1603,7 @@ li {
   background-color: #181a20;
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   left: 135px;
   opacity: 1;
@@ -1662,7 +1662,7 @@ li {
   border: 1px solid #181a20;
   border-radius: 6px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   right: 20px;
@@ -1765,7 +1765,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -1784,7 +1784,7 @@ li {
   background-color: #181a20;
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -1835,13 +1835,13 @@ li {
   color: #ffffff;
 }
 .listing-style7 .list-meta2 a {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   font-weight: normal;
 }
 .listing-style7 .list-price {
   color: var(--primary-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   -webkit-transition: all 0.4s ease;
@@ -1914,7 +1914,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -1933,7 +1933,7 @@ li {
   background-color: #181a20;
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -1986,14 +1986,14 @@ li {
 .listing-style8 .list-meta2 a {
   font-size: 13px;
   font-weight: normal;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .listing-style8 .list-price {
   background-color: #ffffff;
   border: 1px solid #181a20;
   border-radius: 0;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   padding: 8px 15px 8px 15px;
@@ -2072,7 +2072,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -2091,7 +2091,7 @@ li {
   background-color: #181a20;
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   left: 135px;
   opacity: 1;
@@ -2149,7 +2149,7 @@ li {
   color: #ffffff;
   font-size: 13px;
   font-weight: normal;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .listing-style9 .list-price {
   color: #ffffff;
@@ -2237,7 +2237,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -2256,7 +2256,7 @@ li {
   background-color: #181a20;
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -2310,12 +2310,12 @@ li {
 .listing-style10 .list-meta2 a {
   font-size: 13px;
   font-weight: normal;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .listing-style10 .list-price {
   bottom: 20px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   left: 20px;
@@ -2392,7 +2392,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -2408,7 +2408,7 @@ li {
   background-color: #181a20;
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -2426,7 +2426,7 @@ li {
 .listing-style11 .list-meta a {
   font-size: 15px;
   margin-right: 25px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .listing-style11 .list-meta a:last-child {
@@ -2483,7 +2483,7 @@ li {
 .listing-style11 .for-what {
   font-size: 13px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -2539,7 +2539,7 @@ li {
   color: #ffffff;
   font-size: 15px;
   font-weight: normal;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 @media (max-width: 767.98px) {
   .listing-style13 .list-meta a {
@@ -2628,7 +2628,7 @@ li {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -2644,7 +2644,7 @@ li {
   background-color: #181a20;
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   opacity: 1;
   padding: 2px 12px;
@@ -2662,7 +2662,7 @@ li {
 .listing-style14 .list-meta a {
   font-size: 15px;
   margin-right: 25px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .listing-style14 .list-meta a:last-child {
@@ -2719,7 +2719,7 @@ li {
 .listing-style14 .for-what {
   font-size: 13px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -2751,7 +2751,7 @@ li {
 
 .pagination_page_count {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -2787,7 +2787,7 @@ li {
 }
 .page_control_shorting a {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -2992,7 +2992,7 @@ li {
   border-radius: 6px;
   bottom: 20px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   display: block;
   padding: 7px 20px;
@@ -3270,13 +3270,13 @@ li {
 
 .inner-banner-style1 .hero-sub-title {
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .inner-banner-style1 .hero-title {
   color: #ffffff;
   font-size: 52px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 @media (max-width: 767.98px) {
@@ -3286,7 +3286,7 @@ li {
 }
 .inner-banner-style1 .hero-text {
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -3297,7 +3297,7 @@ li {
   background-color: transparent;
   border: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .advance-content-style1 .advance-search-btn span {
@@ -3350,7 +3350,7 @@ li {
 .inner-banner-style2 .hero-title {
   color: #ffffff;
   font-size: 46px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 @media (max-width: 767.98px) {
@@ -3360,7 +3360,7 @@ li {
 }
 .inner-banner-style2 .hero-text {
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -3403,7 +3403,7 @@ li {
   background-color: transparent;
   border: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
 }
 .advance-content-style2 .bootselect-multiselect .btn:hover,
@@ -3421,7 +3421,7 @@ li {
   background-color: transparent;
   border: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .advance-content-style2 .advance-search-btn span {
@@ -3505,7 +3505,7 @@ li {
   background-color: transparent;
   border: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .advance-content-style3 .advance-search-btn span {
@@ -3553,7 +3553,7 @@ li {
 .inner-banner-style3 .hero-title {
   color: var(--headings-color);
   font-size: 40px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   max-width: 493px;
 }
@@ -3564,7 +3564,7 @@ li {
 }
 .inner-banner-style3 .hero-text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -3626,13 +3626,13 @@ li {
 
 .inner-banner-style4 .hero-sub-title {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .inner-banner-style4 .hero-title {
   color: var(--headings-color);
   font-size: 40px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 @media (max-width: 991.98px) {
@@ -3642,7 +3642,7 @@ li {
 }
 .inner-banner-style4 .hero-text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -3724,7 +3724,7 @@ li {
 }
 
 .thumbimg-countnumber-carousel .slider-subtitle {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   margin: 0 0 10px;
   -webkit-animation-duration: 2s;
@@ -3740,7 +3740,7 @@ li {
   }
 }
 .thumbimg-countnumber-carousel .slider-title {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 52px;
   margin: 0;
@@ -3757,7 +3757,7 @@ li {
   }
 }
 .thumbimg-countnumber-carousel .slider-text {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 15px;
   -webkit-animation-duration: 2s;
@@ -3828,12 +3828,12 @@ li {
 }
 
 .inner-banner-style6 .hero-sub-title {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .inner-banner-style6 .hero-title {
   font-size: 46px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 @media (max-width: 991.98px) {
@@ -3842,7 +3842,7 @@ li {
   }
 }
 .inner-banner-style6 .hero-text {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -3890,7 +3890,7 @@ li {
 .inner-banner-style7 .hero-title {
   color: var(--headings-color);
   font-size: 40px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 @media (max-width: 991.98px) {
@@ -3931,7 +3931,7 @@ li {
 .home7-main-slider .swpr_paginations .slideactive,
 .home7-main-slider .swpr_paginations .slidetotal {
   bottom: 0;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   color: #ffffff;
   position: absolute;
 }
@@ -3988,12 +3988,12 @@ li {
 }
 
 .inner-banner-style8 .hero-sub-title {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .inner-banner-style8 .hero-title {
   font-size: 52px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 @media (max-width: 767.98px) {
@@ -4002,7 +4002,7 @@ li {
   }
 }
 .inner-banner-style8 .hero-text {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -4057,7 +4057,7 @@ li {
 }
 .about-box-1 .list-style1 li {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   padding-left: 5px;
@@ -4108,7 +4108,7 @@ li {
   position: relative;
 }
 .exclusive-agent-widget .title {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 
@@ -4355,7 +4355,7 @@ li {
 .blog-style1 .tag {
   color: #717171;
   font-size: 13px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   letter-spacing: 0em;
 }
@@ -4378,13 +4378,13 @@ li {
   font-size: 20px;
   display: block;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .blog-style1 .month {
   font-size: 13px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .blog-style1:hover .blog-img img {
@@ -4432,7 +4432,7 @@ li {
 }
 .custom_bsp_grid li {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 46px;
@@ -4441,7 +4441,7 @@ li {
 
 .blog_post_share span {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   line-height: 23px;
@@ -4480,7 +4480,7 @@ li {
 
 .review_cansel_btns a {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   line-height: 26px;
   letter-spacing: 0em;
   margin-right: 30px;
@@ -4527,7 +4527,7 @@ section {
 .main-title .paragraph,
 .main-title2 .paragraph {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 
 @media (max-width: 991.98px) {
@@ -4604,7 +4604,7 @@ section {
   border: transparent;
   border-radius: 12px;
   font-size: 14px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   padding-left: 50px;
 }
 .advance-search-field .box-search input::-webkit-input-placeholder {
@@ -4669,7 +4669,7 @@ section {
   display: -ms-flexbox;
   display: flex;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
@@ -4826,7 +4826,7 @@ section {
 .cta-style1 .cta-text {
   font-size: 15px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 @media (max-width: 991.98px) {
@@ -4941,7 +4941,7 @@ section {
   background-color: #ffffff;
   border-radius: 60px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   display: block;
   height: 34px;
@@ -4955,7 +4955,7 @@ section {
 }
 .cta-style5 .cta-text {
   color: #0d1c39;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -4993,7 +4993,7 @@ section {
 
 .error_page_content .erro_code {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   line-height: 289px;
   font-size: 200px;
@@ -5127,7 +5127,7 @@ section {
 }
 .iconbox-style2 .text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   margin-bottom: 25px;
 }
@@ -5164,7 +5164,7 @@ section {
 }
 .iconbox-style3 .text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   margin-bottom: 25px;
 }
@@ -5282,7 +5282,7 @@ section {
   top: 17px;
 }
 .iconbox-style6 .iconbox-text {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 13px;
 }
@@ -5370,7 +5370,7 @@ section {
 }
 .iconbox-style8 .text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   margin-bottom: 25px;
 }
@@ -5528,7 +5528,7 @@ section {
 .feature-style2 .title,
 .feature-style2 .text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .feature-style2:hover img {
   -webkit-transform: scale(1.1) rotate(-1deg);
@@ -5654,23 +5654,23 @@ section {
 }
 .form-style1 .form-control::-webkit-input-placeholder {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-style1 .form-control::-moz-placeholder {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-style1 .form-control:-ms-input-placeholder {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-style1 .form-control::-ms-input-placeholder {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-style1 .form-control::placeholder {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-style1 .form-control.active,
 .form-style1 .form-control:focus {
@@ -5679,7 +5679,7 @@ section {
   color: var(--headings-color);
 }
 .form-style1 .form-label {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-style1 .custom_checkbox {
   line-height: 26px;
@@ -5693,7 +5693,7 @@ section {
 .form-style1 .form-select option {
   font-size: 14px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   height: 50px;
   border-bottom: 1px solid #dddddd;
@@ -5821,7 +5821,7 @@ section {
 
 .form-catalog-AD-content {
   width: 100%;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -5865,7 +5865,7 @@ section {
 
 .infor-view-AD-1 span {
   padding: 0 10px 0 10px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 
 .form-input-password {
@@ -5901,7 +5901,7 @@ section {
 }
 .form-style2 .form-control:placeholder {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-style2 .form-control.active,
 .form-style2 .form-control:focus {
@@ -5909,13 +5909,13 @@ section {
   outline: 2px solid var(--headings-color);
 }
 .form-style2 .form-label {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 
 textarea {
   border: 1px solid #dddddd;
   border-radius: 8px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   height: auto;
   width: 100%;
   padding: 25px 20px;
@@ -5933,14 +5933,14 @@ textarea:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   font-size: 14px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   height: 55px;
   outline: none;
   padding-left: 15px;
 }
 .form-control:placeholder {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .form-control:focus {
   border: 1px solid transparent;
@@ -6025,7 +6025,7 @@ textarea:focus {
 
 .inquiry-form .form-control {
   font-size: 14px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .inquiry-form .dropdown-menu {
@@ -6056,7 +6056,7 @@ textarea:focus {
   border: 1px solid #dddddd;
   border-radius: 8px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   height: 50px;
   line-height: 35px;
@@ -6093,14 +6093,14 @@ textarea:focus {
 .sideborder-dropdown .form-style2 .bootstrap-select .dropdown-item {
   line-height: 35px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
 .advance-feature-modal.psp-review button.dropdown-toggle,
 .sideborder-dropdown.psp-review button.dropdown-toggle {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .advance-feature-modal.psp-review .dropdown-menu li:first-child,
 .sideborder-dropdown.psp-review .dropdown-menu li:first-child {
@@ -6264,12 +6264,12 @@ textarea:focus {
 .testimonial-style1 .title {
   font-size: 16px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   margin-bottom: 25px;
 }
 .testimonial-style1 .text {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 8px;
@@ -6287,7 +6287,7 @@ textarea:focus {
 }
 .testimonial-style2 .testi-text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 22px;
   line-height: 45px;
@@ -6300,7 +6300,7 @@ textarea:focus {
 }
 .testimonial-style2 .design {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 13px;
 }
@@ -6388,7 +6388,7 @@ textarea:focus {
 }
 .testimonial-style4 .desig {
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
@@ -6425,7 +6425,7 @@ textarea:focus {
   background-color: var(--primary-color);
   border-radius: 6px;
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 12px;
   left: 20px;
@@ -6642,7 +6642,7 @@ textarea:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 14px;
   padding-left: 20px;
@@ -6661,7 +6661,7 @@ textarea:focus {
 }
 .accordion-style1 .accordion-body {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding: 20px 0 35px;
   max-width: 410px;
@@ -6694,7 +6694,7 @@ textarea:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   outline: none;
 }
@@ -6704,7 +6704,7 @@ textarea:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 14px;
   -webkit-text-decoration-line: underline;
@@ -6732,7 +6732,7 @@ textarea:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 17px;
   padding-left: 0;
@@ -6753,7 +6753,7 @@ textarea:focus {
 }
 .accordion-style2 .accordion-body {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding: 20px 0 0;
 }
@@ -6764,7 +6764,7 @@ textarea:focus {
 }
 .message-alart-style1 .alert {
   border-radius: 4px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   padding: 23px 30px;
   position: relative;
@@ -6849,7 +6849,7 @@ textarea:focus {
 .log-reg-form .hr_top_text {
   background-color: #ffffff;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   height: 40px;
   left: 0;
@@ -6883,10 +6883,10 @@ textarea:focus {
   border-radius: 20px;
 }
 .style-word {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 .style-word-span {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 100;
 }
 
@@ -6894,7 +6894,7 @@ textarea:focus {
 .ud-btn {
   border-radius: 12px;
   display: inline-block;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   font-style: normal;
@@ -6930,7 +6930,7 @@ textarea:focus {
 }
 
 .ud-btn2 {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   position: relative;
@@ -7326,7 +7326,7 @@ textarea:focus {
 .funfact_one .timer,
 .funfact_one span {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 42px;
   line-height: 63px;
@@ -7474,7 +7474,7 @@ header.nav-innerpage-style
 }
 header.nav-innerpage-style .ace-responsive-menu a {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 header.nav-innerpage-style.menu-home4 {
@@ -7563,7 +7563,7 @@ header.nav-homepage-style .ace-responsive-menu .sub-menu li:hover {
 }
 header.nav-homepage-style .ace-responsive-menu .sub-menu a {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   line-height: 16px;
 }
@@ -7645,7 +7645,7 @@ header.nav-homepage-style .ace-responsive-menu .visible_list a.list-item:hover {
 }
 header.nav-homepage-style .ace-responsive-menu a {
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 header.nav-homepage-style .header-logo.logo2 {
@@ -7674,7 +7674,7 @@ header.sticky {
 }
 header.nav-homepage-style.sticky .ace-responsive-menu a {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 header.nav-homepage-style.sticky .sidemenu-btn,
@@ -7826,7 +7826,7 @@ header.nav-homepage-style.at-home5.sticky
 
 .mm-panel ul.mm-listview li.mm-listitem.cl_btn a.btn {
   color: #ffffff;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -7895,7 +7895,7 @@ li.mm-listitem:focus {
 }
 .rightside-hidden-bar .hsidebar-header .title {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .rightside-hidden-bar .hsidebar-header .sidebar-close-icon {
@@ -8030,7 +8030,7 @@ li.mm-listitem:focus {
   position: relative;
   padding: 0 30px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
@@ -8180,7 +8180,7 @@ li.mm-listitem:focus {
   color: #717171;
   padding: 15px 13px;
   margin-right: 10px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   border-color: transparent;
   border-bottom: 2px solid transparent;
@@ -8233,7 +8233,7 @@ li.mm-listitem:focus {
   color: #ffffff;
   padding: 15px 13px;
   margin-right: 10px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .advance-style2 .nav-link:hover,
@@ -8291,7 +8291,7 @@ li.mm-listitem:focus {
   color: #717171;
   padding: 15px 13px;
   margin-right: 10px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .advance-style3 .nav-link:hover,
@@ -8359,7 +8359,7 @@ li.mm-listitem:focus {
   color: #717171;
   padding: 15px 13px;
   margin-right: 10px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 .advance-style4 .nav-link:hover,
@@ -8380,7 +8380,7 @@ li.mm-listitem:focus {
 }
 .advance-style4 .tab-content label {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   display: block;
 }
@@ -8464,7 +8464,7 @@ li.mm-listitem:focus {
   border-color: transparent;
   border: 2px solid transparent;
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -8559,7 +8559,7 @@ li.mm-listitem:focus {
   border: 1px solid #dddddd;
   border-radius: 12px;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 13px;
   line-height: 20px;
@@ -8637,7 +8637,7 @@ li.mm-listitem:focus {
   border: none;
   border-radius: 50%;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 15px;
   height: 40px;
@@ -8667,7 +8667,7 @@ li.mm-listitem:focus {
 }
 .progressbar-style1 .progressd-bar span {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   right: 0;
   top: -25px;
   position: absolute;
@@ -8720,7 +8720,7 @@ input.amount4 {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #717171;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
   height: 50px;
@@ -8938,7 +8938,7 @@ input:focus-visible {
 .home8-sidebar-wrapper .tel,
 .home8-sidebar-wrapper .mail {
   font-size: 13px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   left: 0;
   position: absolute;
@@ -9612,7 +9612,7 @@ input:focus-visible {
 .banner-style-one .sub-title {
   color: #ffffff;
   font-size: 36px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   line-height: 60px;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -9635,7 +9635,7 @@ input:focus-visible {
 .banner-style-one .banner-title {
   color: #ffffff;
   font-size: 52px;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   line-height: 60px;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -9901,7 +9901,7 @@ input:focus-visible {
   background-color: #ffffff;
   border: 1px solid #dddddd;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   height: 45px;
   line-height: 45px;
@@ -9937,7 +9937,7 @@ input:focus-visible {
   cursor: pointer;
   display: inline-block;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 13px;
   outline: 1px solid #dddddd;
@@ -9984,7 +9984,7 @@ input:focus-visible {
   display: -ms-flexbox;
   display: flex;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   position: relative;
 }
@@ -10007,7 +10007,7 @@ input:focus-visible {
   display: -ms-flexbox;
   display: flex;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .reset-button span {
@@ -10034,7 +10034,7 @@ input:focus-visible {
   box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
   cursor: pointer;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-weight: 500;
   letter-spacing: 0em;
@@ -10115,17 +10115,17 @@ input:focus-visible {
 }
 .list-news-style .title span {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .list-news-style .list-meta a {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .list-news-style .new-text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -10162,7 +10162,7 @@ input:focus-visible {
 .category-list a {
   display: block;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 35px;
@@ -10204,7 +10204,7 @@ input:focus-visible {
 }
 .table-style1 .table td {
   border-bottom: 1px solid #dddddd;
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   line-height: 52px;
   padding-left: 27px;
 }
@@ -10218,7 +10218,7 @@ input:focus-visible {
 }
 .table-style2 table.table .t-head th {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   line-height: 22px;
@@ -10237,7 +10237,7 @@ input:focus-visible {
 }
 .table-style2 .t-body th {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   line-height: 23px;
@@ -10250,7 +10250,7 @@ input:focus-visible {
 }
 .table-style2 .t-body td {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding-bottom: 30px;
   padding-top: 30px;
@@ -10293,21 +10293,21 @@ input:focus-visible {
 .table-style3 .t-head th {
   border: 0;
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   padding: 20px 30px;
 }
 .table-style3 .t-body th {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   padding: 20px 30px;
 }
 .table-style3 .t-body td {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding: 20px 30px;
 }
@@ -10361,7 +10361,7 @@ input:focus-visible {
 .invoice_table .tblpr_title,
 .invoice_table .tblp_title {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   padding-bottom: 20px;
@@ -10383,7 +10383,7 @@ input:focus-visible {
 
 /* Essential utility classes */
 .ff-heading {
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
 }
 
 .text-white {
@@ -10828,7 +10828,7 @@ input:focus-visible {
 
 .text {
   color: var(--headings-color);
-  font-family: var(--title-font-family);
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 

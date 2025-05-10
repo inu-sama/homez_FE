@@ -297,7 +297,9 @@ const Home = () => {
       {/* End  Our Exclusive Agetns */}
 
       {/* Start Our Footer */}
-      {/* <section className="footer-style1 pt60 pb-0"></section> */}
+      <section className="footer-style1 pt60 pb-0">
+        <Footer />
+      </section>
       {/* End Our Footer */}
     </>
   );

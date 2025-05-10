@@ -1,36 +1,43 @@
 "use client";
 import Select from "react-select";
 import Slider, { Range } from "rc-slider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { apiCatalog } from "@/apis/Catalog";
 
-const FilterItems = () => {
-  const [price, setPrice] = useState([0, 200000000]);
+const FilterItems = ({ setCategory, setLocation }) => {
+  const [optionsPrice, setOptionPrice] = useState(null);
+  const [location, setLocationa] = useState([]);
+  const [category, setCategoryb] = useState([]);
 
-  // price range handler
-  const handleOnChange = (value) => {
-    setPrice(value);
-  };
+  useEffect(() => {
+    const fetchLocation = async () => {
+      try {
+        const response = await apiCatalog.getLocation();
+        setLocationa(response);
+      } catch (error) {
+        console.error("Error fetching location data:", error);
+      }
+    };
+    const fetchCategory = async () => {
+      try {
+        const response = await apiCatalog.getCategory();
+        setCategoryb(response);
+      } catch (error) {
+        console.error("Error fetching category data:", error);
+      }
+    };
+    fetchCategory();
 
-  // const catOptions = [
-  //   { value: "Apartments", label: "Apartments" },
-  //   { value: "Bungalow", label: "Bungalow" },
-  //   { value: "Houses", label: "Houses" },
-  //   { value: "Loft", label: "Loft" },
-  //   { value: "Office", label: "Office" },
-  //   { value: "Townhome", label: "Townhome" },
-  //   { value: "Villa", label: "Villa" },
-  // ];
-  const locationOptions = [
-    { value: "California", label: "California" },
-    { value: "Chicago", label: "Chicago" },
-    { value: "Los Angeles", label: "Los Angeles" },
-    { value: "Manhattan", label: "Manhattan" },
-    { value: "New Jersey", label: "New Jersey" },
-    { value: "New York", label: "New York" },
-    { value: "San Diego", label: "San Diego" },
-    { value: "San Francisco", label: "San Francisco" },
-    { value: "Texas", label: "Texas" },
-  ];
+    fetchLocation();
+  }, []);
+  const locationOptions = location.map((item) => ({
+    value: item._id,
+    label: item.Name,
+  }));
+  const categoriesOptions = category.map((item) => ({
+    value: item._id,
+    label: item.Name,
+  }));
 
   const customStyles = {
     option: (styles, { isFocused, isSelected, isHovered }) => {
@@ -52,7 +59,7 @@ const FilterItems = () => {
       <div className="col-md-12">
         <div className="bootselect-multiselect mb15">
           <Select
-            defaultValue={[locationOptions[0]]}
+            defaultValue={{ label: "Địa chỉ", value: "" }}
             name="colors"
             options={locationOptions}
             styles={customStyles}
@@ -60,41 +67,23 @@ const FilterItems = () => {
             classNamePrefix="select"
             required
             isSearchable={false}
+            onChange={(e) => setLocation(e.label)}
           />
         </div>
       </div>
-      
       <div className="col-md-12">
-        <div className="dropdown-lists at-home8 mb20">
-          <div
-            className="btn open-btn drop_btn3 text-start dropdown-toggle"
-            data-bs-toggle="dropdown"
-            data-bs-auto-close="outside"
-          >
-            Price <i className="fas fa-caret-down float-end fz11" />
-          </div>
-          <div className="dropdown-menu">
-            <div className="widget-wrapper pb20 mb0 pl20 pr20">
-              {/* Range Slider Mobile Version */}
-              <div className="range-slider-style2">
-                <div className="range-wrapper at-home10">
-                  <Slider
-                    range
-                    max={100000}
-                    min={0}
-                    defaultValue={price}
-                    onChange={(value) => handleOnChange(value)}
-                    id="slider"
-                  />
-                  <div className="d-flex align-items-center">
-                    <span id="slider-range-value1">{price[0]}₫</span>
-                    <i className="fa-sharp fa-solid fa-minus mx-2 dark-color icon" />
-                    <span id="slider-range-value2">{price[1]}₫</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="bootselect-multiselect mb15">
+          <Select
+            defaultValue={{ label: "Loại", value: "" }}
+            name="colors"
+            options={categoriesOptions}
+            styles={customStyles}
+            className="text-start with_border"
+            classNamePrefix="select"
+            required
+            isSearchable={false}
+            onChange={(e) => setCategory(e.label)}
+          />
         </div>
       </div>
     </>

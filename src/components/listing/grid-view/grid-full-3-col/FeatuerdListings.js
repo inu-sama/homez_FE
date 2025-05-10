@@ -3,13 +3,19 @@
 import { sort } from "@/data/mobileMenuItems";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
+  const searchParams = useSearchParams();
+  const location = searchParams.get("location")?.toLowerCase();
   return (
     <>
       {data
         .sort(filterFunctions.sortFunction)
+        .filter((p) =>
+          location ? p.Address.toLowerCase().includes(location) : true
+        )
         .filter((p) =>
           filterFunctions.propertyTypes != ""
             ? p.Type.category == filterFunctions.propertyTypes

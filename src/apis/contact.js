@@ -41,6 +41,19 @@ class ApiContact {
       throw new Error("Failed to fetch contact");
     }
   }
+
+  async updateContact(id) {
+    try {
+      const res = await instance.put(`/updateContact/${id}`);
+      return res;
+    } catch (error) {
+      console.error(
+        "Error updating contact:",
+        error.response?.data || error.message
+      );
+      throw new Error("Failed to update contact");
+    }
+  }
 }
 
 export const apiContact = new ApiContact();
