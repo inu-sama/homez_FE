@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import SearchBox from "./SearchBox";
@@ -12,13 +12,13 @@ import SquareFeet from "./SquareFeet";
 import YearBuilt from "./YearBuilt";
 import OtherFeatures from "./OtherFeatures";
 
-const ListingSidebar = ({filterFunctions}) => {
+const ListingSidebar = ({ filterFunctions }) => {
   return (
     <div className="list-sidebar-style1">
-      <div className="widget-wrapper">
+      {/* <div className="widget-wrapper">
         <h6 className="list-title">Find your home</h6>
         <SearchBox filterFunctions={filterFunctions} />
-      </div>
+      </div> */}
       {/* End .widget-wrapper */}
 
       {/* <div className="widget-wrapper">
@@ -30,16 +30,16 @@ const ListingSidebar = ({filterFunctions}) => {
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper">
-        <h6 className="list-title">Property Type</h6>
+        <h6 className="list-title">Loại hình</h6>
         <div className="checkbox-style1">
           <PropertyType filterFunctions={filterFunctions} />
         </div>
       </div>
-      
+
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper">
-        <h6 className="list-title">Price Range</h6>
+        <h6 className="list-title">Tầm giá</h6>
         {/* Range Slider Desktop Version */}
         <div className="range-slider-style1">
           <PriceSlider filterFunctions={filterFunctions} />
@@ -48,7 +48,7 @@ const ListingSidebar = ({filterFunctions}) => {
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper">
-        <h6 className="list-title">Bedrooms</h6>
+        <h6 className="list-title">Phòng ngủ</h6>
         <div className="d-flex">
           <Bedroom filterFunctions={filterFunctions} />
         </div>
@@ -56,34 +56,34 @@ const ListingSidebar = ({filterFunctions}) => {
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper">
-        <h6 className="list-title">Bathrooms</h6>
+        <h6 className="list-title">Phòng tắm</h6>
         <div className="d-flex">
-          <Bathroom filterFunctions={filterFunctions}  />
+          <Bathroom filterFunctions={filterFunctions} />
         </div>
       </div>
       {/* End .widget-wrapper */}
 
-      <div className="widget-wrapper advance-feature-modal">
+      {/* <div className="widget-wrapper advance-feature-modal">
         <h6 className="list-title">Location</h6>
         <div className="form-style2 input-group">
           <Location filterFunctions={filterFunctions} />
         </div>
-      </div>
+      </div> */}
       {/* End .widget-wrapper */}
 
-      <div className="widget-wrapper">
+      {/* <div className="widget-wrapper">
         <h6 className="list-title">Square Feet</h6>
         <SquareFeet filterFunctions={filterFunctions}/>
-      </div>
+      </div> */}
       {/* End .widget-wrapper */}
 
-      <div className="widget-wrapper">
+      {/* <div className="widget-wrapper">
         <h6 className="list-title">Year Built</h6>
         <YearBuilt filterFunctions={filterFunctions}/>
-      </div>
+      </div> */}
       {/* End .widget-wrapper */}
 
-      <div className="widget-wrapper">
+      {/* <div className="widget-wrapper">
         <div className="feature-accordion">
           <div className="accordion" id="accordionExample">
             <div className="accordion-item border-none">
@@ -112,20 +112,24 @@ const ListingSidebar = ({filterFunctions}) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper mb20">
         <div className="btn-area d-grid align-items-center">
-          <button className="ud-btn btn-thm">
+          <button
+            className="ud-btn btn-thm"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
             <span className="flaticon-search align-text-top pr10" />
-            Search
+            Tìm kiếm
           </button>
         </div>
       </div>
       {/* End .widget-wrapper */}
 
-      <div className="reset-area d-flex align-items-center justify-content-between">
+      {/* <div className="reset-area d-flex align-items-center justify-content-between">
         <div onClick={()=>filterFunctions.resetFilter()} className="reset-button cursor" href="#">
           <span className="flaticon-turn-back" />
           <u>Reset all filters</u>
@@ -134,7 +138,7 @@ const ListingSidebar = ({filterFunctions}) => {
           <span className="flaticon-favourite" />
           <u>Save Search</u>
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };

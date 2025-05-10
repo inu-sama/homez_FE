@@ -258,7 +258,7 @@ export default function PropertyFiltering({ type }) {
           aria-labelledby="listingSidebarFilterLabel">
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
-              Listing Filter
+              Lọc danh sách
             </h5>
             <button
               type="button"
@@ -273,7 +273,7 @@ export default function PropertyFiltering({ type }) {
         {/* End mobile filter sidebar */}
 
         {/* <!-- Advance Feature Modal Start --> */}
-        <div className="advance-feature-modal">
+        {/* <div className="advance-feature-modal">
           <div
             className="modal fade"
             id="advanceSeachModal"
@@ -282,7 +282,7 @@ export default function PropertyFiltering({ type }) {
             aria-hidden="true">
             <AdvanceFilterModal filterFunctions={filterFunctions} />
           </div>
-        </div>
+        </div> */}
         {/* <!-- Advance Feature Modal End --> */}
 
         <div className="row">
