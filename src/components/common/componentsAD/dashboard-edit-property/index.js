@@ -229,7 +229,7 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
                 aria-selected="false"
                 onClick={async () => {
                   console.log("Data", data);
-                  const res = await apiProperties.updateProperty(data, _id);
+                  const res = await apiProperties.updatePropertyAD(data, _id);
                   console.log(res);
                 }}
               >
