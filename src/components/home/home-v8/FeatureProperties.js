@@ -139,13 +139,30 @@ const FeatureProperties = () => {
             <div className="item">
               <div className="listing-style11">
                 <div className="col-lg-12">
-                  <div className="row align-items-center">
-                    <div className="list-content mb30-md col-md-8 col-lg-6 col-xl-5 p-xl-0">
+                  <div className="list-thumb col-lg-6 col-xl-6 offset-xl-1 p-xl-0">
+                    <Image
+                      width={560}
+                      height={610}
+                      className="img-1 cover w-100 h-00"
+                      src={property.Images[0]}
+                      alt="property image"
+                    />
+                  </div>
+                  <div
+                    className="row align-items-center"
+                    style={{ display: "flex", justifyContent: "right" }}
+                  >
+                    <div
+                      className="list-content mb30-md col-md-8 col-lg-6 col-xl-5 p-xl-0"
+                      style={{ textAlign: "left" }}
+                    >
                       <div className="d-flex mb30">
                         <div className="list-tag2 fz12">{property.State}</div>
                       </div>
                       <h4 className="list-title">
-                        <Link href={`/property-detail/${property._id}`}>{property.Title}</Link>
+                        <Link href={`/property-detail/${property._id}`}>
+                          {property.Title}
+                        </Link>
                       </h4>
                       <p className="list-text fz15">{property.Location}</p>
                       <div className="list-meta d-block d-sm-flex align-items-center mt30 mb40">
@@ -235,16 +252,6 @@ const FeatureProperties = () => {
                       <div className="list-meta2 d-flex justify-content-between align-items-center"></div>
                     </div>
                     {/* End list-content */}
-
-                    <div className="list-thumb col-lg-6 col-xl-6 offset-xl-1 p-xl-0">
-                      <Image
-                        width={560}
-                        height={610}
-                        className="img-1 cover w-100 h-00"
-                        src={property.Images[0]}
-                        alt="property image"
-                      />
-                    </div>
                     {/* End list-thumb */}
                   </div>
                   {/* End .row */}

@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import { apiContact } from "@/apis/contact";
 
 const Form = () => {
@@ -7,8 +8,6 @@ const Form = () => {
     name: "",
     phone: "",
     email: "",
-    post: property._id,
-    typeofPost: property.State,
     message: "",
   });
   const getCookie = (name) => {
@@ -140,7 +139,7 @@ const Form = () => {
             <textarea
               cols={30}
               rows={4}
-              placeholder="There are many variations of passages."
+              placeholder="Nhập nội dung"
               defaultValue={""}
               required
               value={sendContact.message}
@@ -155,11 +154,11 @@ const Form = () => {
         <div className="col-md-12">
           <div className="d-grid">
             <button
-              type="submit"
+              type="button"
               className="ud-btn btn-thm"
               onClick={handleSendContact}
             >
-              Submit
+              Gửi yêu cầu
               <i className="fal fa-arrow-right-long" />
             </button>
           </div>
