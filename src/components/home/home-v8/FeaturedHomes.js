@@ -12,27 +12,27 @@ const FeaturedHomes = () => {
   const featuredHomesData = [
     {
       id: 1,
-      imageUrl: "/images/listings/as-2.jpg",
+      imageUrl: "/images/listings/cate-01.webp",
       title: "Chung cư",
-      description: "22 Properties",
+      category: "Chung+cư",
     },
     {
       id: 2,
-      imageUrl: "/images/listings/as-7.jpg",
+      imageUrl: "/images/listings/cate-02.webp",
       title: "Nhà ở",
-      description: "22 Properties",
+      category: "Nhà+ở",
     },
     {
       id: 3,
-      imageUrl: "/images/listings/as-8.jpg",
+      imageUrl: "/images/listings/cate-03.webp",
       title: "Văn phòng",
-      description: "22 Properties",
+      category: "Văn+phòng",
     },
     {
       id: 4,
-      imageUrl: "/images/listings/as-9.jpg",
+      imageUrl: "/images/listings/cate-04.webp",
       title: "Vila",
-      description: "22 Properties",
+      category: "Vila",
     },
   ];
 
@@ -68,7 +68,7 @@ const FeaturedHomes = () => {
         {featuredHomesData.map((home) => (
           <SwiperSlide key={home.id}>
             <div className="item">
-              <Link href="/property-list/for-sale">
+              <Link href={`/property-list/for-sale?category=${home.category}`}>
                 <div className="apartment-style2 text-center mb30">
                   <div className="apartment-img">
                     <Image

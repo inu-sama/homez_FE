@@ -53,7 +53,7 @@ export default function PropertyFiltering({ type }) {
   }, [pageNumber, sortedFilteredData]);
 
   const [listingStatus, setListingStatus] = useState("All");
-  const [propertyTypes, setPropertyTypes] = useState("");
+  const [propertyTypes, setPropertyTypes] = useState(cate ? cate : "");
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);

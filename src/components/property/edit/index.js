@@ -202,7 +202,7 @@ const EditPropertyTabContent = ({ params }) => {
             <DetailsFiled setData={setData} data={data} property={property} />
           </div>
 
-          {data.category == "Chung cư" && (
+          {data.State == "Cho thuê" && (
             <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
               <h4 className="title fz17 mb30">Chọn tiện ích</h4>
               <div className="row">
