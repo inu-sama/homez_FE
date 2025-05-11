@@ -171,16 +171,19 @@ export default function Contact() {
                       <td>{item.name}</td>
                       <td>{item.email}</td>
                       <td>{item.phone}</td>
-                      <td>
-                        <a
-                          href={`/property-detail/${item.post}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Link
-                        </a>
-                      </td>
-
+                      {item.message ? (
+                        <td>{item.message}</td>
+                      ) : (
+                        <td>
+                          <a
+                            href={`/property-detail/${item.post}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Link
+                          </a>
+                        </td>
+                      )}
                       <td>{item.typeofPost}</td>
                       <td>{item.status}</td>
                       <td>
