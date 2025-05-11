@@ -145,7 +145,7 @@ const FeatureProperties = () => {
                         <div className="list-tag2 fz12">{property.State}</div>
                       </div>
                       <h4 className="list-title">
-                        <Link href="/map-v3">{property.Title}</Link>
+                        <Link href={`/property-detail/${property._id}`}>{property.Title}</Link>
                       </h4>
                       <p className="list-text fz15">{property.Location}</p>
                       <div className="list-meta d-block d-sm-flex align-items-center mt30 mb40">

@@ -12,10 +12,10 @@ const HeroContent = () => {
   const [location, setLocation] = useState(null);
   const [category, setCategory] = useState(null);
 
-  useEffect(() => {
-    console.log("Location:", location);
-    console.log("Category:", category);
-  }, [location, category]);
+  // useEffect(() => {
+  //   console.log("Location:", location);
+  //   console.log("Category:", category);
+  // }, [location, category]);
 
   const tabs = [
     { id: "rent", label: "Thuê nhà", link: "/property-list/for-rent" },
