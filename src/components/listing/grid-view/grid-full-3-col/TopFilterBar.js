@@ -7,6 +7,7 @@ import PriceRange from "../../sidebar/PriceRange";
 import Bedroom from "../../sidebar/Bedroom";
 import Bathroom from "../../sidebar/Bathroom";
 import Status from "../../sidebar/Status";
+import Location from "../../sidebar/Location";
 
 const TopFilterBar = ({
   filterFunctions,

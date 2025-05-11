@@ -61,7 +61,7 @@ const FilterItems = ({ setCategory, setLocation }) => {
           <Select
             defaultValue={{ label: "Địa chỉ", value: "" }}
             name="colors"
-            options={locationOptions}
+            options={cities}
             styles={customStyles}
             className="text-start with_border"
             classNamePrefix="select"

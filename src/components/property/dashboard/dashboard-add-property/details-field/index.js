@@ -9,11 +9,10 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
     { value: "Tây", label: "Tây" },
     { value: "Nam", label: "Nam" },
     { value: "Bắc", label: "Bắc" },
-  ];
-  const typeApartment = [
-    { value: "Cao cấp", label: "Cao cấp" },
-    { value: "Bình dân", label: "Bình dân" },
-    { value: "Kho", label: "Kho" },
+    { value: "Đông Nam", label: "Đông Nam" },
+    { value: "Đông Bắc", label: "Đông Bắc" },
+    { value: "Tây Nam", label: "Tây Nam" },
+    { value: "Tây Bắc", label: "Tây Bắc" },
   ];
   const interiorCondition = [
     { value: "Nội thất cao cấp", label: "Nội thất cao cấp" },
@@ -54,8 +53,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                   ...prev,
                   sqft: e.target.value,
                 }));
-                if (data.sqft && data.yearBuilt) {
-                  setFilled([true, true, true, true, false]);
+                if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                  setFilled([true, true, true]);
                 }
               }}
             />
@@ -122,8 +121,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                   ...prev,
                   yearBuilt: e.target.value,
                 }));
-                if (data.sqft && data.yearBuilt) {
-                  setFilled([true, true, true, true, false]);
+                if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                  setFilled([true, true, true]);
                 }
               }}
             />
@@ -173,8 +172,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                     ...prev,
                     interior_condition: e.label,
                   }));
-                  if (data.sqft && data.yearBuilt) {
-                    setFilled([true, true, true, true, false]);
+                  if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                    setFilled([true, true, true]);
                   }
                 }}
               />
@@ -204,8 +203,8 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                         ...prev,
                         maindoor_direction: e.label,
                       }));
-                      if (data.sqft && data.yearBuilt) {
-                        setFilled([true, true, true, true, false]);
+                      if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                        setFilled([true, true, true]);
                       }
                     }}
                   />
@@ -265,10 +264,9 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                         ...prev,
                         Balcony_direction: e.label,
                       }));
-                      if (data.sqft && data.yearBuilt) {
-                        setFilled([true, true, true, true, false]);
+                      if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                        setFilled([true, true, true]);
                       }
-                      console.log(data);
                     }}
                   />
                 </div>

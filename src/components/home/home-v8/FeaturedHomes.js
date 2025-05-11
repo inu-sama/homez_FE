@@ -80,8 +80,7 @@ const FeaturedHomes = () => {
                     />
                   </div>
                   <div className="apartment-content">
-                    <h6 className="title mb-0 bg-white bg-opacity-50">{home.title}</h6>
-                    <p className="text mb-0 bg-white bg-opacity-50">{home.description}</p>
+                    <h6 className="title mb-0">{home.title}</h6> 
                   </div>
                 </div>
               </Link>

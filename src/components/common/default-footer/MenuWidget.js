@@ -3,33 +3,26 @@ import React from "react";
 const MenuWidget = () => {
   const menuSections = [
     {
-      title: "Popular Search",
+      title: "Phổ biến",
       links: [
-        { label: "Apartment for Rent", href: "#" },
-        { label: "Apartment Low to Hide", href: "#" },
+        { label: "Bất động sản cho thuê", href: "/property-list/for-rent" },
+        { label: "Mua bất động sản", href: "/property-list/for-sale" },
         { label: "Offices for Buy", href: "#" },
         { label: "Offices for Rent", href: "#" },
       ],
     },
     {
-      title: "Quick Links",
+      title: "Hỗ trợ",
       links: [
         { label: "Terms of Use", href: "#" },
         { label: "Privacy Policy", href: "#" },
-        { label: "Pricing Plans", href: "#" },
-        { label: "Our Services", href: "#" },
-        { label: "Contact Support", href: "#" },
-        { label: "Careers", href: "#" },
-        { label: "FAQs", href: "#" },
+        { label: "Liên hệ hỗ trợ", href: "/contact" },
+        { label: "Câu hỏi thường gặp", href: "/faq" },
       ],
     },
     {
-      title: "Discover",
+      title: "Cá nhân",
       links: [
-        { label: "Miami", href: "#" },
-        { label: "Los Angeles", href: "#" },
-        { label: "Chicago", href: "#" },
-        { label: "New York", href: "#" },
       ],
     },
   ];

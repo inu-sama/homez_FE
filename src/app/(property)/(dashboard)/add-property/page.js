@@ -42,7 +42,7 @@ const DashboardAddProperty = () => {
                   <div className="dashboard_title_area">
                     <h2>Thêm bài đăng</h2>
                     <p className="text">
-                      Nhập đầy đủ thông tin căn hộ của bạn!
+                      Nhập đầy đủ thông tin bất động sản của bạn!
                     </p>
                   </div>
                 </div>

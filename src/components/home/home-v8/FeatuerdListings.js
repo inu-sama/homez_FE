@@ -69,15 +69,6 @@ const FeaturedListings = () => {
                           alt="listings"
                         />
                       </div>
-                      <div className="sale-sticker-wrap">
-                        {listing.State == "Cho thuê" && (
-                          <div className="list-tag rounded-0 fz12">
-                            <span className="flaticon-electricity" />
-                            FEATURED
-                          </div>
-                        )}
-                        <div className="list-tag2 rounded-0 fz12">FOR SALE</div>
-                      </div>
 
                       <div className="list-meta">
                         <a href="#">

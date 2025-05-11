@@ -2,7 +2,7 @@ import MobileMenu from "@/components/common/mobile-menu";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Hero from "@/components/home/home-v8/hero";
 import Blog from "@/components/common/Blog";
-import Footer from "@/components/home/home-v8/footer";
+import Footer from "@/components/common/default-footer";
 import Header from "@/components/home/home-v8/Header";
 import Contact from "@/components/home/home-v8/Contact";
 import Agents from "@/components/home/home-v8/Agents";
@@ -15,6 +15,7 @@ import FeaturedListings from "@/components/home/home-v8/FeatuerdListings";
 import PartnerDark from "@/components/common/PartnerDark";
 import SidebarStickyBar from "@/components/home/home-v8/SidebarStickyBar";
 import Link from "next/link";
+import CallToActions from "@/components/common/CallToActions";
 
 export const metadata = {
   title: "Home v8 || Homez - Real Estate NextJS Template",
@@ -41,7 +42,6 @@ const Home = () => {
               <Hero />
             </div>
           </div>
-          {/* End .container */}
         </div>
       </section>
       {/* End Home Banner Style V4 */}
@@ -295,6 +295,8 @@ const Home = () => {
         </div>
       </section> */}
       {/* End  Our Exclusive Agetns */}
+
+      <CallToActions />
 
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">

@@ -57,7 +57,7 @@ export default function PropertyFiltering({ type }) {
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
-  const [location, setLocation] = useState("All Cities");
+  const [location, setLocation] = useState("Hồ Chí Minh");
   const [squirefeet, setSquirefeet] = useState([]);
   const [yearBuild, setyearBuild] = useState([]);
   const [categories, setCategories] = useState(cate || []);
@@ -131,12 +131,14 @@ export default function PropertyFiltering({ type }) {
     setBathrooms,
     setAmenities,
     setSortFunction,
+    setLocation,
     priceRange,
     propertyTypes,
     bedrooms,
     bathrooms,
     amenities,
     sortFunction,
+    location,
   };
 
   useEffect(() => {

@@ -22,6 +22,7 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
             : p
         )
         // .filter((p) => Number(p.Price) >= filterFunctions.priceRange[0] && Number(p.Price) <= filterFunctions.priceRange[1])
+        .filter((p) => p.Address.split(", ")[2] == filterFunctions.location)
         .filter((p) =>
           filterFunctions.bedrooms != 0
             ? p.Type.bedroom >= filterFunctions.bedrooms

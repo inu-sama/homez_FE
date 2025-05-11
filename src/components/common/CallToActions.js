@@ -30,10 +30,10 @@ const CallToActions = () => {
             <div className="col-lg-7 col-xl-6 " data-aos="fade-right">
               <div className="cta-style1">
                 <h2 className="cta-title">
-                  Nếu cần giúp đỡ? Nói chuyện với chuyên gia của chúng tôi.
+                  Bạn cần giúp đỡ? Nói chuyện với chuyên gia của chúng tôi.
                 </h2>
                 <p className="cta-text mb-0">
-                  Nói chuyện với chuyên gia của chúng tôi hoặc Duyệt qua nhiều
+                  Nói chuyện với chuyên gia của chúng tôi hoặc xem qua nhiều
                   bất động sản hơn.
                 </p>
               </div>
