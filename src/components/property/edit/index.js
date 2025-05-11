@@ -33,6 +33,7 @@ const EditPropertyTabContent = ({ params }) => {
         if (elm._id == params.id) {
           console.log("elm", elm);
           setProperty(elm);
+          setSelectedAmenities(elm.Amenities);
           setData({
             Title: elm.Title,
             Price: elm.Price,
@@ -73,28 +74,27 @@ const EditPropertyTabContent = ({ params }) => {
   });
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [data, setData] = useState({
-      Title: null,
-      Price: null,
-      Description: null,
-      Address: null,
-      category: "Chung cư",
-      State: "Cho thuê",
-      Location: "",
-      Amenities: selectedAmenities,
-      images: [],
-      yearBuilt: null,
-      bedroom: 1,
-      bathroom: 1,
-      garage: 0,
-      sqft: null,
-      interior_condition: "Nội thất đầy đủ",
-      deposit_amount: null,
-      type_documents: null,
-      Balcony_direction: null,
-      Type_apartment: null,
-      maindoor_direction: null,
-    });
-  
+    Title: null,
+    Price: null,
+    Description: null,
+    Address: null,
+    category: "Chung cư",
+    State: "Cho thuê",
+    Location: "",
+    Amenities: selectedAmenities,
+    images: [],
+    yearBuilt: null,
+    bedroom: 1,
+    bathroom: 1,
+    garage: 0,
+    sqft: null,
+    interior_condition: "Nội thất đầy đủ",
+    deposit_amount: null,
+    type_documents: null,
+    Balcony_direction: null,
+    Type_apartment: null,
+    maindoor_direction: null,
+  });
 
   useEffect(() => {
     setData((prevData) => ({
@@ -148,7 +148,8 @@ const EditPropertyTabContent = ({ params }) => {
     <>
       <nav>
         <div className="nav nav-tabs" id="nav-tab2" role="tablist">
-          <Link href={"/my-properties"}
+          <Link
+            href={"/my-properties"}
             className="btn btn-dark fw600 ms-auto px-5"
             style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
@@ -184,11 +185,7 @@ const EditPropertyTabContent = ({ params }) => {
             />
           </div>
 
-          <UploadMedia
-            setData={setData}
-            data={data}
-            property={property}
-          />
+          <UploadMedia setData={setData} data={data} property={property} />
 
           {/* <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Vị trí căn hộ</h4>

@@ -14,7 +14,6 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
     Category: [],
     Location: [],
   });
-  const [video, setVideo] = useState(null);
   const [selectedAmenities, setSelectedAmenities] = useState(
     edit_data?.Amenities || []
   );
@@ -24,7 +23,7 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
     Price: edit_data?.Price || "",
     Description: edit_data?.Description || "",
     Address: edit_data?.Address || "",
-    Category: edit_data?.Type.Category || "",
+    category: edit_data?.Type.Category || "",
     State: edit_data?.State || "",
     Location: edit_data?.Location || "",
     Amenities: selectedAmenities || [],
@@ -34,11 +33,17 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
     bathroom: edit_data?.Type.bathroom || 1,
     garage: edit_data?.Type.garage || 0,
     sqft: edit_data?.Type.sqft || null,
+    interior_condition: edit_data?.interior_condition || "Nội thất đầy đủ",
+    deposit_amount: edit_data?.deposit_amount || null,
+    type_documents: edit_data?.type_documents || null,
+    Balcony_direction: edit_data?.Balcony_direction || null,
+    Type_apartment: edit_data?.Type_apartment || null,
+    maindoor_direction: edit_data?.maindoor_direction || null,
   });
 
-  useEffect(() => {
-    console.log("Data property", edit_data);
-  }, []);
+  // useEffect(() => {
+  //   console.log("Data property", edit_data);
+  // }, []);
 
   // useEffect(() => {
   //   setData((prevData) => ({
@@ -56,13 +61,20 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
       }
     });
   };
+  
+    useEffect(() => {
+      setData((prevData) => ({
+        ...prevData,
+        Amenities: selectedAmenities,
+      }));
+    }, [selectedAmenities]);
 
   // Truyền cả `data` và `setData`
-  <PropertyDescription
-    data={data}
-    setData={setData}
-    dataCate={catalog.Category}
-  />;
+  // <PropertyDescription
+  //   data={data}
+  //   setData={setData}
+  //   dataCate={catalog.Category}
+  // />;
 
   const fetchCatalog = async () => {
     try {
@@ -83,74 +95,29 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
     fetchCatalog();
   }, []);
 
-  useEffect(() => {
-    console.log("Catogories", catalog.Category);
-    console.log("Data", data);
-  }, [catalog.Category]);
+  // useEffect(() => {
+  //   console.log("Catogories", catalog.Category);
+  //   console.log("Data", data);
+  // }, [catalog.Category]);
 
   return (
     <>
       <nav>
         <div className="nav nav-tabs" id="nav-tab2" role="tablist">
           <button
-            className="nav-link active fw600 ms-3"
-            id="nav-item1-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-item1"
-            type="button"
-            role="tab"
-            aria-controls="nav-item1"
-            aria-selected="true"
-          >
-            1. Mô tả
-          </button>
-          <button
-            className="nav-link fw600"
-            id="nav-item2-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-item2"
-            type="button"
-            role="tab"
-            aria-controls="nav-item2"
-            aria-selected="false"
-          >
-            2. Hình ảnh
-          </button>
-          <button
-            className="nav-link fw600"
-            id="nav-item3-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-item3"
-            type="button"
-            role="tab"
-            aria-controls="nav-item3"
-            aria-selected="false"
-          >
-            3. Vị trí
-          </button>
-          <button
-            className="nav-link fw600"
-            id="nav-item4-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-item4"
-            type="button"
-            role="tab"
-            aria-controls="nav-item4"
-            aria-selected="false"
-          >
-            4. Chi tiết
-          </button>
-          <button
-            className="nav-link fw600"
-            id="nav-item4-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-item5"
+            className="btn btn-dark fw600 ms-auto px-5"
+            style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
             role="tab"
             aria-controls="nav-item5"
             aria-selected="false"
+            onClick={async () => {
+              console.log("Data", data);
+              const res = await apiProperties.updateProperty(data, _id);
+              console.log(res);
+            }}
           >
-            5. Tiện ích
+            Chỉnh sửa
           </button>
         </div>
       </nav>
@@ -167,24 +134,40 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
             <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
             <PropertyDescription
               setData={setData}
-              data={edit_data}
-              dataCate={catalog.Category}
+              property={edit_data}
+              data={data}
+              catalog={catalog}
             />
           </div>
+
+          <UploadMedia property={edit_data} setData={setData} />
+          
+          <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
+            <h4 className="title fz17 mb30">Chi tiết căn hộ</h4>
+            <DetailsFiled setData={setData} data={data} property={edit_data} />
+          </div>
+
+          {data.category == "Chung cư" && (
+            <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
+              <h4 className="title fz17 mb30">Chọn tiện ích</h4>
+              <div className="row">
+                <Amenities
+                  amenitiesData={catalog.Amenities}
+                  selectedAmenities={selectedAmenities}
+                  onAmenityChange={handleAmenityChange}
+                  data={data}
+                  property={property}
+                />
+              </div>
+            </div>
+          )}
         </div>
         {/* End tab for Property Description */}
 
-        <div
-          className="tab-pane fade"
-          id="nav-item2"
-          role="tabpanel"
-          aria-labelledby="nav-item2-tab"
-        >
-          <UploadMedia dataImage={edit_data} setData={setData} />
-        </div>
+        
         {/* End tab for Upload photos of your property */}
 
-        <div
+        {/* <div
           className="tab-pane fade"
           id="nav-item3"
           role="tabpanel"
@@ -198,10 +181,10 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
               dataLocat={edit_data}
             />
           </div>
-        </div>
+        </div> */}
         {/* End tab for Listing Location */}
 
-        <div
+        {/* <div
           className="tab-pane fade"
           id="nav-item4"
           role="tabpanel"
@@ -211,10 +194,10 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
             <h4 className="title fz17 mb30">Chi tiết căn hộ</h4>
             <DetailsFiled setData={setData} />
           </div>
-        </div>
+        </div> */}
         {/* End tab for Listing Details */}
 
-        <div
+        {/* <div
           className="w-100 tab-pane fade"
           id="nav-item5"
           role="tabpanel"
@@ -227,6 +210,8 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
                 amenitiesData={catalog.Amenities}
                 selectedAmenities={selectedAmenities}
                 onAmenityChange={handleAmenityChange}
+                data={data}
+                property={edit_data}
               />
             </div>
           </div>
@@ -267,7 +252,7 @@ const EditPropertyTabContent = ({ edit_data, _id }) => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* End tab for Select Amenities */}
       </div>
     </>
