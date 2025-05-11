@@ -1,17 +1,14 @@
+"use client";
 import DefaultHeader from "@/components/common/DefaultHeader";
-
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 
 import PropertyFiltering from "@/components/listing/grid-view/grid-full-3-col/PropertyFiltering";
 
-import React from "react";
-
-export const metadata = {
-  title: "Gird Full 3 Column || Homez - Real Estate NextJS Template",
-};
+import React, { useState } from "react";
 
 const GridFull3Col = ({ params }) => {
+  const [type, setType] = useState(params.type);
   return (
     <>
       {/* Main Header Nav */}
@@ -58,7 +55,7 @@ const GridFull3Col = ({ params }) => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <PropertyFiltering type={params.type} />
+      <PropertyFiltering type={type} setType={setType} />
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

@@ -39,7 +39,7 @@ const FeatureProperties = () => {
         }}
         slidesPerView={1}
       >
-        {properties.map((property) => (
+        {properties.filter((p) => p.highlight).map((property) => (
           // <SwiperSlide key={property._id}>
           //   <div className="listing-style14 pt0-xs pr0-xs">
           //     <div className="list-content">
@@ -191,11 +191,11 @@ const FeatureProperties = () => {
                         <div className="col-auto">
                           <div className="contact-info">
                             <p className="info-title ff-heading mb-2">
-                              Total Free Customer Care
+                              Hotline miễn phí
                             </p>
                             <h6 className="info-phone">
-                              <a href="tel:+012305094502">
-                                +(0) 123 050 945 02
+                              <a href="tel:+84766934574">
+                                +(84) 766 934 574
                               </a>
                             </h6>
                           </div>
@@ -204,10 +204,10 @@ const FeatureProperties = () => {
                         <div className="col-auto">
                           <div className="contact-info">
                             <p className="info-title ff-heading mb-2">
-                              Need Live Support?
+                              Bạn cần hỗ trợ thêm?
                             </p>
                             <h6 className="info-mail">
-                              <a href="mailto:hi@homez.com">hi@homez.com</a>
+                              <a href="mailto:contact.nekohome@gmail.com">contact.nekohome@gmail.com</a>
                             </h6>
                           </div>
                         </div>

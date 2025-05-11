@@ -3966,6 +3966,7 @@ li {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  height: 100vh;
 }
 .home-banner-style8 .home-style8 {
   -webkit-box-align: center;
@@ -4960,7 +4961,7 @@ section {
 }
 
 .cta-banner6:before {
-  background-image: url(../images/city.webp);
+  background-image: url(../images/home.png);
   background-size: cover;
   content: "";
   position: absolute;

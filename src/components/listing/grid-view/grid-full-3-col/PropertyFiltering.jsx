@@ -12,7 +12,7 @@ import PaginationTwo from "../../PaginationTwo";
 import { sort } from "@/data/mobileMenuItems";
 import { useSearchParams } from "next/navigation";
 
-export default function PropertyFiltering({ type }) {
+export default function PropertyFiltering({ type, setType }) {
   const searchParams = useSearchParams();
   const cate = searchParams.get("category");
   const [properties, setProperties] = useState([]);
@@ -52,7 +52,7 @@ export default function PropertyFiltering({ type }) {
     ]);
   }, [pageNumber, sortedFilteredData]);
 
-  const [listingStatus, setListingStatus] = useState("All");
+  const [listingStatus, setListingStatus] = useState("Đăng bán");
   const [propertyTypes, setPropertyTypes] = useState(cate ? cate : "");
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [bedrooms, setBedrooms] = useState(0);
@@ -125,6 +125,7 @@ export default function PropertyFiltering({ type }) {
     }
   };
   const filterFunctions = {
+    setListingStatus,
     setPriceRange,
     setPropertyTypes,
     setBedrooms,
@@ -132,6 +133,8 @@ export default function PropertyFiltering({ type }) {
     setAmenities,
     setSortFunction,
     setLocation,
+    setType,
+    listingStatus,
     priceRange,
     propertyTypes,
     bedrooms,
@@ -139,6 +142,7 @@ export default function PropertyFiltering({ type }) {
     amenities,
     sortFunction,
     location,
+    type,
   };
 
   useEffect(() => {

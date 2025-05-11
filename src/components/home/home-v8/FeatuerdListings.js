@@ -50,7 +50,7 @@ const FeaturedListings = () => {
               },
             }}
           >
-            {properties.slice(0, 8).map((listing) => (
+            {properties.filter((p) => p.highlight).map((listing) => (
               <SwiperSlide key={listing._id}>
                 <Link href={`/property-detail/${listing._id}`} className="item">
                   <div className="listing-style9">
@@ -97,15 +97,15 @@ const FeaturedListings = () => {
                       <div className="list-meta2 d-flex align-items-center">
                         <a href="#" className="mr10">
                           <span className="flaticon-bed mr5" />{" "}
-                          {listing.bedroom} bed
+                          {listing.Type.bedroom} bed
                         </a>
                         <a href="#" className="mr10">
                           <span className="flaticon-shower mr5" />{" "}
-                          {listing.bathroom} bath
+                          {listing.Type.bathroom} bath
                         </a>
                         <a href="#">
                           <span className="flaticon-expand mr5" />{" "}
-                          {listing.sqft} sqft
+                          {listing.Type.sqft} sqft
                         </a>
                       </div>
                     </div>

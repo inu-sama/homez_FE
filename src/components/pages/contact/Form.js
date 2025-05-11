@@ -139,7 +139,7 @@ const Form = () => {
             <textarea
               cols={30}
               rows={4}
-              placeholder="Nhập nội dung"
+              placeholder="Bạn cần chúng tôi hỗ trợ gì?"
               defaultValue={""}
               required
               value={sendContact.message}
