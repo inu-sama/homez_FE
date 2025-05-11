@@ -30,7 +30,6 @@ export default function ADPostEdit() {
   const checkRole = async (token) => {
     try {
       if (!token) {
-        console.warn("Không tìm thấy token trong cookie.");
         setRole("");
         return;
       }
@@ -58,9 +57,7 @@ export default function ADPostEdit() {
       try {
         const response = await apiProperties.getPropertiesDetail(id);
         setData(response[0]);
-        console.log("Data:", response);
       } catch (err) {
-        window.location.href = "/";
         console.error("Error fetching properties:", err);
         setError("Không thể tải dữ liệu bài đăng.");
       } finally {

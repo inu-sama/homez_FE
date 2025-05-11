@@ -43,11 +43,6 @@ export default function ManagementPost() {
 
     const highlightCount = data.filter((x) => x.highlight).length;
 
-    if (!isCurrentlyHighlighted && highlightCount >= 5) {
-      alert("Chỉ được chọn tối đa 5 bài viết nổi bật!");
-      return;
-    }
-
     const updatedData = data.map((p) =>
       p._id === item._id ? { ...p, highlight: !p.highlight } : p
     );
@@ -253,11 +248,6 @@ export default function ManagementPost() {
                     marginLeft: "10px",
                     width: "70%",
                     height: "54px",
-                  }}
-                  onClick={() => {
-                    counter < 5
-                      ? alert("Chọn tối thiểu 5 bài viết nổi bật!")
-                      : null;
                   }}
                 >
                   Lưu nổi bật

@@ -1,4 +1,5 @@
 import axios from "axios";
+import instanceToken from "./instance";
 
 const instance = axios.create({
   baseURL: process.env.API_URL_PORT,
@@ -102,6 +103,24 @@ class ApiAuthen {
     } catch (error) {
       console.error("Error logging in:", error.response?.data || error.message);
       throw new Error("Login failed");
+    }
+  }
+
+  async updateUser(FirstName, LastName, PhoneNumber, Email) {
+    try {
+      const res = await instanceToken.put("/updateUser", {
+        FirstName,
+        LastName,
+        PhoneNumber,
+        Email,
+      });
+      return res;
+    } catch (error) {
+      console.error(
+        "Error updating user:",
+        error.response?.data || error.message
+      );
+      throw new Error("Update user failed");
     }
   }
 }
