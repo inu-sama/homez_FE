@@ -30,7 +30,13 @@ const Contact = () => {
           title="London Eye, London, United Kingdom"
           aria-label="London Eye, London, United Kingdom"
         /> */}
-        <Image width={1920} height={1080} src="/images/home.png" alt="city" className="home8-map contact-page" />
+        <Image
+          width={1920}
+          height={1080}
+          src="/images/home.png"
+          alt="city"
+          className="home8-map contact-page"
+        />
       </section>
       {/* End Our Contact With Map */}
 
@@ -50,13 +56,15 @@ const Contact = () => {
 
             <div className="col-lg-5 offset-lg-2">
               <h2 className="mb30 text-capitalize">
-                We’d love to hear <br className="d-none d-lg-block" />
-                from you.
+                Chúng tôi rất muốn nghe <br className="d-none d-lg-block" />
+                từ bạn.
               </h2>
               <p className="text">
-                We are here to answer any question you may have. As a partner of
-                corporates, realton has more than 9,000 offices of all sizes and
-                all potential of session.
+                Chúng tôi ở đây để trả lời mọi câu hỏi bạn có thể có về bất động
+                sản, cho dù đó là một ngôi nhà, một căn hộ hay một bất động sản
+                thương mại. Chúng tôi sẽ giúp bạn tìm thấy bất động sản hoàn hảo
+                cho nhu cầu của bạn. Chúng tôi sẽ giúp bạn tìm thấy bất động sản
+                hoàn hảo cho nhu cầu của bạn.
               </p>
             </div>
             {/* End .col */}
