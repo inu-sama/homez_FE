@@ -3,7 +3,12 @@
 import React from "react";
 
 const PropertyType = ({ filterFunctions }) => {
-  const options = [{ label: "Nhà ở" }, { label: "Chung cư" }];
+  const options = [
+    { label: "Nhà phố" },
+    { label: "Chung cư" },
+    { label: "Văn phòng" },
+    { label: "Shop house" },
+  ];
 
   return (
     <>

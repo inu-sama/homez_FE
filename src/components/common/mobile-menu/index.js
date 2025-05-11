@@ -4,8 +4,25 @@ import Image from "next/image";
 import ContactInfo from "./ContactInfo";
 import Social from "./Social";
 import ProSidebarContent from "./ProSidebarContent";
+import { useEffect, useState } from "react";
 
 const MobileMenu = () => {
+  const [show, setShow] = useState(false);
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  };
+  useEffect(() => {
+    const token = getCookie("token");
+    const role = getCookie("role");
+    if (token) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }, []);
   return (
     <div className="mobilie_header_nav stylehome1">
       <div className="mobile-menu">
@@ -34,9 +51,28 @@ const MobileMenu = () => {
                   alt="logo"
                 />
               </Link>
-              <Link href="/login">
+              {/* <Link href="/login">
                 <span className="icon fz18 far fa-user-circle" />
-              </Link>
+              </Link> */}
+              {!show ? (
+                <a
+                  href="#"
+                  className="login-info d-flex align-items-cente"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginSignupModal"
+                  role="button"
+                >
+                  <span className="icon fz18 far fa-user-circle" />
+                </a>
+              ) : (
+                <Link
+                  href={`/my-properties`}
+                  className="login-info d-flex align-items-cente"
+                  role="button"
+                >
+                  <span className="icon fz18 far fa-user-circle" />
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -59,7 +95,7 @@ const MobileMenu = () => {
             >
               <span className="far fa-times"></span>
             </div>
-            <h4 className="title">Welcome to the systems</h4>
+            <h4 className="title">Welcome!</h4>
           </div>
           {/* End header */}
 

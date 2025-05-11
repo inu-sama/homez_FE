@@ -66,7 +66,7 @@ const TopFilterBar = ({
                 <div className="widget-wrapper bdrb1 pb25 mb0 pl20">
                   <h6 className="list-title">Hình thức</h6>
                   <div className="checkbox-style1">
-                  <ListingStatus filterFunctions={filterFunctions} />
+                    <ListingStatus filterFunctions={filterFunctions} />
                   </div>
                 </div>
                 <div className="text-end mt10 pr10">
