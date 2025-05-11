@@ -4,7 +4,7 @@ const MenuItems = () => {
   const menuItems = [
     { id: 1, title: "Danh sách liên hệ", url: "/AD" },
     { id: 2, title: "Quản lý người dùng", url: "/ADUser" },
-    { id: 3, title: "Bài đăng", url: "/ADPost" },
+    { id: 3, title: "Quản lý Bài đăng", url: "/ADPost" },
     { id: 4, title: "Quản lý danh mục", url: "/ADCatalog" },
   ];
 

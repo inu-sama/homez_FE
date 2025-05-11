@@ -27,14 +27,53 @@ export default function ManagementPost() {
   const [role, setRole] = useState("");
   const [open, setOpen] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
+  const [counter, setCounter] = useState(0);
+  const [localHighlight, setLocalHighlight] = useState({});
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimateIn(true);
-    }, 100);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleHighlight = async (item) => {
+    const isCurrentlyHighlighted = item.highlight === true;
+
+    const highlightCount = data.filter((x) => x.highlight).length;
+
+    if (!isCurrentlyHighlighted && highlightCount >= 5) {
+      alert("Chỉ được chọn tối đa 5 bài viết nổi bật!");
+      return;
+    }
+
+    const updatedData = data.map((p) =>
+      p._id === item._id ? { ...p, highlight: !p.highlight } : p
+    );
+
+    let count = 0;
+    const withIndex = updatedData.map((x) =>
+      x.highlight
+        ? { ...x, highlightIndex: ++count }
+        : { ...x, highlightIndex: null }
+    );
+
+    setData(withIndex);
+    setResult(withIndex);
+
+    try {
+      if (isCurrentlyHighlighted) {
+        setCounter(counter - 1);
+        await apiProperties.addHightlight(item._id);
+      } else {
+        setCounter(counter + 1);
+        await apiProperties.addHightlight(item._id);
+      }
+    } catch (err) {
+      console.error("Lỗi khi thay đổi trạng thái highlight", err);
+    }
+  };
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
@@ -75,19 +114,28 @@ export default function ManagementPost() {
       setData(response);
       setResult(response);
     } catch (error) {
-      window.location.href = "/";
-      console.error("Error fetching properties:", error);
+      setData([]);
+      setResult([]);
     }
   };
 
   const fetchListing = async () => {
     try {
       const response = await apiProperties.getProperties();
-      setData(response);
-      setResult(response);
+      let highlightCount = 0;
+      const processed = response.map((item) => {
+        if (item.highlight) {
+          highlightCount++;
+          return { ...item, highlightIndex: highlightCount };
+        }
+        return { ...item };
+      });
+      setData(processed);
+      setResult(processed);
+      setCounter(highlightCount);
     } catch (error) {
-      window.location.href = "/";
-      console.error("Error fetching properties:", error);
+      setData([]);
+      setResult([]);
     }
   };
 
@@ -112,7 +160,7 @@ export default function ManagementPost() {
     }
   };
   return (
-    <div style={{ marginTop: "20px" }} className="container-fluid">
+    <div style={{ marginTop: "20px", width: "100%" }}>
       <HeaderAD />
       <SidebarStickyBar />
       <div
@@ -125,27 +173,29 @@ export default function ManagementPost() {
       </div>
 
       <div
-        className="ms-3 ms-md-5 ps-md-5 text-black text-center"
-        style={{ marginTop: "20px" }}
+        className="ms-3 ms-md-5 ps-md-5 text-black text-center "
+        style={{ marginTop: "20px", width: "100%" }}
       >
         <p className="fw-bolder h1" style={{ fontFamily: "inherit" }}>
           Quản lý bài đăng
         </p>
         <div
+          className="d-flex"
           style={{
-            display: "flex",
-            width: "100%",
-            marginLeft: "6%",
+            justifyContent: "space-between",
+            width: "97%",
+            paddingLeft: "10px",
           }}
         >
           <div
             className="row"
             style={{
-              width: "300px",
-              border: "1px solid #EB6753",
-              padding: "1px",
+              width: "13%",
+              marginLeft: "5%",
+              padding: "5px",
               height: "55px",
-              borderRadius: "10px",
+              borderRadius: "20px",
+              backgroundColor: "#F3F3F2",
             }}
           >
             <span
@@ -153,13 +203,13 @@ export default function ManagementPost() {
               style={{
                 textAlign: "center",
                 alignContent: "center",
-                padding: "5px 30px",
+                padding: "5px 20px",
                 marginRight: "1px",
-                borderTopLeftRadius: "9px",
-                borderBottomLeftRadius: "9px",
-                borderRight: "1px solid #EB6753",
+                borderRadius: "20px",
                 backgroundColor: open ? "" : "#EB6753",
                 cursor: "pointer",
+                color: open ? "" : "white",
+                fontWeight: "bolder",
                 transition: "background-color 0.5s ease",
               }}
               onClick={() => {
@@ -174,12 +224,12 @@ export default function ManagementPost() {
               style={{
                 textAlign: "center",
                 alignContent: "center",
-                padding: "5px 30px",
-                borderTopRightRadius: "9px",
-                borderLeft: "1px solid #EB6753",
-                borderBottomRightRadius: "9px",
+                padding: "5px 20px",
+                borderRadius: "20px",
                 backgroundColor: open ? "#EB6753" : "",
                 cursor: "pointer",
+                color: open ? "white" : "",
+                fontWeight: "bold",
                 transition: "background-color 0.5s ease",
               }}
               onClick={() => {
@@ -190,8 +240,30 @@ export default function ManagementPost() {
               Tất cả
             </span>
           </div>
-          <div className="" style={{ width: "80%", marginLeft: "20px" }}>
+          <div className="" style={{ width: "70%" }}>
             <Search data={data} result={setResult} />
+          </div>
+
+          <div className="d-flex" style={{ width: "10%" }}>
+            {open && (
+              <div className="d-flex" style={{ width: "100%" }}>
+                <button
+                  className="btn ud-btn btn-thm"
+                  style={{
+                    marginLeft: "10px",
+                    width: "70%",
+                    height: "54px",
+                  }}
+                  onClick={() => {
+                    counter < 5
+                      ? alert("Chọn tối thiểu 5 bài viết nổi bật!")
+                      : null;
+                  }}
+                >
+                  Lưu nổi bật
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -203,76 +275,127 @@ export default function ManagementPost() {
             marginLeft: "4%",
             display: "flex",
             justifyContent: "center",
-            justifyItems: "center",
           }}
         >
-          <table
-            className="table table-striped table-bordered"
-            style={{ width: "90%" }}
-          >
-            <thead
-              style={{ display: "table", width: "100%", tableLayout: "fixed" }}
+          <div style={{ width: "90%" }}>
+            <table
+              className="table table-striped"
+              style={{ tableLayout: "fixed", width: "100%" }}
             >
-              <tr className="align-middle">
-                <th scope="col" style={{ width: "50px" }}>
-                  STT
-                </th>
-                <th scope="col">Tên</th>
-                <th scope="col" style={{ width: "130px" }}>
-                  Loại căn hộ
-                </th>
-                <th scope="col" style={{ width: "130px" }}>
-                  Trạng thái
-                </th>
-                <th scope="col" style={{ width: "280px" }}>
-                  Thao tác
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {(result.length > 0 ? result : data).map((item, index) => (
-                <tr
-                  key={index}
-                  className="align-middle"
-                  style={{
-                    display: "table",
-                    tableLayout: "fixed",
-                    width: "100%",
-                  }}
-                >
-                  <td style={{ width: "50px", textAlign: "center" }}>
-                    {index + 1}
-                  </td>
-                  <td>{item.Title}</td>
-                  <td style={{ width: "130px", textAlign: "center" }}>
-                    {item.Type.category}
-                  </td>
-                  <td style={{ width: "130px", textAlign: "center" }}>
-                    {item.State}
-                  </td>
-                  <td style={{ width: "280px" }}>
-                    {role === "Admin" && (
-                      <div className="d-flex gap-2">
-                        <Link
-                          className="ud-btn btn-thm"
-                          href={`/ADPostEdit/${item._id}`}
-                        >
-                          Chỉnh sửa
-                        </Link>
-                        <button
-                          className="ud-btn btn-white"
-                          onClick={() => handleDelete(item._id)}
-                        >
-                          Xoá Bài
-                        </button>
-                      </div>
-                    )}
-                  </td>
+              <thead>
+                <tr className="align-middle">
+                  <th scope="col" style={{ width: "50px" }}>
+                    STT
+                  </th>
+                  <th scope="col">Tên</th>
+                  <th
+                    scope="col"
+                    style={{ width: "130px", textAlign: "center" }}
+                  >
+                    Loại căn hộ
+                  </th>
+                  <th
+                    scope="col"
+                    style={{ width: "130px", textAlign: "center" }}
+                  >
+                    Trạng thái
+                  </th>
+                  <th
+                    scope="col"
+                    style={{ width: "90px", textAlign: "center" }}
+                  >
+                    Nổi bật
+                  </th>
+                  <th
+                    scope="col"
+                    style={{ width: "280px", textAlign: "center" }}
+                  >
+                    Thao tác
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+            </table>
+
+            <div
+              style={{
+                maxHeight: "80vh",
+                overflowY: "auto",
+              }}
+            >
+              <table
+                className="table table-striped"
+                style={{ tableLayout: "fixed", width: "100%" }}
+              >
+                <tbody>
+                  {(result.length > 0 ? result : data).map((item, index) => (
+                    <tr key={index} className="align-middle">
+                      <td style={{ width: "50px", textAlign: "center" }}>
+                        {index + 1}
+                      </td>
+                      <td>{item.Title}</td>
+                      <td style={{ width: "130px", textAlign: "center" }}>
+                        {item.Type.category}
+                      </td>
+                      <td style={{ width: "130px", textAlign: "center" }}>
+                        {item.State}
+                      </td>
+                      <td style={{ width: "90px", textAlign: "center" }}>
+                        <i
+                          className={
+                            item.highlight
+                              ? "fa-solid fa-star"
+                              : "fa-regular fa-star"
+                          }
+                          style={{
+                            color: "#FFD43B",
+                            fontSize: "25px",
+                            cursor: "pointer",
+                            position: "relative",
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                          onClick={() => handleHighlight(item)}
+                        >
+                          {item.highlight && (
+                            <span
+                              style={{
+                                position: "absolute",
+                                fontSize: "10px",
+                                top: "0",
+                                color: "#fff",
+                                zIndex: "100",
+                                fontWeight: "bold",
+                              }}
+                            >
+                              {item.highlightIndex}
+                            </span>
+                          )}
+                        </i>
+                      </td>
+                      <td style={{ width: "280px" }}>
+                        {role === "Admin" && (
+                          <div className="d-flex gap-2">
+                            <Link
+                              className="ud-btn btn-thm"
+                              href={`/ADPostEdit/${item._id}`}
+                            >
+                              Chỉnh sửa
+                            </Link>
+                            <button
+                              className="ud-btn btn-white"
+                              onClick={() => handleDelete(item._id)}
+                            >
+                              Xoá Bài
+                            </button>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="slide-managemant-Post">

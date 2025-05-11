@@ -85,11 +85,11 @@ export default function Contact() {
           <div
             className="row"
             style={{
-              width: "300px",
-              border: "1px solid #EB6753",
-              padding: "1px",
+              width: "350px",
+              padding: "5px",
               height: "55px",
-              borderRadius: "10px",
+              borderRadius: "20px",
+              backgroundColor: "#F3F3F2",
             }}
           >
             <span
@@ -99,11 +99,11 @@ export default function Contact() {
                 alignContent: "center",
                 padding: "5px 30px",
                 marginRight: "1px",
-                borderTopLeftRadius: "9px",
-                borderBottomLeftRadius: "9px",
-                borderRight: "1px solid #EB6753",
+                borderRadius: "20px",
                 backgroundColor: open ? "" : "#EB6753",
                 cursor: "pointer",
+                color: open ? "" : "white",
+                fontWeight: "bold",
                 transition: "background-color 0.5s ease",
               }}
               onClick={() => {
@@ -118,11 +118,12 @@ export default function Contact() {
                 textAlign: "center",
                 alignContent: "center",
                 padding: "5px 30px",
-                borderTopRightRadius: "9px",
-                borderLeft: "1px solid #EB6753",
-                borderBottomRightRadius: "9px",
+                marginRight: "1px",
+                borderRadius: "20px",
                 backgroundColor: open ? "#EB6753" : "",
                 cursor: "pointer",
+                color: open ? "white" : "",
+                fontWeight: "bold",
                 transition: "background-color 0.5s ease",
               }}
               onClick={() => {
@@ -134,7 +135,7 @@ export default function Contact() {
           </div>
         </div>
         <div>
-          <table className="table table-hover">
+          <table className="table table-hover table-striped">
             <thead className="table-light ">
               <tr className="align-middle">
                 <th scope="col">Tên</th>

@@ -9,7 +9,9 @@ export default function Search({ data, result }) {
     setSearchValue(value);
 
     if (value.length > 0) {
-      const filtered = data.filter((item) => item.Title.includes(value));
+      const filtered = data.filter((item) =>
+        item.Title.toLowerCase().includes(value.toLowerCase())
+      );
       result(filtered);
     } else {
       result(data);

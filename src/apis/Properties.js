@@ -184,6 +184,19 @@ class Properties {
       throw new Error("Không thể xoá bài đăng");
     }
   }
+
+  async addHightlight(id) {
+    try {
+      const res = await instance.put(`/addHighlightTag/${id}`);
+      return res;
+    } catch (error) {
+      console.error(
+        "Error creating property:",
+        error.response?.data || error.message
+      );
+      throw new Error("Không thể duyệt bài đăng");
+    }
+  }
 }
 
 export const apiProperties = new Properties();
