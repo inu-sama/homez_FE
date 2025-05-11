@@ -8,7 +8,7 @@ const ScheduleTour = ({ property }) => {
     name: "",
     phone: "",
     email: "",
-    post: property.Title,
+    post: property._id,
     typeofPost: property.State,
     message: "",
   });
