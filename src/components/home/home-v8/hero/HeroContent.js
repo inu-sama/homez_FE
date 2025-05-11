@@ -1,15 +1,21 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FilterItems from "./FilterItems";
 import { useRouter } from "next/navigation";
 
 const HeroContent = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("buy");
-
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+  const [location, setLocation] = useState(null);
+  const [category, setCategory] = useState(null);
+
+  useEffect(() => {
+    console.log("Location:", location);
+    console.log("Category:", category);
+  }, [location, category]);
 
   const tabs = [
     { id: "rent", label: "Thuê nhà", link: "/property-list/for-rent" },
@@ -40,24 +46,24 @@ const HeroContent = () => {
           >
             <div className="advance-content-style1 at-home8">
               <div className="row">
-                <FilterItems />
+                <FilterItems
+                  setLocation={setLocation}
+                  setCategory={setCategory}
+                />
 
                 <div className="col-md-12">
-                  {/* <div className="d-bloc mt-3 mt-md-0 mb15">
-                    <button
-                      className="advance-search-btn"
-                      type="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#advanceSeachModal"
-                    >
-                      <span className="flaticon-settings" /> Advanced
-                    </button>{" "}
-                  </div> */}
                   <div className="d-grid">
                     <button
                       className="ud-btn btn-dark"
                       type="button"
-                      onClick={() => router.push(tab.link)}
+                      onClick={() => {
+                        const queryParams = new URLSearchParams();
+
+                        if (location) queryParams.append("location", location);
+                        if (category) queryParams.append("category", category);
+
+                        router.push(`${tab.link}?${queryParams.toString()}`);
+                      }}
                     >
                       <span className="flaticon-search" />
                     </button>

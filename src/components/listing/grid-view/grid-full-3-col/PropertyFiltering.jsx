@@ -10,8 +10,11 @@ import Pagination from "../../Pagination";
 import { apiProperties } from "@/apis/Properties";
 import PaginationTwo from "../../PaginationTwo";
 import { sort } from "@/data/mobileMenuItems";
+import { useSearchParams } from "next/navigation";
 
 export default function PropertyFiltering({ type }) {
+  const searchParams = useSearchParams();
+  const cate = searchParams.get("category");
   const [properties, setProperties] = useState([]);
   const method = type == "for-rent" ? "Cho thuê" : "Đăng bán";
 
@@ -34,9 +37,9 @@ export default function PropertyFiltering({ type }) {
   const [colstyle, setColstyle] = useState(false);
   const [pageItems, setPageItems] = useState([]);
   const [pageContentTrac, setPageContentTrac] = useState([]);
-  const [sortFunction, setSortFunction] = useState(
-    () => (a, b) => {return b.Type.yearBuilt - a.Type.yearBuilt}
-  );
+  const [sortFunction, setSortFunction] = useState(() => (a, b) => {
+    return b.Type.yearBuilt - a.Type.yearBuilt;
+  });
 
   useEffect(() => {
     setPageItems(
@@ -57,7 +60,7 @@ export default function PropertyFiltering({ type }) {
   const [location, setLocation] = useState("Hồ Chí Minh");
   const [squirefeet, setSquirefeet] = useState([]);
   const [yearBuild, setyearBuild] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(cate || []);
   const [amenities, setAmenities] = useState([]);
 
   const resetFilter = () => {
@@ -65,7 +68,7 @@ export default function PropertyFiltering({ type }) {
     setPropertyTypes([]);
     setPriceRange([0, 100000000]);
     setBedrooms(0);
-    setBathroms(0);
+    setBathrooms(0);
     setLocation("All Cities");
     setSquirefeet([]);
     setyearBuild([0, new Date().getFullYear()]);
@@ -100,7 +103,7 @@ export default function PropertyFiltering({ type }) {
     setBedrooms(elm);
   };
   const handlebathroms = (elm) => {
-    setBathroms(elm);
+    setBathrooms(elm);
   };
   const handlelocation = (elm) => {
     console.log(elm);
@@ -138,90 +141,6 @@ export default function PropertyFiltering({ type }) {
     location,
   };
 
-  // useEffect(() => {
-  //   const refItems = listings.filter((elm) => {
-  //     if (listingStatus == "All") {
-  //       return true;
-  //     } else if (listingStatus == "Buy") {
-  //       return !elm.forRent;
-  //     } else if (listingStatus == "Rent") {
-  //       return elm.forRent;
-  //     }
-  //   });
-
-  //   let filteredArrays = [];
-
-  //   if (propertyTypes.length > 0) {
-  //     const filtered = refItems.filter((elm) =>
-  //       propertyTypes.includes(elm.propertyType)
-  //     );
-  //     filteredArrays = [...filteredArrays, filtered];
-  //   }
-  //   filteredArrays = [
-  //     ...filteredArrays,
-  //     refItems.filter((el) => el.bed >= bedrooms),
-  //   ];
-  //   filteredArrays = [
-  //     ...filteredArrays,
-  //     refItems.filter((el) => el.bath >= bathroms),
-  //   ];
-
-  //   filteredArrays = [
-  //     ...filteredArrays,
-  //     !categories.length
-  //       ? [...refItems]
-  //       : refItems.filter((elm) =>
-  //           categories.every((elem) => elm.features.includes(elem))
-  //         ),
-  //   ];
-
-  //   if (location != "All Cities") {
-  //     filteredArrays = [
-  //       ...filteredArrays,
-  //       refItems.filter((el) => el.city == location),
-  //     ];
-  //   }
-
-  //   if (priceRange.length > 0) {
-  //     const filtered = refItems.filter(
-  //       (elm) =>
-  //         Number(elm.price.split("$")[1].split(",").join("")) >=
-  //           priceRange[0] &&
-  //         Number(elm.price.split("$")[1].split(",").join("")) <= priceRange[1]
-  //     );
-  //     filteredArrays = [...filteredArrays, filtered];
-  //   }
-  //   if (squirefeet.length > 0 && squirefeet[1]) {
-  //     const filtered = refItems.filter(
-  //       (elm) => elm.sqft >= squirefeet[0] && elm.sqft <= squirefeet[1]
-  //     );
-  //     filteredArrays = [...filteredArrays, filtered];
-  //   }
-  //   if (yearBuild.length > 0) {
-  //     const filtered = refItems.filter(
-  //       (elm) =>
-  //         elm.yearBuilding >= yearBuild[0] && elm.yearBuilding <= yearBuild[1]
-  //     );
-  //     filteredArrays = [...filteredArrays, filtered];
-  //   }
-
-  //   const commonItems = refItems.filter((item) =>
-  //     filteredArrays.every((array) => array.includes(item))
-  //   );
-
-  //   setFilteredData(commonItems);
-  // }, [
-  //   listingStatus,
-  //   propertyTypes,
-  //   priceRange,
-  //   bedrooms,
-  //   bathroms,
-  //   location,
-  //   squirefeet,
-  //   yearBuild,
-  //   categories,
-  // ]);
-
   useEffect(() => {
     setPageNumber(1);
     if (currentSortingOption == "Newest") {
@@ -257,35 +176,28 @@ export default function PropertyFiltering({ type }) {
           className="offcanvas offcanvas-start p-0"
           tabIndex="-1"
           id="listingSidebarFilter"
-          aria-labelledby="listingSidebarFilterLabel">
+          aria-labelledby="listingSidebarFilterLabel"
+        >
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
-              Lọc danh sách
+            <h5
+              className="offcanvas-title"
+              id="listingSidebarFilterLabel"
+              style={{ fontFamily: "inherit" }}
+            >
+              Danh sách lọc
             </h5>
             <button
               type="button"
               className="btn-close text-reset"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"></button>
+              aria-label="Close"
+            ></button>
           </div>
           <div className="offcanvas-body p-0">
             <ListingSidebar filterFunctions={filterFunctions} />
           </div>
         </div>
         {/* End mobile filter sidebar */}
-
-        {/* <!-- Advance Feature Modal Start --> */}
-        {/* <div className="advance-feature-modal">
-          <div
-            className="modal fade"
-            id="advanceSeachModal"
-            tabIndex={-1}
-            aria-labelledby="advanceSeachModalLabel"
-            aria-hidden="true">
-            <AdvanceFilterModal filterFunctions={filterFunctions} />
-          </div>
-        </div> */}
-        {/* <!-- Advance Feature Modal End --> */}
 
         <div className="row">
           <TopFilterBar

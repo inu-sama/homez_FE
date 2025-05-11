@@ -108,7 +108,8 @@ const Home = () => {
               <div
                 className="main-title"
                 data-aos="fade-up"
-                data-aos-delay="100">
+                data-aos-delay="100"
+              >
                 <h2 className="title">Bất động sản theo loại</h2>
                 <p className="paragraph">
                   Tìm mua bất động sản chất lượng nhất
@@ -220,7 +221,8 @@ const Home = () => {
           <div className="row">
             <div
               className="col-lg-6 m-auto wow fadeInUp"
-              data-wow-delay="300ms">
+              data-wow-delay="300ms"
+            >
               <div className="main-title text-center">
                 <h2 className="title">Chúng tôi có thể giúp gì cho bạn?</h2>
               </div>
@@ -243,12 +245,14 @@ const Home = () => {
               <div
                 className="col-xl-6"
                 daa-aos="fade-left"
-                data-aos-delay="100"></div>
+                data-aos-delay="100"
+              ></div>
               {/* End .col */}
               <div
                 className="col-xl-5 offset-xl-1"
                 daa-aos="fade-right"
-                data-aos-delay="300">
+                data-aos-delay="300"
+              >
                 <div className="home8-property-slider">
                   <FeatureProperties />
                 </div>
