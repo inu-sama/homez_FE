@@ -52,6 +52,34 @@ const TopFilterBar = ({
       <div className="col-xl-9 d-none d-lg-block">
         <div className="dropdown-lists">
           <ul className="p-0 text-center text-xl-start">
+            {/* Status */}
+            <li className="list-inline-item position-relative">
+              <button
+                type="button"
+                className="open-btn mb15 dropdown-toggle"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+              >
+                Hình thức <i className="fa fa-angle-down ms-2" />
+              </button>
+              <div className="dropdown-menu">
+                <div className="widget-wrapper bdrb1 pb25 mb0 pl20">
+                  <h6 className="list-title">Hình thức</h6>
+                  <div className="checkbox-style1">
+                  <ListingStatus filterFunctions={filterFunctions} />
+                  </div>
+                </div>
+                <div className="text-end mt10 pr10">
+                  <button
+                    type="button"
+                    className="done-btn ud-btn btn-thm dropdown-toggle"
+                  >
+                    Hoàn tất
+                  </button>
+                </div>
+              </div>
+            </li>
+
             {/* Property Type */}
             <li className="list-inline-item position-relative">
               <button

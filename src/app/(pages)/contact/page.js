@@ -30,7 +30,7 @@ const Contact = () => {
           title="London Eye, London, United Kingdom"
           aria-label="London Eye, London, United Kingdom"
         /> */}
-        <Image width={2200} height={1167} src="/images/city.webp" alt="city" className="home8-map contact-page" />
+        <Image width={1920} height={1080} src="/images/home.png" alt="city" className="home8-map contact-page" />
       </section>
       {/* End Our Contact With Map */}
 
@@ -41,7 +41,7 @@ const Contact = () => {
             <div className="col-lg-5 position-relative">
               <div className="home8-contact-form default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white">
                 <h4 className="form-title mb25">
-                  Have questions? Get in touch!
+                  Bạn có thắc mắc? Hãy liên hệ ngay với chúng tôi!
                 </h4>
                 <Form />
               </div>

@@ -52,13 +52,11 @@ const DefaultHeader = () => {
       setShow(false);
     }
   }, []);
-
+  // ${navbar ? "sticky slideInDown animated" : ""}
   return (
     <>
       <header
-        className={`header-nav nav-homepage-style light-header menu-home4 main-menu ${
-          navbar ? "sticky slideInDown animated" : ""
-        }`}
+        className={`header-nav nav-homepage-style light-header menu-home4 main-menu sticky slideInDown animated`}
       >
         <nav className="posr">
           <div className="container posr menu_bdrt1">

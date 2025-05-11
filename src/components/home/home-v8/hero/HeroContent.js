@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 const HeroContent = () => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState("buy");
+  const [activeTab, setActiveTab] = useState("rent");
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };

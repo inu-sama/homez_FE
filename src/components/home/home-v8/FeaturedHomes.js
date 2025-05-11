@@ -19,8 +19,8 @@ const FeaturedHomes = () => {
     {
       id: 2,
       imageUrl: "/images/listings/cate-02.webp",
-      title: "Nhà ở",
-      category: "Nhà+ở",
+      title: "Nhà phố",
+      category: "Nhà+phố",
     },
     {
       id: 3,
@@ -31,8 +31,8 @@ const FeaturedHomes = () => {
     {
       id: 4,
       imageUrl: "/images/listings/cate-04.webp",
-      title: "Vila",
-      category: "Vila",
+      title: "Shop house",
+      category: "Shop+house",
     },
   ];
 

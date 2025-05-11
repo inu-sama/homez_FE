@@ -1,38 +1,39 @@
-'use client'
+"use client";
 
 import React from "react";
 
-const ListingStatus = ({filterFunctions}) => {
+const ListingStatus = ({ filterFunctions }) => {
   const options = [
-    { id: "flexRadioDefault3", label: "All" , defaultChecked: true },
-    { id: "flexRadioDefault1", label: "Buy" },
-    { id: "flexRadioDefault2", label: "Rent", },
-
+    { id: "flexRadioDefault1", label: "Thuê nhà", value: "for-rent" },
+    { id: "flexRadioDefault2", label: "Mua nhà", value: "for-sale" },
   ];
 
   return (
     <>
       {options.map((option) => (
-        <div
-          className="form-check d-flex align-items-center mb10"
-          key={option.id}
-         
-        >
+        <label className="custom_checkbox" key={option.id}>
+          {option.label}
           <input
-            className="form-check-input"
-            type="radio"
-            checked={filterFunctions?.listingStatus == option.label}
-            
-            onChange={()=>filterFunctions.handlelistingStatus(option.label)}
-           
-            
-   
-            
+            type="checkbox"
+            checked={filterFunctions.Type == option.value}
+            onChange={() => {filterFunctions.setType(option.value)}}
           />
-          <label className="form-check-label" htmlFor={option.id}>
-            {option.label}
-          </label>
-        </div>
+          <span className="checkmark" />
+        </label>
+        // <div
+        //   className="form-check d-flex align-items-center mb10"
+        //   key={option.id}
+        // >
+        //   <input
+        //     className="form-check-input"
+        //     type="radio"
+        //     checked={filterFunctions.Type == option.label}
+        //     onChange={() => filterFunctions.setType(option.label)}
+        //   />
+        //   <label className="form-check-label" htmlFor={option.id}>
+        //     {option.label}
+        //   </label>
+        // </div>
       ))}
     </>
   );

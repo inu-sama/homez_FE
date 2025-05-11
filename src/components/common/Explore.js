@@ -15,7 +15,7 @@ const Explore = () => {
     {
       id: 2,
       icon: "/images/icon/property-sell.svg",
-      title: "Thuê căn hộ",
+      title: "Tìm kiếm bất động sản",
       text: "Dễ dàng tìm thấy ngôi nhà mơ ước với bộ lọc thông minh và đa dạng.",
       linkText: "Khám phá",
       link: "/property-list/for-rent",
@@ -23,7 +23,7 @@ const Explore = () => {
     {
       id: 3,
       icon: "/images/icon/property-rent.svg",
-      title: "Mua nhà",
+      title: "Quản lý bất động sản",
       text: "An tâm giao phó, tối ưu hóa lợi nhuận cho thuê và giảm thiểu rủi ro cho chủ nhà.",
       linkText: "Liên hệ",
       link: "/contact",

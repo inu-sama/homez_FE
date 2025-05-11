@@ -81,7 +81,7 @@ const Home = () => {
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
-                <Link className="ud-btn2" href="/property-list/for-rent">
+                <Link className="ud-btn2" href="/property-list/for-sale">
                   Xem toàn bộ
                   <i className="fal fa-arrow-right-long" />
                 </Link>
