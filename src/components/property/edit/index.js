@@ -33,6 +33,7 @@ const EditPropertyTabContent = ({ params }) => {
         if (elm._id == params.id) {
           console.log("elm", elm);
           setProperty(elm);
+          setSelectedAmenities(elm.Amenities);
           setData({
             Title: elm.Title,
             Price: elm.Price,
@@ -48,7 +49,12 @@ const EditPropertyTabContent = ({ params }) => {
             bathroom: elm.Type.bathroom,
             garage: elm.Type.garage,
             sqft: elm.Type.sqft,
-            video: elm.Video || "",
+            interior_condition: elm.interior_condition,
+            deposit_amount: elm.deposit_amount,
+            type_documents: elm.type_documents,
+            Balcony_direction: elm.Balcony_direction,
+            Type_apartment: elm.Type_apartment,
+            maindoor_direction: elm.maindoor_direction,
           });
         }
       });
@@ -66,7 +72,6 @@ const EditPropertyTabContent = ({ params }) => {
     Category: [],
     Location: [],
   });
-  const [video, setVideo] = useState("");
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [data, setData] = useState({
     Title: null,
@@ -83,7 +88,12 @@ const EditPropertyTabContent = ({ params }) => {
     bathroom: 1,
     garage: 0,
     sqft: null,
-    video: video,
+    interior_condition: "Nội thất đầy đủ",
+    deposit_amount: null,
+    type_documents: null,
+    Balcony_direction: null,
+    Type_apartment: null,
+    maindoor_direction: null,
   });
 
   useEffect(() => {
@@ -92,12 +102,6 @@ const EditPropertyTabContent = ({ params }) => {
       Amenities: selectedAmenities,
     }));
   }, [selectedAmenities]);
-  useEffect(() => {
-    setData((prevData) => ({
-      ...prevData,
-      video: video,
-    }));
-  }, [video]);
 
   const handleAmenityChange = (amenityName, isChecked) => {
     setSelectedAmenities((prevState) => {
@@ -144,7 +148,8 @@ const EditPropertyTabContent = ({ params }) => {
     <>
       <nav>
         <div className="nav nav-tabs" id="nav-tab2" role="tablist">
-          <Link href={"/"}
+          <Link
+            href={"/my-properties"}
             className="btn btn-dark fw600 ms-auto px-5"
             style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
@@ -174,21 +179,15 @@ const EditPropertyTabContent = ({ params }) => {
             <h4 className="title fz17 mb30">Thông tin căn hộ</h4>
             <PropertyDescription
               setData={setData}
-              dataCate={catalog.Category}
+              catalog={catalog}
               data={data}
               property={property}
             />
           </div>
 
-          <UploadMedia
-            video={video}
-            setVideo={setVideo}
-            setData={setData}
-            data={data}
-            property={property}
-          />
+          <UploadMedia setData={setData} data={data} property={property} />
 
-          <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
+          {/* <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Vị trí căn hộ</h4>
             <LocationField
               setData={setData}
@@ -196,7 +195,7 @@ const EditPropertyTabContent = ({ params }) => {
               data={data}
               property={property}
             />
-          </div>
+          </div> */}
 
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Chi tiết căn hộ</h4>

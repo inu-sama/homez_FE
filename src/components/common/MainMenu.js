@@ -47,7 +47,7 @@ const MainMenu = () => {
         </ul>
       </li>
       {/* <li className="visible_list dropitem">
-        <a className="list-item" href="/about">
+        <a className="list-item" href="/home-v6">
           <span className={`${handleActive("/about")} title`}>
             Về chúng tôi
           </span>
@@ -55,13 +55,13 @@ const MainMenu = () => {
       </li> */}
       {/* End homeItems */}
 
-      {/* <li className="megamenu_style dropitem">
+      <li className="megamenu_style dropitem">
         <a className="list-item" href="/contact">
           <span className={`${handleActive("/contact")} title`}>
             Liên hệ
           </span>
         </a>
-      </li> */}
+      </li>
       {/* End listings */}
 
       <li className="megamenu_style dropitem">

@@ -182,36 +182,39 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
         </div>
         {/* End .col-4 */}
 
-            <div className="col-sm-6 col-xl-4">
-              <div className="mb20">
-                <label className="heading-color ff-heading fw600 mb10">
-                  
-                  {data.category == "Chung cư" ? "Hướng cửa chính" : "Hướng nhà"}
-                </label>
-                <div className="location-area">
-                  <Select
-                    placeholder={data.category == "Chung cư" ? "Chọn hướng cửa chính" : "Chọn hướng nhà"}
-                    name="colors"
-                    options={direction}
-                    styles={customStyles}
-                    maxMenuHeight={120}
-                    className="select-custom pl-0"
-                    classNamePrefix="select"
-                    required
-                    onChange={(e) => {
-                      setData((prev) => ({
-                        ...prev,
-                        maindoor_direction: e.label,
-                      }));
-                      if (data.sqft && data.yearBuilt && data.maindoor_direction) {
-                        setFilled([true, true, true]);
-                      }
-                    }}
-                  />
-                </div>
-              </div>
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              {data.category == "Chung cư" ? "Hướng cửa chính" : "Hướng nhà"}
+            </label>
+            <div className="location-area">
+              <Select
+                placeholder={
+                  data.category == "Chung cư"
+                    ? "Chọn hướng cửa chính"
+                    : "Chọn hướng nhà"
+                }
+                name="colors"
+                options={direction}
+                styles={customStyles}
+                maxMenuHeight={120}
+                className="select-custom pl-0"
+                classNamePrefix="select"
+                required
+                onChange={(e) => {
+                  setData((prev) => ({
+                    ...prev,
+                    maindoor_direction: e.label,
+                  }));
+                  if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                    setFilled([true, true, true]);
+                  }
+                }}
+              />
             </div>
-            {/* End .col-4 */}
+          </div>
+        </div>
+        {/* End .col-4 */}
 
         {data.category == "Chung cư" && (
           <>
@@ -264,7 +267,11 @@ const DetailsFiled = ({ setData, data, setFilled }) => {
                         ...prev,
                         Balcony_direction: e.label,
                       }));
-                      if (data.sqft && data.yearBuilt && data.maindoor_direction) {
+                      if (
+                        data.sqft &&
+                        data.yearBuilt &&
+                        data.maindoor_direction
+                      ) {
                         setFilled([true, true, true]);
                       }
                     }}

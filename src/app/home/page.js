@@ -16,6 +16,7 @@ import PartnerDark from "@/components/common/PartnerDark";
 import SidebarStickyBar from "@/components/home/home-v8/SidebarStickyBar";
 import Link from "next/link";
 import CallToActions from "@/components/common/CallToActions";
+import About from "@/components/home/home-v8/About";
 
 export const metadata = {
   title: "Home v8 || Homez - Real Estate NextJS Template",
@@ -215,6 +216,12 @@ const Home = () => {
         </div>
       </section> */}
 
+      {/* <section className="pb40-md bgc-f7">
+        <div className="container">
+          <About />
+        </div>
+      </section> */}
+
       {/* Explore Apartment */}
       <section className="pt0 pb60 pb10-md">
         <div className="container">
@@ -238,7 +245,7 @@ const Home = () => {
       {/* End Explore Apartment */}
 
       {/* Featured Properties */}
-      <section className="pt30 pb-0">
+      {/* <section className="pt30 pb-0">
         <div className="cta-banner6 bgc-thm-light ms-auto maxw1850 pt100 pt60-lg pb100 pb30-lg position-relative overflow-hidden mx20-lg">
           <div className="container">
             <div className="row">
@@ -247,7 +254,6 @@ const Home = () => {
                 daa-aos="fade-left"
                 data-aos-delay="100"
               ></div>
-              {/* End .col */}
               <div
                 className="col-xl-5 offset-xl-1"
                 daa-aos="fade-right"
@@ -258,10 +264,31 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            {/* End .col-12 */}
           </div>
-          {/* End .container */}
         </div>
+      </section> */}
+      <section className="our-testimonial pt-0">
+        <div className="container">
+          {/* <div className="row">
+            <div className="col-lg-6 mx-auto" data-aos-delay="300ms">
+              <div className="main-title text-center">
+                <h2>Featured Properties</h2>
+                <p className="paragraph">
+                  Aliquam lacinia diam quis lacus euismod
+                </p>
+              </div>
+            </div>
+          </div> */}
+          {/* End .row */}
+
+          <div className="col-lg-12">
+            <div className="home6-listing-single-slider" data-aos="fade-up">
+              <FeatureProperties />
+            </div>
+          </div>
+          {/* End .col-12 */}
+        </div>
+        {/* End .container */}
       </section>
       {/* End Featured Properties */}
 
