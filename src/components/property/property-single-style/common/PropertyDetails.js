@@ -1,7 +1,6 @@
 import React from "react";
 
-const PropertyDetails = ({property}) => {
-  console.log("property", property);
+const PropertyDetails = ({ property }) => {
   const columns = [
     [
       {
@@ -13,15 +12,21 @@ const PropertyDetails = ({property}) => {
         value: `${new Intl.NumberFormat("vi-VN", {
           style: "currency",
           currency: "VND",
-        }).format(property.Price)}${property.State == "Cho thuê" ? "/tháng" : ""}`,
+        }).format(property.Price)}${
+          property.State == "Cho thuê" ? "/tháng" : ""
+        }`,
       },
       {
         label: "Diện tích",
         value: property.Type.sqft + " m²",
       },
       {
-        label: "Loại căn hộ",
-        value: property.Type.category,
+        label: "Giấy tờ pháp lý",
+        value: property.type_documents || "...",
+      },
+      {
+        label: "Tình trạng nội thất",
+        value: property.interior_condition,
       },
     ],
     [
@@ -40,6 +45,13 @@ const PropertyDetails = ({property}) => {
       {
         label: "Garage",
         value: property.Type.garage,
+      },
+      {
+        label:
+          property.Type.category === "Chung cư"
+            ? "Hướng cửa chính "
+            : "Hướng nhà",
+        value: property.maindoor_direction,
       },
     ],
   ];

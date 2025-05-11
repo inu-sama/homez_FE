@@ -34,7 +34,6 @@ export default function Catalog() {
       const token = getCookie("token");
 
       if (!token) {
-        console.warn("Không tìm thấy token trong cookie.");
         setRole("");
         return;
       }
@@ -274,7 +273,9 @@ export default function Catalog() {
         className="ms-3 ms-md-5 ps-md-5 text-black text-center"
         style={{ marginTop: "20px" }}
       >
-        <p className="fw-bolder h1">Quản lý danh mục</p>
+        <p className="fw-bolder h1" style={{ fontFamily: "inherit" }}>
+          Quản lý danh mục
+        </p>
       </div>
 
       <div className="slide-managemant-Post">

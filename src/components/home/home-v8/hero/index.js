@@ -1,6 +1,8 @@
+"use client";
 import AdvanceFilterModal from "@/components/common/advance-filter";
 import HeroContent from "./HeroContent";
-
+import { apiCatalog } from "@/apis/Catalog";
+import { useEffect, useState } from "react";
 const Hero = () => {
   return (
     <>

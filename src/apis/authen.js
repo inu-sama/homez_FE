@@ -1,17 +1,17 @@
 import axios from "axios";
 
+const instance = axios.create({
+  baseURL: process.env.API_URL_PORT,
+  headers: {
+    "x-api-key": process.env.API_KEY,
+    "Content-Type": "application/json",
+  },
+});
+
 class ApiAuthen {
   async getToken(token) {
     try {
-      const res = await axios.post(
-        `${process.env.API_URL_PORT}/checktokenAPI`,
-        { token },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await instance.post("/checkTokenAPI", { token });
       return res.data.decoded;
     } catch (error) {
       console.error(
@@ -23,15 +23,7 @@ class ApiAuthen {
   }
   async getToken2(token) {
     try {
-      const res = await axios.post(
-        `${process.env.API_URL_PORT}/checkTokenAPI2`,
-        { token },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await instance.post("/checkTokenAPI2", { token });
       return res;
     } catch (error) {
       console.error(
@@ -61,10 +53,22 @@ class ApiAuthen {
       );
       return res;
     } catch (error) {
-      console.error("Error logging in:", error.response?.data || error.message);
-      throw new Error("Login failed");
+      if (error.response && error.response.data) {
+        // Trả lỗi có message từ server
+        return {
+          status: error.response.status,
+          data: error.response.data,
+        };
+      } else {
+        // Lỗi không xác định (mạng hoặc lỗi khác)
+        return {
+          status: 500,
+          data: { message: "Lỗi không xác định. Vui lòng thử lại sau." },
+        };
+      }
     }
   }
+
   async login(PhoneNumber, Password) {
     try {
       const res = await axios.post(

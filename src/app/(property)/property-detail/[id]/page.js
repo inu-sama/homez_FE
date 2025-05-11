@@ -110,11 +110,11 @@ const SingleV1 = ({ params }) => {
 
                 {property.State == "Cho thuê" ? (
                   <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                    <h4 className="title fz17 mb30">
-                      Tiện ích và dịch vụ
-                    </h4>
+                    <h4 className="title fz17 mb30">Tiện ích và dịch vụ</h4>
                     <div className="row">
-                      <PropertyFeaturesAminites amenities={property.Amenities} />
+                      <PropertyFeaturesAminites
+                        amenities={property.Amenities}
+                      />
                     </div>
                   </div>
                 ) : null}
@@ -165,7 +165,7 @@ const SingleV1 = ({ params }) => {
                   <div className="default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white position-relative">
                     <h4 className="form-title mb5">Đặt lịch tham quan</h4>
                     <p className="text">Chọn thời gian mong muốn của bạn</p>
-                    <ScheduleTour />
+                    <ScheduleTour property={property} />
                   </div>
 
                   {/* <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">

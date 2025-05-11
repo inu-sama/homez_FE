@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import SearchBox from "./SearchBox";
 import ListingStatus from "./ListingStatus";
 import PropertyType from "./PropertyType";
@@ -11,12 +11,45 @@ import Location from "./Location";
 import SquareFeet from "./SquareFeet";
 import YearBuilt from "./YearBuilt";
 import OtherFeatures from "./OtherFeatures";
+import PriceRange from "./PriceRange";
+import Status from "./Status";
 
 const ListingSidebar = ({ filterFunctions }) => {
+  const options = [{ label: "Đắt dần" }, { label: "Rẻ dần" }];
+  const [priceSortOption, setPriceSortOption] = useState("");
+  const [statusSortOption, setStatusSortOption] = useState("");
+
+  const updateSortFunction = (priceOption, statusOption) => {
+    if (priceOption === "Đắt dần") {
+      filterFunctions.setSortFunction(() => (a, b) => a?.Price - b?.Price);
+    } else if (priceOption === "Rẻ dần") {
+      filterFunctions.setSortFunction(() => (a, b) => b?.Price - a?.Price);
+    } else if (statusOption === "Mới nhất") {
+      filterFunctions.setSortFunction(
+        () => (a, b) => b?.Type.yearBuilt - a?.Type.yearBuilt
+      );
+    } else if (statusOption === "Cũ nhất") {
+      filterFunctions.setSortFunction(
+        () => (a, b) => a?.Type.yearBuilt - b?.Type.yearBuilt
+      );
+    } else {
+      filterFunctions.setSortFunction(null);
+    }
+  };
+
+  const handlePriceChange = (label) => {
+    setPriceSortOption(label);
+    updateSortFunction(label, "");
+  };
+
+  const handleStatusChange = (label) => {
+    setStatusSortOption(label);
+    updateSortFunction("", label);
+  };
   return (
     <div className="list-sidebar-style1">
       {/* <div className="widget-wrapper">
-        <h6 className="list-title">Find your home</h6>
+        <h6 className="list-title">Tìm</h6>
         <SearchBox filterFunctions={filterFunctions} />
       </div> */}
       {/* End .widget-wrapper */}
@@ -30,7 +63,9 @@ const ListingSidebar = ({ filterFunctions }) => {
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper">
-        <h6 className="list-title">Loại hình</h6>
+        <h6 className="list-title" style={{ fontFamily: "inherit" }}>
+          Loại căn hộ
+        </h6>
         <div className="checkbox-style1">
           <PropertyType filterFunctions={filterFunctions} />
         </div>
@@ -38,12 +73,11 @@ const ListingSidebar = ({ filterFunctions }) => {
 
       {/* End .widget-wrapper */}
 
-      <div className="widget-wrapper">
-        <h6 className="list-title">Tầm giá</h6>
-        {/* Range Slider Desktop Version */}
-        <div className="range-slider-style1">
-          <PriceSlider filterFunctions={filterFunctions} />
-        </div>
+      <div className="checkbox-style1">
+        <PriceRange
+          priceSortOption={priceSortOption}
+          handlePriceChange={handlePriceChange}
+        />
       </div>
       {/* End .widget-wrapper */}
 
@@ -63,82 +97,19 @@ const ListingSidebar = ({ filterFunctions }) => {
       </div>
       {/* End .widget-wrapper */}
 
-      <div className="widget-wrapper advance-feature-modal">
-        <h6 className="list-title">Location</h6>
-        <div className="form-style2 input-group">
-          <Location filterFunctions={filterFunctions} />
+      {/* End .widget-wrapper */}
+      <div className="widget-wrapper">
+        <div className="d-flex">
+          <Status
+            statusSortOption={statusSortOption}
+            handleStatusChange={handleStatusChange}
+          />
         </div>
       </div>
       {/* End .widget-wrapper */}
 
-      {/* <div className="widget-wrapper">
-        <h6 className="list-title">Square Feet</h6>
-        <SquareFeet filterFunctions={filterFunctions}/>
-      </div> */}
       {/* End .widget-wrapper */}
-
-      {/* <div className="widget-wrapper">
-        <h6 className="list-title">Year Built</h6>
-        <YearBuilt filterFunctions={filterFunctions}/>
-      </div> */}
       {/* End .widget-wrapper */}
-
-      {/* <div className="widget-wrapper">
-        <div className="feature-accordion">
-          <div className="accordion" id="accordionExample">
-            <div className="accordion-item border-none">
-              <h2 className="accordion-header" id="headingOne">
-                <button
-                  className="accordion-button border-none p-0 after-none feature-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <span className="flaticon-settings" /> Other Features
-                </button>
-              </h2>
-              <div
-                id="collapseOne"
-                className="accordion-collapse collapse"
-                aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample"
-              >
-                <div className="accordion-body p-0 mt15">
-                  <OtherFeatures filterFunctions={filterFunctions} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      {/* End .widget-wrapper */}
-
-      <div className="widget-wrapper mb20">
-        <div className="btn-area d-grid align-items-center">
-          <button
-            className="ud-btn btn-thm"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          >
-            <span className="flaticon-search align-text-top pr10" />
-            Tìm kiếm
-          </button>
-        </div>
-      </div>
-      {/* End .widget-wrapper */}
-
-      {/* <div className="reset-area d-flex align-items-center justify-content-between">
-        <div onClick={()=>filterFunctions.resetFilter()} className="reset-button cursor" href="#">
-          <span className="flaticon-turn-back" />
-          <u>Reset all filters</u>
-        </div>
-        <a className="reset-button" href="#">
-          <span className="flaticon-favourite" />
-          <u>Save Search</u>
-        </a>
-      </div> */}
     </div>
   );
 };

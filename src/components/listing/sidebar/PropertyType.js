@@ -3,17 +3,12 @@
 import React from "react";
 
 const PropertyType = ({ filterFunctions }) => {
-  const options = [
-    { label: "Nhà ở" },
-    { label: "Chung cư" },
-    { label: "Văn phòng" },
-    { label: "Vila" },
-  ];
+  const options = [{ label: "Nhà ở" }, { label: "Chung cư" }];
 
   return (
     <>
       <label className="custom_checkbox">
-        All
+        Tất cả
         <input
           type="checkbox"
           checked={filterFunctions?.propertyTypes == ""}

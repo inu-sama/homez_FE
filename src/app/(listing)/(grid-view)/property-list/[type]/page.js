@@ -28,10 +28,18 @@ const GridFull3Col = ({ params }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                {params.type == "for-rent" ? <h2 className="title">Danh sách căn hộ cho thuê</h2> : <h2 className="title">Danh sách căn hộ đăng bán</h2>}
+                {params.type == "for-rent" ? (
+                  <h2 className="title">Danh sách căn hộ cho thuê</h2>
+                ) : (
+                  <h2 className="title">Danh sách căn hộ đăng bán</h2>
+                )}
                 <div className="breadcumb-list">
                   <a href="#">Home</a>
-                  {params.type == "for-rent" ? <a href="#">Cho thuê</a> : <a href="#">Đăng bán</a>}
+                  {params.type == "for-rent" ? (
+                    <a href="#">Cho thuê</a>
+                  ) : (
+                    <a href="#">Đăng bán</a>
+                  )}
                 </div>
                 <a
                   className="filter-btn-left mobile-filter-btn d-block d-lg-none"
@@ -40,7 +48,7 @@ const GridFull3Col = ({ params }) => {
                   role="button"
                   aria-controls="listingSidebarFilter"
                 >
-                  <span className="flaticon-settings" /> Filter
+                  <span className="flaticon-settings" /> Lọc
                 </a>
               </div>
             </div>
@@ -54,9 +62,9 @@ const GridFull3Col = ({ params }) => {
       {/* Property Filtering */}
 
       {/* Start Our Footer */}
-      <section className="footer-style1 pt60 pb-0">
+      {/* <section className="footer-style1 pt60 pb-0">
         <Footer />
-      </section>
+      </section> */}
       {/* End Our Footer */}
     </>
   );
