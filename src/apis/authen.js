@@ -53,10 +53,22 @@ class ApiAuthen {
       );
       return res;
     } catch (error) {
-      console.error("Error logging in:", error.response?.data || error.message);
-      throw new Error("Login failed");
+      if (error.response && error.response.data) {
+        // Trả lỗi có message từ server
+        return {
+          status: error.response.status,
+          data: error.response.data,
+        };
+      } else {
+        // Lỗi không xác định (mạng hoặc lỗi khác)
+        return {
+          status: 500,
+          data: { message: "Lỗi không xác định. Vui lòng thử lại sau." },
+        };
+      }
     }
   }
+
   async login(PhoneNumber, Password) {
     try {
       const res = await axios.post(
