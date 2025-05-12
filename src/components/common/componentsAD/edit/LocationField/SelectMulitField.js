@@ -55,49 +55,68 @@ const customStyles = {
   },
 };
 
-const SelectMultiField = ({ setData, DataLocation, Datalocat }) => {
-  const [show, setShow] = React.useState(false);
-  const selectLocation = DataLocation?.map((item) => ({
-    label: item.Name,
-    value: item._id,
-  }));
+const SelectMultiField = ({ setData, city, ward, addressFull, property }) => {
   return (
     <>
       <div className="col-sm-6 col-xl-4">
         <div className="mb20">
+          <label className="heading-color ff-heading fw600 mb10">Phường</label>
+          <input  
+            type="text"
+            className="form-control"
+            placeholder="Nhập tên phường"
+                defaultValue={property.Address.split(", ")[1]}
+            onChange={(e) => {
+              ward(e.target.value);
+              setData((prev) => ({
+                ...prev,
+                Address: addressFull,
+              }));
+            }}
+          />
+        </div>
+      </div>
+      <div className="col-sm-6 col-xl-4">
+        <div className="mb20">
           <label className="heading-color ff-heading fw600 mb10">
-            Chung cư
+            Tỉnh/Thành phố
           </label>
           <div className="location-area">
-            {!show ? (
-              <p
-                style={{
-                  border: "1px solid #DDDDDD",
-                  borderRadius: "5px",
-                  padding: "12px",
-                  marginTop: "1px",
-                }}
-                onClick={() => setShow(true)}
-              >
-                {Datalocat.Location}
-              </p>
-            ) : (
-              <Select
-                name="colors"
-                options={selectLocation}
-                styles={customStyles}
-                maxMenuHeight={150}
-                className="select-custom pl-0"
-                classNamePrefix="select"
-                required
-                onChange={(e) => {
-                  setData((prev) => ({
-                    ...prev,
-                    Location: e.label,
-                  }));
-                }}
-              />
-            )}
+            <Select
+              defaultValue={{label: property.Address.split(", ")[2]} || [cities[14]]}
+              name="colors"
+              options={cities}
+              styles={customStyles}
+              maxMenuHeight={120}
+              className="select-custom pl-0"
+              classNamePrefix="select"
+              required
+              onChange={(e) => {
+                city(e.value);
+                setData((prev) => ({
+                  ...prev,
+                  Address: addressFull,
+                }));
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-6 col-xl-4">
+        <div className="mb20">
+          <label className="heading-color ff-heading fw600 mb10">
+            Quốc gia
+          </label>
+          <div className="location-area">
+            <Select
+              defaultValue={[countries[0]]}
+              name="colors"
+              options={countries}
+              styles={customStyles}
+              className="select-custom pl-0"
+              classNamePrefix="select"
+              required
+            />
           </div>
         </div>
       </div>
