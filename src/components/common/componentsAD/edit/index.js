@@ -8,8 +8,32 @@ import Amenities from "./Amenities";
 import { apiProperties } from "@/apis/Properties";
 import { apiCatalog } from "@/apis/Catalog";
 import Link from "next/link";
+import { Button } from "bootstrap";
 
 const EditPropertyTabContent = ({ params }) => {
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [data, setData] = useState({
+    Title: null,
+    Price: null,
+    Description: null,
+    Address: null,
+    category: "Chung cư",
+    State: "Cho thuê",
+    Location: " ",
+    Amenities: selectedAmenities,
+    images: [],
+    yearBuilt: null,
+    bedroom: 1,
+    bathroom: 1,
+    garage: 0,
+    sqft: null,
+    interior_condition: "Nội thất đầy đủ",
+    deposit_amount: null,
+    type_documents: null,
+    Balcony_direction: null,
+    Type_apartment: null,
+    maindoor_direction: null,
+  });
   const getCookie = (name) => {
     if (typeof document === "undefined") return null;
     const value = `; ${document.cookie}`;
@@ -28,30 +52,29 @@ const EditPropertyTabContent = ({ params }) => {
 
   const fetchProperty = async () => {
     const response = await apiProperties.getPropertiesDetail(params);
-    console.log("Response", response);
     setProperty(response[0]);
     setSelectedAmenities(response[0]?.Amenities);
     setData({
-      Title: response[0].Title,
-      Price: response[0].Price,
-      Description: response[0].Description,
-      Address: response[0].Address,
-      category: response[0].Type.category,
-      State: response[0].State,
-      Location: response[0].Location,
-      Amenities: response[0].Amenities,
-      images: response[0].Images,
-      yearBuilt: response[0].Type.yearBuilt,
-      bedroom: response[0].Type.bedroom,
-      bathroom: response[0].Type.bathroom,
-      garage: response[0].Type.garage,
-      sqft: response[0].Type.sqft,
-      interior_condition: response[0].interior_condition,
-      deposit_amount: response[0].deposit_amount,
-      type_documents: response[0].type_documents,
-      Balcony_direction: response[0].Balcony_direction,
-      Type_apartment: response[0].Type_apartment,
-      maindoor_direction: response[0].maindoor_direction,
+      Title: response[0].Title || " ",
+      Price: response[0].Price || 0,
+      Description: response[0].Description || " ",
+      Address: response[0].Address || " ",
+      category: response[0].Type.category || " ",
+      State: response[0].State || " ",
+      Location: response[0].Location || " ",
+      Amenities: response[0].Amenities || [],
+      images: response[0].Images || [],
+      yearBuilt: response[0].Type.yearBuilt || " ",
+      bedroom: response[0].Type.bedroom || 1,
+      bathroom: response[0].Type.bathroom || 1,
+      garage: response[0].Type.garage || 0,
+      sqft: response[0].Type.sqft || " ",
+      interior_condition: response[0].interior_condition || " ",
+      deposit_amount: response[0].deposit_amount || " ",
+      type_documents: response[0].type_documents || " ",
+      Balcony_direction: response[0].Balcony_direction || " ",
+      Type_apartment: response[0].Type_apartment || " ",
+      maindoor_direction: response[0].maindoor_direction || " ",
     });
   };
 
@@ -63,29 +86,6 @@ const EditPropertyTabContent = ({ params }) => {
     Amenities: [],
     Category: [],
     Location: [],
-  });
-  const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [data, setData] = useState({
-    Title: null,
-    Price: null,
-    Description: null,
-    Address: null,
-    category: "Chung cư",
-    State: "Cho thuê",
-    Location: "",
-    Amenities: selectedAmenities,
-    images: [],
-    yearBuilt: null,
-    bedroom: 1,
-    bathroom: 1,
-    garage: 0,
-    sqft: null,
-    interior_condition: "Nội thất đầy đủ",
-    deposit_amount: null,
-    type_documents: null,
-    Balcony_direction: null,
-    Type_apartment: null,
-    maindoor_direction: null,
   });
 
   useEffect(() => {
@@ -128,8 +128,7 @@ const EditPropertyTabContent = ({ params }) => {
     <>
       <nav>
         <div className="nav nav-tabs" id="nav-tab2" role="tablist">
-          <Link
-            href={"/my-properties"}
+          <button
             className="btn btn-dark fw600 ms-auto px-5"
             style={{ marginBottom: "10px", marginRight: "10px" }}
             type="button"
@@ -137,13 +136,12 @@ const EditPropertyTabContent = ({ params }) => {
             aria-controls="nav-item5"
             aria-selected="false"
             onClick={async () => {
-              console.log("Data", data);
               const res = await apiProperties.updatePropertyAD(data, params);
-              console.log(res);
+              window.location.href = "/ADPost";
             }}
           >
             Chỉnh sửa
-          </Link>
+          </button>
         </div>
       </nav>
       {/* End nav tabs */}
@@ -190,8 +188,6 @@ const EditPropertyTabContent = ({ params }) => {
                   amenitiesData={catalog.Amenities}
                   selectedAmenities={selectedAmenities}
                   onAmenityChange={handleAmenityChange}
-                  data={data}
-                  property={property}
                 />
               </div>
             </div>
