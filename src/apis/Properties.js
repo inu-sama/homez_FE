@@ -27,18 +27,18 @@ class Properties {
     }
   }
 
-  async getProperties() {
-    try {
-      const res = await axios.get(process.env.API_URL_PORT + "/listings");
-      return res.data.data;
-    } catch (error) {
-      console.error(
-        "Error blocking user:",
-        error.response?.data || error.message
-      );
-      throw new Error("Không thể khoá user bằng số điện thoại");
-    }
-  }
+  // async getProperties() {
+  //   try {
+  //     const res = await axios.get(process.env.API_URL_PORT + "/listings");
+  //     return res.data.data;
+  //   } catch (error) {
+  //     console.error(
+  //       "Error blocking user:",
+  //       error.response?.data || error.message
+  //     );
+  //     throw new Error("Không thể khoá user bằng số điện thoại");
+  //   }
+  // }
 
   async getPropertiesDetail(id) {
     try {

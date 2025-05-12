@@ -1,3 +1,4 @@
+"use client";
 import DashboardHeader from "@/components/common/DashboardHeader";
 import MobileMenu from "@/components/common/mobile-menu";
 import Pagination from "@/components/property/Pagination";
@@ -7,12 +8,22 @@ import FilterHeader from "../../../../components/property/dashboard/dashboard-my
 import PropertyDataTable from "@/components/property/dashboard/dashboard-my-properties/PropertyDataTable";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
 import DefaultHeader from "@/components/common/DefaultHeader";
+import { useState } from "react";
 
-export const metadata = {
-  title: "Dashboard Properties || Homez - Real Estate NextJS Template",
-};
+
 
 const DashboardMyProperties = () => {
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(5);
+  const [totalPage, setTotalPage] = useState(null);
+  const page = {
+    min,
+    max,
+    totalPage,
+    setMin,
+    setMax,
+    setTotalPage,
+  }
   return (
     <>
       {/* Main Header Nav */}
@@ -42,8 +53,8 @@ const DashboardMyProperties = () => {
               <div className="row align-items-center pb40">
                 <div className="col-xxl-3">
                   <div className="dashboard_title_area">
-                    <h2>My Properties</h2>
-                    <p className="text">We are glad to see you again!</p>
+                    <h2>BDS của tôi</h2>
+                    <p className="text">Quản lý danh sách bất động sản</p>
                   </div>
                 </div>
                 <div className="col-xxl-9">
@@ -56,10 +67,10 @@ const DashboardMyProperties = () => {
                 <div className="col-xl-12">
                   <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                     <div className="packages_table table-responsive">
-                      <PropertyDataTable />
+                      <PropertyDataTable page={page} />
 
                       <div className="mt30">
-                        <Pagination />
+                        <Pagination page={page} totalPage={totalPage} />
                       </div>
                     </div>
                   </div>

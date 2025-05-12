@@ -1,14 +1,16 @@
 "use client";
 import React, { useState } from "react";
 
-const Pagination = () => {
-  const totalPages = 8; // Replace this with your actual total number of pages
-  const [currentPage, setCurrentPage] = useState(2); // Initialize the current page state to 2 (or any other default active page)
+const Pagination = ({ page }) => {
+  const totalPages = page.totalPage; // Total number of pages, you can set this dynamically based on your data
+  const [currentPage, setCurrentPage] = useState(1); // Initialize the current page state to 2 (or any other default active page)
 
-  const handlePageClick = (page) => {
-    setCurrentPage(page);
+  const handlePageClick = (thisPage) => {
+    setCurrentPage(thisPage);
     // Here you can add additional logic to handle what happens when the user clicks on a page number.
     // For example, you can fetch data corresponding to the selected page from the server or update the URL.
+    page.setMin((thisPage - 1) * 5);
+    page.setMax(thisPage * 5);
   };
 
   const generatePageNumbers = () => {
@@ -64,7 +66,7 @@ const Pagination = () => {
         </li>
       </ul>
       <p className="mt10 pagination_page_count text-center">
-        1-8 of 300+ property available
+        5 bất động sản trên mỗi trang
       </p>
     </div>
   );

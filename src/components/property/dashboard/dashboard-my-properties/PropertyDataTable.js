@@ -20,7 +20,7 @@ const getStatusStyle = (status) => {
   }
 };
 
-const PropertyDataTable = () => {
+const PropertyDataTable = ({ page }) => {
   const [prop, setProperty] = useState(null);
   const [user, setUser] = useState(null);
 
@@ -31,6 +31,7 @@ const PropertyDataTable = () => {
         (item) => item.Account[0]?.PhoneNumber == user.PhoneNumber
       );
       setProperty(filterUser);
+      page.setTotalPage(Math.ceil(filterUser.length / 5));
     } catch (error) {
       console.error("Error fetching properties:", error);
     }
@@ -63,15 +64,15 @@ const PropertyDataTable = () => {
         <table className="table-style3 table at-savesearch">
           <thead className="t-head">
             <tr>
-              <th scope="col">Listing title</th>
-              <th scope="col">Date Published</th>
-              <th scope="col">Status</th>
+              <th scope="col">Bài đăng</th>
+              <th scope="col">Kiểm duyệt</th>
+              <th scope="col">Trạng thái</th>
               <th scope="col">View</th>
-              <th scope="col">Action</th>
+              <th scope="col">Tương tác</th>
             </tr>
           </thead>
           <tbody className="t-body">
-            {prop.map((property) => (
+            {prop.slice(page.min, page.max).map((property) => (
               <tr key={property._id}>
                 <th scope="row">
                   <div className="listing-style1 dashboard-style d-xxl-flex align-items-center mb-0">
@@ -92,12 +93,20 @@ const PropertyDataTable = () => {
                       </div>
                       <p className="list-text mb-0">{property.Location}</p>
                       <div className="list-price">
-                        <a href="#">{property.Price}</a>
+                        <a href="#">
+                          {new Intl.NumberFormat("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          }).format(property.Price)}
+                          {property.State == "Cho thuê" && <span>/tháng</span>}
+                        </a>
                       </div>
                     </div>
                   </div>
                 </th>
-                <td className="vam">today</td>
+                <td className="vam">
+                  {property.Approved ? "Đã duyệt" : "Chờ duyệt"}
+                </td>
                 <td className="vam">
                   <span className={getStatusStyle(property.State)}>
                     {property.State}
@@ -124,12 +133,12 @@ const PropertyDataTable = () => {
                     <ReactTooltip
                       id={`edit-${property._id}`}
                       place="top"
-                      content="Edi"
+                      content="Chỉnh sửa"
                     />
                     <ReactTooltip
                       id={`delete-${property._id}`}
                       place="top"
-                      content="Delete"
+                      content="Xóa"
                     />
                   </div>
                 </td>

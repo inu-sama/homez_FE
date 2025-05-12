@@ -102,7 +102,7 @@ class ApiAuthen {
       return res;
     } catch (error) {
       console.error("Error logging in:", error.response?.data || error.message);
-      throw new Error("Login failed");
+      throw new Error("Logout failed");
     }
   }
 
