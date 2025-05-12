@@ -60,23 +60,13 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
                       src={listing.Images[0]}
                       alt="listings"
                     />
-                    {listing.label && (
-                      <div className="sale-sticker-wrap">
-                        {!listing.forRent && (
-                          <div className="list-tag fz12">
-                            <span className="flaticon-electricity me-2" />
-                            FEATURED
-                          </div>
-                        )}
-                      </div>
-                    )}
 
                     <div className="list-price">
                       {new Intl.NumberFormat("vi-VN", {
                         style: "currency",
                         currency: "VND",
                       }).format(listing.Price)}
-                      {listing.State == "Cho thuê" && <span>/mo</span>}
+                      {listing.State == "Cho thuê" && <span>/tháng</span>}
                     </div>
                   </div>
                   <div className="list-content">

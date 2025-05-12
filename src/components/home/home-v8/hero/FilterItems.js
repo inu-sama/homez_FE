@@ -59,7 +59,7 @@ const FilterItems = ({ setCategory, setLocation }) => {
       <div className="col-md-12">
         <div className="bootselect-multiselect mb15">
           <Select
-            defaultValue={{ label: "Địa chỉ", value: "" }}
+            placeholder="Chọn khu vực..."
             name="colors"
             options={locationOptions}
             styles={customStyles}
@@ -74,7 +74,7 @@ const FilterItems = ({ setCategory, setLocation }) => {
       <div className="col-md-12">
         <div className="bootselect-multiselect mb15">
           <Select
-            defaultValue={{ label: "Loại", value: "" }}
+            placeholder="Chọn loại hình..."
             name="colors"
             options={categoriesOptions}
             styles={customStyles}

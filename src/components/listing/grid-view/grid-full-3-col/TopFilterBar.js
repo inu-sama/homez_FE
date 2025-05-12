@@ -17,12 +17,12 @@ const TopFilterBar = ({
 }) => {
   const options = [{ label: "Đắt dần" }, { label: "Rẻ dần" }];
   const [priceSortOption, setPriceSortOption] = useState("");
-  const [statusSortOption, setStatusSortOption] = useState("");
+  const [statusSortOption, setStatusSortOption] = useState("Mới nhất");
 
-  const updateSortFunction = (priceOption, statusOption) => {
-    if (priceOption === "Đắt dần") {
+  const updateSortFunction = (statusOption) => {
+    if (statusOption === "Đắt dần") {
       filterFunctions.setSortFunction(() => (a, b) => a?.Price - b?.Price);
-    } else if (priceOption === "Rẻ dần") {
+    } else if (statusOption === "Rẻ dần") {
       filterFunctions.setSortFunction(() => (a, b) => b?.Price - a?.Price);
     } else if (statusOption === "Mới nhất") {
       filterFunctions.setSortFunction(
@@ -44,12 +44,12 @@ const TopFilterBar = ({
 
   const handleStatusChange = (label) => {
     setStatusSortOption(label);
-    updateSortFunction("", label);
+    updateSortFunction(label);
   };
 
   return (
     <>
-      <div className="col-xl-9 d-none d-lg-block">
+      <div className="col-xl-12 d-none d-lg-block">
         <div className="dropdown-lists">
           <ul className="p-0 text-center text-xl-start">
             {/* Status */}
@@ -109,7 +109,7 @@ const TopFilterBar = ({
             </li>
 
             {/* Price */}
-            <li className="list-inline-item position-relative">
+            {/* <li className="list-inline-item position-relative">
               <button
                 type="button"
                 className="open-btn mb15 dropdown-toggle"
@@ -125,27 +125,16 @@ const TopFilterBar = ({
                     handlePriceChange={handlePriceChange}
                   />
                 </div>
-              </div>
-            </li>
-
-            <li className="list-inline-item position-relative">
-              <button
-                type="button"
-                className="open-btn mb15 dropdown-toggle"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-              >
-                Trạng thái <i className="fa fa-angle-down ms-2" />
-              </button>
-              <div className="dropdown-menu dd3">
-                <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr20">
-                  <Status
-                    statusSortOption={statusSortOption}
-                    handleStatusChange={handleStatusChange}
-                  />
+                <div className="text-end mt10 pr10">
+                  <button
+                    type="button"
+                    className="done-btn ud-btn btn-thm dropdown-toggle"
+                  >
+                    Hoàn tất
+                  </button>
                 </div>
               </div>
-            </li>
+            </li> */}
 
             {/* Beds / Baths */}
             <li className="list-inline-item position-relative">
@@ -176,7 +165,35 @@ const TopFilterBar = ({
                     type="button"
                     className="done-btn ud-btn btn-thm drop_btn4"
                   >
-                    Done
+                    Hoàn tất
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <li className="list-inline-item position-relative">
+              <button
+                type="button"
+                className="open-btn mb15 dropdown-toggle"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+              >
+                Sắp xếp <i className="fa fa-angle-down ms-2" />
+              </button>
+              <div className="dropdown-menu dd3">
+                <div className="widget-wrapper bdrb1 pb25 mb0 pl20 pr20">
+                  <Status
+                    statusSortOption={statusSortOption}
+                    handleStatusChange={handleStatusChange}
+                    filterFunctions={filterFunctions}
+                  />
+                </div>
+                <div className="text-end mt10 pr10">
+                  <button
+                    type="button"
+                    className="done-btn ud-btn btn-thm dropdown-toggle"
+                  >
+                    Hoàn tất
                   </button>
                 </div>
               </div>
