@@ -106,21 +106,45 @@ class ApiAuthen {
     }
   }
 
-  async updateUser(FirstName, LastName, PhoneNumber, Email) {
+  async getUserByPhoneNumber(PhoneNumber) {
     try {
-      const res = await instanceToken.put("/updateUser", {
-        FirstName,
-        LastName,
-        PhoneNumber,
-        Email,
-      });
-      return res;
+      const res = await axios.get(
+        `${process.env.API_URL_PORT}/searchUser/${PhoneNumber}`
+      );
+      return res.data;
+    } catch (error) {
+      console.error(
+        "Error getting user by phone number:",
+        error.response?.data || error.message
+      );
+      throw new Error("Get user failed");
+    }
+  }
+
+  async updateUser(editUser) {
+    try {
+      const payload = {
+        FirstName: editUser.FirstName,
+        LastName: editUser.LastName,
+        Email: editUser.Email,
+      };
+
+      if (editUser.Password && editUser.NewPassword) {
+        payload.Password = editUser.Password;
+        payload.NewPassword = editUser.NewPassword;
+      }
+
+      const res = await axios.put(
+        `${process.env.API_URL_PORT}/updateUser/${editUser.PhoneNumber}`,
+        payload
+      );
+      return res.data;
     } catch (error) {
       console.error(
         "Error updating user:",
         error.response?.data || error.message
       );
-      throw new Error("Update user failed");
+      throw new Error(error.response?.data?.message || "Update user failed");
     }
   }
 }

@@ -134,7 +134,7 @@ const EditPropertyTabContent = ({ params }) => {
     <>
       <nav>
         <div className="nav nav-tabs" id="nav-tab2" role="tablist">
-          <Link
+          <button
             href={"/my-properties"}
             className="btn btn-dark fw600 ms-auto px-5"
             style={{ marginBottom: "10px", marginRight: "10px" }}
@@ -143,13 +143,12 @@ const EditPropertyTabContent = ({ params }) => {
             aria-controls="nav-item5"
             aria-selected="false"
             onClick={async () => {
-              console.log("Data", data);
               const res = await apiProperties.updateProperty(data, params.id);
-              console.log(res);
+              window.location.href = "/my-properties";
             }}
           >
             Chỉnh sửa
-          </Link>
+          </button>
         </div>
       </nav>
       {/* End nav tabs */}
