@@ -3,7 +3,7 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-const UploadPhotoGallery = ({ setData, property }) => {
+const UploadPhotoGallery = ({ setData, data, property }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
   useEffect(() => {
     if (property && property.Images) {

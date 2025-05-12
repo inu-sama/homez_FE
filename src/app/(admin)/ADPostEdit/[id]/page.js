@@ -7,14 +7,12 @@ import SidebarPanel from "@/components/common/sidebar-panel";
 import HeaderAD from "@/components/common/componentsAD/HeaderAD";
 import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
 import OverView from "@/components/property/property-single-style/common/OverView";
-import EditPropertyTabContent from "@/components/common/componentsAD/dashboard-edit-property";
+import EditPropertyTabContent from "@/components/common/componentsAD/edit/index";
 import { apiAuthen } from "@/apis/authen";
 import { apiProperties } from "@/apis/Properties";
 import formatVND from "@/components/common/formattingVND";
 
 export default function ADPostEdit() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [role, setRole] = useState("");
 
@@ -52,31 +50,9 @@ export default function ADPostEdit() {
     checkRole(token);
   }, []);
 
-  useEffect(() => {
-    const fetchProperties = async () => {
-      try {
-        const response = await apiProperties.getPropertiesDetail(id);
-        setData(response[0]);
-      } catch (err) {
-        console.error("Error fetching properties:", err);
-        setError("Không thể tải dữ liệu bài đăng.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (id) {
-      fetchProperties();
-    }
-  }, [id]);
-
-  if (loading)
-    return <div className="text-center mt-5">Đang tải dữ liệu...</div>;
   if (error) return <div className="text-center text-danger mt-5">{error}</div>;
-  if (!data)
-    return <div className="text-center mt-5">Không có dữ liệu hiển thị.</div>;
 
-  return data ? (
+  return (
     <div className="container-fluid" style={{ marginTop: "20px" }}>
       <HeaderAD />
       <SidebarStickyBar />
@@ -107,7 +83,7 @@ export default function ADPostEdit() {
             <div className="col-xl-12">
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 pt30 mb30 overflow-hidden position-relative">
                 <div className="navtab-style1">
-                  <EditPropertyTabContent edit_data={data} _id={id} />
+                  <EditPropertyTabContent params={id} />
                 </div>
               </div>
             </div>
@@ -115,7 +91,5 @@ export default function ADPostEdit() {
         </div>
       </div>
     </div>
-  ) : (
-    <div></div>
   );
 }

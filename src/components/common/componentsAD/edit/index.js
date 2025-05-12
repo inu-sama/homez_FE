@@ -17,11 +17,17 @@ const EditPropertyTabContent = ({ params }) => {
     if (parts.length === 2) return parts.pop().split(";").shift();
     return null;
   };
+  // useEffect(() => {
+  //   const role = getCookie(“token”);
+  //   if (!token) {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
 
   const [property, setProperty] = useState(null);
 
   const fetchProperty = async () => {
-    const response = await apiProperties.getPropertiesDetail(params.id);
+    const response = await apiProperties.getPropertiesDetail(params);
     console.log("Response", response);
     setProperty(response[0]);
     setSelectedAmenities(response[0]?.Amenities);
@@ -99,13 +105,6 @@ const EditPropertyTabContent = ({ params }) => {
     });
   };
 
-  // Truyền cả `data` và `setData`
-  // <PropertyDescription
-  //   data={data}
-  //   setData={setData}
-  //   dataCate={catalog.Category}
-  // />;
-
   const fetchCatalog = async () => {
     try {
       const response = await apiCatalog.getAnimaties();
@@ -125,11 +124,6 @@ const EditPropertyTabContent = ({ params }) => {
     fetchCatalog();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("Catogories", catalog.Category);
-  //   console.log("Data", data);
-  // }, [catalog.Category]);
-
   return (
     <>
       <nav>
@@ -144,7 +138,7 @@ const EditPropertyTabContent = ({ params }) => {
             aria-selected="false"
             onClick={async () => {
               console.log("Data", data);
-              const res = await apiProperties.updateProperty(data, params.id);
+              const res = await apiProperties.updatePropertyAD(data, params);
               console.log(res);
             }}
           >
