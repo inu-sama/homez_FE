@@ -5,6 +5,8 @@ import Image from "next/image";
 
 const UploadPhotoGallery = ({ setData, data, property }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
+  const fileInputRef = useRef(null);
+
   useEffect(() => {
     if (property && property.Images) {
       setUploadedImages(property.Images);
@@ -14,8 +16,8 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
       }));
     }
   }, [property]);
-  const fileInputRef = useRef(null);
 
+  // Hàm xử lý upload ảnh
   const handleUpload = (files) => {
     const newImages = [...uploadedImages];
 
@@ -45,42 +47,50 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
     event.preventDefault();
   };
 
-  const handleButtonClick = () => {
-    // Programmatically trigger the hidden file input
-    fileInputRef.current.click();
+  const handleImageClick = (index) => {
+    const newImages = [...uploadedImages];
+    const [clickedImage] = newImages.splice(index, 1);
+    newImages.splice(0, 0, clickedImage);
+
+    setUploadedImages(newImages);
+    setData((prev) => ({
+      ...prev,
+      images: newImages,
+    }));
   };
 
   const handleDelete = (index) => {
     const newImages = [...uploadedImages];
     newImages.splice(index, 1);
     setUploadedImages(newImages);
+    setData((prev) => ({
+      ...prev,
+      images: newImages,
+    }));
   };
 
-  // useEffect(() => {
-  //   setData((prev) => ({
-  //     ...prev,
-  //     images: uploadedImages,
-  //   }));
-  // }, [uploadedImages]);
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
 
   return (
     <>
       <div
         className="upload-img position-relative overflow-hidden bdrs12 text-center mb30 px-2 row"
         onDrop={handleDrop}
-        onDragOver={handleDragOver}>
+        onDragOver={handleDragOver}
+      >
         <div className="profile-box position-relative d-md-flex align-items-center">
+          {/* Hiển thị ảnh bìa */}
           {uploadedImages[0] && (
             <div
               className="col-sm-4 col-12 flex-shrink-0"
               onDrop={(e) => {
                 e.preventDefault();
-
                 if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
                   handleUpload(e.dataTransfer.files, true);
                   return;
                 }
-
                 const draggedIndex = parseInt(
                   e.dataTransfer.getData("dragIndex")
                 );
@@ -95,7 +105,8 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
                   }));
                 }
               }}
-              onDragOver={(e) => e.preventDefault()}>
+              onDragOver={(e) => e.preventDefault()}
+            >
               <div className="profile-img mb20 position-relative">
                 <Image
                   width={212}
@@ -115,16 +126,18 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
                 title="Delete Image"
                 onClick={() => handleDelete(0)}
                 type="button"
-                data-tooltip-id={`delete-${0}`}>
+                data-tooltip-id={`delete-${0}`}
+              >
                 <span className="fas fa-trash-can" />
               </button>
             </div>
           )}
 
-          {/* Ảnh phụ (Scroll ngang) */}
+          {/* Hiển thị các ảnh phụ */}
           <div
             className="d-flex overflow-auto gap-2 ms-3 col-sm-8 col-12"
-            style={{ maxWidth: "100%" }}>
+            style={{ maxWidth: "100%" }}
+          >
             {uploadedImages.slice(1).map((imageData, i) => {
               const index = i + 1;
               return (
@@ -134,14 +147,17 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
                   draggable
                   onDragStart={(e) => {
                     e.dataTransfer.setData("dragIndex", index);
-                  }}>
+                  }}
+                >
                   <div className="profile-img mb20 position-relative">
                     <Image
                       width={170}
                       height={194}
-                      className=" bdrs12 cover"
+                      className="bdrs12 cover"
                       src={imageData}
                       alt={`Uploaded Image ${index}`}
+                      onClick={() => handleImageClick(index)} // Gọi hàm thay đổi ảnh bìa
+                      style={{ cursor: "pointer" }}
                     />
                     <button
                       style={{ border: "none" }}
@@ -149,7 +165,8 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
                       title="Delete Image"
                       onClick={() => handleDelete(index)}
                       type="button"
-                      data-tooltip-id={`delete-${index}`}>
+                      data-tooltip-id={`delete-${index}`}
+                    >
                       <span className="fas fa-trash-can" />
                     </button>
                     <ReactTooltip
@@ -164,6 +181,7 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
           </div>
         </div>
 
+        {/* Phần tải ảnh lên */}
         <div className="col-sm-12">
           <h4 className="title fz17 mb10">Tải ảnh lên</h4>
           <p className="text mb25">Định dạng ảnh phải là JPEG hoặc PNG</p>
@@ -181,8 +199,6 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
           </label>
         </div>
       </div>
-
-      {/* Display uploaded images */}
     </>
   );
 };

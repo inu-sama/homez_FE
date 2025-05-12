@@ -196,8 +196,6 @@ const EditPropertyTabContent = ({ params }) => {
                   amenitiesData={catalog.Amenities}
                   selectedAmenities={selectedAmenities}
                   onAmenityChange={handleAmenityChange}
-                  data={data}
-                  property={property}
                 />
               </div>
             </div>

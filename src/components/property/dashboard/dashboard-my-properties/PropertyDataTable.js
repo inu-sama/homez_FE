@@ -7,7 +7,6 @@ import { apiProperties } from "@/apis/Properties";
 import { apiUser } from "@/apis/management-User";
 import { apiAuthen } from "@/apis/authen";
 
-
 const getStatusStyle = (status) => {
   switch (status) {
     case "Pending":
@@ -27,7 +26,7 @@ const PropertyDataTable = () => {
 
   const fetchProperties = async () => {
     try {
-      const response = await apiProperties.getProperties();
+      const response = await apiProperties.listingPortUser();
       const filterUser = response.filter(
         (item) => item.Account[0]?.PhoneNumber == user.PhoneNumber
       );
@@ -38,10 +37,6 @@ const PropertyDataTable = () => {
   };
   useEffect(() => {
     fetchProperties();
-  }, [user]);
-
-  useEffect(() => {
-    decodedToken();
   }, [user]);
 
   const getCookie = (name) => {
@@ -57,6 +52,10 @@ const PropertyDataTable = () => {
     const userToken = await apiAuthen.getToken(token);
     setUser(userToken);
   };
+
+  useEffect(() => {
+    decodedToken();
+  }, []);
 
   return (
     <>
@@ -110,13 +109,15 @@ const PropertyDataTable = () => {
                     <button
                       className="icon"
                       style={{ border: "none" }}
-                      data-tooltip-id={`edit-${property._id}`}>
+                      data-tooltip-id={`edit-${property._id}`}
+                    >
                       <span className="fas fa-pen fa" />
                     </button>
                     <button
                       className="icon"
                       style={{ border: "none" }}
-                      data-tooltip-id={`delete-${property._id}`}>
+                      data-tooltip-id={`delete-${property._id}`}
+                    >
                       <span className="flaticon-bin" />
                     </button>
 
