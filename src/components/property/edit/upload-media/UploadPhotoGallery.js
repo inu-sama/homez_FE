@@ -29,6 +29,7 @@ const UploadPhotoGallery = ({ setData, data, property }) => {
       };
       reader.readAsDataURL(file);
     }
+    console.log("newImages", uploadedImages);
 
     setData((prev) => ({
       ...prev,

@@ -18,7 +18,7 @@ const nextConfig = {
     SECRET_KEY: process.env.SECRET_KEY,
   },
   images: {
-    domains: ["res.cloudinary.com", "localhost"],
+    domains: ["res.cloudinary.com", "localhost", "images.ctfassets.net"],
   },
 };
 

@@ -48,8 +48,8 @@ const Home = () => {
       {/* End Home Banner Style V4 */}
 
       {/* Our Partners */}
-      <section className="our-partners bgc-dark pt60 pb60">
-        {/* <div className="container">
+      {/* <section className="our-partners bgc-dark pt60 pb60">
+        <div className="container">
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up">
               <div className="main-title text-center">
@@ -65,8 +65,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div> */}
-      </section>
+        </div>
+      </section> */}
       {/* End Our Partners */}
 
       {/* Featured Listings */}
