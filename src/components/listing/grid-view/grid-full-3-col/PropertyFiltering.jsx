@@ -20,7 +20,7 @@ export default function PropertyFiltering({ type, setType }) {
 
   const fetchProperties = async () => {
     try {
-      const response = await apiProperties.getProperties();
+      const response = await apiProperties.listingPortUser();
       setProperties(response);
     } catch (error) {
       console.error("Error fetching properties:", error);
