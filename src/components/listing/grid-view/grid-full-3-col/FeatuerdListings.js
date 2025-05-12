@@ -6,15 +6,16 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-const FeaturedListings = ({ data, colstyle, state, filterFunctions }) => {
+const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
   const searchParams = useSearchParams();
   const location = searchParams.get("location")?.toLowerCase();
   return (
     <>
       {data
         .sort(filterFunctions.sortFunction)
+        .slice(page.min, page.max)
         .filter((p) =>
-          location ? p.Address.toLowerCase().includes(location) : true
+          location ? p.Address.toLowerCase().includes(location) : p
         )
         .filter((p) =>
           filterFunctions.propertyTypes != ""
