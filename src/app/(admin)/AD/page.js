@@ -19,11 +19,11 @@ export default function Contact() {
       const response = await apiContact.getContact();
       if (response.status !== 200) {
         throw new Error("Failed to fetch contact data");
+        window.location.href = "/";
       }
       setData(response.data.contact);
     } catch (error) {
       console.error("Error fetching contact data:", error);
-      window.location.href = "/";
     }
   };
   const checkRole = async () => {
