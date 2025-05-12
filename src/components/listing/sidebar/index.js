@@ -17,12 +17,12 @@ import Status from "./Status";
 const ListingSidebar = ({ filterFunctions }) => {
   const options = [{ label: "Đắt dần" }, { label: "Rẻ dần" }];
   const [priceSortOption, setPriceSortOption] = useState("");
-  const [statusSortOption, setStatusSortOption] = useState("");
+  const [statusSortOption, setStatusSortOption] = useState("Mới nhất");
 
-  const updateSortFunction = (priceOption, statusOption) => {
-    if (priceOption === "Đắt dần") {
+  const updateSortFunction = (statusOption) => {
+    if (statusOption === "Đắt dần") {
       filterFunctions.setSortFunction(() => (a, b) => a?.Price - b?.Price);
-    } else if (priceOption === "Rẻ dần") {
+    } else if (statusOption === "Rẻ dần") {
       filterFunctions.setSortFunction(() => (a, b) => b?.Price - a?.Price);
     } else if (statusOption === "Mới nhất") {
       filterFunctions.setSortFunction(
@@ -44,7 +44,7 @@ const ListingSidebar = ({ filterFunctions }) => {
 
   const handleStatusChange = (label) => {
     setStatusSortOption(label);
-    updateSortFunction("", label);
+    updateSortFunction(label);
   };
   return (
     <div className="list-sidebar-style1">
@@ -64,6 +64,17 @@ const ListingSidebar = ({ filterFunctions }) => {
 
       <div className="widget-wrapper">
         <h6 className="list-title" style={{ fontFamily: "inherit" }}>
+          Hình thức
+        </h6>
+        <div className="checkbox-style1">
+          <ListingStatus filterFunctions={filterFunctions} />
+        </div>
+      </div>
+
+      {/* End .widget-wrapper */}
+
+      <div className="widget-wrapper">
+        <h6 className="list-title" style={{ fontFamily: "inherit" }}>
           Loại căn hộ
         </h6>
         <div className="checkbox-style1">
@@ -73,12 +84,12 @@ const ListingSidebar = ({ filterFunctions }) => {
 
       {/* End .widget-wrapper */}
 
-      <div className="checkbox-style1">
+      {/* <div className="checkbox-style1">
         <PriceRange
           priceSortOption={priceSortOption}
           handlePriceChange={handlePriceChange}
         />
-      </div>
+      </div> */}
       {/* End .widget-wrapper */}
 
       <div className="widget-wrapper">
@@ -103,6 +114,7 @@ const ListingSidebar = ({ filterFunctions }) => {
           <Status
             statusSortOption={statusSortOption}
             handleStatusChange={handleStatusChange}
+            filterFunctions={filterFunctions}
           />
         </div>
       </div>

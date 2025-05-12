@@ -267,7 +267,7 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-      <section className="our-testimonial pt-0">
+      <section className="our-testimonial pt-0 d-none d-md-block">
         <div className="container">
           {/* <div className="row">
             <div className="col-lg-6 mx-auto" data-aos-delay="300ms">

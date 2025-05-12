@@ -7,12 +7,12 @@ const ChangePasswordForm = () => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Old Password
+              Mật khẩu cũ
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Nhập mật khẩu cũ"
               required
             />
           </div>
@@ -24,12 +24,12 @@ const ChangePasswordForm = () => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              New Password
+              Mật khẩu mới
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Nhập mật khẩu mới"
               required
             />
           </div>
@@ -39,12 +39,12 @@ const ChangePasswordForm = () => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Confirm New Password
+              Xác nhận mật khẩu
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Nhập lại mật khẩu mới"
               required
             />
           </div>
@@ -54,7 +54,7 @@ const ChangePasswordForm = () => {
         <div className="col-md-12">
           <div className="text-end">
             <button type="submit" className="ud-btn btn-dark">
-              Change Password
+              Cập nhật mật khẩu
               <i className="fal fa-arrow-right-long" />
             </button>
           </div>

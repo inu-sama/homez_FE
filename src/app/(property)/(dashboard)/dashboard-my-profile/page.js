@@ -43,8 +43,8 @@ const DashboardMyProfile = () => {
               <div className="row align-items-center pb40">
                 <div className="col-lg-12">
                   <div className="dashboard_title_area">
-                    <h2>My Profile</h2>
-                    <p className="text">We are glad to see you again!</p>
+                    <h2>Tài khoản</h2>
+                    {/* <p className="text">Chỉnh sửa thông tin cá nhân</p> */}
                   </div>
                 </div>
               </div>
@@ -53,26 +53,24 @@ const DashboardMyProfile = () => {
               <div className="row">
                 <div className="col-xl-12">
                   <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                    <div className="col-xl-7">
+                  <h4 className="title fz17 mb30">Chỉnh sửa thông tin cá nhân</h4>
+                    {/* <div className="col-xl-7">
                       <ProfileBox />
-                    </div>
-                    {/* End ProfileBox */}
+                    </div> */}
 
                     <div className="col-lg-12">
                       <PersonalInfo />
                     </div>
-                    {/* End PersonalInfo */}
                   </div>
-                  {/* End .ps-widget */}
 
-                  <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                  {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                     <h4 className="title fz17 mb30">Social Media</h4>
                     <SocialField />
-                  </div>
+                  </div> */}
                   {/* End .ps-widget */}
 
                   <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                    <h4 className="title fz17 mb30">Change password</h4>
+                    <h4 className="title fz17 mb30">Đổi mật khẩu</h4>
                     <ChangePasswordForm />
                   </div>
                   {/* End .ps-widget */}

@@ -4,7 +4,7 @@ const PersonalInfo = () => {
   return (
     <form className="form-style1">
       <div className="row">
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Username
@@ -13,6 +13,48 @@ const PersonalInfo = () => {
               type="text"
               className="form-control"
               placeholder="Your Name"
+              required
+            />
+          </div>
+        </div> */}
+        {/* End .col */}
+        {/* <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">Phone</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+        </div> */}
+        {/* End .col */}
+
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Họ
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Nhập họ của bạn"
+              required
+            />
+          </div>
+        </div>
+        {/* End .col */}
+
+        <div className="col-sm-6 col-xl-4">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">
+              Tên
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Nhập tên của bạn"
               required
             />
           </div>
@@ -25,57 +67,15 @@ const PersonalInfo = () => {
             <input
               type="email"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Nhập email của bạn"
               required
             />
           </div>
         </div>
         {/* End .col */}
 
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">Phone</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-        </div>
-        {/* End .col */}
 
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              First Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-        </div>
-        {/* End .col */}
-
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Last Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-        </div>
-        {/* End .col */}
-
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Position
@@ -87,10 +87,10 @@ const PersonalInfo = () => {
               required
             />
           </div>
-        </div>
+        </div> */}
         {/* End .col */}
 
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Language
@@ -102,10 +102,10 @@ const PersonalInfo = () => {
               required
             />
           </div>
-        </div>
+        </div> */}
         {/* End .col */}
 
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Company Name
@@ -117,10 +117,10 @@ const PersonalInfo = () => {
               required
             />
           </div>
-        </div>
+        </div> */}
         {/* End .col */}
 
-        <div className="col-sm-6 col-xl-4">
+        {/* <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Tax Number
@@ -132,10 +132,10 @@ const PersonalInfo = () => {
               required
             />
           </div>
-        </div>
+        </div> */}
         {/* End .col */}
 
-        <div className="col-xl-12">
+        {/* <div className="col-xl-12">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
               Address
@@ -147,10 +147,10 @@ const PersonalInfo = () => {
               required
             />
           </div>
-        </div>
+        </div> */}
         {/* End .col */}
 
-        <div className="col-md-12">
+        {/* <div className="col-md-12">
           <div className="mb10">
             <label className="heading-color ff-heading fw600 mb10">
               About me
@@ -162,13 +162,13 @@ const PersonalInfo = () => {
               defaultValue={""}
             />
           </div>
-        </div>
+        </div> */}
         {/* End .col */}
 
         <div className="col-md-12">
           <div className="text-end">
             <button type="submit" className="ud-btn btn-dark">
-              Update Profile
+              Cập nhật thông tin
               <i className="fal fa-arrow-right-long" />
             </button>
           </div>
