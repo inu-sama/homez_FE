@@ -49,7 +49,7 @@ const Pagination = ({ page }) => {
           <span
             className="page-link pointer"
             href="#"
-            onClick={() => handlePageClick(currentPage - 1)}
+            onClick={() => {currentPage > 1 && handlePageClick(currentPage - 1)}}
           >
             <span className="fas fa-angle-left" />
           </span>
@@ -59,7 +59,7 @@ const Pagination = ({ page }) => {
           <span
             className="page-link"
             href="#"
-            onClick={() => handlePageClick(currentPage + 1)}
+            onClick={() => {currentPage < totalPages && handlePageClick(currentPage + 1)}}
           >
             <span className="fas fa-angle-right" />
           </span>

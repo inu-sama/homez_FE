@@ -274,7 +274,6 @@ const PropertyDescription = ({ setData, catalog, setFilled, data }) => {
               </label>
               <Select
                 placeholder="Chọn số tháng..."
-                defaultValue={months[1]}
                 name="colors"
                 options={months}
                 styles={customStyles}

@@ -147,7 +147,7 @@ class Properties {
   }
   async updateProperty(data, id) {
     try {
-      const res = await instance.put(`/listings-updateAD/${id}`, {
+      const res = await instance.put(`/listings-update/${id}`, {
         Title: data.Title,
         Price: data.Price,
         Description: data.Description,

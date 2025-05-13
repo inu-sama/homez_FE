@@ -11,7 +11,8 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
   const location = searchParams.get("location")?.toLowerCase();
   return (
     <>
-      {data
+      {data && data
+        .slice(page.min, page.max)
         .sort(filterFunctions.sortFunction)
         .filter((p) =>
           location ? p.Address.toLowerCase().includes(location) : p
@@ -106,8 +107,7 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
               </Link>
             );
           }
-        })
-        .slice(page.min, page.max)}
+        })}
     </>
   );
 };
