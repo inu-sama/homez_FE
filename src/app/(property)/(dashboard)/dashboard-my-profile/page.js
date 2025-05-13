@@ -1,4 +1,3 @@
-import DashboardHeader from "@/components/common/DashboardHeader";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import MobileMenu from "@/components/common/mobile-menu";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
@@ -6,8 +5,8 @@ import Footer from "@/components/property/dashboard/Footer";
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import ChangePasswordForm from "@/components/property/dashboard/dashboard-profile/ChangePasswordForm";
 import PersonalInfo from "@/components/property/dashboard/dashboard-profile/PersonalInfo";
-import ProfileBox from "@/components/property/dashboard/dashboard-profile/ProfileBox";
-import SocialField from "@/components/property/dashboard/dashboard-profile/SocialField";
+// import ProfileBox from "@/components/property/dashboard/dashboard-profile/ProfileBox";
+// import SocialField from "@/components/property/dashboard/dashboard-profile/SocialField";
 
 export const metadata = {
   title: "Dashboard My Profile || Homez - Real Estate NextJS Template",
