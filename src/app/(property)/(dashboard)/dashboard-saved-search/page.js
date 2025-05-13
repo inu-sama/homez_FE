@@ -54,7 +54,7 @@ const DashboardSavedSearch = () => {
                       <SearchDataTable />
                     </div>
                     <div className="mt30">
-                      <Pagination />
+                      {/* <Pagination /> */}
                     </div>
                   </div>
                 </div>
