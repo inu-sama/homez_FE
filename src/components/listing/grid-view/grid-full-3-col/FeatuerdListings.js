@@ -4,39 +4,43 @@ import { sort } from "@/data/mobileMenuItems";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 
 const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
   const searchParams = useSearchParams();
   const location = searchParams.get("location")?.toLowerCase();
+  useEffect(() => {
+    console.log("Filtered data:", data);
+  }, [data]);
   return (
     <>
-      {data && data
-        .slice(page.min, page.max)
-        .sort(filterFunctions.sortFunction)
-        .filter((p) =>
-          location ? p.Address.toLowerCase().includes(location) : p
-        )
-        .filter((p) =>
-          filterFunctions.propertyTypes != ""
-            ? p.Type.category == filterFunctions.propertyTypes
-            : p
-        )
-        // .filter((p) => Number(p.Price) >= filterFunctions.priceRange[0] && Number(p.Price) <= filterFunctions.priceRange[1])
-        // .filter((p) => p.Address.split(", ")[2] == filterFunctions.location)
-        .filter((p) =>
-          filterFunctions.bedrooms != 0
-            ? p.Type.bedroom >= filterFunctions.bedrooms
-            : p
-        )
-        .filter((p) =>
-          filterFunctions.bathrooms != 0
-            ? p.Type.bathroom >= filterFunctions.bathrooms
-            : p
-        )
-        .map((listing) => {
-          if (listing.State == state) {
-            console.log("Year" + listing.Type.yearBuilt);
+      {data &&
+        data
+          .slice(page.min, page.max)
+          .sort(filterFunctions.sortFunction)
+          .filter((p) =>
+            location ? p.Address.toLowerCase().includes(location) : p
+          )
+          .filter((p) =>
+            filterFunctions.propertyTypes != ""
+              ? p.Type.category == filterFunctions.propertyTypes
+              : p
+          )
+          // .filter((p) => Number(p.Price) >= filterFunctions.priceRange[0] && Number(p.Price) <= filterFunctions.priceRange[1])
+          // .filter((p) => p.Address.split(", ")[2] == filterFunctions.location)
+          .filter((p) =>
+            filterFunctions.bedrooms != 0
+              ? p.Type.bedroom >= filterFunctions.bedrooms
+              : p
+          )
+          .filter((p) =>
+            filterFunctions.bathrooms != 0
+              ? p.Type.bathroom >= filterFunctions.bathrooms
+              : p
+          )
+          .filter((p) => (state ? p.State === state : true))
+          .slice(page.min, page.max)
+          .map((listing) => {
             return (
               <Link
                 href={"/property-detail/" + listing._id}
@@ -106,8 +110,8 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
                 </div>
               </Link>
             );
-          }
-        })}
+          })
+          .slice(page.min, page.max)}
     </>
   );
 };

@@ -303,25 +303,40 @@ const SignUp = () => {
       return;
     }
 
-    setLoading(true);
-    const response = await apiAuthen.register(
-      phone,
-      email,
-      FirstName,
-      LastName,
-      password
-    );
+    try {
+      setLoading(true);
 
-    if (response.status === 201) {
-      setMessage("Đăng ký thành công!");
-      document.cookie = `token=${response.data.token}; path=/; max-age=86400; Secure; SameSite=Strict`;
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
-    } else {
-      setMessage(response.data.message);
+      const response = await apiAuthen.register(
+        phone,
+        email,
+        FirstName,
+        LastName,
+        password
+      );
+
+      if (response.status === 201) {
+        setMessage("Đăng ký thành công!");
+        document.cookie = `token=${response.data.token}; path=/; max-age=86400; Secure; SameSite=Strict`;
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      } else {
+        setMessage(response.data.message || "Đăng ký thất bại.");
+      }
+    } catch (error) {
+      console.error(error);
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Đã xảy ra lỗi. Vui lòng thử lại.";
+      if (errorMessage == "Phone number or email already exists") {
+        setMessage("Số điện thoại hoặc email đã tồn tại");
+      } else {
+        setMessage("Đăng ký thất bại. Vui lòng thử lại.");
+      }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -333,7 +348,7 @@ const SignUp = () => {
         <input
           type="tel"
           className="form-control"
-          placeholder="+84xxxxxxxxx"
+          placeholder="0xxxxxxxxx"
           required
           value={phone}
           onChange={(e) => setPhone(e.target.value)}

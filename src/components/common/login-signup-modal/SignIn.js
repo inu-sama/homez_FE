@@ -45,8 +45,8 @@ const SignIn = () => {
     } catch (err) {
       console.error(err);
 
-      if (err.response?.status === 401) {
-        setMessage("Token không hợp lệ hoặc đã hết hạn.");
+      if (err.response?.status < 500) {
+        setMessage(err.response.data.message || "Sai thông tin đăng nhập.");
       } else if (err.response?.status === 500) {
         setMessage("Lỗi máy chủ. Vui lòng thử lại sau.");
       } else {
