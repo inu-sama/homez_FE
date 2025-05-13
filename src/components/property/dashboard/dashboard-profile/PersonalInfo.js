@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { apiAuthen } from "@/apis/authen";
+import { useRouter } from "next/navigation";
 
 const PersonalInfo = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const PersonalInfo = () => {
   const token = getCookie("token");
   if (!token) {
     // window.location.href = "/";
+    router.push("/");
   }
   const decodedToken = async () => {
     const token = getCookie("token");
