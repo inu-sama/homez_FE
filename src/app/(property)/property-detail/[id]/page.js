@@ -120,14 +120,14 @@ const SingleV1 = ({ params }) => {
                 ) : null}
                 {/* End .ps-widget */}
 
-                {property.Video ? (
+                {/* {property.Video ? (
                   <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 ">
                     <h4 className="title fz17 mb30">Video</h4>
                     <div className="row">
                       <PropertyVideo video={property.Video} />
                     </div>
                   </div>
-                ) : null}
+                ) : null} */}
                 {/* End .ps-widget */}
 
                 {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">

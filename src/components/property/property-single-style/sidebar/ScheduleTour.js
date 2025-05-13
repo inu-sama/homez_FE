@@ -62,7 +62,7 @@ const ScheduleTour = ({ property }) => {
 
   return (
     <div className="ps-navtab">
-      <ul className="nav nav-pills mb-3" role="tablist">
+      {/* <ul className="nav nav-pills mb-3" role="tablist">
         <li className="nav-item" role="presentation">
           <button
             className="nav-link active mr15 mb5-lg"
@@ -72,7 +72,7 @@ const ScheduleTour = ({ property }) => {
             Tham quan trực tiếp
           </button>
         </li>
-      </ul>
+      </ul> */}
 
       <div className="tab-content">
         <div className="tab-pane fade show active" role="tabpanel">
