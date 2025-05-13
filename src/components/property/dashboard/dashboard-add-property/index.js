@@ -49,7 +49,6 @@ const AddPropertyTabContent = () => {
     deposit_amount: null,
     type_documents: null,
     Balcony_direction: null,
-    Type_apartment: null,
     maindoor_direction: null,
   });
 

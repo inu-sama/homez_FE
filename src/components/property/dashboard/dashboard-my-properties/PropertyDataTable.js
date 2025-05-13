@@ -67,7 +67,7 @@ const PropertyDataTable = ({ page }) => {
               <th scope="col">Bài đăng</th>
               <th scope="col">Kiểm duyệt</th>
               <th scope="col">Trạng thái</th>
-              <th scope="col">View</th>
+              <th scope="col">Loại</th>
               <th scope="col">Tương tác</th>
             </tr>
           </thead>
@@ -127,7 +127,7 @@ const PropertyDataTable = ({ page }) => {
                       {property.State}
                     </span>
                   </td>
-                  <td className="vam">12</td>
+                  <td className="vam">{property.Type.category}</td>
                   <td className="vam">
                     <div className="d-flex">
                       <Link href={`property-edit/${property._id}`}>
