@@ -176,6 +176,7 @@ const PropertyDescription = ({ setData, catalog, property, data }) => {
                   <input
                     type="number"
                     className="form-control"
+                    defaultValue={property.Address.split(", ")[0].replace("Tầng ", "")}
                     placeholder="Nhập số tầng"
                     onChange={(e) => {
                       setFloor(e.target.value);
@@ -195,6 +196,7 @@ const PropertyDescription = ({ setData, catalog, property, data }) => {
                   <input
                     type="text"
                     className="form-control"
+                    defaultValue={property.Address.split(", ")[1]}
                     placeholder="Nhập mã tòa nhà (nếu có)"
                     onChange={(e) => {
                       setBlock(e.target.value);
@@ -217,6 +219,7 @@ const PropertyDescription = ({ setData, catalog, property, data }) => {
                   <input
                     type="text"
                     className="form-control"
+                    defaultValue={property.Address}
                     placeholder="Nhập tên đường"
                     onChange={(e) => {
                       setData((prev) => ({

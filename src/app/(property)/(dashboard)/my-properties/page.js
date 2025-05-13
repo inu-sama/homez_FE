@@ -13,16 +13,22 @@ import { useState } from "react";
 
 
 const DashboardMyProperties = () => {
+  const [searchContent, setSearchContent] = useState("");
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(5);
   const [totalPage, setTotalPage] = useState(null);
+  const [sorting, setSorting] = useState("");
   const page = {
     min,
     max,
     totalPage,
+    searchContent,
+    sorting,
     setMin,
     setMax,
     setTotalPage,
+    setSearchContent,
+    setSorting,
   }
   return (
     <>
@@ -58,7 +64,7 @@ const DashboardMyProperties = () => {
                   </div>
                 </div>
                 <div className="col-xxl-9">
-                  <FilterHeader />
+                  <FilterHeader page={page} />
                 </div>
               </div>
               {/* End .row */}

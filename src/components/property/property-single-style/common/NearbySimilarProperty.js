@@ -55,7 +55,6 @@ const NearbySimilarProperty = ({ prop }) => {
         }}
       >
         {properties
-          // .slice(0, 5)
           .filter((p) => p._id != prop._id)
           .filter((p) => p.State == prop.State)
           .map((listing) => (
@@ -114,7 +113,8 @@ const NearbySimilarProperty = ({ prop }) => {
                 </div>
               </Link>
             </SwiperSlide>
-          ))}
+          ))
+          .slice(0, 5)}
       </Swiper>
     </>
   );
