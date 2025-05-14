@@ -21,8 +21,8 @@ const PropertyDetails = ({ property }) => {
         value: property.Type.sqft + " m²",
       },
       {
-        label: "Giấy tờ pháp lý",
-        value: property.type_documents || "...",
+        label: property.State = "Cho thuê" ? "Cọc trước" : "Giấy tờ pháp lý",
+        value: property.State = "Cho thuê" ? property.deposit_amount : property.type_documents,
       },
       {
         label: "Tình trạng nội thất",

@@ -11,7 +11,7 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
   const location = searchParams.get("location")?.toLowerCase();
   return (
     <>
-      {data && data
+      {data ? data
         .slice(page.min, page.max)
         .sort(filterFunctions.sortFunction)
         .filter((p) =>
@@ -36,7 +36,6 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
         )
         .map((listing) => {
           if (listing.State == state) {
-            console.log("Year" + listing.Type.yearBuilt);
             return (
               <Link
                 href={"/property-detail/" + listing._id}
@@ -107,7 +106,7 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
               </Link>
             );
           }
-        })}
+        }) : (<h3>Nhân phẩm của bạn không đủ để tải dữ liệu!</h3>)}
     </>
   );
 };

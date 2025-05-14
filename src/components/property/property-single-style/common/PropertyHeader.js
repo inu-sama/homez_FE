@@ -71,7 +71,7 @@ const PropertyHeader = ({ property }) => {
                   style: "currency",
                   currency: "VND",
                 }).format(property.Price)}
-                /{property.deposit_amount}
+                {property.State == "Cho thuê" && <span>/tháng</span>}
               </h3>
               <p className="text space fz15">
                 {new Intl.NumberFormat("vi-VN", {
