@@ -33,6 +33,7 @@ const Home = () => {
       <MobileMenu />
       {/* End Mobile Nav  */}
 
+      <SidebarStickyBar />
       {/* Edn Home sidebar sticky v bar */}
 
       {/* Home Banner Style V1 */}
