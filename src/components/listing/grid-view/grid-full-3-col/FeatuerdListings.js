@@ -4,11 +4,14 @@ import { sort } from "@/data/mobileMenuItems";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 
 const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
   const searchParams = useSearchParams();
   const location = searchParams.get("location")?.toLowerCase();
+  useEffect(() => {
+    console.log("Filtered data:", data);
+  }, [data]);
   return (
     <>
       {data ? data
@@ -105,8 +108,13 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
                 </div>
               </Link>
             );
+<<<<<<< HEAD
           }
         }) : (<h3>Nhân phẩm của bạn không đủ để tải dữ liệu!</h3>)}
+=======
+          })
+          .slice(page.min, page.max)}
+>>>>>>> 0dc71f330dea6be3dfd94952e4d89681a6b9a00c
     </>
   );
 };
