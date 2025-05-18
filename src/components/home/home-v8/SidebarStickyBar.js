@@ -10,18 +10,18 @@ const socialIcons = [
 
 const contactInfo = {
   telephone: {
-    number: "29 110 987 654",
-    url: "tel:29110987654",
+    number: "0766 934 574",
+    url: "tel:0766934574",
   },
   email: {
-    address: "info@realton.com",
-    url: "mailto:info@realton.com",
+    address: "contact.nekohome",
+    url: "mailto:contact.nekohome@gmail.com",
   },
 };
 
 const SidebarStickyBar = () => {
   return (
-    <div className="home8-sidebar-wrapper d-none d-xxl-block">
+    <div className="home8-sidebar-wrapper d-none d-lg-block">
       <a
         className="sidemenu-btn filter-btn-right mt35 d-block text-center"
         href="#"

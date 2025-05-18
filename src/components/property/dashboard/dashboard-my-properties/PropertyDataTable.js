@@ -100,7 +100,7 @@ const PropertyDataTable = ({ page }) => {
                       </div>
                       <div className="list-content py-0 p-0 mt-2 mt-xxl-0 ps-xxl-4">
                         <div className="h6 list-title">
-                          <Link href={`/property-edit/${property._id}`}>
+                          <Link href={`/property-detail/${property._id}`}>
                             {property.Title}
                           </Link>
                         </div>

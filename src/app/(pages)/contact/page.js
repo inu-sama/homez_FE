@@ -56,15 +56,14 @@ const Contact = () => {
 
             <div className="col-lg-5 offset-lg-2">
               <h2 className="mb30 text-capitalize">
-                Chúng tôi rất muốn nghe <br className="d-none d-lg-block" />
-                từ bạn.
+                Bạn có câu hỏi
+                <br className="d-none d-lg-block" />
+                về Bất động sản?
               </h2>
               <p className="text">
-                Chúng tôi ở đây để trả lời mọi câu hỏi bạn có thể có về bất động
-                sản, cho dù đó là một ngôi nhà, một căn hộ hay một bất động sản
-                thương mại. Chúng tôi sẽ giúp bạn tìm thấy bất động sản hoàn hảo
-                cho nhu cầu của bạn. Chúng tôi sẽ giúp bạn tìm thấy bất động sản
-                hoàn hảo cho nhu cầu của bạn.
+                Chúng tôi sẵn sàng giải đáp mọi thắc mắc và giúp bạn tìm kiếm,
+                quản lý bất động sản hoàn hảo - dù là nhà ở, căn hộ hay thương
+                mại. Hãy liên hệ với chúng tôi ngay!
               </p>
             </div>
             {/* End .col */}

@@ -22,7 +22,7 @@ import AllReviews from "@/components/property/property-single-style/common/revie
 import ContactWithAgent from "@/components/property/property-single-style/sidebar/ContactWithAgent";
 import ScheduleTour from "@/components/property/property-single-style/sidebar/ScheduleTour";
 import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import MortgageCalculator from "@/components/property/property-single-style/common/MortgageCalculator";
 import WalkScore from "@/components/property/property-single-style/common/WalkScore";
 import { apiProperties } from "@/apis/Properties";
@@ -36,12 +36,13 @@ const SingleV1 = ({ params }) => {
 
   const fetchProperties = async () => {
     try {
-      const response = await apiProperties.getProperties();
-      response.forEach((elm) => {
-        if (elm._id == params.id) {
-          setProperty(elm);
-        }
-      });
+      const response = await apiProperties.getPropertiesDetail(params.id);
+      // response.forEach((elm) => {
+      //   if (elm._id == params.id) {
+      //     setProperty(elm);
+      //   }
+      // });
+      setProperty(response[0]);
     } catch (error) {
       console.error("Error fetching properties:", error);
     }

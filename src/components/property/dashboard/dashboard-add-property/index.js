@@ -8,8 +8,10 @@ import Amenities from "./Amenities";
 import { apiProperties } from "@/apis/Properties";
 import { apiCatalog } from "@/apis/Catalog";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const AddPropertyTabContent = () => {
+  const route = useRouter();
   const [filled, setFilled] = useState([false, false, false]);
   const getCookie = (name) => {
     if (typeof document === "undefined") return null;
@@ -105,7 +107,7 @@ const AddPropertyTabContent = () => {
       <nav>
         <div className="nav nav-tabs" id="nav-tab2" role="tablist">
           <button
-            className="nav-link active fw600 ms-3"
+            className="nav-link active fw600 mx-3"
             id="nav-item1-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item1"
@@ -117,7 +119,7 @@ const AddPropertyTabContent = () => {
             1. Mô tả
           </button>
           <button
-            className={`nav-link fw600 ${filled[0] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 mx-3 ${filled[0] ? "" : "visually-hidden"}`}
             id="nav-item2-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item2"
@@ -141,7 +143,7 @@ const AddPropertyTabContent = () => {
             3. Vị trí
           </button> */}
           <button
-            className={`nav-link fw600 ${filled[1] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 mx-3 ${filled[1] ? "" : "visually-hidden"}`}
             id="nav-item4-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item4"
@@ -153,7 +155,7 @@ const AddPropertyTabContent = () => {
             3. Chi tiết
           </button>
           <button
-            className={`nav-link fw600 ${
+            className={`nav-link fw600 mx-3 ${
               filled[2] && data.State == "Cho thuê" ? "" : "visually-hidden"
             }`}
             id="nav-item5-tab"
@@ -166,7 +168,7 @@ const AddPropertyTabContent = () => {
           >
             4. Tiện ích
           </button>
-          {filled[2] && (
+          {/* {filled[2] && (
             <Link
               href={""}
               className="btn btn-dark fw600 ms-auto px-5"
@@ -184,7 +186,7 @@ const AddPropertyTabContent = () => {
             >
               Đăng bài
             </Link>
-          )}
+          )} */}
         </div>
       </nav>
       {/* End nav tabs */}
@@ -286,6 +288,125 @@ const AddPropertyTabContent = () => {
           </button>
         </div>
       </div> */}
+      <nav>
+        <div className="nav nav-tabs" id="nav-tab2" role="tablist">
+          {/* <button
+            className="nav-link active fw600 ms-auto px-5"
+            id="nav-item1-tab sub"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-item1"
+            type="button"
+            role="tab"
+            aria-controls="nav-item1"
+            aria-selected="true"
+            onClick={() => {
+              document
+                .getElementById("nav-item1-tab sub")
+                .classList.add("visually-hidden");
+              document
+                .getElementById("nav-item2-tab sub")
+                .classList.remove("ms-auto");
+              document
+                .getElementById("nav-item4-tab sub")
+                .classList.remove("visually-hidden");
+            }}
+          >
+            Tie 1
+          </button> */}
+          <button
+            className={`nav-link fw600 ms-auto px-5 ${filled[0] ? "" : "visually-hidden"}`}
+            id="nav-item2-tab sub"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-item2"
+            type="button"
+            role="tab"
+            aria-controls="nav-item2"
+            aria-selected="true"
+            onClick={() => {
+              document
+                .getElementById("nav-item2-tab sub")
+                .classList.add("visually-hidden");
+              document
+                .getElementById("nav-item1-tab")
+                .classList.remove("active");
+              document
+                .getElementById("nav-item2-tab")
+                .classList.add("active");
+            }}
+          >
+            Tiếp theo
+            <i className="m-2 fal fa-arrow-right-long" />
+          </button>
+          <button
+            className={`nav-link fw600 ms-auto px-5 ${filled[1] ? "" : "visually-hidden"}`}
+            id="nav-item4-tab sub"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-item4"
+            type="button"
+            role="tab"
+            aria-controls="nav-item4"
+            aria-selected="true"
+            onClick={() => {
+              document
+                .getElementById("nav-item4-tab sub")
+                .classList.add("visually-hidden");
+                document
+                  .getElementById("nav-item2-tab")
+                  .classList.remove("active");
+                document
+                  .getElementById("nav-item4-tab")
+                  .classList.add("active");
+            }}
+          >
+            Tiếp theo
+            <i className="m-2 fal fa-arrow-right-long" />
+          </button>
+          <button
+            className={`nav-link fw600 ms-auto px-5 ${filled[2] ? "" : "visually-hidden"}`}
+            id="nav-item5-tab sub"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-item5"
+            type="button"
+            role="tab"
+            aria-controls="nav-item5"
+            aria-selected="true"
+            onClick={() => {
+              document
+                .getElementById("nav-item5-tab sub")
+                .classList.add("visually-hidden");
+                document
+                  .getElementById("nav-item4-tab")
+                  .classList.remove("active");
+                document
+                  .getElementById("nav-item5-tab")
+                  .classList.add("active");
+              document
+                .getElementById("upload-btn")
+                .classList.remove("visually-hidden");
+            }}
+          >
+            Tiếp theo
+            <i className="m-2 fal fa-arrow-right-long" />
+          </button>
+          <button
+            id="upload-btn"
+            className={`btn btn-dark fw600 ms-auto px-5 visually-hidden`}
+            style={{ marginBottom: "10px", marginRight: "10px" }}
+            type="button"
+            role="tab"
+            aria-controls="nav-item5"
+            aria-selected="true"
+            onClick={async () => {
+              console.log("Data", data);
+              const res = await apiProperties.createProperty(data);
+              console.log(res);
+              res.message == "Tạo property thành công!" && route.push("/my-properties");
+            }}
+          >
+            Đăng bài
+          </button>
+        </div>
+      </nav>
     </>
   );
 };
