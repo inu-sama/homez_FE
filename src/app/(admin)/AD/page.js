@@ -134,7 +134,7 @@ export default function Contact() {
             </span>
           </div>
         </div>
-        <div>
+        <div className="overflow-auto">
           <table className="table table-hover table-striped">
             <thead className="table-light ">
               <tr className="align-middle">

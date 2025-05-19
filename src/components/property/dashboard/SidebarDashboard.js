@@ -35,7 +35,7 @@ const SidebarDashboard = () => {
           href: "/",
           icon: "flaticon-logout",
           text: "Đăng xuất",
-          click: handleLogout
+          click: handleLogout,
         },
       ],
     },
@@ -49,20 +49,44 @@ const SidebarDashboard = () => {
             <p
               className={`fz15 fw400 ff-heading ${
                 sectionIndex === 0 ? "mt-0" : "mt30"
-              }`}>
+              }`}
+            >
               {section.title}
             </p>
             {section.items.map((item, itemIndex) => (
               <div key={itemIndex} className="sidebar_list_item">
-                <Link
-                  onClick={item.click}
-                  href={item.href}
-                  className={`items-center   ${
-                    pathname == item.href ? "-is-active" : ""
-                  } `}>
-                  <i className={`${item.icon} mr15`} />
-                  {item.text}
-                </Link>
+                {item.text === "Đăng xuất" ? (
+                  <button
+                    onClick={item.click}
+                    className={`items-center   ${
+                      pathname == item.href ? "-is-active" : ""
+                    } `}
+                    style={{
+                      marginLeft: "15px",
+                      outline: "none",
+                      border: "none",
+                      background: "white",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <i
+                      className={`${item.icon} mr15`}
+                      style={{ fontSize: "20px", fontWeight: "bold" }}
+                    />
+                    {item.text}
+                  </button>
+                ) : (
+                  <Link
+                    onClick={item.click}
+                    href={item.href}
+                    className={`items-center   ${
+                      pathname == item.href ? "-is-active" : ""
+                    } `}
+                  >
+                    <i className={`${item.icon} mr15`} />
+                    {item.text}
+                  </Link>
+                )}
               </div>
             ))}
           </div>
