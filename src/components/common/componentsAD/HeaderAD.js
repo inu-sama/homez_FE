@@ -63,7 +63,7 @@ export default function HeaderAD() {
             >
               <span className="far fa-times"></span>
             </div>
-            <h4 className="title">Welcome to Homez</h4>
+            <h4 className="title">Welcome!</h4>
           </div>
           {/* End header */}
 

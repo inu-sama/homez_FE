@@ -185,7 +185,6 @@ export default function ManagementPost() {
           <div
             className="row"
             style={{
-              width: "13%",
               marginLeft: "5%",
               padding: "5px",
               height: "55px",
@@ -212,7 +211,7 @@ export default function ManagementPost() {
                 setOpen(false);
               }}
             >
-              Duyệt bài
+              Duyệt
             </span>
             <span
               className="col"
@@ -243,14 +242,15 @@ export default function ManagementPost() {
             {open && (
               <div className="d-flex" style={{ width: "100%" }}>
                 <button
-                  className="btn ud-btn btn-thm"
+                  className="btn btn-thm"
                   style={{
                     marginLeft: "10px",
                     width: "70%",
                     height: "54px",
+                    borderRadius: "25px",
                   }}
                 >
-                  Lưu nổi bật
+                  Lưu
                 </button>
               </div>
             )}
