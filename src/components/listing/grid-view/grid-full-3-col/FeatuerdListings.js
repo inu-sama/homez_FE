@@ -46,13 +46,15 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
                   className={` ${
                     colstyle ? "col-sm-12 col-lg-6" : "col-sm-6 col-lg-4"
                   }  `}
-                  key={listing._id}>
+                  key={listing._id}
+                >
                   <div
                     className={
                       colstyle
                         ? "listing-style1 listCustom listing-type"
                         : "listing-style1"
-                    }>
+                    }
+                  >
                     <div className="list-thumb">
                       <Image
                         width={382}

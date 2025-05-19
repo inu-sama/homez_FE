@@ -161,7 +161,7 @@ const ScheduleTour = ({ property }) => {
               </div>
 
               {/* MESSAGE */}
-              <div className="col-md-12 mb10">
+              {/* <div className="col-md-12 mb10">
                 <textarea
                   cols={30}
                   rows={4}
@@ -174,7 +174,7 @@ const ScheduleTour = ({ property }) => {
                     }))
                   }
                 />
-              </div>
+              </div> */}
 
               {/* BUTTON */}
               <div className="col-md-12">
