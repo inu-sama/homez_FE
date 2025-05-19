@@ -111,6 +111,7 @@ const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
               );
             }
           })
+          .slice(page.min, page.max)
       ) : (
         <h3>Nhân phẩm của bạn không đủ để tải dữ liệu!</h3>
       )}
