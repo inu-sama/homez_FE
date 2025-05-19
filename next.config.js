@@ -18,13 +18,7 @@ const nextConfig = {
     SECRET_KEY: process.env.SECRET_KEY,
   },
   images: {
-    domains: [
-      "res.cloudinary.com",
-      "localhost",
-      "images.ctfassets.net",
-      "b1fa-171-252-188-150.ngrok-free.app",
-      "www.nekohome.vn",
-    ],
+    domains: ["images.ctfassets.net", "server.nekohome.vn"],
   },
 };
 
