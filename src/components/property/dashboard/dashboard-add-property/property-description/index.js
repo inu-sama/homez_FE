@@ -69,7 +69,8 @@ const PropertyDescription = ({ setData, catalog, setFilled, data }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Nhập tiêu đề"
+              placeholder="Nhập tiêu đề bài đăng (không quá 100 ký tự)"
+              maxLength={100}
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,
@@ -327,8 +328,9 @@ const PropertyDescription = ({ setData, catalog, setFilled, data }) => {
             <textarea
               cols={30}
               rows={5}
-              placeholder="Nhập mô tả chi tiết căn hộ."
+              placeholder="Nhập mô tả chi tiết căn hộ. (Không quá 500 ký tự)"
               defaultValue={""}
+              maxLength={500}
               onChange={(e) => {
                 setData((prev) => ({
                   ...prev,

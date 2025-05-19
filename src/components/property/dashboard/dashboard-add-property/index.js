@@ -119,7 +119,9 @@ const AddPropertyTabContent = () => {
             1. Mô tả
           </button>
           <button
-            className={`nav-link fw600 mx-3 ${filled[0] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 mx-3 ${
+              filled[0] ? "" : "visually-hidden"
+            }`}
             id="nav-item2-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item2"
@@ -143,7 +145,9 @@ const AddPropertyTabContent = () => {
             3. Vị trí
           </button> */}
           <button
-            className={`nav-link fw600 mx-3 ${filled[1] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 mx-3 ${
+              filled[1] ? "" : "visually-hidden"
+            }`}
             id="nav-item4-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-item4"
@@ -314,7 +318,9 @@ const AddPropertyTabContent = () => {
             Tie 1
           </button> */}
           <button
-            className={`nav-link fw600 ms-auto px-5 ${filled[0] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 ms-auto px-5 ${
+              filled[0] ? "" : "visually-hidden"
+            }`}
             id="nav-item2-tab sub"
             data-bs-toggle="tab"
             data-bs-target="#nav-item2"
@@ -329,16 +335,16 @@ const AddPropertyTabContent = () => {
               document
                 .getElementById("nav-item1-tab")
                 .classList.remove("active");
-              document
-                .getElementById("nav-item2-tab")
-                .classList.add("active");
+              document.getElementById("nav-item2-tab").classList.add("active");
             }}
           >
             Tiếp theo
             <i className="m-2 fal fa-arrow-right-long" />
           </button>
           <button
-            className={`nav-link fw600 ms-auto px-5 ${filled[1] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 ms-auto px-5 ${
+              filled[1] ? "" : "visually-hidden"
+            }`}
             id="nav-item4-tab sub"
             data-bs-toggle="tab"
             data-bs-target="#nav-item4"
@@ -350,19 +356,23 @@ const AddPropertyTabContent = () => {
               document
                 .getElementById("nav-item4-tab sub")
                 .classList.add("visually-hidden");
+              document
+                .getElementById("nav-item2-tab")
+                .classList.remove("active");
+              document.getElementById("nav-item4-tab").classList.add("active");
+              data.State != "Cho thuê" &&
                 document
-                  .getElementById("nav-item2-tab")
-                  .classList.remove("active");
-                document
-                  .getElementById("nav-item4-tab")
-                  .classList.add("active");
+                  .getElementById("upload-btn")
+                  .classList.remove("visually-hidden");
             }}
           >
             Tiếp theo
             <i className="m-2 fal fa-arrow-right-long" />
           </button>
           <button
-            className={`nav-link fw600 ms-auto px-5 ${filled[2] ? "" : "visually-hidden"}`}
+            className={`nav-link fw600 ms-auto px-5 ${
+              filled[2] && data.State == "Cho thuê" ? "" : "visually-hidden"
+            }`}
             id="nav-item5-tab sub"
             data-bs-toggle="tab"
             data-bs-target="#nav-item5"
@@ -374,12 +384,10 @@ const AddPropertyTabContent = () => {
               document
                 .getElementById("nav-item5-tab sub")
                 .classList.add("visually-hidden");
-                document
-                  .getElementById("nav-item4-tab")
-                  .classList.remove("active");
-                document
-                  .getElementById("nav-item5-tab")
-                  .classList.add("active");
+              document
+                .getElementById("nav-item4-tab")
+                .classList.remove("active");
+              document.getElementById("nav-item5-tab").classList.add("active");
               document
                 .getElementById("upload-btn")
                 .classList.remove("visually-hidden");
@@ -400,7 +408,8 @@ const AddPropertyTabContent = () => {
               console.log("Data", data);
               const res = await apiProperties.createProperty(data);
               console.log(res);
-              res.message == "Tạo property thành công!" && route.push("/my-properties");
+              res.message == "Tạo property thành công!" &&
+                route.push("/my-properties");
             }}
           >
             Đăng bài
