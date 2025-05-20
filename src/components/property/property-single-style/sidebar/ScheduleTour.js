@@ -62,8 +62,9 @@ const ScheduleTour = ({ property }) => {
         error.response?.data ||
         error.message ||
         "Đã xảy ra lỗi khi gửi yêu cầu";
-
-      alert(errorMessage);
+      if (errorMessage === "Contact form submission failed") {
+        alert("Bạn đã gửi yêu cầu về bài đăng này rồi");
+      }
     }
   };
 
