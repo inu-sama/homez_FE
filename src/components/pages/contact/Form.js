@@ -122,9 +122,19 @@ const Form = () => {
                 placeholder="Nhập email của bạn"
                 required
                 value={sendContact.email}
-                onChange={(e) =>
-                  setSendContact({ ...sendContact, email: e.target.value })
-                }
+                onChange={(e) => {
+                  let value = e.target.value;
+
+                  if (value.includes("@") && !value.includes("@gmail.com")) {
+                    const [name, domain] = value.split("@");
+
+                    if (!domain || domain === "") {
+                      value = `${name}@gmail.com`;
+                    }
+                  }
+
+                  setSendContact({ ...sendContact, email: value });
+                }}
               />
             )}
           </div>
@@ -140,12 +150,14 @@ const Form = () => {
               cols={30}
               rows={4}
               placeholder="Bạn cần chúng tôi hỗ trợ gì?"
-              defaultValue={""}
               required
               value={sendContact.message}
-              onChange={(e) =>
-                setSendContact({ ...sendContact, message: e.target.value })
-              }
+              onChange={(e) => {
+                const input = e.target.value;
+                if (input.length <= 200) {
+                  setSendContact({ ...sendContact, message: input });
+                }
+              }}
             />
           </div>
         </div>

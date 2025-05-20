@@ -172,7 +172,15 @@ export default function Contact() {
                       <td>{item.email}</td>
                       <td>{item.phone}</td>
                       {item.message ? (
-                        <td>{item.message}</td>
+                        <td
+                          style={{
+                            maxWidth: "500px",
+                            wordWrap: "break-word",
+                            whiteSpace: "normal",
+                          }}
+                        >
+                          {item.message}
+                        </td>
                       ) : (
                         <td>
                           <a
