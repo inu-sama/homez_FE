@@ -56,7 +56,15 @@ const ScheduleTour = ({ property }) => {
       }
     } catch (error) {
       console.error("Lỗi khi gửi yêu cầu:", error);
-      alert("Đã xảy ra lỗi khi gửi yêu cầu");
+
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data ||
+        error.message ||
+        "Đã xảy ra lỗi khi gửi yêu cầu";
+      if (errorMessage === "Contact form submission failed") {
+        alert("Bạn đã gửi yêu cầu về bài đăng này rồi");
+      }
     }
   };
 
