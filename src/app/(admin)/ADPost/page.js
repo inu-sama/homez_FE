@@ -175,19 +175,19 @@ export default function ManagementPost() {
           Quản lý bài đăng
         </p>
         <div
-          className="d-flex"
+          className="row"
           style={{
-            justifyContent: "space-between",
-            width: "97%",
+            justifyContent: "center",
+            width: "90%",
             paddingLeft: "10px",
           }}
         >
           <div
-            className="row"
+            className="col row"
             style={{
               marginLeft: "5%",
               padding: "5px",
-              height: "55px",
+              width: "10%",
               borderRadius: "20px",
               backgroundColor: "#F3F3F2",
             }}
@@ -234,26 +234,8 @@ export default function ManagementPost() {
               Tất cả
             </span>
           </div>
-          <div className="" style={{ width: "70%" }}>
+          <div className="col-10">
             <Search data={data} result={setResult} />
-          </div>
-
-          <div className="d-flex" style={{ width: "10%" }}>
-            {open && (
-              <div className="d-flex" style={{ width: "100%" }}>
-                <button
-                  className="btn btn-thm"
-                  style={{
-                    marginLeft: "10px",
-                    width: "70%",
-                    height: "54px",
-                    borderRadius: "25px",
-                  }}
-                >
-                  Lưu
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
