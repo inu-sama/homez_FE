@@ -26,9 +26,9 @@ const GridFull3Col = ({ params }) => {
             <div className="col-lg-12">
               <div className="breadcumb-style1">
                 {params.type == "for-rent" ? (
-                  <h2 className="title">Danh sách căn hộ cho thuê</h2>
+                  <h2 className="title">Danh sách bất động sản cho thuê</h2>
                 ) : (
-                  <h2 className="title">Danh sách căn hộ đăng bán</h2>
+                  <h2 className="title">Danh sách bất động sản đăng bán</h2>
                 )}
                 <div className="breadcumb-list">
                   <a href="#">Home</a>
