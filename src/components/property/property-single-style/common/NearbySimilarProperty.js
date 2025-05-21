@@ -56,7 +56,7 @@ const NearbySimilarProperty = ({ prop }) => {
       >
         {properties
           .filter((p) => p._id != prop._id)
-          .filter((p) => p.State == prop.State)
+          // .filter((p) => p.State == prop.State)
           .map((listing) => (
             <SwiperSlide key={listing._id}>
               <Link href={`/property-detail/${listing._id}`} className="item">

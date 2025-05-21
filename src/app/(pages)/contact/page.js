@@ -56,9 +56,7 @@ const Contact = () => {
 
             <div className="col-lg-5 offset-lg-2">
               <h2 className="mb30 text-capitalize">
-                Bạn có câu hỏi
-                <br className="d-none d-lg-block" />
-                về Bất động sản?
+                Bạn có câu hỏi về Bất động sản?
               </h2>
               <p className="text">
                 Chúng tôi sẵn sàng giải đáp mọi thắc mắc và giúp bạn tìm kiếm,

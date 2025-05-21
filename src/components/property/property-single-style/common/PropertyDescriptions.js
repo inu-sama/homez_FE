@@ -15,7 +15,7 @@ const PropertyDescriptions = ({ data }) => {
       maxHeight: style.maxHeight == "3rem" ? "none" : "3rem",
     });
     document.getElementById("toggle").innerHTML =
-      style.maxHeight == "3rem" ? "Rút gọn" : "Xem thêm";
+      style.maxHeight == "3rem" ? "Rút gọn ^" : "Xem thêm v";
   };
   return (
     <>
@@ -23,7 +23,7 @@ const PropertyDescriptions = ({ data }) => {
         {data}
       </p>
       <a className="fw-bold p0 btn" onClick={toggle} id="toggle">
-        Xem thêm
+        Xem thêm v
       </a>
     </>
   );
