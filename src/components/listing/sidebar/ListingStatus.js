@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const ListingStatus = ({ filterFunctions }) => {
   const options = [
-    { id: "flexRadioDefault1", label: "Thuê nhà", link: "/property-list/for-rent" },
-    { id: "flexRadioDefault2", label: "Mua nhà", link: "/property-list/for-sale" },
+    { id: "flexRadioDefault1", label: "Cho thuê", link: "/property-list/for-rent" },
+    { id: "flexRadioDefault2", label: "Đăng bán", link: "/property-list/for-sale" },
   ];
 
   return (

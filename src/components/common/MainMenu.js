@@ -33,7 +33,7 @@ const MainMenu = () => {
               className={`${handleActive("/property-list/for-rent")}`}
               href={"/property-list/for-rent"}
             >
-              Thuê nhà
+              Cho thuê
             </Link>
           </li>
           <li>
@@ -41,7 +41,7 @@ const MainMenu = () => {
               className={`${handleActive("/property-list/for-sale")}`}
               href={"/property-list/for-sale"}
             >
-              Mua nhà
+              Đăng bán
             </Link>
           </li>
         </ul>
