@@ -79,11 +79,12 @@ const PersonalInfo = () => {
             <input
               type="text"
               className="form-control"
-              placeholder={user?.LastName}
+              placeholder={user?.FirstName}
+              maxLength={20}
               onChange={(e) => {
                 setEditUser({
                   ...editUser,
-                  LastName: e.target.value,
+                  FirstName: e.target.value,
                 });
               }}
             />
@@ -97,11 +98,12 @@ const PersonalInfo = () => {
             <input
               type="text"
               className="form-control"
-              placeholder={user?.FirstName}
+              placeholder={user?.LastName}
+              maxLength={10}
               onChange={(e) => {
                 setEditUser({
                   ...editUser,
-                  FirstName: e.target.value,
+                  LastName: e.target.value,
                 });
               }}
             />
@@ -116,6 +118,7 @@ const PersonalInfo = () => {
               type="email"
               className="form-control"
               placeholder={user?.Email}
+              maxLength={50}
               onChange={(e) => {
                 setEditUser({
                   ...editUser,
