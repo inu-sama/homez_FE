@@ -3,6 +3,7 @@ import { apiAuthen } from "@/apis/authen";
 import { apiContact } from "@/apis/contact";
 
 const ScheduleTour = ({ property }) => {
+  const [role, setRole] = useState(null);
   const [data, setData] = useState(null);
   const [sendContact, setSendContact] = useState({
     name: "",
@@ -36,9 +37,20 @@ const ScheduleTour = ({ property }) => {
       console.error("Không lấy được thông tin token:", err);
     }
   };
+  const getRole = async () => {
+    try {
+      const token = getCookie("token");
+      if (!token) return;
+      const res = await apiAuthen.getToken2(token);
+      setRole(res.data.role);
+    } catch (err) {
+      console.error("Không lấy được thông tin token:", err);
+    }
+  };
 
   useEffect(() => {
     decodedToken();
+    getRole();
   }, []);
 
   const handleSendContact = async () => {
@@ -70,6 +82,16 @@ const ScheduleTour = ({ property }) => {
 
   return (
     <div className="ps-navtab">
+      <h4 className="form-title mb5">
+        {role == "Admin" || role == "Staff"
+          ? "Người đăng bài"
+          : "Xem bất động sản trực tiếp"}
+      </h4>
+      <p className="text">
+        {role == "Admin" || role == "Staff"
+          ? ""
+          : "Chúng tôi sẽ liên hệ lại ngay khi nhận yêu cầu từ bạn"}
+      </p>
       {/* <ul className="nav nav-pills mb-3" role="tablist">
         <li className="nav-item" role="presentation">
           <button
@@ -90,7 +112,11 @@ const ScheduleTour = ({ property }) => {
               <div className="col-md-12 mb20">
                 {data ? (
                   <div className="readonly-box">
-                    <span>{sendContact.phone}</span>
+                    <span>
+                      {role === "Admin" || role === "Staff"
+                        ? property.Account[0].PhoneNumber
+                        : sendContact.phone}
+                    </span>
                   </div>
                 ) : (
                   <input
@@ -116,7 +142,11 @@ const ScheduleTour = ({ property }) => {
               <div className="col-lg-12 mb20">
                 {data ? (
                   <div className="readonly-box">
-                    <span>{sendContact.email}</span>
+                    <span>
+                      {role === "Admin" || role === "Staff"
+                        ? property.Account[0].Email
+                        : sendContact.email}
+                    </span>
                   </div>
                 ) : (
                   <input
@@ -146,7 +176,14 @@ const ScheduleTour = ({ property }) => {
               <div className="col-lg-12 mb20">
                 {data ? (
                   <div className="readonly-box">
-                    <span>{sendContact.name}</span>
+                    <span>
+                      {" "}
+                      {role === "Admin" || role === "Staff"
+                        ? property.Account[0].FirstName +
+                          " " +
+                          property.Account[0].LastName
+                        : sendContact.name}
+                    </span>
                   </div>
                 ) : (
                   <input
@@ -186,7 +223,11 @@ const ScheduleTour = ({ property }) => {
               </div> */}
 
               {/* BUTTON */}
-              <div className="col-md-12">
+              <div
+                className={`col-md-12${
+                  role == "Admin" || role == "Staff" ? " visually-hidden" : ""
+                }`}
+              >
                 <div className="d-grid">
                   <button
                     type="button"

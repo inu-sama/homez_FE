@@ -164,8 +164,6 @@ const SingleV1 = ({ params }) => {
               <div className="col-lg-4">
                 <div className="column">
                   <div className="default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white position-relative">
-                    <h4 className="form-title mb5">Xem bất động sản trực tiếp</h4>
-                    <p className="text">Chúng tôi sẽ liên hệ lại ngay khi nhận yêu cầu từ bạn</p>
                     <ScheduleTour property={property} />
                   </div>
 
@@ -185,7 +183,9 @@ const SingleV1 = ({ params }) => {
                 <div className="main-title">
                   <h2 className="title">Khám phá bất động sản liên quan</h2>
                   <p className="paragraph">
-                    Danh sách bất động sản {property.State == "Cho thuê" ? "cho thuê" : "đăng bán"} tương tự
+                    Danh sách bất động sản{" "}
+                    {property.State == "Cho thuê" ? "cho thuê" : "đăng bán"}{" "}
+                    tương tự
                   </p>
                 </div>
               </div>
