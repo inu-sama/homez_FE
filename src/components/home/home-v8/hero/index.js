@@ -9,9 +9,9 @@ const Hero = () => {
       <div className="col-lg-6 col-xl-6">
         <div className="inner-banner-style8">
           <h6 className="hero-sub-title animate-up-1">CÁCH TỐT NHẤT ĐỂ</h6>
-          <h2 className="hero-title animate-up-2">Tìm hạnh phúc của bạn</h2>
+          <h2 className="hero-title animate-up-2">Tìm tổ ấm của bạn</h2>
           <p className="hero-text fz15 animate-up-3">
-            Tìm kiếm bất động sản để bán và cho thuê tại Việt Nam.
+            Tìm kiếm bất động sản đăng bán và cho thuê tại Việt Nam
           </p>
         </div>
       </div>

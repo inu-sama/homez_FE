@@ -164,15 +164,15 @@ const SingleV1 = ({ params }) => {
               <div className="col-lg-4">
                 <div className="column">
                   <div className="default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white position-relative">
-                    <h4 className="form-title mb5">Đặt lịch tham quan</h4>
-                    <p className="text">Chọn thời gian mong muốn của bạn</p>
+                    <h4 className="form-title mb5">Xem bất động sản trực tiếp</h4>
+                    <p className="text">Chúng tôi sẽ liên hệ lại ngay khi nhận yêu cầu từ bạn</p>
                     <ScheduleTour property={property} />
                   </div>
 
                   {/* <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
                     <div className="widget-wrapper mb-0">
-                      <h6 className="title fz17 mb30">Get More Information</h6>
-                      <ContactWithAgent />
+                      <h6 className="title fz17 mb30">Thông tin người đăng</h6>
+                      <ContactWithAgent account={property.Account[0]} />
                     </div>
                   </div> */}
                 </div>
