@@ -33,8 +33,8 @@ const CallToActions = () => {
                   Bạn cần giúp đỡ? Nói chuyện với chuyên gia của chúng tôi.
                 </h2>
                 <p className="cta-text mb-0">
-                  Nói chuyện với chuyên gia của chúng tôi hoặc xem qua nhiều
-                  bất động sản hơn.
+                  Nói chuyện với chuyên gia của chúng tôi hoặc xem qua nhiều bất
+                  động sản hơn.
                 </p>
               </div>
             </div>
@@ -49,6 +49,10 @@ const CallToActions = () => {
                   Liên hệ
                   <i className="fal fa-arrow-right-long" />
                 </Link>
+                <a href="tel:0766934574" className="ud-btn btn-dark">
+                  <span className="flaticon-call vam pe-2" />
+                  0766 934 574
+                </a>
               </div>
             </div>
             {/* End col-lg-5 */}

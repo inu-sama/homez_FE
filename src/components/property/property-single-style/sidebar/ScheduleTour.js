@@ -120,7 +120,7 @@ const ScheduleTour = ({ property }) => {
                   </div>
                 ) : (
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     placeholder="Số điện thoại"
                     required
@@ -190,6 +190,7 @@ const ScheduleTour = ({ property }) => {
                     type="text"
                     className="form-control"
                     placeholder="Họ và tên"
+                    maxLength={30}
                     required
                     value={sendContact.name}
                     onChange={(e) => {

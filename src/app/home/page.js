@@ -77,7 +77,7 @@ const Home = () => {
             <div className="col-lg-9">
               <div className="main-title2">
                 <h2 className="title">Khám phá danh sách nổi bật</h2>
-                <p className="paragraph">Danh sách bất động sản cho thuê</p>
+                <p className="paragraph">Danh sách bất động sản đăng bán</p>
               </div>
             </div>
             <div className="col-lg-3">

@@ -169,8 +169,8 @@ const SingleV1 = ({ params }) => {
 
                   {/* <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
                     <div className="widget-wrapper mb-0">
-                      <h6 className="title fz17 mb30">Get More Information</h6>
-                      <ContactWithAgent />
+                      <h6 className="title fz17 mb30">Thông tin người đăng</h6>
+                      <ContactWithAgent account={property.Account[0]} />
                     </div>
                   </div> */}
                 </div>
