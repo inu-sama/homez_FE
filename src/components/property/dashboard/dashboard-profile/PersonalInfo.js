@@ -41,6 +41,19 @@ const PersonalInfo = () => {
   const handleUpdateUser = async () => {
     const token = getCookie("token");
     const res = await apiAuthen.updateUser(editUser);
+    if (res.message === "Cập nhật thành công") {
+      alert("Cập nhật thông tin thành công");
+      const userToken = await apiAuthen.getToken(token);
+      const res = await apiAuthen.getUserByPhoneNumber(userToken.PhoneNumber);
+      setUser(res.user);
+      setEditUser({
+        ...res.user,
+        PhoneNumber: res.user.PhoneNumber,
+        Email: res.user.Email,
+        LastName: res.user.LastName,
+        FirstName: res.user.FirstName,
+      });
+    }
   };
 
   return (
@@ -220,7 +233,7 @@ const PersonalInfo = () => {
         <div className="col-md-12">
           <div className="text-end">
             <button
-              type="submit"
+              type="button"
               className="ud-btn btn-dark"
               onClick={() => {
                 handleUpdateUser();
