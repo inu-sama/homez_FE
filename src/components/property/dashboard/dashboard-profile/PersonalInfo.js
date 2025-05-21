@@ -23,14 +23,14 @@ const PersonalInfo = () => {
     const token = getCookie("token");
     const userToken = await apiAuthen.getToken(token);
 
-    const user = await apiAuthen.getUserByPhoneNumber(userToken.PhoneNumber);
-    setUser(user.user);
+    const res = await apiAuthen.getUserByPhoneNumber(userToken.PhoneNumber);
+    setUser(res.user);
     setEditUser({
-      ...user,
-      PhoneNumber: user.PhoneNumber,
-      Email: user.Email,
-      LastName: user.LastName,
-      FirstName: user.FirstName,
+      ...res.user,
+      PhoneNumber: res.user.PhoneNumber,
+      Email: res.user.Email,
+      LastName: res.user.LastName,
+      FirstName: res.user.FirstName,
     });
   };
 
