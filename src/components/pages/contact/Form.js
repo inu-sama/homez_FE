@@ -72,6 +72,7 @@ const Form = () => {
                 type="text"
                 className="form-control"
                 placeholder="Nhập họ tên của bạn"
+                maxLength={30}
                 required
                 value={sendContact.name}
                 onChange={(e) =>
@@ -150,6 +151,7 @@ const Form = () => {
               cols={30}
               rows={4}
               placeholder="Bạn cần chúng tôi hỗ trợ gì?"
+              maxLength={500}
               required
               value={sendContact.message}
               onChange={(e) => {
