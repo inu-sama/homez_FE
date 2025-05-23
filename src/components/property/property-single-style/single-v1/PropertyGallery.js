@@ -10,72 +10,88 @@ const PropertyGallery = ({ images }) => {
 
   return (
     <>
-    <Gallery>
-      <div className="col-sm-6">
-        <div className="sp-img-content mb15-md">
-          <div className="popup-img preview-img-1 sp-img">
-            <Item
-              original={pickedImage}
-              thumbnail={pickedImage}
-              width={0}
-              height={0}
+      <Gallery>
+        <div className="col-sm-6">
+          <div className="sp-img-content mb15-md">
+            <div
+              className="popup-img preview-img-1 sp-img"
+              style={{ maxWidth: "591px", maxHeight: "558px" }}
             >
-              {({ ref, open }) => (
-                <Image
-                  src={pickedImage}
-                  width={1920}
-                  height={1080}
-                  ref={ref}
-                  onClick={open}
-                  alt="image"
-                  role="button"
-                  className="w-100 h-100 cover"
-                />
-              )}
-            </Item>
+              <Item
+                original={pickedImage}
+                thumbnail={pickedImage}
+                width={610}
+                height={510}
+              >
+                {({ ref, open }) => (
+                  <Image
+                    src={pickedImage}
+                    width={591}
+                    height={558}
+                    ref={ref}
+                    onClick={open}
+                    alt="image"
+                    role="button"
+                    className="w-100 h-100 cover"
+                  />
+                )}
+              </Item>
+            </div>
           </div>
         </div>
-      </div>
-      {/* End .col-6 */}
+        {/* End .col-6 */}
 
-      <div className="col-sm-6">
-        <div className="row h-100">
-          {images.map((image, index) =>
-            index < 4 ? (
-              <div className="col-6 p0 h-50" key={index}>
-                <div className="sp-img-content h-100 p-1">
+        <div className="col-sm-6">
+          <div className="row h-100">
+            {images.map((image, index) =>
+              index < 4 ? (
+                <div
+                  className="col-6 p0"
+                  key={index}
+                  style={{ maxWidth: "310px", maxHeight: "345px" }}
+                >
                   <div
-                    className={`popup-img preview-img-${
-                      index + 2
-                    } sp-img mb10 h-100`}
+                    className="sp-img-content p-1"
+                    style={{ width: "100%", height: "100%" }}
                   >
-                    <Item
-                      original={image}
-                      thumbnail={image}
-                      width={0}
-                      height={0}
+                    <div
+                      className={`popup-img preview-img-${
+                        index + 2
+                      } sp-img mb10`}
+                      style={{ width: "100%", height: "100%" }}
                     >
-                      {({ ref }) => (
-                        <Image
-                          width={1920}
-                          height={1080}
-                          className="w-100 h-100 cover"
-                          ref={ref}
-                          onClick={() => setPickedImage(image)}
-                          role="button"
-                          src={image}
-                          alt={image.alt}
-                        />
-                      )}
-                    </Item>
+                      <Item
+                        original={image}
+                        thumbnail={image}
+                        width={270}
+                        height={250}
+                      >
+                        {({ ref }) => (
+                          <Image
+                            width={270}
+                            height={250}
+                            ref={ref}
+                            onClick={() => setPickedImage(image)}
+                            role="button"
+                            src={image}
+                            alt={image.alt}
+                            style={{
+                              objectFit: "cover",
+                              width: "100%",
+                              height: "100%",
+                              display: "block",
+                            }}
+                          />
+                        )}
+                      </Item>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : null
-          )}
+              ) : null
+            )}
+          </div>
         </div>
-      </div>
-    </Gallery>
+      </Gallery>
     </>
   );
 };

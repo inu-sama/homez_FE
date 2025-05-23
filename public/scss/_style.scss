@@ -7678,6 +7678,12 @@ header.nav-homepage-style.sticky .ace-responsive-menu a {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
+.cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 header.nav-homepage-style.sticky .sidemenu-btn,
 header.nav-homepage-style.sticky .login-info {
   color: var(--headings-color);
