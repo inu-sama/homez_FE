@@ -7,7 +7,19 @@ import { useEffect, useState } from "react";
 
 const PropertyGallery = ({ images }) => {
   const [pickedImage, setPickedImage] = useState(images[0]);
+  const [isLaptop, setIsLaptop] = useState(false);
 
+  useEffect(() => {
+    const checkScreen = () => {
+      const width = window.innerWidth;
+      setIsLaptop(width >= 1000);
+      console.log(isLaptop);
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
   return (
     <>
       <Gallery>
@@ -15,7 +27,11 @@ const PropertyGallery = ({ images }) => {
           <div className="sp-img-content mb15-md">
             <div
               className="popup-img preview-img-1 sp-img"
-              style={{ maxWidth: "591px", maxHeight: "558px" }}
+              style={{
+                maxWidth: isLaptop ? "none" : "591px",
+                maxHeight: isLaptop ? "none" : "558px",
+                minHeight: isLaptop ? "700px" : "none",
+              }}
             >
               <Item
                 original={pickedImage}
