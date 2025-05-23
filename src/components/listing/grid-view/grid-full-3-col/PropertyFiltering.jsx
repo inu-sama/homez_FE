@@ -1,7 +1,7 @@
 "use client";
 
 import listings from "@/data/listings";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import ListingSidebar from "../../sidebar";
 import AdvanceFilterModal from "@/components/common/advance-filter-two";
 import TopFilterBar from "./TopFilterBar";
@@ -157,6 +157,7 @@ export default function PropertyFiltering({ type, setType }) {
     location,
     type,
   };
+  useEffect(() => {console.log("filter: " + filterFunctions.type)}, [filterFunctions]);
 
   // useEffect(() => {
   //   setPageNumber(1);

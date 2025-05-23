@@ -9,9 +9,9 @@ import { useState, useEffect, use } from "react";
 const FeaturedListings = ({ data, colstyle, state, filterFunctions, page }) => {
   const searchParams = useSearchParams();
   const location = searchParams.get("location")?.toLowerCase();
-  useEffect(() => {
-    console.log("Filtered data:", data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log("Filtered data:", data);
+  // }, [data]);
   return (
     <>
       {data ? (

@@ -61,7 +61,7 @@ const NearbySimilarProperty = ({ prop }) => {
             <SwiperSlide key={listing._id}>
               <Link href={`/property-detail/${listing._id}`} className="item">
                 <div className="listing-style1">
-                  <div className="list-thumb">
+                  <div className="list-thumb" style={{ height: "250px" }}>
                     <Image
                       width={1920}
                       height={1080}
