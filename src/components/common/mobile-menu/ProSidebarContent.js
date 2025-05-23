@@ -18,7 +18,7 @@ const ProSidebarContent = () => {
     },
     {
       path: "/contact",
-      label: "Liên lạc",
+      label: "Liên hệ",
     },
     {
       path: "/faq",

@@ -61,7 +61,7 @@ const PropertyDetails = ({ property }) => {
       {columns.map((column, columnIndex) => (
         <div
           key={columnIndex}
-          className={`col-md-6 border-start border-end`}
+          className={`col-md-6`}
         >
           {column.map((detail, index) => (
             <div key={index} className="d-flex justify-content-between">
