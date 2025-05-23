@@ -19,7 +19,7 @@ export default function PropertyFiltering({ type, setType }) {
   const method = type == "for-rent" ? "Cho thuê" : "Đăng bán";
 
   const [min, setMin] = useState(0);
-  const [max, setMax] = useState(5);
+  const [max, setMax] = useState(6);
   const [totalPage, setTotalPage] = useState(null);
   const page = {
     min,
@@ -34,7 +34,7 @@ export default function PropertyFiltering({ type, setType }) {
     try {
       const response = await apiProperties.getProperties();
       setProperties(response);
-      setTotalPage(Math.ceil(response.length / 5));
+      setTotalPage(Math.ceil(response.length / 6));
     } catch (error) {
       console.error("Error fetching properties:", error);
     }

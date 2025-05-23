@@ -9,8 +9,8 @@ const Pagination = ({ page }) => {
     setCurrentPage(thisPage);
     // Here you can add additional logic to handle what happens when the user clicks on a page number.
     // For example, you can fetch data corresponding to the selected page from the server or update the URL.
-    page.setMin((thisPage - 1) * 5);
-    page.setMax(thisPage * 5);
+    page.setMin((thisPage - 1) * 6);
+    page.setMax(thisPage * 6);
   };
 
   const generatePageNumbers = () => {
