@@ -4,8 +4,10 @@ const PropertyDetails = ({ property }) => {
   const columns = [
     [
       {
-        label: "Mã căn hộ",
-        value: property._id.slice(0, 5) + "...",
+        label: property.Balcony_direction
+          ? "Hướng ban công"
+          : "Mã bất động sản",
+        value: property.Balcony_direction || property._id.slice(0, 5) + "...",
       },
       {
         label: "Giá",
@@ -21,8 +23,11 @@ const PropertyDetails = ({ property }) => {
         value: property.Type.sqft + " m²",
       },
       {
-        label: property.State = "Cho thuê" ? "Cọc trước" : "Giấy tờ pháp lý",
-        value: property.State = "Cho thuê" ? property.deposit_amount : property.type_documents,
+        label: property.State === "Cho thuê" ? "Cọc trước" : "Giấy tờ pháp lý",
+        value:
+          property.State === "Cho thuê"
+            ? property.deposit_amount
+            : property.type_documents,
       },
       {
         label: "Tình trạng nội thất",
@@ -30,6 +35,13 @@ const PropertyDetails = ({ property }) => {
       },
     ],
     [
+      {
+        label:
+          property.Type.category === "Chung cư"
+            ? "Hướng cửa chính "
+            : "Hướng nhà",
+        value: property.maindoor_direction,
+      },
       {
         label: "Năm xây dựng",
         value: property.Type.yearBuilt,
@@ -46,23 +58,13 @@ const PropertyDetails = ({ property }) => {
         label: "Garage",
         value: property.Type.garage,
       },
-      {
-        label:
-          property.Type.category === "Chung cư"
-            ? "Hướng cửa chính "
-            : "Hướng nhà",
-        value: property.maindoor_direction,
-      },
     ],
   ];
 
   return (
     <div className="row">
       {columns.map((column, columnIndex) => (
-        <div
-          key={columnIndex}
-          className={`col-md-6`}
-        >
+        <div key={columnIndex} className={`col-md-6`}>
           {column.map((detail, index) => (
             <div key={index} className="d-flex justify-content-between">
               <div className="pd-list">

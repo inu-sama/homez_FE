@@ -29,12 +29,11 @@ const CallToActions = () => {
           <div className="row align-items-center">
             <div className="col-lg-7 col-xl-6 " data-aos="fade-right">
               <div className="cta-style1">
-                <h2 className="cta-title">
-                  Bạn cần giúp đỡ? Nói chuyện với chuyên gia của chúng tôi.
-                </h2>
+                <h2 className="cta-title">Bạn có câu hỏi về Bất động sản?</h2>
                 <p className="cta-text mb-0">
-                  Nói chuyện với chuyên gia của chúng tôi hoặc xem qua nhiều bất
-                  động sản hơn.
+                  Chúng tôi sẵn sàng giải đáp mọi thắc mắc và giúp bạn tìm kiếm,
+                  quản lý bất động sản hoàn hảo - dù là nhà ở, căn hộ hay thương
+                  mại. Hãy liên hệ với chúng tôi ngay!
                 </p>
               </div>
             </div>
