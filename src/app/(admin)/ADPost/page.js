@@ -262,6 +262,12 @@ export default function ManagementPost() {
                   <th scope="col">Tên</th>
                   <th
                     scope="col"
+                    style={{ width: "90px", textAlign: "center" }}
+                  >
+                    Bài đăng
+                  </th>
+                  <th
+                    scope="col"
                     style={{ width: "130px", textAlign: "center" }}
                   >
                     Loại căn hộ
@@ -305,6 +311,13 @@ export default function ManagementPost() {
                         {index + 1}
                       </td>
                       <td>{item.Title}</td>
+                      <td style={{ width: "90px", textAlign: "center" }}>
+                        <a
+                          href={`https://nekohome.vn/property-detail/${item._id}`}
+                        >
+                          Link
+                        </a>
+                      </td>
                       <td style={{ width: "130px", textAlign: "center" }}>
                         {item.Type.category}
                       </td>
