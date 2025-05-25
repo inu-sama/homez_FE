@@ -248,7 +248,11 @@ const ScheduleTour = ({ property }) => {
                     className="ud-btn btn-thm"
                     onClick={handleSendContact}
                   >
-                    {cooldown ? `Đã gửi yêu cầu, vui lòng đợi` : "Gửi yêu cầu"}
+                    {cooldown
+                      ? `Đã gửi yêu cầu, vui lòng đợi ${Math.floor(
+                          cooldown / 60
+                        )} phút ${cooldown % 60} giây nữa`
+                      : "Gửi yêu cầu"}
                     <i className="fal fa-arrow-right-long" />
                   </button>
                 </div>
