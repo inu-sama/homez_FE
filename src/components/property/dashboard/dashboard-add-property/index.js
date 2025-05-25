@@ -405,9 +405,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item5"
             aria-selected="true"
             onClick={async () => {
-              console.log("Data", data);
               const res = await apiProperties.createProperty(data);
-              console.log(res);
               res.message == "Tạo property thành công!" &&
                 route.push("/my-properties");
             }}

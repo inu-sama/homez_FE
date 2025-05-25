@@ -1,8 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { apiContact } from "@/apis/contact";
+import { useCooldown } from "@/hooks/useCooldown";
 
 const Form = () => {
+  const { cooldown, isCoolingDown, startCooldown } = useCooldown(
+    "contact",
+    60 * 5000
+  );
   const [data, setData] = useState(null);
   const [sendContact, setSendContact] = useState({
     name: "",
@@ -37,13 +42,18 @@ const Form = () => {
   useEffect(() => {
     decodedToken();
   }, []);
+
   const handleSendContact = async () => {
     if (sendContact.phone.length !== 10) {
       alert("Số điện thoại phải đủ 10 số");
       return;
     }
+    if (isCoolingDown) {
+      return;
+    }
 
     try {
+      startCooldown(true);
       const res = await apiContact.sendContact(sendContact);
       if (res.status === 200) {
         alert("Gửi yêu cầu thành công");
@@ -52,7 +62,21 @@ const Form = () => {
       }
     } catch (error) {
       console.error("Lỗi khi gửi yêu cầu:", error);
-      alert("Đã xảy ra lỗi khi gửi yêu cầu");
+
+      const statusCode = error.response?.status;
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data ||
+        error.message ||
+        "Đã xảy ra lỗi khi gửi yêu cầu";
+
+      if (statusCode === 402) {
+        alert("Bạn đã gửi liên hệ trước đó");
+      } else if (errorMessage === "Contact form submission failed") {
+        alert("Đã gửi liên hệ trước đó, vui lòng đợi");
+      } else {
+        alert(errorMessage);
+      }
     }
   };
   return (
@@ -172,7 +196,11 @@ const Form = () => {
               className="ud-btn btn-thm"
               onClick={handleSendContact}
             >
-              Gửi yêu cầu
+              {isCoolingDown
+                ? `Đã gửi yêu cầu, vui lòng đợi ${Math.floor(
+                    cooldown / 60 / 1000
+                  )} phút ${(cooldown % 60) % 1000} giây nữa`
+                : "Gửi yêu cầu"}
               <i className="fal fa-arrow-right-long" />
             </button>
           </div>

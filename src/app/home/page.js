@@ -19,7 +19,7 @@ import CallToActions from "@/components/common/CallToActions";
 import About from "@/components/home/home-v8/About";
 
 export const metadata = {
-  title: "Home v8 || Homez - Real Estate NextJS Template",
+  title: "Neko home - Trang chủ",
 };
 
 const Home = () => {

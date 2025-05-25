@@ -7,7 +7,7 @@ import Office from "@/components/pages/contact/Office";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Contact  || Homez - Real Estate NextJS Template",
+  title: "NekoHome - Liên hệ ",
 };
 
 const Contact = () => {

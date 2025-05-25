@@ -7,7 +7,9 @@ import Faq2 from "@/components/pages/faq/Faq2";
 import Faq3 from "@/components/pages/faq/Faq3";
 
 export const metadata = {
-  title: "Faq  || Homez - Real Estate NextJS Template",
+  title: "NekoHome - Câu hỏi thường gặp",
+  description:
+    "Tìm hiểu các câu hỏi thường gặp về bất động sản, mua bán, cho thuê và quản lý bất động sản tại NekoHome.",
 };
 
 const Faq = () => {
