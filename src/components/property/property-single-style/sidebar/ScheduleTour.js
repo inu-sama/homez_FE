@@ -68,8 +68,9 @@ const ScheduleTour = ({ property }) => {
     }
 
     try {
-      const res = await apiContact.sendContact(sendContact);
       startCooldown(true);
+
+      const res = await apiContact.sendContact(sendContact);
       if (res.status === 200) {
         alert("Gửi yêu cầu thành công");
       } else {
