@@ -9,7 +9,7 @@ import PersonalInfo from "@/components/property/dashboard/dashboard-profile/Pers
 // import SocialField from "@/components/property/dashboard/dashboard-profile/SocialField";
 
 export const metadata = {
-  title: "Dashboard My Profile || Homez - Real Estate NextJS Template",
+  title: "NekoHome - Tài khoản cá nhân",
 };
 
 const DashboardMyProfile = () => {
@@ -52,7 +52,9 @@ const DashboardMyProfile = () => {
               <div className="row">
                 <div className="col-xl-12">
                   <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                  <h4 className="title fz17 mb30">Chỉnh sửa thông tin cá nhân</h4>
+                    <h4 className="title fz17 mb30">
+                      Chỉnh sửa thông tin cá nhân
+                    </h4>
                     {/* <div className="col-xl-7">
                       <ProfileBox />
                     </div> */}

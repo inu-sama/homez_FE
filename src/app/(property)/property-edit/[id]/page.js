@@ -8,7 +8,7 @@ import AddPropertyTabContent from "@/components/property/dashboard/dashboard-add
 import EditPropertyTabContent from "@/components/property/edit";
 
 export const metadata = {
-  title: "Dashboard Add Property || Homez - Real Estate NextJS Template",
+  title: "NekoHome - Chỉnh sửa bài đăng",
 };
 
 const PropertyEdit = ({ params }) => {
