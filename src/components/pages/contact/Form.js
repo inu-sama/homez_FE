@@ -6,7 +6,7 @@ import { useCooldown } from "@/hooks/useCooldown";
 const Form = () => {
   const { cooldown, isCoolingDown, startCooldown } = useCooldown(
     "contact",
-    60 * 5000
+    300
   );
   const [data, setData] = useState(null);
   const [sendContact, setSendContact] = useState({
@@ -198,8 +198,8 @@ const Form = () => {
             >
               {isCoolingDown
                 ? `Đã gửi yêu cầu, vui lòng đợi ${Math.floor(
-                    cooldown / 60 / 1000
-                  )} phút ${(cooldown % 60) % 1000} giây nữa`
+                    cooldown / 60
+                  )} phút ${cooldown % 60} giây nữa`
                 : "Gửi yêu cầu"}
               <i className="fal fa-arrow-right-long" />
             </button>

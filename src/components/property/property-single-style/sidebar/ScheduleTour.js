@@ -6,7 +6,7 @@ import { useCooldown } from "@/hooks/useCooldown";
 const ScheduleTour = ({ property }) => {
   const { cooldown, isCoolingDown, startCooldown } = useCooldown(
     "send-contact",
-    60 * 5000
+    300
   );
   const [role, setRole] = useState(null);
   const [data, setData] = useState(null);
@@ -192,7 +192,6 @@ const ScheduleTour = ({ property }) => {
                 {data ? (
                   <div className="readonly-box">
                     <span>
-                      {" "}
                       {role === "Admin" || role === "Staff"
                         ? property.Account[0].FirstName +
                           " " +
@@ -249,11 +248,7 @@ const ScheduleTour = ({ property }) => {
                     className="ud-btn btn-thm"
                     onClick={handleSendContact}
                   >
-                    {cooldown
-                      ? `Đã gửi yêu cầu, vui lòng đợi ${Math.floor(
-                          cooldown / 60 / 1000
-                        )} phút ${(cooldown % 60) % 1000} giây nữa`
-                      : "Gửi yêu cầu"}
+                    {cooldown ? `Đã gửi yêu cầu, vui lòng đợi` : "Gửi yêu cầu"}
                     <i className="fal fa-arrow-right-long" />
                   </button>
                 </div>
