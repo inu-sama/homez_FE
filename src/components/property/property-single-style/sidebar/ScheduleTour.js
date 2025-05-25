@@ -171,17 +171,16 @@ const ScheduleTour = ({ property }) => {
                     required
                     value={sendContact.email}
                     onChange={(e) => {
-                      const value = e.target.value;
-                      if (
-                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
-                          value
-                        )
-                      ) {
-                        setSendContact((prev) => ({
-                          ...prev,
-                          email: value,
-                        }));
+                      let value = e.target.value;
+
+                      if (value.endsWith("@")) {
+                        value += "gmail.com";
                       }
+
+                      setSendContact((prev) => ({
+                        ...prev,
+                        email: value,
+                      }));
                     }}
                   />
                 )}
